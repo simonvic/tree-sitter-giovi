@@ -115,15 +115,18 @@ module.exports = grammar({
       seq('return', optional($.expression))
     )),
 
-    functionCall: $ => seq(
-      $.expression, '(', optional($.functionCallParameters), ')'
-    ),
+    functionCall: $ => prec.left(seq(
+      // TODO: why is it needed to add identifier?
+      choice($.identifier, $.expression), '(', optional($.functionCallParameters), ')'
+    )),
 
     functionCallParameters: $ => seq(
       $.functionCallParameter, repeat(seq(',', $.functionCallParameter)), optional(',')
     ),
 
-    functionCallParameter: $ => seq(optional(seq($.identifier, ':')), $.expression),
+    functionCallParameter: $ => seq(
+      optional(field("label", seq($.identifier, ':'))), $.expression
+    ),
 
     ifStatement: $ => prec.right(seq(
       'if', field('condition', $.expression), 'do', field('body', $._statementOrBlock),

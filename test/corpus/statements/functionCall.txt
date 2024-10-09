@@ -1,8 +1,64 @@
 ================================================================================
-simple
-:skip
+simple invocation
 ================================================================================
-fun()
+f()
 --------------------------------------------------------------------------------
-(program (statement (functionCall (expression (identifier)))))
+(program (statement (functionCall (identifier))))
+
+================================================================================
+invocation from expression
+================================================================================
+someList@69()
+--------------------------------------------------------------------------------
+(program (statement (functionCall (expression (expressionBinary
+	(expression (identifier))
+	(expression (literal (literalInteger))))))))
+
+================================================================================
+invocation with argument
+================================================================================
+f(a)
+--------------------------------------------------------------------------------
+(program (statement (functionCall
+	(identifier)
+	(functionCallParameters
+		(functionCallParameter (expression (identifier)))))))
+
+================================================================================
+invocation with labeled argument
+================================================================================
+f(l: a)
+--------------------------------------------------------------------------------
+(program (statement (functionCall
+	(identifier)
+	(functionCallParameters
+		(functionCallParameter
+			label: (identifier)
+			(expression (identifier)))))))
+
+================================================================================
+invocation with arguments
+================================================================================
+f(a,b,)
+--------------------------------------------------------------------------------
+(program (statement (functionCall
+	(identifier)
+	(functionCallParameters
+		(functionCallParameter (expression (identifier)))
+		(functionCallParameter (expression (identifier)))))))
+
+================================================================================
+invocation with labeled arguments
+================================================================================
+f(l1: a, l2: b)
+--------------------------------------------------------------------------------
+(program (statement (functionCall
+	(identifier)
+	(functionCallParameters
+		(functionCallParameter
+			label: (identifier)
+			(expression (identifier)))
+		(functionCallParameter
+			label: (identifier)
+			(expression (identifier)))))))
 
