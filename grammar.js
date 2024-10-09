@@ -69,20 +69,6 @@ const REDIR_RTL = token('<-');
 const REDIR_OP_LTR = choice(REDIR_LTR, '->+', '->-', '->*', '->/');
 const REDIR_OP_RTL = choice(REDIR_RTL, '+<-', '-<-', '*<-', '/<-');
 
-/**
- * Creates a rule to match one or more of the rules separated by `separator`
- *
- * @param {RuleOrLiteral} rule
- *
- * @param {RuleOrLiteral} separator
- *
- * @return {SeqRule}
- *
- */
-function seqSep(rule, separator) {
-  return seq(rule, repeat(seq(separator, rule)));
-}
-
 module.exports = grammar({
   name: "giovi",
   rules: {
@@ -218,8 +204,8 @@ module.exports = grammar({
 
     defaultDefinition: $ => seq('default', $.expression),
 
-    primitiveContent: $ => '\\in',
-    primitiveDestination: $ => choice('\\out', '\\err'),
+    primitiveContent: _ => '\\in',
+    primitiveDestination: _ => choice('\\out', '\\err'),
 
     expression: $ => choice(
       seq('{', $.expression, '}'),
@@ -246,10 +232,10 @@ module.exports = grammar({
 
     literalPlaceholder: _ => token('_'),
     literalDefault: _ => token('default'),
-    literalBool: $ => token(choice('true', 'false')),
-    literalReal: $ => token(choice(LITERAL_REAL_DECIMAL, LITERAL_REAL_HEX,)),
+    literalBool: _ => token(choice('true', 'false')),
+    literalReal: _ => token(choice(LITERAL_REAL_DECIMAL, LITERAL_REAL_HEX,)),
 
-    literalNatural: $ => token(seq(
+    literalNatural: _ => token(seq(
       choice(
         NUMERAL_DECIMAL,
         NUMERAL_HEX,
@@ -259,7 +245,7 @@ module.exports = grammar({
       'n'
     )),
 
-    literalInteger: $ => token(seq(
+    literalInteger: _ => token(seq(
       choice(
         NUMERAL_DECIMAL,
         NUMERAL_HEX,
@@ -269,7 +255,7 @@ module.exports = grammar({
       optional('i')
     )),
 
-    literalText: $ => token(choice(
+    literalText: _ => token(choice(
       LITERAL_TEXT,
       LITERAL_TEXT_BLOCK,
       LITERAL_EXACT_TEXT,
@@ -282,9 +268,9 @@ module.exports = grammar({
       $.typeIdentifier
     ),
 
-    identifier: $ => token(IDENTIFIER),
-    constantIdentifier: $ => token(ALLUPPERCASE_IDENTIFIER),
-    typeIdentifier: $ => token(choice(UPPERCASE_IDENTIFIER, ALLUPPERCASE_IDENTIFIER)),
+    identifier: _ => token(IDENTIFIER),
+    constantIdentifier: _ => token(ALLUPPERCASE_IDENTIFIER),
+    typeIdentifier: _ => token(choice(UPPERCASE_IDENTIFIER, ALLUPPERCASE_IDENTIFIER)),
 
   }
 
