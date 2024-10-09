@@ -1,0 +1,132 @@
+================================================================================
+binary expressions
+================================================================================
+=> a@b
+=> a ^ b
+=> a * b
+=> a / b
+=> a % b
+=> a + b
+=> a - b
+=> a < b
+=> a <= b
+=> a >= b
+=> a > b
+=> a = b
+=> a != b
+=> a in b
+=> a =~ b
+=> a ~= b
+=> a & b
+=> a | b
+=> a and b
+=> a or b
+--------------------------------------------------------------------------------
+(program
+	(statement (returnStatement
+		(expression (binaryExpression
+			lhs: (expression (identifier))
+			rhs: (expression (identifier))))))
+	(statement (returnStatement
+		(expression (binaryExpression
+			lhs: (expression (identifier))
+			rhs: (expression (identifier))))))
+	(statement (returnStatement
+		(expression (binaryExpression
+			lhs: (expression (identifier))
+			rhs: (expression (identifier))))))
+	(statement (returnStatement
+		(expression (binaryExpression
+			lhs: (expression (identifier))
+			rhs: (expression (identifier))))))
+	(statement (returnStatement
+		(expression (binaryExpression
+			lhs: (expression (identifier))
+			rhs: (expression (identifier))))))
+	(statement (returnStatement
+		(expression (binaryExpression
+			lhs: (expression (identifier))
+			rhs: (expression (identifier))))))
+	(statement (returnStatement
+		(expression (binaryExpression
+			lhs: (expression (identifier))
+			rhs: (expression (identifier))))))
+	(statement (returnStatement
+		(expression (binaryExpression
+			lhs: (expression (identifier))
+			rhs: (expression (identifier))))))
+	(statement (returnStatement
+		(expression (binaryExpression
+			lhs: (expression (identifier))
+			rhs: (expression (identifier))))))
+	(statement (returnStatement
+		(expression (binaryExpression
+			lhs: (expression (identifier))
+			rhs: (expression (identifier))))))
+	(statement (returnStatement
+		(expression (binaryExpression
+			lhs: (expression (identifier))
+			rhs: (expression (identifier))))))
+	(statement (returnStatement
+		(expression (binaryExpression
+			lhs: (expression (identifier))
+			rhs: (expression (identifier))))))
+	(statement (returnStatement
+		(expression (binaryExpression
+			lhs: (expression (identifier))
+			rhs: (expression (identifier))))))
+	(statement (returnStatement
+		(expression (binaryExpression
+			lhs: (expression (identifier))
+			rhs: (expression (identifier))))))
+	(statement (returnStatement
+		(expression (binaryExpression
+			lhs: (expression (identifier))
+			rhs: (expression (identifier))))))
+	(statement (returnStatement
+		(expression (binaryExpression
+			lhs: (expression (identifier))
+			rhs: (expression (identifier))))))
+	(statement (returnStatement
+		(expression (binaryExpression
+			lhs: (expression (identifier))
+			rhs: (expression (identifier))))))
+	(statement (returnStatement
+		(expression (binaryExpression
+			lhs: (expression (identifier))
+			rhs: (expression (identifier))))))
+	(statement (returnStatement
+		(expression (binaryExpression
+			lhs: (expression (identifier))
+			rhs: (expression (identifier))))))
+	(statement (returnStatement
+		(expression (binaryExpression
+			lhs: (expression (identifier))
+			rhs: (expression (identifier)))))))
+
+================================================================================
+nested binary expressions
+================================================================================
+=> a + b + c
+--------------------------------------------------------------------------------
+(program
+	(statement (returnStatement
+		(expression (binaryExpression
+			lhs: (expression (binaryExpression
+				lhs: (expression (identifier))
+				rhs: (expression (identifier))))
+			rhs: (expression (identifier))))))
+)
+
+================================================================================
+nested parenthesized binary expressions
+================================================================================
+=> a + {b + c}
+--------------------------------------------------------------------------------
+(program
+	(statement (returnStatement
+		(expression (binaryExpression
+			lhs: (expression (identifier))
+			rhs: (expression (expression (binaryExpression
+				lhs: (expression (identifier))
+				rhs: (expression (identifier))))))))))

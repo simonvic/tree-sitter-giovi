@@ -138,7 +138,7 @@ module.exports = grammar({
     switchBlock: $ => seq('{', repeat1($.switchLabel), '}'),
     switchLabel: $ => seq(field("case", $.caseMatch), 'do', field("body", $._statementOrBlock)),
 
-    caseMatch: $ => prec.left(choice(
+    caseMatch: $ => prec.left(1, choice(
       seq('{', field("case", $.caseMatch), '}'),
       seq($.caseMatch, field("bop", choice('and', '&', 'or', '|')), $.caseMatch),
       seq($.caseMatch, 'when', field("guard", $.expression)),
@@ -229,9 +229,27 @@ module.exports = grammar({
     primitiveDestination: _ => choice('\\out', '\\err'),
 
     expression: $ => choice(
-      seq('{', $.expression, '}'),
-      $._primary
+      $._parenthesizedExpression,
+      $.binaryExpression,
+      $._primary,
     ),
+
+    _parenthesizedExpression: $ => seq('{', $.expression, '}'),
+
+    binaryExpression: $ => prec.left(1, seq(
+      field("lhs", $.expression),
+      field("bop", choice(
+        '@',
+        '^',
+        '*', '/', '%',
+        '+', '-',
+        '<=', '>=', '>', '<',
+        '=', '!=',
+        'in', '~=', '=~',
+        'and', '&', 'or', '|',
+      )),
+      field("rhs", $.expression)
+    )),
 
     type: $ => $.typeIdentifier,
 
