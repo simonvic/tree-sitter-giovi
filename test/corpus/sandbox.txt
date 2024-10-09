@@ -2,22 +2,4 @@
 sandbox
 :skip
 ================================================================================
-
-if true do 69 -> \out
-if true do {}
-
 --------------------------------------------------------------------------------
-
-(program
-	(statement
-		(ifStatement
-			(expression (literal (literalBool)))
-			(statement
-				(redirection
-					(expression (literal (literalInteger)))
-					(primitiveDestination)))))
-	(statement
-		(ifStatement
-			(expression (literal (literalBool)))
-			(block))))
-

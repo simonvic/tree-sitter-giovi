@@ -71,6 +71,11 @@ const REDIR_OP_RTL = choice(REDIR_RTL, '+<-', '-<-', '*<-', '/<-');
 
 module.exports = grammar({
   name: "giovi",
+  // TODO: word: $ => $.identifier,
+  conflicts: $ => [
+    [$.iterator, $.iteratorAggregate],
+    [$.iteratorUnary],
+  ],
   rules: {
     program: $ => repeat($.statement),
     block: $ => seq('{', repeat($.statement), '}'),
@@ -160,15 +165,16 @@ module.exports = grammar({
       field("body", $._statementOrBlock)
     ),
 
-    iterator: $ => prec.left(choice(
+    iterator: $ => choice(
       $.iteratorUnary,
       $.iteratorMap,
       $.iteratorAggregate,
       $.literalPlaceholder,
-    )),
+    ),
 
     iteratorUnary: $ => seq($.identifier, optional($.type)),
 
+    // TODO: eventually use prec.right
     iteratorMap: $ => prec.left(choice(
       seq('[', field("key", $.iterator), ':', field("val", $.iterator), ']'),
       seq(field("key", $.iterator), ':', field("val", $.iterator)),
@@ -276,7 +282,23 @@ module.exports = grammar({
       field("rhs", $.expression)
     )),
 
-    type: $ => $.typeIdentifier,
+    type: $ => choice(
+      $._typeComposite,
+      $.typeIdentifier,
+    ),
+
+    _typeComposite: $ => choice(
+      $.typeList,
+      $.typeMap,
+    ),
+
+    typeList: $ => seq(
+      '[', $.type, optional(seq('**', field("initSize", $.expression))), ']'
+    ),
+
+    typeMap: $ => seq(
+      '[', field("keyType", $.type), ':', field("valueType", $.type), ']'
+    ),
 
     _primary: $ => choice(
       $.literal,

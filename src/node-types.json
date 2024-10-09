@@ -1072,8 +1072,68 @@
         {
           "type": "typeIdentifier",
           "named": true
+        },
+        {
+          "type": "typeList",
+          "named": true
+        },
+        {
+          "type": "typeMap",
+          "named": true
         }
       ]
+    }
+  },
+  {
+    "type": "typeList",
+    "named": true,
+    "fields": {
+      "initSize": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "type",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "typeMap",
+    "named": true,
+    "fields": {
+      "keyType": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "type",
+            "named": true
+          }
+        ]
+      },
+      "valueType": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "type",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -1125,6 +1185,10 @@
   },
   {
     "type": "*",
+    "named": false
+  },
+  {
+    "type": "**",
     "named": false
   },
   {

@@ -32,6 +32,18 @@ for i Type in foo do {}
 	body: (block))))
 
 ================================================================================
+for composite typed unary in foo do block
+================================================================================
+for i [Type] in foo do {}
+--------------------------------------------------------------------------------
+(program (statement (forStatement
+	(iterator (iteratorUnary
+		(identifier)
+		(type (typeList (type (typeIdentifier))))))
+	(iterated (expression (identifier)))
+	body: (block))))
+
+================================================================================
 for placeholder : placeholder in foo do block
 ================================================================================
 for _ : _ in foo do {}
@@ -80,6 +92,21 @@ for k : v in foo do {}
 	body: (block))))
 
 ================================================================================
+for k : v : w in foo do block
+:skip
+================================================================================
+for k : v : w in foo do {}
+--------------------------------------------------------------------------------
+(program (statement (forStatement
+	(iterator (iteratorMap
+		key: (iterator (iteratorUnary (identifier)))
+		val: (iterator (iteratorMap
+			key: (iterator (iteratorUnary (identifier)))
+			val: (iterator (iteratorUnary (identifier)))))))
+	(iterated (expression (identifier)))
+	body: (block))))
+
+================================================================================
 for [ key : value ] in foo do block
 ================================================================================
 for [k : v] in foo do {}
@@ -88,6 +115,20 @@ for [k : v] in foo do {}
 	(iterator (iteratorMap
 		key: (iterator (iteratorUnary (identifier)))
 		val: (iterator (iteratorUnary (identifier)))))
+	(iterated (expression (identifier)))
+	body: (block))))
+
+================================================================================
+for k : [v : w] in foo do block
+================================================================================
+for k : [v : w] in foo do {}
+--------------------------------------------------------------------------------
+(program (statement (forStatement
+	(iterator (iteratorMap
+		key: (iterator (iteratorUnary (identifier)))
+		val: (iterator (iteratorMap
+			key: (iterator (iteratorUnary (identifier)))
+			val: (iterator (iteratorUnary (identifier)))))))
 	(iterated (expression (identifier)))
 	body: (block))))
 
@@ -121,6 +162,20 @@ for <a [k : <b c>] d> in foo do {}
 				(iterator (iteratorUnary (identifier)))
 				(iterator (iteratorUnary (identifier)))))))
 		(iterator (iteratorUnary (identifier)))))
+	(iterated (expression (identifier)))
+	body: (block))))
+
+================================================================================
+for <field with composite type> in foo do block
+================================================================================
+for <a [Int]> in foo do {}
+--------------------------------------------------------------------------------
+(program (statement (forStatement
+	(iterator (iteratorAggregate
+		(iterator (iteratorUnary
+			(identifier)
+			(type (typeList (type (typeIdentifier))))
+			))))
 	(iterated (expression (identifier)))
 	body: (block))))
 

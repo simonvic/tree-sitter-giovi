@@ -839,29 +839,25 @@
       ]
     },
     "iterator": {
-      "type": "PREC_LEFT",
-      "value": 0,
-      "content": {
-        "type": "CHOICE",
-        "members": [
-          {
-            "type": "SYMBOL",
-            "name": "iteratorUnary"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "iteratorMap"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "iteratorAggregate"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "literalPlaceholder"
-          }
-        ]
-      }
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "iteratorUnary"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "iteratorMap"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "iteratorAggregate"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "literalPlaceholder"
+        }
+      ]
     },
     "iteratorUnary": {
       "type": "SEQ",
@@ -1678,8 +1674,105 @@
       }
     },
     "type": {
-      "type": "SYMBOL",
-      "name": "typeIdentifier"
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_typeComposite"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "typeIdentifier"
+        }
+      ]
+    },
+    "_typeComposite": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "typeList"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "typeMap"
+        }
+      ]
+    },
+    "typeList": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "["
+        },
+        {
+          "type": "SYMBOL",
+          "name": "type"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "**"
+                },
+                {
+                  "type": "FIELD",
+                  "name": "initSize",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "expression"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": "]"
+        }
+      ]
+    },
+    "typeMap": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "["
+        },
+        {
+          "type": "FIELD",
+          "name": "keyType",
+          "content": {
+            "type": "SYMBOL",
+            "name": "type"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": ":"
+        },
+        {
+          "type": "FIELD",
+          "name": "valueType",
+          "content": {
+            "type": "SYMBOL",
+            "name": "type"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "]"
+        }
+      ]
     },
     "_primary": {
       "type": "CHOICE",
@@ -4588,7 +4681,15 @@
       "value": "\\s"
     }
   ],
-  "conflicts": [],
+  "conflicts": [
+    [
+      "iterator",
+      "iteratorAggregate"
+    ],
+    [
+      "iteratorUnary"
+    ]
+  ],
   "precedences": [],
   "externals": [],
   "inline": [],
