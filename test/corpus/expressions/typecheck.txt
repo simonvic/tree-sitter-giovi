@@ -1,0 +1,34 @@
+================================================================================
+simple
+================================================================================
+=> a is Int
+--------------------------------------------------------------------------------
+(program
+	(statement (returnStatement
+		(expression (expressionTypeCheck
+			(expression (identifier))
+			(type (typeIdentifier)))))))
+
+================================================================================
+with declaration
+================================================================================
+=> a is i Int
+--------------------------------------------------------------------------------
+(program
+	(statement (returnStatement
+		(expression (expressionTypeCheck
+			(expression (identifier))
+			(identifier)
+			(type (typeIdentifier)))))))
+
+================================================================================
+with negation
+================================================================================
+=> a is not Int
+--------------------------------------------------------------------------------
+(program
+	(statement (returnStatement
+		(expression (expressionTypeCheck
+			(expression (identifier))
+			(type (typeIdentifier)))))))
+

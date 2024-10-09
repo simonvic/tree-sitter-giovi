@@ -1382,6 +1382,14 @@
         },
         {
           "type": "SYMBOL",
+          "name": "expressionCast"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "expressionTypeCheck"
+        },
+        {
+          "type": "SYMBOL",
           "name": "expressionBinary"
         },
         {
@@ -1410,6 +1418,65 @@
           "value": "}"
         }
       ]
+    },
+    "expressionCast": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "expression"
+        },
+        {
+          "type": "STRING",
+          "value": "as"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "type"
+        }
+      ]
+    },
+    "expressionTypeCheck": {
+      "type": "PREC",
+      "value": 1,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "expression"
+          },
+          {
+            "type": "STRING",
+            "value": "is"
+          },
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "STRING",
+                    "value": "not"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "identifier"
+                  }
+                ]
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
+          },
+          {
+            "type": "SYMBOL",
+            "name": "type"
+          }
+        ]
+      }
     },
     "expressionPrefixed": {
       "type": "PREC_LEFT",
