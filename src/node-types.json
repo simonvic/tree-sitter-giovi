@@ -147,6 +147,10 @@
           "named": true
         },
         {
+          "type": "expressionDot",
+          "named": true
+        },
+        {
           "type": "expressionPrefixed",
           "named": true
         },
@@ -299,6 +303,37 @@
         },
         {
           "type": "type",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "expressionDot",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "constantIdentifier",
+          "named": true
+        },
+        {
+          "type": "expression",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "literalDefault",
+          "named": true
+        },
+        {
+          "type": "typeIdentifier",
           "named": true
         }
       ]
@@ -1119,6 +1154,10 @@
   },
   {
     "type": "->/",
+    "named": false
+  },
+  {
+    "type": ".",
     "named": false
   },
   {

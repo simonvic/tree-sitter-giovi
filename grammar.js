@@ -232,6 +232,7 @@ module.exports = grammar({
       $._expressionParenthesized,
       $.expressionCast,
       $.expressionTypeCheck,
+      $.expressionDot,
       $.expressionBinary,
       $.expressionPrefixed,
       $._primary,
@@ -243,6 +244,10 @@ module.exports = grammar({
 
     expressionTypeCheck: $ => prec(1, seq(
       $.expression, 'is', optional(choice('not', $.identifier)), $.type)
+    ),
+
+    expressionDot: $ => seq(
+      $.expression, '.', choice($._anyIdentifier, $.literalDefault)
     ),
 
     expressionPrefixed: $ => prec.left(2, seq(

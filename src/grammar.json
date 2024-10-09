@@ -1390,6 +1390,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "expressionDot"
+        },
+        {
+          "type": "SYMBOL",
           "name": "expressionBinary"
         },
         {
@@ -1477,6 +1481,32 @@
           }
         ]
       }
+    },
+    "expressionDot": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "expression"
+        },
+        {
+          "type": "STRING",
+          "value": "."
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_anyIdentifier"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "literalDefault"
+            }
+          ]
+        }
+      ]
     },
     "expressionPrefixed": {
       "type": "PREC_LEFT",
