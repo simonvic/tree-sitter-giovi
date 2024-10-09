@@ -112,14 +112,12 @@ module.exports = grammar({
     ),
 
     _redirectionLTR: $ => choice(
-      seq($.redirectionContent, '->', $.primitiveDestination)
+      seq($.expression, '->', $.primitiveDestination)
     ),
 
     _redirectionRTL: $ => choice(
-      seq($.primitiveDestination, '<-', $.redirectionContent)
+      seq($.primitiveDestination, '<-', $.expression)
     ),
-
-    redirectionContent: $ => choice($.primitiveContent, $.expression),
 
     primitiveContent: $ => '\\in',
     primitiveDestination: $ => choice('\\out', '\\err'),
@@ -129,7 +127,7 @@ module.exports = grammar({
       $._primary
     ),
 
-    _primary: $ => choice($.literal),
+    _primary: $ => choice($.literal, $.primitiveContent),
 
     literal: $ => choice(
       $.literalBool,

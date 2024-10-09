@@ -17,15 +17,15 @@ real
 --------------------------------------------------------------------------------
 
 (program
-	(statement (redirection (primitiveDestination) (redirectionContent (expression (literal (literalReal))))))
-	(statement (redirection (primitiveDestination) (redirectionContent (expression (literal (literalReal))))))
-	(statement (redirection (primitiveDestination) (redirectionContent (expression (literal (literalReal))))))
-	(statement (redirection (primitiveDestination) (redirectionContent (expression (literal (literalReal))))))
-	(statement (redirection (primitiveDestination) (redirectionContent (expression (literal (literalReal))))))
-	(statement (redirection (primitiveDestination) (redirectionContent (expression (literal (literalReal))))))
-	(statement (redirection (primitiveDestination) (redirectionContent (expression (literal (literalReal))))))
-	(statement (redirection (primitiveDestination) (redirectionContent (expression (literal (literalReal))))))
-	(statement (redirection (primitiveDestination) (redirectionContent (expression (literal (literalReal))))))
-	(statement (redirection (primitiveDestination) (redirectionContent (expression (literal (literalReal))))))
-	(statement (redirection (primitiveDestination) (redirectionContent (expression (literal (literalReal)))))))
+	(statement (redirection (primitiveDestination) (expression (literal (literalReal)))))
+	(statement (redirection (primitiveDestination) (expression (literal (literalReal)))))
+	(statement (redirection (primitiveDestination) (expression (literal (literalReal)))))
+	(statement (redirection (primitiveDestination) (expression (literal (literalReal)))))
+	(statement (redirection (primitiveDestination) (expression (literal (literalReal)))))
+	(statement (redirection (primitiveDestination) (expression (literal (literalReal)))))
+	(statement (redirection (primitiveDestination) (expression (literal (literalReal)))))
+	(statement (redirection (primitiveDestination) (expression (literal (literalReal)))))
+	(statement (redirection (primitiveDestination) (expression (literal (literalReal)))))
+	(statement (redirection (primitiveDestination) (expression (literal (literalReal)))))
+	(statement (redirection (primitiveDestination) (expression (literal (literalReal))))))
 

@@ -17,17 +17,17 @@ text
 --------------------------------------------------------------------------------
 
 (program
-	(statement (redirection (primitiveDestination) (redirectionContent (expression (literal (literalText))))))
-	(statement (redirection (primitiveDestination) (redirectionContent (expression (literal (literalText))))))
-	(statement (redirection (primitiveDestination) (redirectionContent (expression (literal (literalText))))))
-	(statement (redirection (primitiveDestination) (redirectionContent (expression (literal (literalText))))))
-	(statement (redirection (primitiveDestination) (redirectionContent (expression (literal (literalText))))))
-	(statement (redirection (primitiveDestination) (redirectionContent (expression (literal (literalText))))))
-	(statement (redirection (primitiveDestination) (redirectionContent (expression (literal (literalText))))))
-	(statement (redirection (primitiveDestination) (redirectionContent (expression (literal (literalText))))))
-	(statement (redirection (primitiveDestination) (redirectionContent (expression (literal (literalText))))))
-	(statement (redirection (primitiveDestination) (redirectionContent (expression (literal (literalText))))))
-	(statement (redirection (primitiveDestination) (redirectionContent (expression (literal (literalText)))))))
+	(statement (redirection (primitiveDestination) (expression (literal (literalText)))))
+	(statement (redirection (primitiveDestination) (expression (literal (literalText)))))
+	(statement (redirection (primitiveDestination) (expression (literal (literalText)))))
+	(statement (redirection (primitiveDestination) (expression (literal (literalText)))))
+	(statement (redirection (primitiveDestination) (expression (literal (literalText)))))
+	(statement (redirection (primitiveDestination) (expression (literal (literalText)))))
+	(statement (redirection (primitiveDestination) (expression (literal (literalText)))))
+	(statement (redirection (primitiveDestination) (expression (literal (literalText)))))
+	(statement (redirection (primitiveDestination) (expression (literal (literalText)))))
+	(statement (redirection (primitiveDestination) (expression (literal (literalText)))))
+	(statement (redirection (primitiveDestination) (expression (literal (literalText))))))
 
 ================================================================================
 text block
@@ -42,9 +42,9 @@ text block
 --------------------------------------------------------------------------------
 
 (program
-	(statement (redirection (primitiveDestination) (redirectionContent (expression (literal (literalText))))))
-	(statement (redirection (primitiveDestination) (redirectionContent (expression (literal (literalText))))))
-	(statement (redirection (primitiveDestination) (redirectionContent (expression (literal (literalText)))))))
+	(statement (redirection (primitiveDestination) (expression (literal (literalText)))))
+	(statement (redirection (primitiveDestination) (expression (literal (literalText)))))
+	(statement (redirection (primitiveDestination) (expression (literal (literalText))))))
 
 ================================================================================
 exact text
@@ -65,17 +65,17 @@ exact text
 --------------------------------------------------------------------------------
 
 (program
-	(statement (redirection (primitiveDestination) (redirectionContent (expression (literal (literalText))))))
-	(statement (redirection (primitiveDestination) (redirectionContent (expression (literal (literalText))))))
-	(statement (redirection (primitiveDestination) (redirectionContent (expression (literal (literalText))))))
-	(statement (redirection (primitiveDestination) (redirectionContent (expression (literal (literalText))))))
-	(statement (redirection (primitiveDestination) (redirectionContent (expression (literal (literalText))))))
-	(statement (redirection (primitiveDestination) (redirectionContent (expression (literal (literalText))))))
-	(statement (redirection (primitiveDestination) (redirectionContent (expression (literal (literalText))))))
-	(statement (redirection (primitiveDestination) (redirectionContent (expression (literal (literalText))))))
-	(statement (redirection (primitiveDestination) (redirectionContent (expression (literal (literalText))))))
-	(statement (redirection (primitiveDestination) (redirectionContent (expression (literal (literalText))))))
-	(statement (redirection (primitiveDestination) (redirectionContent (expression (literal (literalText)))))))
+	(statement (redirection (primitiveDestination) (expression (literal (literalText)))))
+	(statement (redirection (primitiveDestination) (expression (literal (literalText)))))
+	(statement (redirection (primitiveDestination) (expression (literal (literalText)))))
+	(statement (redirection (primitiveDestination) (expression (literal (literalText)))))
+	(statement (redirection (primitiveDestination) (expression (literal (literalText)))))
+	(statement (redirection (primitiveDestination) (expression (literal (literalText)))))
+	(statement (redirection (primitiveDestination) (expression (literal (literalText)))))
+	(statement (redirection (primitiveDestination) (expression (literal (literalText)))))
+	(statement (redirection (primitiveDestination) (expression (literal (literalText)))))
+	(statement (redirection (primitiveDestination) (expression (literal (literalText)))))
+	(statement (redirection (primitiveDestination) (expression (literal (literalText))))))
 
 ================================================================================
 extact text block
@@ -90,7 +90,7 @@ extact text block
 --------------------------------------------------------------------------------
 
 (program
-	(statement (redirection (primitiveDestination) (redirectionContent (expression (literal (literalText))))))
-	(statement (redirection (primitiveDestination) (redirectionContent (expression (literal (literalText))))))
-	(statement (redirection (primitiveDestination) (redirectionContent (expression (literal (literalText)))))))
+	(statement (redirection (primitiveDestination) (expression (literal (literalText)))))
+	(statement (redirection (primitiveDestination) (expression (literal (literalText)))))
+	(statement (redirection (primitiveDestination) (expression (literal (literalText))))))
 

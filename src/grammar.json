@@ -88,7 +88,7 @@
           "members": [
             {
               "type": "SYMBOL",
-              "name": "redirectionContent"
+              "name": "expression"
             },
             {
               "type": "STRING",
@@ -118,22 +118,9 @@
             },
             {
               "type": "SYMBOL",
-              "name": "redirectionContent"
+              "name": "expression"
             }
           ]
-        }
-      ]
-    },
-    "redirectionContent": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "primitiveContent"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "expression"
         }
       ]
     },
@@ -186,6 +173,10 @@
         {
           "type": "SYMBOL",
           "name": "literal"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "primitiveContent"
         }
       ]
     },

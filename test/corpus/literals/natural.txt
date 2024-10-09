@@ -15,13 +15,13 @@ natural
 --------------------------------------------------------------------------------
 
 (program
-	(statement (redirection (primitiveDestination) (redirectionContent (expression (literal (literalNatural))))))
-	(statement (redirection (primitiveDestination) (redirectionContent (expression (literal (literalNatural))))))
-	(statement (redirection (primitiveDestination) (redirectionContent (expression (literal (literalNatural))))))
-	(statement (redirection (primitiveDestination) (redirectionContent (expression (literal (literalNatural))))))
-	(statement (redirection (primitiveDestination) (redirectionContent (expression (literal (literalNatural))))))
-	(statement (redirection (primitiveDestination) (redirectionContent (expression (literal (literalNatural))))))
-	(statement (redirection (primitiveDestination) (redirectionContent (expression (literal (literalNatural))))))
-	(statement (redirection (primitiveDestination) (redirectionContent (expression (literal (literalNatural))))))
-	(statement (redirection (primitiveDestination) (redirectionContent (expression (literal (literalNatural)))))))
+	(statement (redirection (primitiveDestination) (expression (literal (literalNatural)))))
+	(statement (redirection (primitiveDestination) (expression (literal (literalNatural)))))
+	(statement (redirection (primitiveDestination) (expression (literal (literalNatural)))))
+	(statement (redirection (primitiveDestination) (expression (literal (literalNatural)))))
+	(statement (redirection (primitiveDestination) (expression (literal (literalNatural)))))
+	(statement (redirection (primitiveDestination) (expression (literal (literalNatural)))))
+	(statement (redirection (primitiveDestination) (expression (literal (literalNatural)))))
+	(statement (redirection (primitiveDestination) (expression (literal (literalNatural)))))
+	(statement (redirection (primitiveDestination) (expression (literal (literalNatural))))))
 

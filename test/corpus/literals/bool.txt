@@ -8,6 +8,6 @@ bool
 --------------------------------------------------------------------------------
 
 (program
-	(statement (redirection (primitiveDestination) (redirectionContent (expression (literal (literalBool))))))
-	(statement (redirection (primitiveDestination) (redirectionContent (expression (literal (literalBool)))))))
+	(statement (redirection (primitiveDestination) (expression (literal (literalBool)))))
+	(statement (redirection (primitiveDestination) (expression (literal (literalBool))))))
 

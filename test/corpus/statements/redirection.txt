@@ -8,5 +8,5 @@ redirection
 --------------------------------------------------------------------------------
 
 (program
-	(statement (redirection (primitiveDestination) (redirectionContent (expression (literal (literalText))))))
-	(statement (redirection (primitiveDestination) (redirectionContent (expression (literal (literalText)))))))
+	(statement (redirection (primitiveDestination) (expression (literal (literalText)))))
+	(statement (redirection (primitiveDestination) (expression (literal (literalText))))))

@@ -29,6 +29,10 @@
         {
           "type": "literal",
           "named": true
+        },
+        {
+          "type": "primitiveContent",
+          "named": true
         }
       ]
     }
@@ -93,30 +97,11 @@
       "required": true,
       "types": [
         {
-          "type": "primitiveDestination",
-          "named": true
-        },
-        {
-          "type": "redirectionContent",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "redirectionContent",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
           "type": "expression",
           "named": true
         },
         {
-          "type": "primitiveContent",
+          "type": "primitiveDestination",
           "named": true
         }
       ]
