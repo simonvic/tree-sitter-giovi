@@ -1,8 +1,8 @@
 {
-  "name": "tree-sitter-your-language-name",
+  "name": "tree-sitter-giovi",
   "version": "0.0.1",
-  "description": "YourLanguageName grammar for tree-sitter",
-  "repository": "github:tree-sitter/tree-sitter-your-language-name",
+  "description": "Giovi grammar for tree-sitter",
+  "repository": "github:tree-sitter/tree-sitter-giovi",
   "license": "MIT",
   "main": "bindings/node",
   "types": "bindings/node",
@@ -10,7 +10,7 @@
     "incremental",
     "parsing",
     "tree-sitter",
-    "your_language_name"
+    "giovi"
   ],
   "files": [
     "grammar.js",
@@ -45,8 +45,9 @@
   },
   "tree-sitter": [
     {
-      "scope": "source.your_language_name",
-      "injection-regex": "^your_language_name$"
+      "scope": "source.giovi",
+      "file-types": ["giovi"],
+      "injection-regex": "^giovi$"
     }
   ]
 }
