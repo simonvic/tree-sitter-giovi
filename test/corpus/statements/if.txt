@@ -1,0 +1,59 @@
+================================================================================
+if expression do block
+================================================================================
+
+if true do {}
+
+--------------------------------------------------------------------------------
+
+(program
+	(statement
+		(ifStatement
+			condition: (expression (literal (literalBool)))
+			body: (block))))
+
+================================================================================
+if expression do statement
+================================================================================
+
+if true do 69 -> \out
+
+--------------------------------------------------------------------------------
+
+(program
+	(statement
+		(ifStatement
+			condition: (expression (literal (literalBool)))
+			body: (statement (redirection (expression (literal (literalInteger))) (primitiveDestination))))))
+
+================================================================================
+if expression do block else block
+================================================================================
+
+if true do {} else {}
+
+--------------------------------------------------------------------------------
+
+(program
+	(statement
+		(ifStatement
+			condition: (expression (literal (literalBool)))
+			body: (block)
+			elseBody: (block))))
+
+================================================================================
+if expression do statement else statement
+================================================================================
+
+if true do 69 -> \out else "hello" -> \out
+
+--------------------------------------------------------------------------------
+
+(program
+	(statement
+		(ifStatement
+			condition: (expression (literal (literalBool)))
+			body: (statement (redirection (expression (literal (literalInteger))) (primitiveDestination)))
+			elseBody: (statement (redirection (expression (literal (literalText))) (primitiveDestination))))))
+
+
