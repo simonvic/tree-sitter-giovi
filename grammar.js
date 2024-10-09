@@ -229,14 +229,14 @@ module.exports = grammar({
     primitiveDestination: _ => choice('\\out', '\\err'),
 
     expression: $ => choice(
-      $._parenthesizedExpression,
-      $.binaryExpression,
+      $._expressionParenthesized,
+      $.expressionBinary,
       $._primary,
     ),
 
-    _parenthesizedExpression: $ => seq('{', $.expression, '}'),
+    _expressionParenthesized: $ => seq('{', $.expression, '}'),
 
-    binaryExpression: $ => prec.left(1, seq(
+    expressionBinary: $ => prec.left(1, seq(
       field("lhs", $.expression),
       field("bop", choice(
         '@',

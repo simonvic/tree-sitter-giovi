@@ -1378,11 +1378,11 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "_parenthesizedExpression"
+          "name": "_expressionParenthesized"
         },
         {
           "type": "SYMBOL",
-          "name": "binaryExpression"
+          "name": "expressionBinary"
         },
         {
           "type": "SYMBOL",
@@ -1390,7 +1390,7 @@
         }
       ]
     },
-    "_parenthesizedExpression": {
+    "_expressionParenthesized": {
       "type": "SEQ",
       "members": [
         {
@@ -1407,7 +1407,7 @@
         }
       ]
     },
-    "binaryExpression": {
+    "expressionBinary": {
       "type": "PREC_LEFT",
       "value": 1,
       "content": {

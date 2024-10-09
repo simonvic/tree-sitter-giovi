@@ -24,83 +24,83 @@ binary expressions
 --------------------------------------------------------------------------------
 (program
 	(statement (returnStatement
-		(expression (binaryExpression
+		(expression (expressionBinary
 			lhs: (expression (identifier))
 			rhs: (expression (identifier))))))
 	(statement (returnStatement
-		(expression (binaryExpression
+		(expression (expressionBinary
 			lhs: (expression (identifier))
 			rhs: (expression (identifier))))))
 	(statement (returnStatement
-		(expression (binaryExpression
+		(expression (expressionBinary
 			lhs: (expression (identifier))
 			rhs: (expression (identifier))))))
 	(statement (returnStatement
-		(expression (binaryExpression
+		(expression (expressionBinary
 			lhs: (expression (identifier))
 			rhs: (expression (identifier))))))
 	(statement (returnStatement
-		(expression (binaryExpression
+		(expression (expressionBinary
 			lhs: (expression (identifier))
 			rhs: (expression (identifier))))))
 	(statement (returnStatement
-		(expression (binaryExpression
+		(expression (expressionBinary
 			lhs: (expression (identifier))
 			rhs: (expression (identifier))))))
 	(statement (returnStatement
-		(expression (binaryExpression
+		(expression (expressionBinary
 			lhs: (expression (identifier))
 			rhs: (expression (identifier))))))
 	(statement (returnStatement
-		(expression (binaryExpression
+		(expression (expressionBinary
 			lhs: (expression (identifier))
 			rhs: (expression (identifier))))))
 	(statement (returnStatement
-		(expression (binaryExpression
+		(expression (expressionBinary
 			lhs: (expression (identifier))
 			rhs: (expression (identifier))))))
 	(statement (returnStatement
-		(expression (binaryExpression
+		(expression (expressionBinary
 			lhs: (expression (identifier))
 			rhs: (expression (identifier))))))
 	(statement (returnStatement
-		(expression (binaryExpression
+		(expression (expressionBinary
 			lhs: (expression (identifier))
 			rhs: (expression (identifier))))))
 	(statement (returnStatement
-		(expression (binaryExpression
+		(expression (expressionBinary
 			lhs: (expression (identifier))
 			rhs: (expression (identifier))))))
 	(statement (returnStatement
-		(expression (binaryExpression
+		(expression (expressionBinary
 			lhs: (expression (identifier))
 			rhs: (expression (identifier))))))
 	(statement (returnStatement
-		(expression (binaryExpression
+		(expression (expressionBinary
 			lhs: (expression (identifier))
 			rhs: (expression (identifier))))))
 	(statement (returnStatement
-		(expression (binaryExpression
+		(expression (expressionBinary
 			lhs: (expression (identifier))
 			rhs: (expression (identifier))))))
 	(statement (returnStatement
-		(expression (binaryExpression
+		(expression (expressionBinary
 			lhs: (expression (identifier))
 			rhs: (expression (identifier))))))
 	(statement (returnStatement
-		(expression (binaryExpression
+		(expression (expressionBinary
 			lhs: (expression (identifier))
 			rhs: (expression (identifier))))))
 	(statement (returnStatement
-		(expression (binaryExpression
+		(expression (expressionBinary
 			lhs: (expression (identifier))
 			rhs: (expression (identifier))))))
 	(statement (returnStatement
-		(expression (binaryExpression
+		(expression (expressionBinary
 			lhs: (expression (identifier))
 			rhs: (expression (identifier))))))
 	(statement (returnStatement
-		(expression (binaryExpression
+		(expression (expressionBinary
 			lhs: (expression (identifier))
 			rhs: (expression (identifier)))))))
 
@@ -111,8 +111,8 @@ nested binary expressions
 --------------------------------------------------------------------------------
 (program
 	(statement (returnStatement
-		(expression (binaryExpression
-			lhs: (expression (binaryExpression
+		(expression (expressionBinary
+			lhs: (expression (expressionBinary
 				lhs: (expression (identifier))
 				rhs: (expression (identifier))))
 			rhs: (expression (identifier))))))
@@ -125,8 +125,8 @@ nested parenthesized binary expressions
 --------------------------------------------------------------------------------
 (program
 	(statement (returnStatement
-		(expression (binaryExpression
+		(expression (expressionBinary
 			lhs: (expression (identifier))
-			rhs: (expression (expression (binaryExpression
+			rhs: (expression (expression (expressionBinary
 				lhs: (expression (identifier))
 				rhs: (expression (identifier))))))))))
