@@ -1,0 +1,32 @@
+================================================================================
+simple
+================================================================================
+=> +a
+=> -a
+=> !a
+=> not a
+--------------------------------------------------------------------------------
+(program
+	(statement (returnStatement
+		(expression (expressionPrefixed
+			(expression (identifier))))))
+	(statement (returnStatement
+		(expression (expressionPrefixed
+			(expression (identifier))))))
+	(statement (returnStatement
+		(expression (expressionPrefixed
+			(expression (identifier))))))
+	(statement (returnStatement
+		(expression (expressionPrefixed
+			(expression (identifier)))))))
+
+================================================================================
+double negation
+================================================================================
+=> !!a
+--------------------------------------------------------------------------------
+(program
+	(statement (returnStatement
+		(expression (expressionPrefixed
+			(expression (expressionPrefixed
+				(expression (identifier)))))))))

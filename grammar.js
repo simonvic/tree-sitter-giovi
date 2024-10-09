@@ -231,10 +231,19 @@ module.exports = grammar({
     expression: $ => choice(
       $._expressionParenthesized,
       $.expressionBinary,
+      $.expressionPrefixed,
       $._primary,
     ),
 
     _expressionParenthesized: $ => seq('{', $.expression, '}'),
+
+    expressionPrefixed: $ => prec.left(2, seq(
+      field("op", choice(
+        '+', '-',
+        '!', 'not',
+      )),
+      $.expression,
+    )),
 
     expressionBinary: $ => prec.left(1, seq(
       field("lhs", $.expression),
