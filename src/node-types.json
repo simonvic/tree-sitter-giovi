@@ -23,7 +23,15 @@
       "required": true,
       "types": [
         {
+          "type": "constantIdentifier",
+          "named": true
+        },
+        {
           "type": "expression",
+          "named": true
+        },
+        {
+          "type": "identifier",
           "named": true
         },
         {
@@ -32,6 +40,10 @@
         },
         {
           "type": "primitiveContent",
+          "named": true
+        },
+        {
+          "type": "typeIdentifier",
           "named": true
         }
       ]
@@ -147,6 +159,14 @@
     "named": false
   },
   {
+    "type": "constantIdentifier",
+    "named": true
+  },
+  {
+    "type": "identifier",
+    "named": true
+  },
+  {
     "type": "literalBool",
     "named": true
   },
@@ -168,6 +188,10 @@
   },
   {
     "type": "primitiveContent",
+    "named": true
+  },
+  {
+    "type": "typeIdentifier",
     "named": true
   },
   {

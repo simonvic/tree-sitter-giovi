@@ -1,0 +1,66 @@
+================================================================================
+constant identifiers
+================================================================================
+
+\out <- X
+\out <- XXX
+\out <- X69
+\out <- X_X
+\out <- X_X69
+
+--------------------------------------------------------------------------------
+
+(program
+	(statement (redirection (primitiveDestination) (expression (constantIdentifier))))
+	(statement (redirection (primitiveDestination) (expression (constantIdentifier))))
+	(statement (redirection (primitiveDestination) (expression (constantIdentifier))))
+	(statement (redirection (primitiveDestination) (expression (constantIdentifier))))
+	(statement (redirection (primitiveDestination) (expression (constantIdentifier)))))
+
+
+================================================================================
+identifiers
+================================================================================
+
+\out <- x
+\out <- x
+\out <- x69
+\out <- x_x
+\out <- x_x69
+\out <- x_x69
+\out <- xXXX
+
+--------------------------------------------------------------------------------
+
+(program
+	(statement (redirection (primitiveDestination) (expression (identifier))))
+	(statement (redirection (primitiveDestination) (expression (identifier))))
+	(statement (redirection (primitiveDestination) (expression (identifier))))
+	(statement (redirection (primitiveDestination) (expression (identifier))))
+	(statement (redirection (primitiveDestination) (expression (identifier))))
+	(statement (redirection (primitiveDestination) (expression (identifier))))
+	(statement (redirection (primitiveDestination) (expression (identifier)))))
+
+
+================================================================================
+type identifiers
+================================================================================
+
+\out <- Xx
+\out <- Xx69
+\out <- X_x
+\out <- X_x69
+\out <- X_x69
+\out <- Xxxx
+
+--------------------------------------------------------------------------------
+
+(program
+	(statement (redirection (primitiveDestination) (expression (typeIdentifier))))
+	(statement (redirection (primitiveDestination) (expression (typeIdentifier))))
+	(statement (redirection (primitiveDestination) (expression (typeIdentifier))))
+	(statement (redirection (primitiveDestination) (expression (typeIdentifier))))
+	(statement (redirection (primitiveDestination) (expression (typeIdentifier))))
+	(statement (redirection (primitiveDestination) (expression (typeIdentifier)))))
+
+

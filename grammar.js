@@ -59,6 +59,11 @@ const LITERAL_TEXT_BLOCK = token(seq('"{', repeat(choice(/[^\\]/, ESCAPE_SEQUENC
 const LITERAL_EXACT_TEXT = token(seq('\'', repeat(choice(/[^'\\\r\n]/, ESCAPE_SEQUENCE)), '\''));
 const LITERAL_EXACT_TEXT_BLOCK = token(seq('\'{', repeat(choice(/[^\\]/, ESCAPE_SEQUENCE)), '}\''));
 
+const LETTER_OR_DIGIT_OR_UNDERSCORE = token(choice(/[a-zA-Z]/, DIGIT, '_'));
+const IDENTIFIER = token(seq(/[a-z]/, repeat(LETTER_OR_DIGIT_OR_UNDERSCORE)));
+const ALLUPPERCASE_IDENTIFIER = token(seq(/[A-Z]/, repeat(choice(/[A-Z]/, DIGIT, '_'))));
+const UPPERCASE_IDENTIFIER = token(seq(/[A-Z]/, repeat(LETTER_OR_DIGIT_OR_UNDERSCORE)));
+
 /**
  * Creates a rule to match one or more of the rules separated by `separator`
  *
@@ -127,7 +132,11 @@ module.exports = grammar({
       $._primary
     ),
 
-    _primary: $ => choice($.literal, $.primitiveContent),
+    _primary: $ => choice(
+      $.literal,
+      $._anyIdentifier,
+      $.primitiveContent,
+    ),
 
     literal: $ => choice(
       $.literalBool,
@@ -171,6 +180,10 @@ module.exports = grammar({
       LITERAL_EXACT_TEXT_BLOCK,
     )),
 
+    _anyIdentifier: $ => choice($.identifier, $.constantIdentifier, $.typeIdentifier),
+    identifier: $ => token(IDENTIFIER),
+    constantIdentifier: $ => token(ALLUPPERCASE_IDENTIFIER),
+    typeIdentifier: $ => token(choice(UPPERCASE_IDENTIFIER, ALLUPPERCASE_IDENTIFIER)),
   }
 
 });
