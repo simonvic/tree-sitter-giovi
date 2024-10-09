@@ -87,6 +87,7 @@ module.exports = grammar({
     statement: $ => choice(
       seq($.statement, ';'),
       $.ifStatement,
+      $.switchStatement,
       $.redirection,
       // $.functionCall
     ),
@@ -111,6 +112,23 @@ module.exports = grammar({
       optional(seq('else', field('elseBody', $._statementOrBlock)))
     )),
 
+    switchStatement: $ => prec.right(seq(
+      'if', field('subject', $.expression), $.switchBlock,
+      optional(seq('else', field('elseBody', $._statementOrBlock)))
+    )),
+
+    switchBlock: $ => seq('{', repeat1($.switchLabel), '}'),
+    switchLabel: $ => seq(field("case", $.caseMatch), 'do', field("body", $._statementOrBlock)),
+
+    caseMatch: $ => prec.left(choice(
+      seq('{', field("case", $.caseMatch), '}'),
+      seq($.caseMatch, field("bop", choice('and', '&', 'or', '|')), $.caseMatch),
+      seq($.caseMatch, 'when', field("guard", $.expression)),
+      seq(choice('<', '<=', '>=', '>', '=', '!=', 'and', '&', 'or', '|'), $.expression),
+      seq(optional('not'), choice('in', '=~', '~='), $.expression),
+      seq('is', optional(choice('not', $.identifier)), $.type),
+    )),
+
     redirection: $ => choice(
       $._redirectionLTR,
       $._redirectionRTL,
@@ -131,6 +149,8 @@ module.exports = grammar({
       seq('{', $.expression, '}'),
       $._primary
     ),
+
+    type: $ => $.typeIdentifier,
 
     _primary: $ => choice(
       $.literal,

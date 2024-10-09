@@ -1,0 +1,140 @@
+================================================================================
+multi if
+================================================================================
+
+if x {
+	< 69 do {}
+	<= 69 do {}
+	>= 69 do {}
+	> 69 do {}
+	= 69 do {}
+	!= 69 do {}
+
+	and true do {}
+	& true do {}
+	or true do {}
+	| true do {}
+
+	=~ 69 do {}
+	~= list do {}
+	in list do {}
+
+	not =~ 69 do {}
+	not ~= list do {}
+	not in list do {}
+
+	is Type do {}
+	is x Type do {}
+	is not Type do {}
+
+	= 69 and = 420 do {}
+	= 69 & = 420 do {}
+	= 69 or = 420 do {}
+	= 69 | = 420 do {}
+}
+
+--------------------------------------------------------------------------------
+
+(program
+	(statement
+		(switchStatement
+			subject: (expression (identifier))
+			(switchBlock
+				(switchLabel
+					case: (caseMatch (expression (literal (literalInteger))))
+					body: (block))
+				(switchLabel
+					case: (caseMatch (expression (literal (literalInteger))))
+					body: (block))
+				(switchLabel
+					case: (caseMatch (expression (literal (literalInteger))))
+					body: (block))
+				(switchLabel
+					case: (caseMatch (expression (literal (literalInteger))))
+					body: (block))
+				(switchLabel
+					case: (caseMatch (expression (literal (literalInteger))))
+					body: (block))
+				(switchLabel
+					case: (caseMatch (expression (literal (literalInteger))))
+					body: (block))
+				(switchLabel
+					case: (caseMatch (expression (literal (literalBool))))
+					body: (block))
+				(switchLabel
+					case: (caseMatch (expression (literal (literalBool))))
+					body: (block))
+				(switchLabel
+					case: (caseMatch (expression (literal (literalBool))))
+					body: (block))
+				(switchLabel
+					case: (caseMatch (expression (literal (literalBool))))
+					body: (block))
+				(switchLabel
+					case: (caseMatch (expression (literal (literalInteger))))
+					body: (block))
+				(switchLabel
+					case: (caseMatch (expression (identifier)))
+					body: (block))
+				(switchLabel
+					case: (caseMatch (expression (identifier)))
+					body: (block))
+				(switchLabel
+					case: (caseMatch (expression (literal (literalInteger))))
+					body: (block))
+				(switchLabel
+					case: (caseMatch (expression (identifier)))
+					body: (block))
+				(switchLabel
+					case: (caseMatch (expression (identifier)))
+					body: (block))
+				(switchLabel
+					case: (caseMatch (type (typeIdentifier)))
+					body: (block))
+				(switchLabel
+					case: (caseMatch (identifier) (type (typeIdentifier)))
+					body: (block))
+				(switchLabel
+					case: (caseMatch (type (typeIdentifier)))
+					body: (block))
+				(switchLabel
+					case: (caseMatch
+						(caseMatch (expression (literal (literalInteger))))
+						(caseMatch (expression (literal (literalInteger)))))
+					body: (block))
+				(switchLabel
+					case: (caseMatch
+						(caseMatch (expression (literal (literalInteger))))
+						(caseMatch (expression (literal (literalInteger)))))
+					body: (block))
+				(switchLabel
+					case: (caseMatch
+						(caseMatch (expression (literal (literalInteger))))
+						(caseMatch (expression (literal (literalInteger)))))
+					body: (block))
+				(switchLabel
+					case: (caseMatch
+						(caseMatch (expression (literal (literalInteger))))
+						(caseMatch (expression (literal (literalInteger)))))
+					body: (block))))))
+================================================================================
+multi if with else
+================================================================================
+
+if x {
+	= 69 do {}
+} else {
+
+}
+
+--------------------------------------------------------------------------------
+
+(program
+	(statement
+		(switchStatement
+			subject: (expression (identifier))
+			(switchBlock
+				(switchLabel
+					case: (caseMatch (expression (literal (literalInteger))))
+					body: (block)))
+			elseBody: (block))))
