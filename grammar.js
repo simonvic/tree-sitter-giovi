@@ -86,7 +86,8 @@ module.exports = grammar({
       $.redirection,
       $.constantDeclaration,
       $.varDeclaration,
-      // $.functionCall
+      $.functionDeclaration,
+      $.functionCall
     ),
 
     _statementOrBlock: $ => prec.left(choice(
@@ -94,15 +95,29 @@ module.exports = grammar({
       $.block
     )),
 
-    // functionCall: $ => seq(
-    //   $.expression, '(', optional($.functionCallParameters), ')'
-    // ),
-    //
-    // functionCallParameters: $ => seq(
-    //   $.functionCallParameter, repeat(seq(',', $.functionCallParameter)), optional(',')
-    // ),
-    //
-    // functionCallParameter: $ => seq(optional(seq($.identifier, ':')), $.expression),
+    functionDeclaration: $ => prec(1, seq(
+      $.identifier, '(', optional($.formalParameters), ')',
+      optional(seq('=>', field("returnType", $.type))),
+      field("body", $.block)
+    )),
+
+    formalParameters: $ => seq(
+      $.formalParameter, repeat(seq(',', $.formalParameter)), optional(',')
+    ),
+
+    formalParameter: $ => seq(
+      $.identifier, $.type, optional($.defaultDefinition)
+    ),
+
+    functionCall: $ => seq(
+      $.expression, '(', optional($.functionCallParameters), ')'
+    ),
+
+    functionCallParameters: $ => seq(
+      $.functionCallParameter, repeat(seq(',', $.functionCallParameter)), optional(',')
+    ),
+
+    functionCallParameter: $ => seq(optional(seq($.identifier, ':')), $.expression),
 
     ifStatement: $ => prec.right(seq(
       'if', field('condition', $.expression), 'do', field('body', $._statementOrBlock),

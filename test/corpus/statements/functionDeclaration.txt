@@ -1,0 +1,99 @@
+================================================================================
+simple
+================================================================================
+fun() {}
+--------------------------------------------------------------------------------
+(program (statement (functionDeclaration
+	(identifier)
+	body: (block))))
+
+================================================================================
+with return
+================================================================================
+fun() => Int {}
+--------------------------------------------------------------------------------
+(program (statement (functionDeclaration
+	(identifier)
+	returnType: (type (typeIdentifier))
+	body: (block))))
+
+================================================================================
+with one arg
+================================================================================
+fun(a Int) {}
+--------------------------------------------------------------------------------
+(program (statement (functionDeclaration
+	(identifier)
+	(formalParameters
+		(formalParameter
+			(identifier)
+			(type (typeIdentifier))))
+	body: (block))))
+
+================================================================================
+with one arg default
+================================================================================
+fun(a Int default 69) {}
+--------------------------------------------------------------------------------
+(program (statement (functionDeclaration
+	(identifier)
+	(formalParameters
+		(formalParameter
+			(identifier)
+			(type (typeIdentifier))
+			(defaultDefinition (expression (literal (literalInteger))))))
+	body: (block))))
+
+================================================================================
+with multiple arg 
+================================================================================
+fun(a Int, b Int) {}
+--------------------------------------------------------------------------------
+(program (statement (functionDeclaration
+	(identifier)
+	(formalParameters
+		(formalParameter
+			(identifier)
+			(type (typeIdentifier)))
+		(formalParameter
+			(identifier)
+			(type (typeIdentifier))))
+	body: (block))))
+
+================================================================================
+with multiple arg default
+================================================================================
+fun(a Int default 69, b Int default 420) {}
+--------------------------------------------------------------------------------
+(program (statement (functionDeclaration
+	(identifier)
+	(formalParameters
+		(formalParameter
+			(identifier)
+			(type (typeIdentifier))
+			(defaultDefinition (expression (literal (literalInteger)))))
+		(formalParameter
+			(identifier)
+			(type (typeIdentifier))
+			(defaultDefinition (expression (literal (literalInteger))))))
+	body: (block))))
+
+================================================================================
+with multiple arg default and return
+================================================================================
+fun(a Int default 69, b Int default 420) => Int {}
+--------------------------------------------------------------------------------
+(program (statement (functionDeclaration
+	(identifier)
+	(formalParameters
+		(formalParameter
+			(identifier)
+			(type (typeIdentifier))
+			(defaultDefinition (expression (literal (literalInteger)))))
+		(formalParameter
+			(identifier)
+			(type (typeIdentifier))
+			(defaultDefinition (expression (literal (literalInteger))))))
+	returnType: (type (typeIdentifier))
+	body: (block))))
+
