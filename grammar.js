@@ -88,6 +88,7 @@ module.exports = grammar({
       seq($.statement, ';'),
       $.ifStatement,
       $.switchStatement,
+      $.repeatStatement,
       $.redirection,
       // $.functionCall
     ),
@@ -128,6 +129,12 @@ module.exports = grammar({
       seq(optional('not'), choice('in', '=~', '~='), $.expression),
       seq('is', optional(choice('not', $.identifier)), $.type),
     )),
+
+    repeatStatement: $ => seq(
+      'repeat',
+      optional(field("condition", seq('if', $.expression))),
+      field("body", $._statementOrBlock)
+    ),
 
     redirection: $ => choice(
       $._redirectionLTR,

@@ -234,6 +234,40 @@
     }
   },
   {
+    "type": "repeatStatement",
+    "named": true,
+    "fields": {
+      "body": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "block",
+            "named": true
+          },
+          {
+            "type": "statement",
+            "named": true
+          }
+        ]
+      },
+      "condition": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          },
+          {
+            "type": "if",
+            "named": false
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "statement",
     "named": true,
     "fields": {},
@@ -247,6 +281,10 @@
         },
         {
           "type": "redirection",
+          "named": true
+        },
+        {
+          "type": "repeatStatement",
           "named": true
         },
         {
@@ -475,6 +513,10 @@
   {
     "type": "primitiveContent",
     "named": true
+  },
+  {
+    "type": "repeat",
+    "named": false
   },
   {
     "type": "typeIdentifier",

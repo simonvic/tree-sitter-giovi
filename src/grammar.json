@@ -54,6 +54,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "repeatStatement"
+        },
+        {
+          "type": "SYMBOL",
           "name": "redirection"
         }
       ]
@@ -442,6 +446,48 @@
           }
         ]
       }
+    },
+    "repeatStatement": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "repeat"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "FIELD",
+              "name": "condition",
+              "content": {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "STRING",
+                    "value": "if"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "expression"
+                  }
+                ]
+              }
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "FIELD",
+          "name": "body",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_statementOrBlock"
+          }
+        }
+      ]
     },
     "redirection": {
       "type": "CHOICE",
