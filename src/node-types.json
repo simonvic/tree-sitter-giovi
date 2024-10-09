@@ -85,6 +85,29 @@
     }
   },
   {
+    "type": "constantDeclaration",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "constantIdentifier",
+          "named": true
+        },
+        {
+          "type": "expression",
+          "named": true
+        },
+        {
+          "type": "type",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "defaultDefinition",
     "named": true,
     "fields": {},
@@ -499,6 +522,10 @@
           "named": true
         },
         {
+          "type": "constantDeclaration",
+          "named": true
+        },
+        {
           "type": "forStatement",
           "named": true
         },
@@ -735,6 +762,10 @@
   {
     "type": "breakStatement",
     "named": true
+  },
+  {
+    "type": "constant",
+    "named": false
   },
   {
     "type": "constantIdentifier",

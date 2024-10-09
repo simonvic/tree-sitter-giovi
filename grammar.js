@@ -93,6 +93,7 @@ module.exports = grammar({
       $.skipStatement,
       $.breakStatement,
       $.redirection,
+      $.constantDeclaration,
       $.varDeclaration,
       // $.functionCall
     ),
@@ -197,6 +198,10 @@ module.exports = grammar({
       seq($.primitiveDestination, '<-', $.expression),
       seq($.varDeclaration, '<-', $.expression)
     ),
+
+    constantDeclaration: $ => prec.right(seq(
+      'constant', $.constantIdentifier, $.type, '<-', $.expression
+    )),
 
     varDeclaration: $ => prec.right(seq(
       $.identifier, $.type, optional($.defaultDefinition)

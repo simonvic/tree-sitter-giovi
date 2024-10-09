@@ -74,6 +74,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "constantDeclaration"
+        },
+        {
+          "type": "SYMBOL",
           "name": "varDeclaration"
         }
       ]
@@ -865,6 +869,35 @@
           ]
         }
       ]
+    },
+    "constantDeclaration": {
+      "type": "PREC_RIGHT",
+      "value": 0,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "STRING",
+            "value": "constant"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "constantIdentifier"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "type"
+          },
+          {
+            "type": "STRING",
+            "value": "<-"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "expression"
+          }
+        ]
+      }
     },
     "varDeclaration": {
       "type": "PREC_RIGHT",
