@@ -12,7 +12,6 @@ fun() {
 
 ================================================================================
 with expression
-:skip
 ================================================================================
 fun() {
 	=> 69 + 69
@@ -21,7 +20,9 @@ fun() {
 (program (statement (functionDeclaration
 	(identifier)
 	body: (block
-		(statement (returnStatement (expression (literal (literalInteger)))))))))
+		(statement (returnStatement (expression (expressionBinary
+			lhs: (expression (literal (literalInteger)))
+			rhs: (expression (literal (literalInteger)))))))))))
 
 ================================================================================
 with nothing
