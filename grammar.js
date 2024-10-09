@@ -89,6 +89,8 @@ module.exports = grammar({
       $.ifStatement,
       $.switchStatement,
       $.repeatStatement,
+      $.skipStatement,
+      $.breakStatement,
       $.redirection,
       // $.functionCall
     ),
@@ -135,6 +137,9 @@ module.exports = grammar({
       optional(field("condition", seq('if', $.expression))),
       field("body", $._statementOrBlock)
     ),
+
+    skipStatement: _ => 'skip',
+    breakStatement: _ => 'break',
 
     redirection: $ => choice(
       $._redirectionLTR,

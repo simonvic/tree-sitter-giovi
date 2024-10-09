@@ -58,6 +58,14 @@
         },
         {
           "type": "SYMBOL",
+          "name": "skipStatement"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "breakStatement"
+        },
+        {
+          "type": "SYMBOL",
           "name": "redirection"
         }
       ]
@@ -488,6 +496,14 @@
           }
         }
       ]
+    },
+    "skipStatement": {
+      "type": "STRING",
+      "value": "skip"
+    },
+    "breakStatement": {
+      "type": "STRING",
+      "value": "break"
     },
     "redirection": {
       "type": "CHOICE",

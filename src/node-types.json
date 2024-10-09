@@ -276,6 +276,10 @@
       "required": true,
       "types": [
         {
+          "type": "breakStatement",
+          "named": true
+        },
+        {
           "type": "ifStatement",
           "named": true
         },
@@ -285,6 +289,10 @@
         },
         {
           "type": "repeatStatement",
+          "named": true
+        },
+        {
+          "type": "skipStatement",
           "named": true
         },
         {
@@ -455,6 +463,10 @@
     "named": false
   },
   {
+    "type": "breakStatement",
+    "named": true
+  },
+  {
     "type": "constantIdentifier",
     "named": true
   },
@@ -517,6 +529,10 @@
   {
     "type": "repeat",
     "named": false
+  },
+  {
+    "type": "skipStatement",
+    "named": true
   },
   {
     "type": "typeIdentifier",
