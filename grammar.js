@@ -87,7 +87,8 @@ module.exports = grammar({
       $.constantDeclaration,
       $.varDeclaration,
       $.functionDeclaration,
-      $.functionCall
+      $.returnStatement,
+      $.functionCall,
     ),
 
     _statementOrBlock: $ => prec.left(choice(
@@ -108,6 +109,11 @@ module.exports = grammar({
     formalParameter: $ => seq(
       $.identifier, $.type, optional($.defaultDefinition)
     ),
+
+    returnStatement: $ => prec.right(choice(
+      seq('=>', $.expression),
+      seq('return', optional($.expression))
+    )),
 
     functionCall: $ => seq(
       $.expression, '(', optional($.functionCallParameters), ')'
