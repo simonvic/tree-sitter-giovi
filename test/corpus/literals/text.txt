@@ -1,0 +1,96 @@
+================================================================================
+text
+================================================================================
+
+\out <- ""
+\out <- "hello world"
+\out <- "69"
+\out <- "hello \b world"
+\out <- "hello \t world"
+\out <- "hello \n world"
+\out <- "hello \f world"
+\out <- "hello \r world"
+\out <- "hello \s world"
+\out <- "\uf6f6"
+\out <- "😀"
+
+--------------------------------------------------------------------------------
+
+(program
+	(statement (redirectionRTL (primitiveDestination) (redirectionContent (expression (literal (literalText))))))
+	(statement (redirectionRTL (primitiveDestination) (redirectionContent (expression (literal (literalText))))))
+	(statement (redirectionRTL (primitiveDestination) (redirectionContent (expression (literal (literalText))))))
+	(statement (redirectionRTL (primitiveDestination) (redirectionContent (expression (literal (literalText))))))
+	(statement (redirectionRTL (primitiveDestination) (redirectionContent (expression (literal (literalText))))))
+	(statement (redirectionRTL (primitiveDestination) (redirectionContent (expression (literal (literalText))))))
+	(statement (redirectionRTL (primitiveDestination) (redirectionContent (expression (literal (literalText))))))
+	(statement (redirectionRTL (primitiveDestination) (redirectionContent (expression (literal (literalText))))))
+	(statement (redirectionRTL (primitiveDestination) (redirectionContent (expression (literal (literalText))))))
+	(statement (redirectionRTL (primitiveDestination) (redirectionContent (expression (literal (literalText))))))
+	(statement (redirectionRTL (primitiveDestination) (redirectionContent (expression (literal (literalText)))))))
+
+================================================================================
+text block
+================================================================================
+
+\out <- "{}"
+\out <- "{hello world}"
+\out <- "{
+	hello world
+	}"
+
+--------------------------------------------------------------------------------
+
+(program
+	(statement (redirectionRTL (primitiveDestination) (redirectionContent (expression (literal (literalText))))))
+	(statement (redirectionRTL (primitiveDestination) (redirectionContent (expression (literal (literalText))))))
+	(statement (redirectionRTL (primitiveDestination) (redirectionContent (expression (literal (literalText)))))))
+
+================================================================================
+exact text
+================================================================================
+
+\out <- ''
+\out <- 'hello world'
+\out <- '69'
+\out <- 'hello \b world'
+\out <- 'hello \t world'
+\out <- 'hello \n world'
+\out <- 'hello \f world'
+\out <- 'hello \r world'
+\out <- 'hello \s world'
+\out <- '\uf6f6'
+\out <- '😀'
+
+--------------------------------------------------------------------------------
+
+(program
+	(statement (redirectionRTL (primitiveDestination) (redirectionContent (expression (literal (literalText))))))
+	(statement (redirectionRTL (primitiveDestination) (redirectionContent (expression (literal (literalText))))))
+	(statement (redirectionRTL (primitiveDestination) (redirectionContent (expression (literal (literalText))))))
+	(statement (redirectionRTL (primitiveDestination) (redirectionContent (expression (literal (literalText))))))
+	(statement (redirectionRTL (primitiveDestination) (redirectionContent (expression (literal (literalText))))))
+	(statement (redirectionRTL (primitiveDestination) (redirectionContent (expression (literal (literalText))))))
+	(statement (redirectionRTL (primitiveDestination) (redirectionContent (expression (literal (literalText))))))
+	(statement (redirectionRTL (primitiveDestination) (redirectionContent (expression (literal (literalText))))))
+	(statement (redirectionRTL (primitiveDestination) (redirectionContent (expression (literal (literalText))))))
+	(statement (redirectionRTL (primitiveDestination) (redirectionContent (expression (literal (literalText))))))
+	(statement (redirectionRTL (primitiveDestination) (redirectionContent (expression (literal (literalText)))))))
+
+================================================================================
+extact text block
+================================================================================
+
+\out <- '{}'
+\out <- '{hello world}'
+\out <- '{
+	hello world
+	}'
+
+--------------------------------------------------------------------------------
+
+(program
+	(statement (redirectionRTL (primitiveDestination) (redirectionContent (expression (literal (literalText))))))
+	(statement (redirectionRTL (primitiveDestination) (redirectionContent (expression (literal (literalText))))))
+	(statement (redirectionRTL (primitiveDestination) (redirectionContent (expression (literal (literalText)))))))
+

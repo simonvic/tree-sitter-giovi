@@ -1,0 +1,27 @@
+================================================================================
+natural
+================================================================================
+
+\out <- 69n
+\out <- 69_420n
+\out <- 1_000_000n
+\out <- 0b1000101n
+\out <- 0b0000_0001_1010_0100n
+\out <- 0o105n
+\out <- 0o207_454n
+\out <- 0x10F2Cn
+\out <- 0xFF_FF_FFn
+
+--------------------------------------------------------------------------------
+
+(program
+	(statement (redirectionRTL (primitiveDestination) (redirectionContent (expression (literal (literalNatural))))))
+	(statement (redirectionRTL (primitiveDestination) (redirectionContent (expression (literal (literalNatural))))))
+	(statement (redirectionRTL (primitiveDestination) (redirectionContent (expression (literal (literalNatural))))))
+	(statement (redirectionRTL (primitiveDestination) (redirectionContent (expression (literal (literalNatural))))))
+	(statement (redirectionRTL (primitiveDestination) (redirectionContent (expression (literal (literalNatural))))))
+	(statement (redirectionRTL (primitiveDestination) (redirectionContent (expression (literal (literalNatural))))))
+	(statement (redirectionRTL (primitiveDestination) (redirectionContent (expression (literal (literalNatural))))))
+	(statement (redirectionRTL (primitiveDestination) (redirectionContent (expression (literal (literalNatural))))))
+	(statement (redirectionRTL (primitiveDestination) (redirectionContent (expression (literal (literalNatural)))))))
+

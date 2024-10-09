@@ -1,0 +1,31 @@
+================================================================================
+real
+================================================================================
+
+\out <- 6.9
+\out <- 6.9r
+\out <- 69r
+\out <- 69.4_20
+\out <- 69.4_20r
+\out <- 1_000_000.000_000
+\out <- 1_000_000.000_000r
+\out <- 1e10
+\out <- 1e+10
+\out <- 1e-10
+\out <- 0x1p69
+
+--------------------------------------------------------------------------------
+
+(program
+	(statement (redirectionRTL (primitiveDestination) (redirectionContent (expression (literal (literalReal))))))
+	(statement (redirectionRTL (primitiveDestination) (redirectionContent (expression (literal (literalReal))))))
+	(statement (redirectionRTL (primitiveDestination) (redirectionContent (expression (literal (literalReal))))))
+	(statement (redirectionRTL (primitiveDestination) (redirectionContent (expression (literal (literalReal))))))
+	(statement (redirectionRTL (primitiveDestination) (redirectionContent (expression (literal (literalReal))))))
+	(statement (redirectionRTL (primitiveDestination) (redirectionContent (expression (literal (literalReal))))))
+	(statement (redirectionRTL (primitiveDestination) (redirectionContent (expression (literal (literalReal))))))
+	(statement (redirectionRTL (primitiveDestination) (redirectionContent (expression (literal (literalReal))))))
+	(statement (redirectionRTL (primitiveDestination) (redirectionContent (expression (literal (literalReal))))))
+	(statement (redirectionRTL (primitiveDestination) (redirectionContent (expression (literal (literalReal))))))
+	(statement (redirectionRTL (primitiveDestination) (redirectionContent (expression (literal (literalReal)))))))
+

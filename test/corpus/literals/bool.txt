@@ -1,0 +1,13 @@
+================================================================================
+bool
+================================================================================
+
+\out <- true
+\out <- false
+
+--------------------------------------------------------------------------------
+
+(program
+	(statement (redirectionRTL (primitiveDestination) (redirectionContent (expression (literal (literalBool))))))
+	(statement (redirectionRTL (primitiveDestination) (redirectionContent (expression (literal (literalBool)))))))
+
