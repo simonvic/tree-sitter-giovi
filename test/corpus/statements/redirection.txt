@@ -1,12 +1,63 @@
 ================================================================================
-redirection
+LTR to primitive destination
 ================================================================================
-
 \out <- "hello world"
-\out <- "hello world"
-
 --------------------------------------------------------------------------------
+(program (statement (redirection
+	(primitiveDestination)
+	(expression (literal (literalText))))))
 
-(program
-	(statement (redirection (primitiveDestination) (expression (literal (literalText)))))
-	(statement (redirection (primitiveDestination) (expression (literal (literalText))))))
+================================================================================
+LTR to var declaration
+================================================================================
+t Text <- "hello world"
+--------------------------------------------------------------------------------
+(program (statement (redirection
+	(varDeclaration
+		(identifier)
+		(type (typeIdentifier)))
+	(expression (literal (literalText))))))
+
+================================================================================
+LTR to var declaration with default
+================================================================================
+t Text default "foo" <- "hello world"
+--------------------------------------------------------------------------------
+(program (statement (redirection
+	(varDeclaration
+		(identifier)
+		(type (typeIdentifier))
+		(defaultDefinition (expression (literal (literalText)))))
+	(expression (literal (literalText))))))
+
+================================================================================
+RTL to primitive destination
+================================================================================
+"hello world" -> \out
+--------------------------------------------------------------------------------
+(program (statement (redirection
+	(expression (literal (literalText)))
+	(primitiveDestination))))
+
+================================================================================
+RTL to var declaration
+================================================================================
+"hello world" -> t Text
+--------------------------------------------------------------------------------
+(program (statement (redirection
+	(expression (literal (literalText)))
+	(varDeclaration
+		(identifier)
+		(type (typeIdentifier))))))
+
+================================================================================
+RTL to var declaration with default
+================================================================================
+"hello world" -> t Text default "foo"
+--------------------------------------------------------------------------------
+(program (statement (redirection
+	(expression (literal (literalText)))
+	(varDeclaration
+		(identifier)
+		(type (typeIdentifier))
+		(defaultDefinition (expression (literal (literalText))))))))

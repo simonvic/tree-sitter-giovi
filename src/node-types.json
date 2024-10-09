@@ -444,6 +444,10 @@
         {
           "type": "primitiveDestination",
           "named": true
+        },
+        {
+          "type": "varDeclaration",
+          "named": true
         }
       ]
     }

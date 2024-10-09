@@ -807,6 +807,23 @@
               "name": "primitiveDestination"
             }
           ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "expression"
+            },
+            {
+              "type": "STRING",
+              "value": "->"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "varDeclaration"
+            }
+          ]
         }
       ]
     },
@@ -819,6 +836,23 @@
             {
               "type": "SYMBOL",
               "name": "primitiveDestination"
+            },
+            {
+              "type": "STRING",
+              "value": "<-"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "expression"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "varDeclaration"
             },
             {
               "type": "STRING",

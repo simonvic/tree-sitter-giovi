@@ -189,11 +189,13 @@ module.exports = grammar({
     ),
 
     _redirectionLTR: $ => choice(
-      seq($.expression, '->', $.primitiveDestination)
+      seq($.expression, '->', $.primitiveDestination),
+      seq($.expression, '->', $.varDeclaration)
     ),
 
     _redirectionRTL: $ => choice(
-      seq($.primitiveDestination, '<-', $.expression)
+      seq($.primitiveDestination, '<-', $.expression),
+      seq($.varDeclaration, '<-', $.expression)
     ),
 
     varDeclaration: $ => prec.right(seq(
