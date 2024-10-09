@@ -93,6 +93,7 @@ module.exports = grammar({
       $.skipStatement,
       $.breakStatement,
       $.redirection,
+      $.varDeclaration,
       // $.functionCall
     ),
 
@@ -194,6 +195,12 @@ module.exports = grammar({
     _redirectionRTL: $ => choice(
       seq($.primitiveDestination, '<-', $.expression)
     ),
+
+    varDeclaration: $ => prec.right(seq(
+      $.identifier, $.type, optional($.defaultDefinition)
+    )),
+
+    defaultDefinition: $ => seq('default', $.expression),
 
     primitiveContent: $ => '\\in',
     primitiveDestination: $ => choice('\\out', '\\err'),
