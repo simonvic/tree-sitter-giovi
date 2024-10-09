@@ -1,0 +1,12 @@
+================================================================================
+redirection
+================================================================================
+
+\out <- "hello world"
+\out <- "hello world"
+
+--------------------------------------------------------------------------------
+
+(program
+	(statement (redirection (primitiveDestination) (redirectionContent (expression (literal (literalText))))))
+	(statement (redirection (primitiveDestination) (redirectionContent (expression (literal (literalText)))))))

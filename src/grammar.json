@@ -46,7 +46,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "redirectionRTL"
+          "name": "redirection"
         }
       ]
     },
@@ -67,7 +67,42 @@
         ]
       }
     },
-    "redirectionRTL": {
+    "redirection": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_redirectionLTR"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_redirectionRTL"
+        }
+      ]
+    },
+    "_redirectionLTR": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "redirectionContent"
+            },
+            {
+              "type": "STRING",
+              "value": "->"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "primitiveDestination"
+            }
+          ]
+        }
+      ]
+    },
+    "_redirectionRTL": {
       "type": "CHOICE",
       "members": [
         {

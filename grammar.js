@@ -82,7 +82,7 @@ module.exports = grammar({
     statement: $ => choice(
       seq($.statement, ';'),
       // $.ifStatement,
-      $.redirectionRTL,
+      $.redirection,
       // $.functionCall
     ),
 
@@ -106,7 +106,16 @@ module.exports = grammar({
     //   optional(seq('else', field('elseBody', $._statementOrBlock)))
     // )),
 
-    redirectionRTL: $ => choice(
+    redirection: $ => choice(
+      $._redirectionLTR,
+      $._redirectionRTL,
+    ),
+
+    _redirectionLTR: $ => choice(
+      seq($.redirectionContent, '->', $.primitiveDestination)
+    ),
+
+    _redirectionRTL: $ => choice(
       seq($.primitiveDestination, '<-', $.redirectionContent)
     ),
 
