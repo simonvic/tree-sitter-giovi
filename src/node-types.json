@@ -120,6 +120,40 @@
     }
   },
   {
+    "type": "forStatement",
+    "named": true,
+    "fields": {
+      "body": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "block",
+            "named": true
+          },
+          {
+            "type": "statement",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "iterated",
+          "named": true
+        },
+        {
+          "type": "iterator",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "ifStatement",
     "named": true,
     "fields": {
@@ -164,6 +198,123 @@
     }
   },
   {
+    "type": "iterated",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "expression",
+          "named": true
+        },
+        {
+          "type": "range",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "iterator",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "iteratorAggregate",
+          "named": true
+        },
+        {
+          "type": "iteratorMap",
+          "named": true
+        },
+        {
+          "type": "iteratorUnary",
+          "named": true
+        },
+        {
+          "type": "literalPlaceholder",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "iteratorAggregate",
+    "named": true,
+    "fields": {
+      "whole": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "iteratorUnary",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "iterator",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "iteratorMap",
+    "named": true,
+    "fields": {
+      "key": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "iterator",
+            "named": true
+          }
+        ]
+      },
+      "val": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "iterator",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "iteratorUnary",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "type",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "literal",
     "named": true,
     "fields": {},
@@ -176,11 +327,19 @@
           "named": true
         },
         {
+          "type": "literalDefault",
+          "named": true
+        },
+        {
           "type": "literalInteger",
           "named": true
         },
         {
           "type": "literalNatural",
+          "named": true
+        },
+        {
+          "type": "literalPlaceholder",
           "named": true
         },
         {
@@ -212,6 +371,42 @@
           "named": true
         }
       ]
+    }
+  },
+  {
+    "type": "range",
+    "named": true,
+    "fields": {
+      "end": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      },
+      "start": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      },
+      "step": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -277,6 +472,10 @@
       "types": [
         {
           "type": "breakStatement",
+          "named": true
+        },
+        {
+          "type": "forStatement",
           "named": true
         },
         {
@@ -415,7 +614,19 @@
     "named": false
   },
   {
+    "type": ",",
+    "named": false
+  },
+  {
     "type": "->",
+    "named": false
+  },
+  {
+    "type": "..",
+    "named": false
+  },
+  {
+    "type": ":",
     "named": false
   },
   {
@@ -451,11 +662,19 @@
     "named": false
   },
   {
+    "type": "[",
+    "named": false
+  },
+  {
     "type": "\\err",
     "named": false
   },
   {
     "type": "\\out",
+    "named": false
+  },
+  {
+    "type": "]",
     "named": false
   },
   {
@@ -479,6 +698,10 @@
     "named": false
   },
   {
+    "type": "for",
+    "named": false
+  },
+  {
     "type": "identifier",
     "named": true
   },
@@ -499,11 +722,19 @@
     "named": true
   },
   {
+    "type": "literalDefault",
+    "named": true
+  },
+  {
     "type": "literalInteger",
     "named": true
   },
   {
     "type": "literalNatural",
+    "named": true
+  },
+  {
+    "type": "literalPlaceholder",
     "named": true
   },
   {

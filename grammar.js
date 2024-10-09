@@ -89,6 +89,7 @@ module.exports = grammar({
       $.ifStatement,
       $.switchStatement,
       $.repeatStatement,
+      $.forStatement,
       $.skipStatement,
       $.breakStatement,
       $.redirection,
@@ -133,9 +134,49 @@ module.exports = grammar({
     )),
 
     repeatStatement: $ => seq(
-      'repeat',
-      optional(field("condition", seq('if', $.expression))),
+      'repeat', optional(field("condition", seq('if', $.expression))),
       field("body", $._statementOrBlock)
+    ),
+
+    forStatement: $ => seq(
+      'for', $.iterator, 'in', $.iterated, 'do',
+      field("body", $._statementOrBlock)
+    ),
+
+    iterator: $ => prec.left(choice(
+      $.iteratorUnary,
+      $.iteratorMap,
+      $.iteratorAggregate,
+      $.literalPlaceholder,
+    )),
+
+    iteratorUnary: $ => seq($.identifier, optional($.type)),
+
+    iteratorMap: $ => prec.left(choice(
+      seq('[', field("key", $.iterator), ':', field("val", $.iterator), ']'),
+      seq(field("key", $.iterator), ':', field("val", $.iterator)),
+    )),
+
+    iteratorAggregate: $ => seq(
+      optional(field("whole", $.iteratorUnary)),
+      '<',
+      repeat1(seq($.iterator, optional(','))),
+      '>',
+    ),
+
+    iterated: $ => choice(
+      $.range,
+      $.expression,
+    ),
+
+    range: $ => seq(
+      field("start", $.expression),
+      '..',
+      field("end", $.expression),
+      optional(seq(
+        '..',
+        field("step", $.expression)
+      ))
     ),
 
     skipStatement: _ => 'skip',
@@ -171,6 +212,8 @@ module.exports = grammar({
     ),
 
     literal: $ => choice(
+      $.literalPlaceholder,
+      $.literalDefault,
       $.literalBool,
       $.literalReal,
       $.literalNatural,
@@ -178,12 +221,10 @@ module.exports = grammar({
       $.literalText,
     ),
 
+    literalPlaceholder: _ => token('_'),
+    literalDefault: _ => token('default'),
     literalBool: $ => token(choice('true', 'false')),
-
-    literalReal: $ => token(choice(
-      LITERAL_REAL_DECIMAL,
-      LITERAL_REAL_HEX,
-    )),
+    literalReal: $ => token(choice(LITERAL_REAL_DECIMAL, LITERAL_REAL_HEX,)),
 
     literalNatural: $ => token(seq(
       choice(
@@ -216,6 +257,7 @@ module.exports = grammar({
     identifier: $ => token(IDENTIFIER),
     constantIdentifier: $ => token(ALLUPPERCASE_IDENTIFIER),
     typeIdentifier: $ => token(choice(UPPERCASE_IDENTIFIER, ALLUPPERCASE_IDENTIFIER)),
+
   }
 
 });
