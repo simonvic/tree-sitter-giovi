@@ -64,6 +64,11 @@ const IDENTIFIER = token(seq(/[a-z]/, repeat(LETTER_OR_DIGIT_OR_UNDERSCORE)));
 const ALLUPPERCASE_IDENTIFIER = token(seq(/[A-Z]/, repeat(choice(/[A-Z]/, DIGIT, '_'))));
 const UPPERCASE_IDENTIFIER = token(seq(/[A-Z]/, repeat(LETTER_OR_DIGIT_OR_UNDERSCORE)));
 
+const REDIR_LTR = token('->');
+const REDIR_RTL = token('<-');
+const REDIR_OP_LTR = choice(REDIR_LTR, '->+', '->-', '->*', '->/');
+const REDIR_OP_RTL = choice(REDIR_RTL, '+<-', '-<-', '*<-', '/<-');
+
 /**
  * Creates a rule to match one or more of the rules separated by `separator`
  *
@@ -190,20 +195,24 @@ module.exports = grammar({
     ),
 
     _redirectionLTR: $ => choice(
-      seq($.expression, '->', $.primitiveDestination),
-      seq($.expression, '->', $.varDeclaration)
+      seq($.expression, REDIR_LTR, $.varDeclaration),
+      seq($.expression, REDIR_OP_LTR, $.primitiveDestination),
+      // seq($.expression, REDIR_OP_LTR, $.identifier),
+      seq($.expression, REDIR_OP_LTR, $.expression),
     ),
 
     _redirectionRTL: $ => choice(
-      seq($.primitiveDestination, '<-', $.expression),
-      seq($.varDeclaration, '<-', $.expression)
+      seq($.varDeclaration, REDIR_RTL, $.expression),
+      seq($.primitiveDestination, REDIR_OP_RTL, $.expression),
+      // seq($.identifier, REDIR_OP_RTL, $.expression),
+      seq($.expression, REDIR_OP_RTL, $.expression),
     ),
 
     constantDeclaration: $ => prec.right(seq(
       'constant', $.constantIdentifier, $.type, '<-', $.expression
     )),
 
-    varDeclaration: $ => prec.right(seq(
+    varDeclaration: $ => prec.right(1, seq(
       $.identifier, $.type, optional($.defaultDefinition)
     )),
 
@@ -267,7 +276,12 @@ module.exports = grammar({
       LITERAL_EXACT_TEXT_BLOCK,
     )),
 
-    _anyIdentifier: $ => choice($.identifier, $.constantIdentifier, $.typeIdentifier),
+    _anyIdentifier: $ => choice(
+      $.identifier,
+      $.constantIdentifier,
+      $.typeIdentifier
+    ),
+
     identifier: $ => token(IDENTIFIER),
     constantIdentifier: $ => token(ALLUPPERCASE_IDENTIFIER),
     typeIdentifier: $ => token(choice(UPPERCASE_IDENTIFIER, ALLUPPERCASE_IDENTIFIER)),
