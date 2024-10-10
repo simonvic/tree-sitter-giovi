@@ -91,16 +91,25 @@ module.exports = grammar({
 
   supertypes: $ => [
     $.comment,
+    $.doc
   ],
 
   rules: {
     program: $ => repeat($.statement),
     block: $ => seq('{', repeat($.statement), '}'),
 
-    comment: $ => choice($.commentLine,),
-    commentLine: _ => token(seq('#', /.*/)),
+    comment: $ => choice(
+      $.commentLine,
+      $.commentBlock,
+    ),
+    commentLine: _ => token(seq('#', /[^\n]*/)),
     commentBlock: _ => token(prec(1, seq('#{', /[^}#]*/, '}#'))),
-    docLine: _ => token(prec(2, seq('#?', /.*/))),
+
+    doc: $ => choice(
+      $.docLine,
+      $.docBlock
+    ),
+    docLine: _ => token(prec(2, seq('#?', /[^\n]*/))),
     docBlock: _ => token(prec(3, seq('#?{', /[^}#]*/, '}#'))),
 
     statement: $ => choice(

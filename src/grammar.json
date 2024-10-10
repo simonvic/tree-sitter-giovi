@@ -36,6 +36,10 @@
         {
           "type": "SYMBOL",
           "name": "commentLine"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "commentBlock"
         }
       ]
     },
@@ -50,7 +54,7 @@
           },
           {
             "type": "PATTERN",
-            "value": ".*"
+            "value": "[^\\n]*"
           }
         ]
       }
@@ -79,6 +83,19 @@
         }
       }
     },
+    "doc": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "docLine"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "docBlock"
+        }
+      ]
+    },
     "docLine": {
       "type": "TOKEN",
       "content": {
@@ -93,7 +110,7 @@
             },
             {
               "type": "PATTERN",
-              "value": ".*"
+              "value": "[^\\n]*"
             }
           ]
         }
@@ -5207,6 +5224,7 @@
   "externals": [],
   "inline": [],
   "supertypes": [
-    "comment"
+    "comment",
+    "doc"
   ]
 }
