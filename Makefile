@@ -4,7 +4,7 @@ endif
 
 VERSION := 0.0.1
 
-LANGUAGE_NAME := tree-sitter-YOUR_LANGUAGE_NAME
+LANGUAGE_NAME := tree-sitter-giovi
 
 # repository
 SRC_DIR := src

@@ -1,4 +1,4 @@
-module github.com/tree-sitter/tree-sitter-your_language_name
+module github.com/tree-sitter/tree-sitter-giovi
 
 go 1.23
 
