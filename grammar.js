@@ -415,6 +415,8 @@ module.exports = grammar({
       optional('i')
     )),
 
+    // TODO: make separate rules
+    // TODO: also parse text block incidental whitespace
     literalText: _ => token(choice(
       LITERAL_TEXT,
       LITERAL_TEXT_BLOCK,

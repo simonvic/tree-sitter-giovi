@@ -1,15 +1,5 @@
 [
   {
-    "type": "comment",
-    "named": true,
-    "subtypes": [
-      {
-        "type": "commentLine",
-        "named": true
-      }
-    ]
-  },
-  {
     "type": "block",
     "named": true,
     "fields": {},
@@ -886,6 +876,7 @@
   {
     "type": "program",
     "named": true,
+    "root": true,
     "fields": {},
     "children": {
       "multiple": true,
