@@ -2,26 +2,26 @@
 natural
 ================================================================================
 
-\out <- 69n
-\out <- 69_420n
-\out <- 1_000_000n
-\out <- 0b1000101n
-\out <- 0b0000_0001_1010_0100n
-\out <- 0o105n
-\out <- 0o207_454n
-\out <- 0x10F2Cn
-\out <- 0xFF_FF_FFn
+=> 69n
+=> 69_420n
+=> 1_000_000n
+=> 0b1000101n
+=> 0b0000_0001_1010_0100n
+=> 0o105n
+=> 0o207_454n
+=> 0x10F2Cn
+=> 0xFF_FF_FFn
 
 --------------------------------------------------------------------------------
 
 (program
-	(statement (redirection (primitiveDestination) (expression (literal (literalNatural)))))
-	(statement (redirection (primitiveDestination) (expression (literal (literalNatural)))))
-	(statement (redirection (primitiveDestination) (expression (literal (literalNatural)))))
-	(statement (redirection (primitiveDestination) (expression (literal (literalNatural)))))
-	(statement (redirection (primitiveDestination) (expression (literal (literalNatural)))))
-	(statement (redirection (primitiveDestination) (expression (literal (literalNatural)))))
-	(statement (redirection (primitiveDestination) (expression (literal (literalNatural)))))
-	(statement (redirection (primitiveDestination) (expression (literal (literalNatural)))))
-	(statement (redirection (primitiveDestination) (expression (literal (literalNatural))))))
+	(statement (returnStatement (expression (literal (literalNatural)))))
+	(statement (returnStatement (expression (literal (literalNatural)))))
+	(statement (returnStatement (expression (literal (literalNatural)))))
+	(statement (returnStatement (expression (literal (literalNatural)))))
+	(statement (returnStatement (expression (literal (literalNatural)))))
+	(statement (returnStatement (expression (literal (literalNatural)))))
+	(statement (returnStatement (expression (literal (literalNatural)))))
+	(statement (returnStatement (expression (literal (literalNatural)))))
+	(statement (returnStatement (expression (literal (literalNatural))))))
 

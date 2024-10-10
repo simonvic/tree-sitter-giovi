@@ -2,12 +2,12 @@
 bool
 ================================================================================
 
-\out <- true
-\out <- false
+=> true
+=> false
 
 --------------------------------------------------------------------------------
 
 (program
-	(statement (redirection (primitiveDestination) (expression (literal (literalBool)))))
-	(statement (redirection (primitiveDestination) (expression (literal (literalBool))))))
+	(statement (returnStatement (expression (literal (literalBool)))))
+	(statement (returnStatement (expression (literal (literalBool))))))
 

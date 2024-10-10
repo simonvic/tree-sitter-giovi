@@ -2,40 +2,40 @@
 integer
 ================================================================================
 
-\out <- 69
-\out <- 69i
-\out <- 69_420
-\out <- 1_000_000i
-\out <- 0b1000101
-\out <- 0b1000101i
-\out <- 0b0000_0001_1010_0100
-\out <- 0b0000_0001_1010_0100i
-\out <- 0o105
-\out <- 0o105i
-\out <- 0o207_454
-\out <- 0o207_454i
-\out <- 0x10F2C
-\out <- 0x10F2Ci
-\out <- 0xFF_FF_FF
-\out <- 0xFF_FF_FFi
+=> 69
+=> 69i
+=> 69_420
+=> 1_000_000i
+=> 0b1000101
+=> 0b1000101i
+=> 0b0000_0001_1010_0100
+=> 0b0000_0001_1010_0100i
+=> 0o105
+=> 0o105i
+=> 0o207_454
+=> 0o207_454i
+=> 0x10F2C
+=> 0x10F2Ci
+=> 0xFF_FF_FF
+=> 0xFF_FF_FFi
 
 --------------------------------------------------------------------------------
 
 (program
-	(statement (redirection (primitiveDestination) (expression (literal (literalInteger)))))
-	(statement (redirection (primitiveDestination) (expression (literal (literalInteger)))))
-	(statement (redirection (primitiveDestination) (expression (literal (literalInteger)))))
-	(statement (redirection (primitiveDestination) (expression (literal (literalInteger)))))
-	(statement (redirection (primitiveDestination) (expression (literal (literalInteger)))))
-	(statement (redirection (primitiveDestination) (expression (literal (literalInteger)))))
-	(statement (redirection (primitiveDestination) (expression (literal (literalInteger)))))
-	(statement (redirection (primitiveDestination) (expression (literal (literalInteger)))))
-	(statement (redirection (primitiveDestination) (expression (literal (literalInteger)))))
-	(statement (redirection (primitiveDestination) (expression (literal (literalInteger)))))
-	(statement (redirection (primitiveDestination) (expression (literal (literalInteger)))))
-	(statement (redirection (primitiveDestination) (expression (literal (literalInteger)))))
-	(statement (redirection (primitiveDestination) (expression (literal (literalInteger)))))
-	(statement (redirection (primitiveDestination) (expression (literal (literalInteger)))))
-	(statement (redirection (primitiveDestination) (expression (literal (literalInteger)))))
-	(statement (redirection (primitiveDestination) (expression (literal (literalInteger))))))
+	(statement (returnStatement (expression (literal (literalInteger)))))
+	(statement (returnStatement (expression (literal (literalInteger)))))
+	(statement (returnStatement (expression (literal (literalInteger)))))
+	(statement (returnStatement (expression (literal (literalInteger)))))
+	(statement (returnStatement (expression (literal (literalInteger)))))
+	(statement (returnStatement (expression (literal (literalInteger)))))
+	(statement (returnStatement (expression (literal (literalInteger)))))
+	(statement (returnStatement (expression (literal (literalInteger)))))
+	(statement (returnStatement (expression (literal (literalInteger)))))
+	(statement (returnStatement (expression (literal (literalInteger)))))
+	(statement (returnStatement (expression (literal (literalInteger)))))
+	(statement (returnStatement (expression (literal (literalInteger)))))
+	(statement (returnStatement (expression (literal (literalInteger)))))
+	(statement (returnStatement (expression (literal (literalInteger)))))
+	(statement (returnStatement (expression (literal (literalInteger)))))
+	(statement (returnStatement (expression (literal (literalInteger))))))
 

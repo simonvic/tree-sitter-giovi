@@ -2,65 +2,65 @@
 constant identifiers
 ================================================================================
 
-\out <- X
-\out <- XXX
-\out <- X69
-\out <- X_X
-\out <- X_X69
+=> X
+=> XXX
+=> X69
+=> X_X
+=> X_X69
 
 --------------------------------------------------------------------------------
 
 (program
-	(statement (redirection (primitiveDestination) (expression (constantIdentifier))))
-	(statement (redirection (primitiveDestination) (expression (constantIdentifier))))
-	(statement (redirection (primitiveDestination) (expression (constantIdentifier))))
-	(statement (redirection (primitiveDestination) (expression (constantIdentifier))))
-	(statement (redirection (primitiveDestination) (expression (constantIdentifier)))))
+	(statement (returnStatement (expression (constantIdentifier))))
+	(statement (returnStatement (expression (constantIdentifier))))
+	(statement (returnStatement (expression (constantIdentifier))))
+	(statement (returnStatement (expression (constantIdentifier))))
+	(statement (returnStatement (expression (constantIdentifier)))))
 
 
 ================================================================================
 identifiers
 ================================================================================
 
-\out <- x
-\out <- x
-\out <- x69
-\out <- x_x
-\out <- x_x69
-\out <- x_x69
-\out <- xXXX
+=> x
+=> x
+=> x69
+=> x_x
+=> x_x69
+=> x_x69
+=> xXXX
 
 --------------------------------------------------------------------------------
 
 (program
-	(statement (redirection (primitiveDestination) (expression (identifier))))
-	(statement (redirection (primitiveDestination) (expression (identifier))))
-	(statement (redirection (primitiveDestination) (expression (identifier))))
-	(statement (redirection (primitiveDestination) (expression (identifier))))
-	(statement (redirection (primitiveDestination) (expression (identifier))))
-	(statement (redirection (primitiveDestination) (expression (identifier))))
-	(statement (redirection (primitiveDestination) (expression (identifier)))))
+	(statement (returnStatement (expression (identifier))))
+	(statement (returnStatement (expression (identifier))))
+	(statement (returnStatement (expression (identifier))))
+	(statement (returnStatement (expression (identifier))))
+	(statement (returnStatement (expression (identifier))))
+	(statement (returnStatement (expression (identifier))))
+	(statement (returnStatement (expression (identifier)))))
 
 
 ================================================================================
 type identifiers
 ================================================================================
 
-\out <- Xx
-\out <- Xx69
-\out <- X_x
-\out <- X_x69
-\out <- X_x69
-\out <- Xxxx
+=> Xx
+=> Xx69
+=> X_x
+=> X_x69
+=> X_x69
+=> Xxxx
 
 --------------------------------------------------------------------------------
 
 (program
-	(statement (redirection (primitiveDestination) (expression (typeIdentifier))))
-	(statement (redirection (primitiveDestination) (expression (typeIdentifier))))
-	(statement (redirection (primitiveDestination) (expression (typeIdentifier))))
-	(statement (redirection (primitiveDestination) (expression (typeIdentifier))))
-	(statement (redirection (primitiveDestination) (expression (typeIdentifier))))
-	(statement (redirection (primitiveDestination) (expression (typeIdentifier)))))
+	(statement (returnStatement (expression (typeIdentifier))))
+	(statement (returnStatement (expression (typeIdentifier))))
+	(statement (returnStatement (expression (typeIdentifier))))
+	(statement (returnStatement (expression (typeIdentifier))))
+	(statement (returnStatement (expression (typeIdentifier))))
+	(statement (returnStatement (expression (typeIdentifier)))))
 
 

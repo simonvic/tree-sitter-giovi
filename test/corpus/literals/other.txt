@@ -2,21 +2,21 @@
 default
 ================================================================================
 
-\out <- default
+=> default
 
 --------------------------------------------------------------------------------
 
 (program
-	(statement (redirection (primitiveDestination) (expression (literal (literalDefault))))))
+	(statement (returnStatement (expression (literal (literalDefault))))))
 
 ================================================================================
 placeholder
 ================================================================================
 
-\out <- _
+=> _
 
 --------------------------------------------------------------------------------
 
 (program
-	(statement (redirection (primitiveDestination) (expression (literal (literalPlaceholder))))))
+	(statement (returnStatement (expression (literal (literalPlaceholder))))))
 
