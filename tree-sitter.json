@@ -1,0 +1,30 @@
+{
+  "grammars": [
+    {
+      "name": "giovi",
+      "camelcase": "Giovi",
+      "scope": "source.giovi",
+      "path": ".",
+      "file-types": [
+        "giovi"
+      ],
+      "injection-regex": "^giovi$"
+    }
+  ],
+  "metadata": {
+    "version": "0.0.1",
+    "license": "MIT",
+    "description": "Giovi grammar for tree-sitter",
+    "links": {
+      "repository": "https://github.com/simonvic/tree-sitter-giovi"
+    }
+  },
+  "bindings": {
+    "c": true,
+    "go": true,
+    "node": true,
+    "python": true,
+    "rust": true,
+    "swift": true
+  }
+}
