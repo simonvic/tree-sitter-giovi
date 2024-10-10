@@ -72,7 +72,7 @@ const REDIR_OP_RTL = choice(REDIR_RTL, '+<-', '-<-', '*<-', '/<-');
 module.exports = grammar({
   name: "giovi",
 
-  // TODO: word: $ => $.identifier,
+  word: $ => $.identifier,
 
   conflicts: $ => [
     [$.iterator, $.iteratorAggregate],
