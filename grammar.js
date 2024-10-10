@@ -75,7 +75,8 @@ module.exports = grammar({
   conflicts: $ => [
     [$.iterator, $.iteratorAggregate],
     [$.iteratorUnary],
-    [$.functionDeclaration, $._anyIdentifier],
+    [$._anyIdentifier, $.functionDeclaration],
+    // [$._anyIdentifier, $.expressionCreationStruct],
   ],
   rules: {
     program: $ => repeat($.statement),
@@ -90,6 +91,7 @@ module.exports = grammar({
       $.skipStatement,
       $.breakStatement,
       $.redirection,
+      $.structDefinition,
       $.constantDeclaration,
       $.varDeclaration,
       $.functionDeclaration,
@@ -101,6 +103,26 @@ module.exports = grammar({
       $.statement,
       $.block
     )),
+
+    structDefinition: $ => seq(
+      optional(seq(field("parentType", $.typeIdentifier), ':')),
+      field("typename", $.typeIdentifier),
+      token(prec(0, '<')), // TODO: why is lexical precedence needed?
+      // '<',
+      optional($.structBodyDefinition),
+      // '>',
+      token(prec(0, '>')),
+    ),
+
+    structBodyDefinition: $ => repeat1(seq(choice(
+      $.structFieldDefinition,
+      $.structDefinition,
+      $.functionDeclaration,
+    ), optional(','))),
+
+    structFieldDefinition: $ => seq(
+      $.identifier, $.type, optional($.defaultDefinition)
+    ),
 
     functionDeclaration: $ => seq(
       $.identifier, '(', optional($.formalParameters), ')',
@@ -243,6 +265,7 @@ module.exports = grammar({
       $.expressionTypeCheck,
       alias($.expressionCreationList, $.list),
       alias($.expressionCreationMap, $.map),
+      alias($.expressionCreationStruct, $.struct),
       $.expressionDot,
       $.expressionBinary,
       $.expressionPrefixed,
@@ -270,6 +293,19 @@ module.exports = grammar({
 
     mapEntry: $ => seq(
       field("key", $.expression), ':', field("val", $.expression)
+    ),
+
+    // TODO: eventually distinguish tuples and structs
+    expressionCreationStruct: $ => seq(
+      optional(seq(field("typename", $.typeIdentifier), token(prec(1, '.')))),
+      token(prec(0, '<')),
+      optional($.structFields),
+      token(prec(0, '>')),
+    ),
+
+    structFields: $ => choice(
+      repeat1(seq($.expression, optional(','))),
+      repeat1(seq($.identifier, ':', $.expression, optional(','))),
     ),
 
     expressionDot: $ => seq(

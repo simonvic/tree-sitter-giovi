@@ -179,6 +179,10 @@
           "named": true
         },
         {
+          "type": "struct",
+          "named": true
+        },
+        {
           "type": "typeIdentifier",
           "named": true
         }
@@ -1045,11 +1049,142 @@
           "named": true
         },
         {
+          "type": "structDefinition",
+          "named": true
+        },
+        {
           "type": "switchStatement",
           "named": true
         },
         {
           "type": "varDeclaration",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "struct",
+    "named": true,
+    "fields": {
+      "typename": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "typeIdentifier",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "structFields",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "structBodyDefinition",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "functionDeclaration",
+          "named": true
+        },
+        {
+          "type": "structDefinition",
+          "named": true
+        },
+        {
+          "type": "structFieldDefinition",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "structDefinition",
+    "named": true,
+    "fields": {
+      "parentType": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "typeIdentifier",
+            "named": true
+          }
+        ]
+      },
+      "typename": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "typeIdentifier",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "structBodyDefinition",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "structFieldDefinition",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "defaultDefinition",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "type",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "structFields",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "expression",
+          "named": true
+        },
+        {
+          "type": "identifier",
           "named": true
         }
       ]

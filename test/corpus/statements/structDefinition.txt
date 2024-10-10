@@ -1,0 +1,79 @@
+================================================================================
+empty struct
+================================================================================
+Foo <>
+--------------------------------------------------------------------------------
+(program (statement (structDefinition
+	typename: (typeIdentifier))))
+
+================================================================================
+empty struct with parent 
+================================================================================
+Bar : Foo <>
+--------------------------------------------------------------------------------
+(program (statement (structDefinition
+	parentType: (typeIdentifier)
+	typename: (typeIdentifier))))
+
+================================================================================
+struct with one field 
+================================================================================
+Foo <i Int>
+--------------------------------------------------------------------------------
+(program (statement (structDefinition
+	typename: (typeIdentifier)
+	(structBodyDefinition
+		(structFieldDefinition
+			(identifier)
+			(type (typeIdentifier)))))))
+
+================================================================================
+struct with one field with default override
+================================================================================
+Foo <i Int default 69>
+--------------------------------------------------------------------------------
+(program (statement (structDefinition
+	typename: (typeIdentifier)
+	(structBodyDefinition
+		(structFieldDefinition
+			(identifier)
+			(type (typeIdentifier))
+			(defaultDefinition (expression (literal (literalInteger)))))))))
+
+================================================================================
+struct with multiple fields
+================================================================================
+Foo <
+	i Int
+	j Int
+>
+--------------------------------------------------------------------------------
+(program (statement (structDefinition
+	typename: (typeIdentifier)
+	(structBodyDefinition
+		(structFieldDefinition
+			(identifier)
+			(type (typeIdentifier)))
+		(structFieldDefinition
+			(identifier)
+			(type (typeIdentifier)))))))
+
+================================================================================
+struct with multiple fields with default override
+================================================================================
+Foo <
+	i Int default 69
+	j Int default 69
+>
+--------------------------------------------------------------------------------
+(program (statement (structDefinition
+	typename: (typeIdentifier)
+	(structBodyDefinition
+		(structFieldDefinition
+			(identifier)
+			(type (typeIdentifier))
+			(defaultDefinition (expression (literal (literalInteger)))))
+		(structFieldDefinition
+			(identifier)
+			(type (typeIdentifier))
+			(defaultDefinition (expression (literal (literalInteger)))))))))

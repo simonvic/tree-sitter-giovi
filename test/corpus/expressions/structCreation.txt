@@ -1,0 +1,84 @@
+================================================================================
+empty struct
+================================================================================
+=> Foo.<>
+--------------------------------------------------------------------------------
+(program (statement (returnStatement (expression (struct (typeIdentifier))))))
+
+
+================================================================================
+struct with one field
+================================================================================
+=> Foo.<a>
+--------------------------------------------------------------------------------
+(program (statement (returnStatement (expression (struct
+	(typeIdentifier)
+	(structFields
+		(expression (identifier))))))))
+
+
+================================================================================
+struct with multiple fields
+================================================================================
+=> Foo.<a b c>
+--------------------------------------------------------------------------------
+(program (statement (returnStatement (expression (struct
+	(typeIdentifier)
+	(structFields
+		(expression (identifier))
+		(expression (identifier))
+		(expression (identifier))))))))
+
+
+================================================================================
+struct with multiple comma separated fields
+================================================================================
+=> Foo.<a, b, c>
+--------------------------------------------------------------------------------
+(program (statement (returnStatement (expression (struct
+	(typeIdentifier)
+	(structFields
+		(expression (identifier))
+		(expression (identifier))
+		(expression (identifier))))))))
+
+
+================================================================================
+struct with named field
+================================================================================
+=> Foo.<a:a>
+--------------------------------------------------------------------------------
+(program (statement (returnStatement (expression (struct
+	(typeIdentifier)
+	(structFields
+		(identifier)
+		(expression (identifier))))))))
+
+
+================================================================================
+struct with multiple named fields
+================================================================================
+=> Foo.<a:a b:b c:c>
+--------------------------------------------------------------------------------
+(program (statement (returnStatement (expression (struct
+	(typeIdentifier)
+	(structFields
+		(identifier) (expression (identifier))
+		(identifier) (expression (identifier))
+		(identifier) (expression (identifier))))))))
+
+================================================================================
+struct with relational expression a field
+================================================================================
+=> Foo.<a b<c d>
+--------------------------------------------------------------------------------
+(program (statement (returnStatement (expression (struct
+	typename: (typeIdentifier)
+	(structFields
+		(expression (identifier))
+		(expression (expressionBinary
+			lhs: (expression (identifier))
+			rhs: (expression (identifier))))
+		(expression (identifier))))))))
+
+

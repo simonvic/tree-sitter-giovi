@@ -1,0 +1,112 @@
+================================================================================
+empty tuple
+================================================================================
+=> <>
+--------------------------------------------------------------------------------
+(program (statement (returnStatement (expression (struct)))))
+
+
+================================================================================
+tuple with one field
+================================================================================
+=> <a>
+--------------------------------------------------------------------------------
+(program (statement (returnStatement (expression (struct
+	(structFields
+		(expression (identifier))))))))
+
+
+================================================================================
+tuple with multiple fields
+================================================================================
+=> <a b c>
+--------------------------------------------------------------------------------
+(program (statement (returnStatement (expression (struct
+	(structFields
+		(expression (identifier))
+		(expression (identifier))
+		(expression (identifier))))))))
+
+
+================================================================================
+tuple with multiple comma separated fields
+================================================================================
+=> <a, b, c>
+--------------------------------------------------------------------------------
+(program (statement (returnStatement (expression (struct
+	(structFields
+		(expression (identifier))
+		(expression (identifier))
+		(expression (identifier))))))))
+
+
+================================================================================
+tuple with named field
+================================================================================
+=> <a:a>
+--------------------------------------------------------------------------------
+(program (statement (returnStatement (expression (struct
+	(structFields
+		(identifier)
+		(expression (identifier))))))))
+
+
+================================================================================
+tuple with multiple named fields
+================================================================================
+=> <a:a b:b c:c>
+--------------------------------------------------------------------------------
+(program (statement (returnStatement (expression (struct
+	(structFields
+		(identifier) (expression (identifier))
+		(identifier) (expression (identifier))
+		(identifier) (expression (identifier))))))))
+
+
+================================================================================
+tuple with nested tuple
+================================================================================
+=> <<a b c>>
+--------------------------------------------------------------------------------
+(program (statement (returnStatement (expression (struct
+	(structFields
+		(expression (struct
+			(structFields
+				(expression (identifier))
+				(expression (identifier))
+				(expression (identifier)))))))))))
+
+
+================================================================================
+tuple with nested tuples
+================================================================================
+=> <<a b c> <d e f>>
+--------------------------------------------------------------------------------
+(program (statement (returnStatement (expression (struct
+	(structFields
+		(expression (struct
+			(structFields
+				(expression (identifier))
+				(expression (identifier))
+				(expression (identifier)))))
+		(expression (struct
+			(structFields
+				(expression (identifier))
+				(expression (identifier))
+				(expression (identifier)))))))))))
+
+
+================================================================================
+tuple with relational expression a field
+================================================================================
+=> <a b<c d>
+--------------------------------------------------------------------------------
+(program (statement (returnStatement (expression (struct
+	(structFields
+		(expression (identifier))
+		(expression (expressionBinary
+			lhs: (expression (identifier))
+			rhs: (expression (identifier))))
+		(expression (identifier))))))))
+
+
