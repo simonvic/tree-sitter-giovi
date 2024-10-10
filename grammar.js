@@ -241,6 +241,8 @@ module.exports = grammar({
       $._expressionParenthesized,
       $.expressionCast,
       $.expressionTypeCheck,
+      alias($.expressionCreationList, $.list),
+      alias($.expressionCreationMap, $.map),
       $.expressionDot,
       $.expressionBinary,
       $.expressionPrefixed,
@@ -253,6 +255,21 @@ module.exports = grammar({
 
     expressionTypeCheck: $ => prec(1, seq(
       $.expression, 'is', optional(choice('not', $.identifier)), $.type)
+    ),
+
+    expressionCreationList: $ => prec(1, seq(
+      '[', repeat(seq($.listEntry, optional(','))), ']'
+    )),
+
+    listEntry: $ => choice($.expression, $.range),
+
+    // TODO: eventually add [:] and remove list precedence
+    expressionCreationMap: $ => seq(
+      '[', repeat(seq($.mapEntry, optional(','))), ']'
+    ),
+
+    mapEntry: $ => seq(
+      field("key", $.expression), ':', field("val", $.expression)
     ),
 
     expressionDot: $ => seq(

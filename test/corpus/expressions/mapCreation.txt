@@ -1,0 +1,113 @@
+================================================================================
+empty map
+:skip
+================================================================================
+=> [:]
+--------------------------------------------------------------------------------
+(program (statement (returnStatement (expression (map)))))
+
+================================================================================
+map with one entry
+================================================================================
+=> [a:a]
+--------------------------------------------------------------------------------
+(program (statement (returnStatement (expression (map
+	(mapEntry
+		key: (expression (identifier))
+		val: (expression (identifier)))
+)))))
+
+================================================================================
+map with multiple entries
+================================================================================
+=> [a:a b:b c:c]
+--------------------------------------------------------------------------------
+(program (statement (returnStatement (expression (map
+	(mapEntry
+		key: (expression (identifier))
+		val: (expression (identifier)))
+	(mapEntry
+		key: (expression (identifier))
+		val: (expression (identifier)))
+	(mapEntry
+		key: (expression (identifier))
+		val: (expression (identifier)))
+)))))
+
+================================================================================
+map with multiple comma separated entries
+================================================================================
+=> [a:a, b:b, c:c]
+--------------------------------------------------------------------------------
+(program (statement (returnStatement (expression (map
+	(mapEntry
+		key: (expression (identifier))
+		val: (expression (identifier)))
+	(mapEntry
+		key: (expression (identifier))
+		val: (expression (identifier)))
+	(mapEntry
+		key: (expression (identifier))
+		val: (expression (identifier)))
+)))))
+
+================================================================================
+nested map as value
+================================================================================
+=> [a:[b:b]]
+--------------------------------------------------------------------------------
+(program (statement (returnStatement (expression (map
+	(mapEntry
+		key: (expression (identifier))
+		val: (expression (map
+			(mapEntry
+				key: (expression (identifier))
+				val: (expression (identifier)))))))))))
+
+================================================================================
+nested map as key
+================================================================================
+=> [[a:a]:b]
+--------------------------------------------------------------------------------
+(program (statement (returnStatement (expression (map
+	(mapEntry
+		key: (expression (map
+			(mapEntry
+				key: (expression (identifier))
+				val: (expression (identifier)))))
+		val: (expression (identifier))))))))
+
+================================================================================
+nested map as key and as value
+================================================================================
+=> [[a:a]:[b:b]]
+--------------------------------------------------------------------------------
+(program (statement (returnStatement (expression (map
+	(mapEntry
+		key: (expression (map
+			(mapEntry
+				key: (expression (identifier))
+				val: (expression (identifier)))))
+		val: (expression (map
+			(mapEntry
+				key: (expression (identifier))
+				val: (expression (identifier)))))))))))
+
+================================================================================
+list of maps
+================================================================================
+=> [[a:a] [b:b] [c:c]]
+--------------------------------------------------------------------------------
+(program (statement (returnStatement (expression (list
+	(listEntry (expression (map
+		(mapEntry
+			key: (expression (identifier))
+			val: (expression (identifier))))))
+	(listEntry (expression (map
+		(mapEntry
+			key: (expression (identifier))
+			val: (expression (identifier))))))
+	(listEntry (expression (map
+		(mapEntry
+			key: (expression (identifier))
+			val: (expression (identifier)))))))))))

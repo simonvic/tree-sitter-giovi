@@ -1,0 +1,64 @@
+================================================================================
+empty list
+================================================================================
+=> []
+--------------------------------------------------------------------------------
+(program (statement (returnStatement (expression (list)))))
+
+================================================================================
+list with one value
+================================================================================
+=> [a]
+--------------------------------------------------------------------------------
+(program (statement (returnStatement (expression (list
+	(listEntry (expression (identifier))))))))
+
+================================================================================
+list with multiple values
+================================================================================
+=> [a b c]
+--------------------------------------------------------------------------------
+(program (statement (returnStatement (expression (list
+	(listEntry (expression (identifier)))
+	(listEntry (expression (identifier)))
+	(listEntry (expression (identifier))))))))
+
+================================================================================
+list with multiple comma separated values
+================================================================================
+=> [a, b, c]
+--------------------------------------------------------------------------------
+(program (statement (returnStatement (expression (list
+	(listEntry (expression (identifier)))
+	(listEntry (expression (identifier)))
+	(listEntry (expression (identifier))))))))
+
+================================================================================
+nested empty list
+================================================================================
+=> [[]]
+--------------------------------------------------------------------------------
+(program (statement (returnStatement (expression (list
+	(listEntry (expression (list))))))))
+
+================================================================================
+nested list
+================================================================================
+=> [[a]]
+--------------------------------------------------------------------------------
+(program (statement (returnStatement (expression (list
+	(listEntry (expression (list
+		(listEntry (expression (identifier)))))))))))
+
+================================================================================
+nested lists
+================================================================================
+=> [[a], [b], [c]]
+--------------------------------------------------------------------------------
+(program (statement (returnStatement (expression (list
+	(listEntry (expression (list
+		(listEntry (expression (identifier))))))
+	(listEntry (expression (list
+		(listEntry (expression (identifier))))))
+	(listEntry (expression (list
+		(listEntry (expression (identifier)))))))))))
