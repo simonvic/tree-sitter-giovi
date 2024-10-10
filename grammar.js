@@ -75,6 +75,7 @@ module.exports = grammar({
   conflicts: $ => [
     [$.iterator, $.iteratorAggregate],
     [$.iteratorUnary],
+    [$.functionDeclaration, $._anyIdentifier],
   ],
   rules: {
     program: $ => repeat($.statement),
@@ -101,11 +102,11 @@ module.exports = grammar({
       $.block
     )),
 
-    functionDeclaration: $ => prec(1, seq(
+    functionDeclaration: $ => seq(
       $.identifier, '(', optional($.formalParameters), ')',
       optional(seq('=>', field("returnType", $.type))),
       field("body", $.block)
-    )),
+    ),
 
     formalParameters: $ => seq(
       $.formalParameter, repeat(seq(',', $.formalParameter)), optional(',')
@@ -120,10 +121,9 @@ module.exports = grammar({
       seq('return', optional($.expression))
     )),
 
-    functionCall: $ => prec.left(seq(
-      // TODO: why is it needed to add identifier?
-      choice($.identifier, $.expression), '(', optional($.functionCallParameters), ')'
-    )),
+    functionCall: $ => seq(
+      $.expression, '(', optional($.functionCallParameters), ')'
+    ),
 
     functionCallParameters: $ => seq(
       $.functionCallParameter, repeat(seq(',', $.functionCallParameter)), optional(',')
@@ -202,8 +202,8 @@ module.exports = grammar({
       ))
     ),
 
-    skipStatement: _ => 'skip',
-    breakStatement: _ => 'break',
+    skipStatement: _ => token('skip'),
+    breakStatement: _ => token('break'),
 
     redirection: $ => choice(
       $._redirectionLTR,
@@ -224,9 +224,9 @@ module.exports = grammar({
       seq($.expression, REDIR_OP_RTL, $.expression),
     ),
 
-    constantDeclaration: $ => prec.right(seq(
+    constantDeclaration: $ => seq(
       'constant', $.constantIdentifier, $.type, '<-', $.expression
-    )),
+    ),
 
     varDeclaration: $ => prec.right(1, seq(
       $.identifier, $.type, optional($.defaultDefinition)

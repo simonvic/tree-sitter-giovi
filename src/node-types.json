@@ -487,10 +487,6 @@
         {
           "type": "functionCallParameters",
           "named": true
-        },
-        {
-          "type": "identifier",
-          "named": true
         }
       ]
     }

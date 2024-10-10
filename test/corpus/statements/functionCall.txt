@@ -3,7 +3,7 @@ simple invocation
 ================================================================================
 f()
 --------------------------------------------------------------------------------
-(program (statement (functionCall (identifier))))
+(program (statement (functionCall (expression (identifier)))))
 
 ================================================================================
 invocation from expression
@@ -20,7 +20,7 @@ invocation with argument
 f(a)
 --------------------------------------------------------------------------------
 (program (statement (functionCall
-	(identifier)
+	(expression (identifier))
 	(functionCallParameters
 		(functionCallParameter (expression (identifier)))))))
 
@@ -30,7 +30,7 @@ invocation with labeled argument
 f(l: a)
 --------------------------------------------------------------------------------
 (program (statement (functionCall
-	(identifier)
+	(expression (identifier))
 	(functionCallParameters
 		(functionCallParameter
 			label: (identifier)
@@ -42,7 +42,7 @@ invocation with arguments
 f(a,b,)
 --------------------------------------------------------------------------------
 (program (statement (functionCall
-	(identifier)
+	(expression (identifier))
 	(functionCallParameters
 		(functionCallParameter (expression (identifier)))
 		(functionCallParameter (expression (identifier)))))))
@@ -53,7 +53,7 @@ invocation with labeled arguments
 f(l1: a, l2: b)
 --------------------------------------------------------------------------------
 (program (statement (functionCall
-	(identifier)
+	(expression (identifier))
 	(functionCallParameters
 		(functionCallParameter
 			label: (identifier)
