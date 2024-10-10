@@ -65,4 +65,3 @@
 
 (functionDeclaration (identifier) @function)
 (functionCall (expression (identifier) @function.call))
-(functionCall (expression (identifier) @function.call))
