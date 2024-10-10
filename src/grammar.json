@@ -28,6 +28,55 @@
         }
       ]
     },
+    "comment": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "commentLine"
+        }
+      ]
+    },
+    "commentLine": {
+      "type": "TOKEN",
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "STRING",
+            "value": "#"
+          },
+          {
+            "type": "PATTERN",
+            "value": ".*"
+          }
+        ]
+      }
+    },
+    "commentBlock": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PREC",
+        "value": 1,
+        "content": {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "#{"
+            },
+            {
+              "type": "PATTERN",
+              "value": "[^}#]*"
+            },
+            {
+              "type": "STRING",
+              "value": "}#"
+            }
+          ]
+        }
+      }
+    },
     "statement": {
       "type": "CHOICE",
       "members": [
@@ -5075,6 +5124,14 @@
   },
   "extras": [
     {
+      "type": "SYMBOL",
+      "name": "commentLine"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "commentBlock"
+    },
+    {
       "type": "PATTERN",
       "value": "\\s"
     }
@@ -5095,5 +5152,7 @@
   "precedences": [],
   "externals": [],
   "inline": [],
-  "supertypes": []
+  "supertypes": [
+    "comment"
+  ]
 }

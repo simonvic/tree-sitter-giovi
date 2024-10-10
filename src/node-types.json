@@ -1,5 +1,15 @@
 [
   {
+    "type": "comment",
+    "named": true,
+    "subtypes": [
+      {
+        "type": "commentLine",
+        "named": true
+      }
+    ]
+  },
+  {
     "type": "block",
     "named": true,
     "fields": {},
@@ -1539,6 +1549,14 @@
   },
   {
     "type": "breakStatement",
+    "named": true
+  },
+  {
+    "type": "commentBlock",
+    "named": true
+  },
+  {
+    "type": "commentLine",
     "named": true
   },
   {

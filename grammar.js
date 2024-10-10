@@ -71,16 +71,35 @@ const REDIR_OP_RTL = choice(REDIR_RTL, '+<-', '-<-', '*<-', '/<-');
 
 module.exports = grammar({
   name: "giovi",
+
   // TODO: word: $ => $.identifier,
+
   conflicts: $ => [
     [$.iterator, $.iteratorAggregate],
     [$.iteratorUnary],
     [$._anyIdentifier, $.functionDeclaration],
     // [$._anyIdentifier, $.expressionCreationStruct],
   ],
+
+  extras: $ => [
+    $.commentLine,
+    $.commentBlock,
+    /\s/,
+  ],
+
+  supertypes: $ => [
+    $.comment,
+  ],
+
   rules: {
     program: $ => repeat($.statement),
     block: $ => seq('{', repeat($.statement), '}'),
+
+    comment: $ => choice($.commentLine,),
+    commentLine: _ => token(seq('#', /.*/)),
+    commentBlock: _ => token(prec(1, seq(
+      '#{', /[^}#]*/, '}#'
+    ))),
 
     statement: $ => choice(
       seq($.statement, ';'),
