@@ -1576,6 +1576,14 @@
     "named": false
   },
   {
+    "type": "docBlock",
+    "named": true
+  },
+  {
+    "type": "docLine",
+    "named": true
+  },
+  {
     "type": "else",
     "named": false
   },

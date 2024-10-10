@@ -84,6 +84,8 @@ module.exports = grammar({
   extras: $ => [
     $.commentLine,
     $.commentBlock,
+    $.docLine,
+    $.docBlock,
     /\s/,
   ],
 
@@ -97,9 +99,9 @@ module.exports = grammar({
 
     comment: $ => choice($.commentLine,),
     commentLine: _ => token(seq('#', /.*/)),
-    commentBlock: _ => token(prec(1, seq(
-      '#{', /[^}#]*/, '}#'
-    ))),
+    commentBlock: _ => token(prec(1, seq('#{', /[^}#]*/, '}#'))),
+    docLine: _ => token(prec(2, seq('#?', /.*/))),
+    docBlock: _ => token(prec(3, seq('#?{', /[^}#]*/, '}#'))),
 
     statement: $ => choice(
       seq($.statement, ';'),
