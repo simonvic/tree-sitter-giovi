@@ -47,7 +47,7 @@
       "type": "TOKEN",
       "content": {
         "type": "PREC",
-        "value": 3,
+        "value": -1,
         "content": {
           "type": "SEQ",
           "members": [
@@ -71,7 +71,7 @@
       "type": "TOKEN",
       "content": {
         "type": "PREC",
-        "value": 2,
+        "value": -2,
         "content": {
           "type": "SEQ",
           "members": [
@@ -104,7 +104,7 @@
       "type": "TOKEN",
       "content": {
         "type": "PREC",
-        "value": 1,
+        "value": -1,
         "content": {
           "type": "SEQ",
           "members": [
@@ -128,7 +128,7 @@
       "type": "TOKEN",
       "content": {
         "type": "PREC",
-        "value": 0,
+        "value": -2,
         "content": {
           "type": "SEQ",
           "members": [

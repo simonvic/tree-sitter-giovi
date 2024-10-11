@@ -5,8 +5,10 @@ simple text
 => "hello world"
 => "69"
 => "😀"
+=> "#"
 --------------------------------------------------------------------------------
 (program
+	(statement (returnStatement (expression (literal (literalText)))))
 	(statement (returnStatement (expression (literal (literalText)))))
 	(statement (returnStatement (expression (literal (literalText)))))
 	(statement (returnStatement (expression (literal (literalText)))))
@@ -58,8 +60,10 @@ text block
 => "{
 	hello world
 	}"
+=> "{#}"
 --------------------------------------------------------------------------------
 (program
+	(statement (returnStatement (expression (literal (literalTextBlock)))))
 	(statement (returnStatement (expression (literal (literalTextBlock)))))
 	(statement (returnStatement (expression (literal (literalTextBlock)))))
 	(statement (returnStatement (expression (literal (literalTextBlock)))))

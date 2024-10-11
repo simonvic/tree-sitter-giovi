@@ -95,12 +95,12 @@ module.exports = grammar({
       $.docLine,
       $.docBlock,
     ),
-    docBlock: _ => token(prec(3, seq(
+    docBlock: _ => token(prec(-1, seq(
       '#?{',
       /[^}]*\}+([^#{][^{]*\}+)*/,
       '#'
     ))),
-    docLine: _ => token(prec(2, seq(
+    docLine: _ => token(prec(-2, seq(
       '#?', /[^\n]*/
     ))),
 
@@ -108,12 +108,12 @@ module.exports = grammar({
       $.commentLine,
       $.commentBlock,
     ),
-    commentBlock: _ => token(prec(1, seq(
+    commentBlock: _ => token(prec(-1, seq(
       '#{',
       /[^}]*\}+([^#{][^{]*\}+)*/,
       '#'
     ))),
-    commentLine: _ => token(prec(0, seq(
+    commentLine: _ => token(prec(-2, seq(
       '#', /[^\n]*/
     ))),
 

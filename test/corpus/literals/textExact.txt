@@ -5,8 +5,10 @@ simple exact text
 => 'hello world'
 => '69'
 => '😀'
+=> '#'
 --------------------------------------------------------------------------------
 (program
+	(statement (returnStatement (expression (literal (literalExactText)))))
 	(statement (returnStatement (expression (literal (literalExactText)))))
 	(statement (returnStatement (expression (literal (literalExactText)))))
 	(statement (returnStatement (expression (literal (literalExactText)))))
@@ -35,7 +37,7 @@ exact text with escape sequence
 	(statement (returnStatement (expression (literal (literalExactText (escapeSequence)))))))
 
 ================================================================================
-text with interpolation
+exact text with interpolation
 ================================================================================
 => 'hello $foo world'
 => 'hello ${foo} world'
@@ -47,7 +49,7 @@ text with interpolation
 	(statement (returnStatement (expression (literal (literalExactText))))))
 
 ================================================================================
-text block
+exact text block
 ================================================================================
 => '{}'
 => '{''""}'
@@ -55,15 +57,17 @@ text block
 => '{
 	hello world
 	}'
+=> '{#}'
 --------------------------------------------------------------------------------
 (program
+	(statement (returnStatement (expression (literal (literalExactTextBlock)))))
 	(statement (returnStatement (expression (literal (literalExactTextBlock)))))
 	(statement (returnStatement (expression (literal (literalExactTextBlock)))))
 	(statement (returnStatement (expression (literal (literalExactTextBlock)))))
 	(statement (returnStatement (expression (literal (literalExactTextBlock))))))
 
 ================================================================================
-text block with interpolation
+exact text block with interpolation
 ================================================================================
 => '{hello $foo world}'
 => '{hello ${foo} world}'
