@@ -1,24 +1,20 @@
-[
- (commentLine)
- (commentBlock)
-] @comment
+(commentLine) @comment
+(commentBlock) @comment.block
 
-[
- (docLine)
- (docBlock)
-] @comment.documentation
-
+(docLine) @comment.doc
+(docBlock) @comment.doc.block
 
 (literalBool) @boolean
-(literalNatural) @number
 (literalInteger) @number
+(literalNatural) @number.natural
 (literalReal) @number.float
 (literalText) @string
 
 (literalDefault) @variable.builtin
+(literalPlaceholder) @variable.builtin
 
 (identifier) @variable
-(type) @type
+(typeIdentifier) @type
 (constantIdentifier) @constant
 
 [
@@ -33,7 +29,7 @@
  "+" "-" "*" "/" "%" "^"
  "->" "->+" "->-" "->*" "->/"
  "<-" "+<-" "-<-" "*<-" "/<-"
- "=>" "<" "<=" "=>" ">"
+ "=>" "<" "<=" ">=" ">"
  "=" "!="
  "not" "!" "and" "&" "or" "|"
  "in" "=~" "~="
@@ -65,3 +61,9 @@
 
 (functionDeclaration (identifier) @function)
 (functionCall (expression (identifier) @function.call))
+
+(struct ["<" ">"] @punctuation)
+(structDefinition ["<" ">"] @punctuation)
+(iteratorAggregate ["<" ">"] @punctuation)
+(structFields (expression (identifier) @variable.member)) 
+(structFields (identifier) @label) 
