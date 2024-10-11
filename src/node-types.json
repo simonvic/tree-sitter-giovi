@@ -139,6 +139,10 @@
           "named": true
         },
         {
+          "type": "expressionAccess",
+          "named": true
+        },
+        {
           "type": "expressionBinary",
           "named": true
         },
@@ -187,6 +191,66 @@
           "named": true
         }
       ]
+    }
+  },
+  {
+    "type": "expressionAccess",
+    "named": true,
+    "fields": {
+      "accessed": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      },
+      "accessor": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "literal",
+            "named": true
+          },
+          {
+            "type": "range",
+            "named": true
+          },
+          {
+            "type": "specialKey",
+            "named": true
+          },
+          {
+            "type": "{",
+            "named": false
+          },
+          {
+            "type": "}",
+            "named": false
+          }
+        ]
+      },
+      "bop": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "@",
+            "named": false
+          }
+        ]
+      }
     }
   },
   {
@@ -247,10 +311,6 @@
           },
           {
             "type": ">=",
-            "named": false
-          },
-          {
-            "type": "@",
             "named": false
           },
           {
@@ -1775,6 +1835,10 @@
   },
   {
     "type": "skipStatement",
+    "named": true
+  },
+  {
+    "type": "specialKey",
     "named": true
   },
   {

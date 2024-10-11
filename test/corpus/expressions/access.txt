@@ -1,0 +1,68 @@
+================================================================================
+access with literal
+================================================================================
+=> a@69
+--------------------------------------------------------------------------------
+(program (statement (returnStatement (expression (expressionAccess
+	accessed: (expression (identifier))
+	accessor: (literal (literalInteger)))))))
+
+================================================================================
+access with parenthesized literal
+================================================================================
+=> a@{69}
+--------------------------------------------------------------------------------
+(program (statement (returnStatement (expression (expressionAccess
+	accessed: (expression (identifier))
+	accessor: (literal (literalInteger)))))))
+
+================================================================================
+access with identifier
+================================================================================
+=> a@i
+--------------------------------------------------------------------------------
+(program (statement (returnStatement (expression (expressionAccess
+	accessed: (expression (identifier))
+	accessor: (identifier))))))
+
+================================================================================
+access with parenthesized identifier
+================================================================================
+=> a@{i}
+--------------------------------------------------------------------------------
+(program (statement (returnStatement (expression (expressionAccess
+	accessed: (expression (identifier))
+	accessor: (identifier))))))
+
+================================================================================
+access with expression
+================================================================================
+=> a@{i + j}
+--------------------------------------------------------------------------------
+(program (statement (returnStatement (expression (expressionAccess
+	accessed: (expression (identifier))
+	accessor: (expression (expressionBinary
+		lhs: (expression (identifier))
+		rhs: (expression (identifier)))))))))
+
+================================================================================
+access with range
+================================================================================
+=> a@s..e
+--------------------------------------------------------------------------------
+(program (statement (returnStatement (expression (expressionAccess
+	accessed: (expression (identifier))
+	accessor: (range
+		start: (expression (identifier))
+		end: (expression (identifier))))))))
+
+================================================================================
+access with parenthesized range
+================================================================================
+=> a@{s..e}
+--------------------------------------------------------------------------------
+(program (statement (returnStatement (expression (expressionAccess
+	accessed: (expression (identifier))
+	accessor: (range
+		start: (expression (identifier))
+		end: (expression (identifier))))))))

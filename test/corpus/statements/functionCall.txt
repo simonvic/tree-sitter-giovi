@@ -10,9 +10,9 @@ invocation from expression
 ================================================================================
 someList@69()
 --------------------------------------------------------------------------------
-(program (statement (functionCall (expression (expressionBinary
+(program (statement (functionCall (expression (expressionAccess
 	(expression (identifier))
-	(expression (literal (literalInteger))))))))
+	(literal (literalInteger)))))))
 
 ================================================================================
 invocation with argument

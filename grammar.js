@@ -247,7 +247,7 @@ module.exports = grammar({
       $.expression,
     ),
 
-    range: $ => seq(
+    range: $ => prec.left(seq(
       field("start", $.expression),
       '..',
       field("end", $.expression),
@@ -255,7 +255,7 @@ module.exports = grammar({
         '..',
         field("step", $.expression)
       ))
-    ),
+    )),
 
     skipStatement: _ => token('skip'),
     breakStatement: _ => token('break'),
@@ -300,6 +300,7 @@ module.exports = grammar({
       alias($.expressionCreationMap, $.map),
       alias($.expressionCreationStruct, $.struct),
       $.expressionDot,
+      $.expressionAccess,
       $.expressionBinary,
       $.expressionPrefixed,
       $._primary,
@@ -353,10 +354,23 @@ module.exports = grammar({
       $.expression,
     )),
 
+    expressionAccess: $ => prec.left(1, seq(
+      field("accessed", $.expression),
+      field("bop", '@'),
+      field("accessor", $._accessKey)
+    )),
+
+    _accessKey: $ => prec(1, choice(
+      seq('{', choice($._accessKey, $.expression), '}'),
+      alias(choice('@', '%', '*'), $.specialKey),
+      $.range,
+      $.literal,
+      $.identifier,
+    )),
+
     expressionBinary: $ => prec.left(1, seq(
       field("lhs", $.expression),
       field("bop", choice(
-        '@',
         '^',
         '*', '/', '%',
         '+', '-',
