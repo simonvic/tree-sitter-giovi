@@ -51,6 +51,8 @@
 
 (typeFunctionRef "::" @punctuation)
 
+(specialKey) @variable.builtin
+
 [
   "if" "do" "else"
   "repeat"
