@@ -45,9 +45,11 @@
  "=" "!="
  "not" "!" "and" "&" "or" "|"
  "in" "=~" "~="
-  "is" "as"
- ; "::"
+ "is" "as"
+ "::"
 ] @operator
+
+(typeFunctionRef "::" @punctuation)
 
 [
   "if" "do" "else"
