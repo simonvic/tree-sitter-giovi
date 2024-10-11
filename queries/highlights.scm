@@ -5,10 +5,22 @@
 (docBlock) @comment.doc.block
 
 (literalBool) @boolean
+
 (literalInteger) @number
 (literalNatural) @number.natural
 (literalReal) @number.float
+
 (literalText) @string
+(literalTextBlock) @string.block
+(literalExactText) @string.exact
+(literalExactTextBlock) @string.exact.block
+
+(escapeSequence) @string.escape
+(literalText ["\"" "\""] @punctuation)
+(literalTextBlock ["\"{" "}\""] @punctuation)
+(literalExactText ["'" "'"] @punctuation)
+(literalExactTextBlock ["'{" "}'"] @punctuation)
+(textInterpolation ["$" "${" "}"] @punctuation)
 
 (literalDefault) @variable.builtin
 (literalPlaceholder) @variable.builtin
