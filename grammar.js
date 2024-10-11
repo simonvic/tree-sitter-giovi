@@ -68,6 +68,7 @@ module.exports = grammar({
   conflicts: $ => [
     [$.iterator, $.iteratorAggregate],
     [$.iteratorUnary],
+    [$.typeFunctionRef],
     [$._anyIdentifier, $.functionDeclaration],
     // [$._anyIdentifier, $.expressionCreationStruct],
   ],
@@ -299,6 +300,7 @@ module.exports = grammar({
       alias($.expressionCreationList, $.list),
       alias($.expressionCreationMap, $.map),
       alias($.expressionCreationStruct, $.struct),
+      $.expressionRef,
       $.expressionDot,
       $.expressionAccess,
       $.expressionBinary,
@@ -341,6 +343,16 @@ module.exports = grammar({
       repeat1(seq($.expression, optional(','))),
       repeat1(seq($.identifier, ':', $.expression, optional(','))),
     ),
+
+    expressionRef: $ => seq('::', choice(
+      $.identifier,
+      seq(
+        optional(seq(
+          '(', optional($.formalParameters), ')', optional(seq('=>', $.type))
+        )),
+        $.block
+      )
+    )),
 
     expressionDot: $ => seq(
       $.expression, '.', choice($._anyIdentifier, $.literalDefault)
@@ -385,6 +397,7 @@ module.exports = grammar({
     type: $ => choice(
       $._typeComposite,
       $.typeIdentifier,
+      $.typeFunctionRef
     ),
 
     _typeComposite: $ => choice(
@@ -398,6 +411,10 @@ module.exports = grammar({
 
     typeMap: $ => seq(
       '[', field("keyType", $.type), ':', field("valueType", $.type), ']'
+    ),
+
+    typeFunctionRef: $ => seq(
+      '::', '(', optional($.formalParameters), ')', optional(seq('=>', $.type))
     ),
 
     _primary: $ => choice(

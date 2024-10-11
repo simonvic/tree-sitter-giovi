@@ -1,0 +1,78 @@
+================================================================================
+function variable simple
+================================================================================
+f ::()
+--------------------------------------------------------------------------------
+(program (statement (varDeclaration
+	(identifier)
+	(type (typeFunctionRef)))))
+
+================================================================================
+function variable with one argument
+================================================================================
+f ::(a Int)
+--------------------------------------------------------------------------------
+(program (statement (varDeclaration
+	(identifier)
+	(type (typeFunctionRef
+		(formalParameters
+			(formalParameter
+				(identifier)
+				(type (typeIdentifier)))))))))
+
+================================================================================
+function variable with multiple arguments
+================================================================================
+f ::(a Int, b Int)
+--------------------------------------------------------------------------------
+(program (statement (varDeclaration
+	(identifier)
+	(type (typeFunctionRef
+		(formalParameters
+			(formalParameter
+				(identifier)
+				(type (typeIdentifier)))
+			(formalParameter
+				(identifier)
+				(type (typeIdentifier)))))))))
+
+================================================================================
+function variable with return type
+================================================================================
+f ::() => Int
+--------------------------------------------------------------------------------
+(program (statement (varDeclaration
+	(identifier)
+	(type (typeFunctionRef
+		(type (typeIdentifier)))))))
+
+================================================================================
+function variable with one argument and return type
+================================================================================
+f ::(a Int) => Int
+--------------------------------------------------------------------------------
+(program (statement (varDeclaration
+	(identifier)
+	(type (typeFunctionRef
+		(formalParameters
+			(formalParameter
+				(identifier)
+				(type (typeIdentifier))))
+		(type (typeIdentifier)))))))
+
+================================================================================
+function variable with multiple arguments and return type
+================================================================================
+f ::(a Int, b Int) => Int
+--------------------------------------------------------------------------------
+(program (statement (varDeclaration
+	(identifier)
+	(type (typeFunctionRef
+		(formalParameters
+			(formalParameter
+				(identifier)
+				(type (typeIdentifier)))
+			(formalParameter
+				(identifier)
+				(type (typeIdentifier))))
+		(type (typeIdentifier)))))))

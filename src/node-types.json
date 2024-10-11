@@ -159,6 +159,10 @@
           "named": true
         },
         {
+          "type": "expressionRef",
+          "named": true
+        },
+        {
           "type": "expressionTypeCheck",
           "named": true
         },
@@ -444,6 +448,33 @@
       "types": [
         {
           "type": "expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "expressionRef",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "block",
+          "named": true
+        },
+        {
+          "type": "formalParameters",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "type",
           "named": true
         }
       ]
@@ -1452,6 +1483,10 @@
       "required": true,
       "types": [
         {
+          "type": "typeFunctionRef",
+          "named": true
+        },
+        {
           "type": "typeIdentifier",
           "named": true
         },
@@ -1461,6 +1496,25 @@
         },
         {
           "type": "typeMap",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "typeFunctionRef",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "formalParameters",
+          "named": true
+        },
+        {
+          "type": "type",
           "named": true
         }
       ]
@@ -1659,6 +1713,10 @@
   },
   {
     "type": ":",
+    "named": false
+  },
+  {
+    "type": "::",
     "named": false
   },
   {
