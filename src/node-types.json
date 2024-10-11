@@ -800,6 +800,14 @@
           "named": true
         },
         {
+          "type": "literalExactText",
+          "named": true
+        },
+        {
+          "type": "literalExactTextBlock",
+          "named": true
+        },
+        {
           "type": "literalInteger",
           "named": true
         },
@@ -818,6 +826,10 @@
         {
           "type": "literalText",
           "named": true
+        },
+        {
+          "type": "literalTextBlock",
+          "named": true
         }
       ]
     }
@@ -826,6 +838,74 @@
     "type": "literalDefault",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "literalExactText",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "escapeSequence",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "literalExactTextBlock",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "escapeSequence",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "literalText",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "escapeSequence",
+          "named": true
+        },
+        {
+          "type": "textInterpolation",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "literalTextBlock",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "escapeSequence",
+          "named": true
+        },
+        {
+          "type": "textInterpolation",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "map",
@@ -1277,6 +1357,33 @@
     }
   },
   {
+    "type": "textInterpolation",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "constantIdentifier",
+          "named": true
+        },
+        {
+          "type": "expression",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "typeIdentifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "type",
     "named": true,
     "fields": {},
@@ -1383,11 +1490,35 @@
     "named": false
   },
   {
+    "type": "\"",
+    "named": false
+  },
+  {
+    "type": "\"{",
+    "named": false
+  },
+  {
+    "type": "$",
+    "named": false
+  },
+  {
+    "type": "${",
+    "named": false
+  },
+  {
     "type": "%",
     "named": false
   },
   {
     "type": "&",
+    "named": false
+  },
+  {
+    "type": "'",
+    "named": false
+  },
+  {
+    "type": "'{",
     "named": false
   },
   {
@@ -1579,6 +1710,10 @@
     "named": false
   },
   {
+    "type": "escapeSequence",
+    "named": true
+  },
+  {
     "type": "for",
     "named": false
   },
@@ -1616,10 +1751,6 @@
   },
   {
     "type": "literalReal",
-    "named": true
-  },
-  {
-    "type": "literalText",
     "named": true
   },
   {
@@ -1664,6 +1795,14 @@
   },
   {
     "type": "}",
+    "named": false
+  },
+  {
+    "type": "}\"",
+    "named": false
+  },
+  {
+    "type": "}'",
     "named": false
   },
   {

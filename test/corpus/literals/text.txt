@@ -1,96 +1,81 @@
 ================================================================================
-text
+simple text
 ================================================================================
-
-\out <- ""
-\out <- "hello world"
-\out <- "69"
-\out <- "hello \b world"
-\out <- "hello \t world"
-\out <- "hello \n world"
-\out <- "hello \f world"
-\out <- "hello \r world"
-\out <- "hello \s world"
-\out <- "\uf6f6"
-\out <- "😀"
-
+=> ""
+=> "hello world"
+=> "69"
+=> "😀"
 --------------------------------------------------------------------------------
-
 (program
-	(statement (redirection (primitiveDestination) (expression (literal (literalText)))))
-	(statement (redirection (primitiveDestination) (expression (literal (literalText)))))
-	(statement (redirection (primitiveDestination) (expression (literal (literalText)))))
-	(statement (redirection (primitiveDestination) (expression (literal (literalText)))))
-	(statement (redirection (primitiveDestination) (expression (literal (literalText)))))
-	(statement (redirection (primitiveDestination) (expression (literal (literalText)))))
-	(statement (redirection (primitiveDestination) (expression (literal (literalText)))))
-	(statement (redirection (primitiveDestination) (expression (literal (literalText)))))
-	(statement (redirection (primitiveDestination) (expression (literal (literalText)))))
-	(statement (redirection (primitiveDestination) (expression (literal (literalText)))))
-	(statement (redirection (primitiveDestination) (expression (literal (literalText))))))
+	(statement (returnStatement (expression (literal (literalText)))))
+	(statement (returnStatement (expression (literal (literalText)))))
+	(statement (returnStatement (expression (literal (literalText)))))
+	(statement (returnStatement (expression (literal (literalText))))))
+
+================================================================================
+text with escape sequence
+================================================================================
+=> "hello \\ world"
+=> "hello \b world"
+=> "hello \t world"
+=> "hello \n world"
+=> "hello \f world"
+=> "hello \r world"
+=> "hello \s world"
+=> "\uf6f6"
+--------------------------------------------------------------------------------
+(program
+	(statement (returnStatement (expression (literal (literalText (escapeSequence))))))
+	(statement (returnStatement (expression (literal (literalText (escapeSequence))))))
+	(statement (returnStatement (expression (literal (literalText (escapeSequence))))))
+	(statement (returnStatement (expression (literal (literalText (escapeSequence))))))
+	(statement (returnStatement (expression (literal (literalText (escapeSequence))))))
+	(statement (returnStatement (expression (literal (literalText (escapeSequence))))))
+	(statement (returnStatement (expression (literal (literalText (escapeSequence))))))
+	(statement (returnStatement (expression (literal (literalText (escapeSequence)))))))
+
+================================================================================
+text with interpolation
+================================================================================
+=> "hello $foo world"
+=> "hello ${foo} world"
+=> "hello ${a + b} world"
+--------------------------------------------------------------------------------
+(program
+	(statement (returnStatement (expression (literal (literalText (textInterpolation (identifier)))))))
+	(statement (returnStatement (expression (literal (literalText (textInterpolation (expression (identifier))))))))
+	(statement (returnStatement (expression (literal (literalText (textInterpolation (expression
+		(expressionBinary
+			lhs: (expression (identifier))
+			rhs: (expression (identifier)))))))))))
 
 ================================================================================
 text block
 ================================================================================
-
-\out <- "{}"
-\out <- "{hello world}"
-\out <- "{
+=> "{}"
+=> "{""''}"
+=> "{hello world}"
+=> "{
 	hello world
 	}"
-
 --------------------------------------------------------------------------------
-
 (program
-	(statement (redirection (primitiveDestination) (expression (literal (literalText)))))
-	(statement (redirection (primitiveDestination) (expression (literal (literalText)))))
-	(statement (redirection (primitiveDestination) (expression (literal (literalText))))))
+	(statement (returnStatement (expression (literal (literalTextBlock)))))
+	(statement (returnStatement (expression (literal (literalTextBlock)))))
+	(statement (returnStatement (expression (literal (literalTextBlock)))))
+	(statement (returnStatement (expression (literal (literalTextBlock))))))
 
 ================================================================================
-exact text
+text block with interpolation
 ================================================================================
-
-\out <- ''
-\out <- 'hello world'
-\out <- '69'
-\out <- 'hello \b world'
-\out <- 'hello \t world'
-\out <- 'hello \n world'
-\out <- 'hello \f world'
-\out <- 'hello \r world'
-\out <- 'hello \s world'
-\out <- '\uf6f6'
-\out <- '😀'
-
+=> "{hello $foo world}"
+=> "{hello ${foo} world}"
+=> "{hello ${a + b} world}"
 --------------------------------------------------------------------------------
-
 (program
-	(statement (redirection (primitiveDestination) (expression (literal (literalText)))))
-	(statement (redirection (primitiveDestination) (expression (literal (literalText)))))
-	(statement (redirection (primitiveDestination) (expression (literal (literalText)))))
-	(statement (redirection (primitiveDestination) (expression (literal (literalText)))))
-	(statement (redirection (primitiveDestination) (expression (literal (literalText)))))
-	(statement (redirection (primitiveDestination) (expression (literal (literalText)))))
-	(statement (redirection (primitiveDestination) (expression (literal (literalText)))))
-	(statement (redirection (primitiveDestination) (expression (literal (literalText)))))
-	(statement (redirection (primitiveDestination) (expression (literal (literalText)))))
-	(statement (redirection (primitiveDestination) (expression (literal (literalText)))))
-	(statement (redirection (primitiveDestination) (expression (literal (literalText))))))
-
-================================================================================
-extact text block
-================================================================================
-
-\out <- '{}'
-\out <- '{hello world}'
-\out <- '{
-	hello world
-	}'
-
---------------------------------------------------------------------------------
-
-(program
-	(statement (redirection (primitiveDestination) (expression (literal (literalText)))))
-	(statement (redirection (primitiveDestination) (expression (literal (literalText)))))
-	(statement (redirection (primitiveDestination) (expression (literal (literalText))))))
-
+	(statement (returnStatement (expression (literal (literalTextBlock (textInterpolation (identifier)))))))
+	(statement (returnStatement (expression (literal (literalTextBlock (textInterpolation (expression (identifier))))))))
+	(statement (returnStatement (expression (literal (literalTextBlock (textInterpolation (expression
+		(expressionBinary
+			lhs: (expression (identifier))
+			rhs: (expression (identifier)))))))))))

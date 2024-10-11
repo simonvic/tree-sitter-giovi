@@ -1,0 +1,75 @@
+================================================================================
+simple exact text
+================================================================================
+=> ''
+=> 'hello world'
+=> '69'
+=> '😀'
+--------------------------------------------------------------------------------
+(program
+	(statement (returnStatement (expression (literal (literalExactText)))))
+	(statement (returnStatement (expression (literal (literalExactText)))))
+	(statement (returnStatement (expression (literal (literalExactText)))))
+	(statement (returnStatement (expression (literal (literalExactText))))))
+
+================================================================================
+exact text with escape sequence
+================================================================================
+=> 'hello \\ world'
+=> 'hello \b world'
+=> 'hello \t world'
+=> 'hello \n world'
+=> 'hello \f world'
+=> 'hello \r world'
+=> 'hello \s world'
+=> '\uf6f6'
+--------------------------------------------------------------------------------
+(program
+	(statement (returnStatement (expression (literal (literalExactText (escapeSequence))))))
+	(statement (returnStatement (expression (literal (literalExactText (escapeSequence))))))
+	(statement (returnStatement (expression (literal (literalExactText (escapeSequence))))))
+	(statement (returnStatement (expression (literal (literalExactText (escapeSequence))))))
+	(statement (returnStatement (expression (literal (literalExactText (escapeSequence))))))
+	(statement (returnStatement (expression (literal (literalExactText (escapeSequence))))))
+	(statement (returnStatement (expression (literal (literalExactText (escapeSequence))))))
+	(statement (returnStatement (expression (literal (literalExactText (escapeSequence)))))))
+
+================================================================================
+text with interpolation
+================================================================================
+=> 'hello $foo world'
+=> 'hello ${foo} world'
+=> 'hello ${a + b} world'
+--------------------------------------------------------------------------------
+(program
+	(statement (returnStatement (expression (literal (literalExactText)))))
+	(statement (returnStatement (expression (literal (literalExactText)))))
+	(statement (returnStatement (expression (literal (literalExactText))))))
+
+================================================================================
+text block
+================================================================================
+=> '{}'
+=> '{''""}'
+=> '{hello world}'
+=> '{
+	hello world
+	}'
+--------------------------------------------------------------------------------
+(program
+	(statement (returnStatement (expression (literal (literalExactTextBlock)))))
+	(statement (returnStatement (expression (literal (literalExactTextBlock)))))
+	(statement (returnStatement (expression (literal (literalExactTextBlock)))))
+	(statement (returnStatement (expression (literal (literalExactTextBlock))))))
+
+================================================================================
+text block with interpolation
+================================================================================
+=> '{hello $foo world}'
+=> '{hello ${foo} world}'
+=> '{hello ${a + b} world}'
+--------------------------------------------------------------------------------
+(program
+	(statement (returnStatement (expression (literal (literalExactTextBlock)))))
+	(statement (returnStatement (expression (literal (literalExactTextBlock)))))
+	(statement (returnStatement (expression (literal (literalExactTextBlock))))))

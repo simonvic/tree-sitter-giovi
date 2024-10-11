@@ -50,15 +50,6 @@ const LITERAL_REAL_DECIMAL = token(choice(
 ));
 const LITERAL_REAL_HEX = token(seq(HEX_SIGNIFICAND, BINARY_EXPONENT, optional('r')));
 
-const ESCAPE_CHARACTER = token(seq('\\', /[btnfrs"'\\$]/))
-const ESCAPE_UNICODE = token(seq('\\u', HEX_DIGIT, HEX_DIGIT, HEX_DIGIT, HEX_DIGIT));
-const ESCAPE_SEQUENCE = token(choice(ESCAPE_CHARACTER, ESCAPE_UNICODE));
-
-const LITERAL_TEXT = token(seq('"', repeat(choice(/[^"\\\r\n]/, ESCAPE_SEQUENCE)), '"'));
-const LITERAL_TEXT_BLOCK = token(seq('"{', repeat(choice(/[^\\]/, ESCAPE_SEQUENCE)), '}"'));
-const LITERAL_EXACT_TEXT = token(seq('\'', repeat(choice(/[^'\\\r\n]/, ESCAPE_SEQUENCE)), '\''));
-const LITERAL_EXACT_TEXT_BLOCK = token(seq('\'{', repeat(choice(/[^\\]/, ESCAPE_SEQUENCE)), '}\''));
-
 const LETTER_OR_DIGIT_OR_UNDERSCORE = token(choice(/[a-zA-Z]/, DIGIT, '_'));
 const IDENTIFIER = token(seq(/[a-z]/, repeat(LETTER_OR_DIGIT_OR_UNDERSCORE)));
 const ALLUPPERCASE_IDENTIFIER = token(seq(/[A-Z]/, repeat(choice(/[A-Z]/, DIGIT, '_'))));
@@ -408,7 +399,7 @@ module.exports = grammar({
       $.literalReal,
       $.literalNatural,
       $.literalInteger,
-      $.literalText,
+      $._literalText,
     ),
 
     literalPlaceholder: _ => token('_'),
@@ -436,14 +427,61 @@ module.exports = grammar({
       optional('i')
     )),
 
-    // TODO: make separate rules
     // TODO: also parse text block incidental whitespace
-    literalText: _ => token(choice(
-      LITERAL_TEXT,
-      LITERAL_TEXT_BLOCK,
-      LITERAL_EXACT_TEXT,
-      LITERAL_EXACT_TEXT_BLOCK,
+    _literalText: $ => choice(
+      $.literalText,
+      $.literalTextBlock,
+      $.literalExactText,
+      $.literalExactTextBlock,
+    ),
+
+    escapeSequence: _ => token.immediate(choice(
+      seq('\\', /[btnfrs"'\\$]/),
+      seq('\\u', HEX_DIGIT, HEX_DIGIT, HEX_DIGIT, HEX_DIGIT),
     )),
+
+    textInterpolation: $ => choice(
+      seq('$', $._anyIdentifier),
+      seq('${', $.expression, '}'),
+    ),
+
+    literalText: $ => seq(
+      '"',
+      repeat(choice(
+        /[^"\\$]/,
+        $.escapeSequence,
+        $.textInterpolation,
+      )),
+      '"'
+    ),
+
+    literalTextBlock: $ => seq(
+      '"{',
+      repeat(choice(
+        /[^\\]/,
+        $.escapeSequence,
+        $.textInterpolation
+      )),
+      '}"'
+    ),
+
+    literalExactText: $ => seq(
+      '\'',
+      repeat(choice(
+        /[^'\\]/,
+        $.escapeSequence,
+      )),
+      '\''
+    ),
+
+    literalExactTextBlock: $ => seq(
+      '\'{',
+      repeat(choice(
+        /[^\\]/,
+        $.escapeSequence
+      )),
+      '}\''
+    ),
 
     _anyIdentifier: $ => choice(
       $.identifier,
