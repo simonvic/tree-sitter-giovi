@@ -98,19 +98,31 @@ module.exports = grammar({
     program: $ => repeat($.statement),
     block: $ => seq('{', repeat($.statement), '}'),
 
+    doc: $ => choice(
+      $.docLine,
+      $.docBlock,
+    ),
+    docBlock: _ => token(prec(3, seq(
+      '#?{',
+      /[^}]*\}+([^#{][^{]*\}+)*/,
+      '#'
+    ))),
+    docLine: _ => token(prec(2, seq(
+      '#?', /[^\n]*/
+    ))),
+
     comment: $ => choice(
       $.commentLine,
       $.commentBlock,
     ),
-    commentLine: _ => token(seq('#', /[^\n]*/)),
-    commentBlock: _ => token(prec(1, seq('#{', /[^}#]*/, '}#'))),
-
-    doc: $ => choice(
-      $.docLine,
-      $.docBlock
-    ),
-    docLine: _ => token(prec(2, seq('#?', /[^\n]*/))),
-    docBlock: _ => token(prec(3, seq('#?{', /[^}#]*/, '}#'))),
+    commentBlock: _ => token(prec(1, seq(
+      '#{',
+      /[^}]*\}+([^#{][^{]*\}+)*/,
+      '#'
+    ))),
+    commentLine: _ => token(prec(0, seq(
+      '#', /[^\n]*/
+    ))),
 
     statement: $ => choice(
       seq($.statement, ';'),

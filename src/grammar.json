@@ -30,59 +30,6 @@
         }
       ]
     },
-    "comment": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "commentLine"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "commentBlock"
-        }
-      ]
-    },
-    "commentLine": {
-      "type": "TOKEN",
-      "content": {
-        "type": "SEQ",
-        "members": [
-          {
-            "type": "STRING",
-            "value": "#"
-          },
-          {
-            "type": "PATTERN",
-            "value": "[^\\n]*"
-          }
-        ]
-      }
-    },
-    "commentBlock": {
-      "type": "TOKEN",
-      "content": {
-        "type": "PREC",
-        "value": 1,
-        "content": {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "STRING",
-              "value": "#{"
-            },
-            {
-              "type": "PATTERN",
-              "value": "[^}#]*"
-            },
-            {
-              "type": "STRING",
-              "value": "}#"
-            }
-          ]
-        }
-      }
-    },
     "doc": {
       "type": "CHOICE",
       "members": [
@@ -95,6 +42,30 @@
           "name": "docBlock"
         }
       ]
+    },
+    "docBlock": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PREC",
+        "value": 3,
+        "content": {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "#?{"
+            },
+            {
+              "type": "PATTERN",
+              "value": "[^}]*\\}+([^#{][^{]*\\}+)*"
+            },
+            {
+              "type": "STRING",
+              "value": "#"
+            }
+          ]
+        }
+      }
     },
     "docLine": {
       "type": "TOKEN",
@@ -116,25 +87,58 @@
         }
       }
     },
-    "docBlock": {
+    "comment": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "commentLine"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "commentBlock"
+        }
+      ]
+    },
+    "commentBlock": {
       "type": "TOKEN",
       "content": {
         "type": "PREC",
-        "value": 3,
+        "value": 1,
         "content": {
           "type": "SEQ",
           "members": [
             {
               "type": "STRING",
-              "value": "#?{"
+              "value": "#{"
             },
             {
               "type": "PATTERN",
-              "value": "[^}#]*"
+              "value": "[^}]*\\}+([^#{][^{]*\\}+)*"
             },
             {
               "type": "STRING",
-              "value": "}#"
+              "value": "#"
+            }
+          ]
+        }
+      }
+    },
+    "commentLine": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PREC",
+        "value": 0,
+        "content": {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "#"
+            },
+            {
+              "type": "PATTERN",
+              "value": "[^\\n]*"
             }
           ]
         }
