@@ -74,6 +74,7 @@
 
 (functionDeclaration (identifier) @function)
 (functionCall (expression (identifier) @function.call))
+(expressionFunctionCall (expression (identifier) @function.call))
 
 (struct ["<" ">"] @punctuation)
 (structDefinition ["<" ">"] @punctuation)

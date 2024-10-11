@@ -1676,6 +1676,15 @@
           "name": "expressionRef"
         },
         {
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "functionCall"
+          },
+          "named": true,
+          "value": "expressionFunctionCall"
+        },
+        {
           "type": "SYMBOL",
           "name": "expressionDot"
         },
@@ -5332,6 +5341,10 @@
     [
       "_anyIdentifier",
       "functionDeclaration"
+    ],
+    [
+      "expression",
+      "statement"
     ]
   ],
   "precedences": [],

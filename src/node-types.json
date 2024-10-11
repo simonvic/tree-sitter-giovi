@@ -155,6 +155,10 @@
           "named": true
         },
         {
+          "type": "expressionFunctionCall",
+          "named": true
+        },
+        {
           "type": "expressionPrefixed",
           "named": true
         },
@@ -410,6 +414,25 @@
         },
         {
           "type": "typeIdentifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "expressionFunctionCall",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "expression",
+          "named": true
+        },
+        {
+          "type": "functionCallParameters",
           "named": true
         }
       ]

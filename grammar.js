@@ -70,6 +70,7 @@ module.exports = grammar({
     [$.iteratorUnary],
     [$.typeFunctionRef],
     [$._anyIdentifier, $.functionDeclaration],
+    [$.expression, $.statement],
     // [$._anyIdentifier, $.expressionCreationStruct],
   ],
 
@@ -301,6 +302,7 @@ module.exports = grammar({
       alias($.expressionCreationMap, $.map),
       alias($.expressionCreationStruct, $.struct),
       $.expressionRef,
+      alias($.functionCall, $.expressionFunctionCall),
       $.expressionDot,
       $.expressionAccess,
       $.expressionBinary,
