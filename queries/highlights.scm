@@ -63,9 +63,6 @@
   "when"
   (skipStatement)
   (breakStatement)
-  ; "import"
-  ; "alias"
-  ; "self"
 ] @keyword
 
 (forStatement "in" @keyword)
@@ -83,3 +80,9 @@
 (iteratorAggregate ["<" ">"] @punctuation)
 (structFields (expression (identifier) @variable.member)) 
 (structFields (identifier) @label) 
+
+(ERROR) @error
+
+; Reserved identifiers
+((identifier) @error (#match? @error "^(alias|self|import|module)$"))
+
