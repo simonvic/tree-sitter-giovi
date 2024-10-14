@@ -1,8 +1,8 @@
 (commentLine) @comment
 (commentBlock) @comment.block
 
-(docLine) @comment.doc
-(docBlock) @comment.doc.block
+(docLine) @comment.documentation
+(docBlock) @comment.documentation.block
 
 (literalBool) @boolean
 
