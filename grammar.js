@@ -7,58 +7,43 @@
 /// <reference types="tree-sitter-cli/dsl" />
 // @ts-check
 
-const UNDERSCORES = repeat1('_');
-const NON_ZERO_DIGIT = token(/[1-9]/);
+const DIGIT_DEC = /[0-9]/;
+const DIGIT_HEX = /[0-9a-fA-F]/;
+const DIGIT_OCT = /[0-7]/;
+const DIGIT_BIN = /[01]/;
 
-const DIGIT = token(choice('0', NON_ZERO_DIGIT));
-const DIGIT_OR_UNDERSCORE = token(choice(DIGIT, '_'));
-const DIGITS_AND_UNDERSCORES = token(repeat1(DIGIT_OR_UNDERSCORE));
-const DIGITS = token(seq(DIGIT, optional(seq(optional(DIGITS_AND_UNDERSCORES), DIGIT))));
+const DIGITS_DEC = seq(DIGIT_DEC, optional(seq(optional(repeat1(choice(DIGIT_DEC, '_'))), DIGIT_DEC)));
+const DIGITS_HEX = seq(DIGIT_HEX, optional(seq(optional(repeat1(choice(DIGIT_HEX, '_'))), DIGIT_HEX)));
+const DIGITS_OCT = seq(DIGIT_OCT, optional(seq(optional(repeat1(choice(DIGIT_OCT, '_'))), DIGIT_OCT)));
+const DIGITS_BIN = seq(DIGIT_BIN, optional(seq(optional(repeat1(choice(DIGIT_BIN, '_'))), DIGIT_BIN)));
 
-const HEX_DIGIT = token(/[0-9a-fA-F]/);
-const HEX_DIGIT_OR_UNDERSCORE = token(choice(HEX_DIGIT, '_'));
-const HEX_DIGITS_AND_UNDERSCORES = token(repeat1(HEX_DIGIT_OR_UNDERSCORE));
-const HEX_DIGITS = token(seq(HEX_DIGIT, optional(seq(optional(HEX_DIGITS_AND_UNDERSCORES), HEX_DIGIT))));
-
-const OCTAL_DIGIT = token(/[0-7]/);
-const OCTAL_DIGIT_OR_UNDERSCORE = token(choice(OCTAL_DIGIT, '_'));
-const OCTAL_DIGITS_AND_UNDERSCORES = token(repeat1(OCTAL_DIGIT_OR_UNDERSCORE));
-const OCTAL_DIGITS = token(seq(OCTAL_DIGIT, optional(seq(optional(OCTAL_DIGITS_AND_UNDERSCORES), OCTAL_DIGIT))));
-
-const BINARY_DIGIT = token(/[01]/);
-const BINARY_DIGIT_OR_UNDERSCORE = token(choice(BINARY_DIGIT, '_'));
-const BINARY_DIGITS_AND_UNDERSCORES = token(repeat1(BINARY_DIGIT_OR_UNDERSCORE));
-const BINARY_DIGITS = token(seq(BINARY_DIGIT, optional(seq(optional(BINARY_DIGITS_AND_UNDERSCORES), BINARY_DIGIT))));
-
-const NUMERAL_DECIMAL = token(choice(
+const NUMERAL_DEC = choice(
   '0',
-  seq(NON_ZERO_DIGIT, choice(optional(DIGITS), seq(UNDERSCORES, DIGITS)))
-));
-const NUMERAL_HEX = token(seq('0x', HEX_DIGITS));
-const NUMERAL_OCTAL = token(seq('0o', OCTAL_DIGITS));
-const NUMERAL_BINARY = token(seq('0b', BINARY_DIGITS));
+  seq(/[1-9]/, choice(optional(DIGITS_DEC), seq(repeat1('_'), DIGITS_DEC)))
+);
+const NUMERAL_HEX = seq('0x', DIGITS_HEX);
+const NUMERAL_OCT = seq('0o', DIGITS_OCT);
+const NUMERAL_BIN = seq('0b', DIGITS_BIN);
 
-const SIGNED_DIGITS = seq(optional(choice('+', '-')), DIGITS);
+const SIGNED_DIGITS = seq(optional(choice('+', '-')), DIGITS_DEC);
 const EXPONENT_PART = seq(/[eE]/, SIGNED_DIGITS);
-const HEX_SIGNIFICAND = choice(seq(NUMERAL_HEX, optional('.')), seq('0x', optional(HEX_DIGITS), '.', HEX_DIGITS));
+const HEX_SIGNIFICAND = choice(seq(NUMERAL_HEX, optional('.')), seq('0x', optional(DIGITS_HEX), '.', DIGITS_HEX));
 const BINARY_EXPONENT = seq('p', SIGNED_DIGITS);
 
-const LITERAL_REAL_DECIMAL = token(choice(
-  seq(DIGITS, '.', DIGITS, optional(EXPONENT_PART), optional('r')),
-  seq(DIGITS, EXPONENT_PART, optional('r')),
-  seq(DIGITS, 'r'),
-));
-const LITERAL_REAL_HEX = token(seq(HEX_SIGNIFICAND, BINARY_EXPONENT, optional('r')));
+const LITERAL_REAL_DECIMAL = choice(
+  seq(DIGITS_DEC, '.', DIGITS_DEC, optional(EXPONENT_PART), optional('r')),
+  seq(DIGITS_DEC, EXPONENT_PART, optional('r')),
+  seq(DIGITS_DEC, 'r'),
+);
+const LITERAL_REAL_HEX = seq(HEX_SIGNIFICAND, BINARY_EXPONENT, optional('r'));
 
-const LETTER_OR_DIGIT_OR_UNDERSCORE = token(choice(/[a-zA-Z]/, DIGIT, '_'));
-const IDENTIFIER = token(seq(/[a-z]/, repeat(LETTER_OR_DIGIT_OR_UNDERSCORE)));
-const ALLUPPERCASE_IDENTIFIER = token(seq(/[A-Z]/, repeat(choice(/[A-Z]/, DIGIT, '_'))));
-const UPPERCASE_IDENTIFIER = token(seq(/[A-Z]/, repeat(LETTER_OR_DIGIT_OR_UNDERSCORE)));
+const LETTER_OR_DIGIT_OR_UNDERSCORE = choice(/[a-zA-Z]/, DIGIT_DEC, '_');
+const IDENTIFIER = seq(/[a-z]/, repeat(LETTER_OR_DIGIT_OR_UNDERSCORE));
+const ALLUPPERCASE_IDENTIFIER = seq(/[A-Z]/, repeat(choice(/[A-Z]/, DIGIT_DEC, '_')));
+const UPPERCASE_IDENTIFIER = seq(/[A-Z]/, repeat(LETTER_OR_DIGIT_OR_UNDERSCORE));
 
-const REDIR_LTR = token('->');
-const REDIR_RTL = token('<-');
-const REDIR_OP_LTR = choice(REDIR_LTR, '->+', '->-', '->*', '->/');
-const REDIR_OP_RTL = choice(REDIR_RTL, '+<-', '-<-', '*<-', '/<-');
+const REDIR_OP_LTR = choice('->', '->+', '->-', '->*', '->/');
+const REDIR_OP_RTL = choice('<-', '+<-', '-<-', '*<-', '/<-');
 
 module.exports = grammar({
   name: "giovi",
@@ -268,14 +253,14 @@ module.exports = grammar({
     ),
 
     _redirectionLTR: $ => choice(
-      seq($.expression, REDIR_LTR, $.varDeclaration),
+      seq($.expression, '->', $.varDeclaration),
       seq($.expression, REDIR_OP_LTR, $.primitiveDestination),
       // seq($.expression, REDIR_OP_LTR, $.identifier),
       seq($.expression, REDIR_OP_LTR, $.expression),
     ),
 
     _redirectionRTL: $ => choice(
-      seq($.varDeclaration, REDIR_RTL, $.expression),
+      seq($.varDeclaration, '<-', $.expression),
       seq($.primitiveDestination, REDIR_OP_RTL, $.expression),
       // seq($.identifier, REDIR_OP_RTL, $.expression),
       seq($.expression, REDIR_OP_RTL, $.expression),
@@ -442,20 +427,20 @@ module.exports = grammar({
 
     literalNatural: _ => token(seq(
       choice(
-        NUMERAL_DECIMAL,
+        NUMERAL_DEC,
         NUMERAL_HEX,
-        NUMERAL_OCTAL,
-        NUMERAL_BINARY,
+        NUMERAL_OCT,
+        NUMERAL_BIN,
       ),
       'n'
     )),
 
     literalInteger: _ => token(seq(
       choice(
-        NUMERAL_DECIMAL,
+        NUMERAL_DEC,
         NUMERAL_HEX,
-        NUMERAL_OCTAL,
-        NUMERAL_BINARY,
+        NUMERAL_OCT,
+        NUMERAL_BIN,
       ),
       optional('i')
     )),
@@ -470,7 +455,7 @@ module.exports = grammar({
 
     escapeSequence: _ => token.immediate(choice(
       seq('\\', /[btnfrs"'\\$]/),
-      seq('\\u', HEX_DIGIT, HEX_DIGIT, HEX_DIGIT, HEX_DIGIT),
+      seq('\\u', DIGIT_HEX, DIGIT_HEX, DIGIT_HEX, DIGIT_HEX),
     )),
 
     textInterpolation: $ => choice(
