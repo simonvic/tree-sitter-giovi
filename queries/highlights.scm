@@ -84,6 +84,7 @@
 
 (ERROR) @error
 
-; Reserved identifiers
-((identifier) @error (#match? @error "^(alias|self|import|module)$"))
+; Reserved keywords
+((identifier) @error (#match? @error "^(alias|self|import|module|inf|nan)$"))
+((constantIdentifier) @error (#match? @error "^(INF|NAN)$"))
 
