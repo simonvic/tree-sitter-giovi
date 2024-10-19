@@ -42,8 +42,8 @@ access with expression
 (program (statement (returnStatement (expression (expressionAccess
 	accessed: (expression (identifier))
 	accessor: (expression (expressionBinary
-		lhs: (expression (identifier))
-		rhs: (expression (identifier)))))))))
+		(expression (identifier))
+		(expression (identifier)))))))))
 
 ================================================================================
 access with range

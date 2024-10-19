@@ -3,7 +3,7 @@ empty tuple
 ================================================================================
 => <>
 --------------------------------------------------------------------------------
-(program (statement (returnStatement (expression (struct)))))
+(program (statement (returnStatement (expression (struct (structFields))))))
 
 
 ================================================================================
@@ -105,8 +105,8 @@ tuple with relational expression a field
 	(structFields
 		(expression (identifier))
 		(expression (expressionBinary
-			lhs: (expression (identifier))
-			rhs: (expression (identifier))))
+			(expression (identifier))
+			(expression (identifier))))
 		(expression (identifier))))))))
 
 

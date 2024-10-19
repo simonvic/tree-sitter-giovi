@@ -45,6 +45,36 @@ const UPPERCASE_IDENTIFIER = seq(/[A-Z]/, repeat(LETTER_OR_DIGIT_OR_UNDERSCORE))
 const REDIR_OP_LTR = choice('->', '->+', '->-', '->*', '->/');
 const REDIR_OP_RTL = choice('<-', '+<-', '-<-', '*<-', '/<-');
 
+const PREC = {
+  CAST: 17,
+  TYPECHECK: 16,
+  DOT: 15,
+
+  CREATION_LIST: 14,
+  CREATION_MAP: 13,
+  CREATION_STRUCT: 12,
+
+  REF: 11,
+  INVOKATION: 10,
+  UNARY: 9,
+  ACCESS: 8,
+  POWER: 7,
+  MULTIPLICATIVE: 6,
+  ADDITIVE: 5,
+  RELATIONAL: 4,
+  EQUALITY: 3,
+  CONTAINMENT: 2,
+  BOOL: 1,
+
+  RANGE: 1,
+  ACCESS_KEY: 1,
+
+  COMMENT_BLOCK: -1,
+  COMMENT_LINE: -2,
+  DOC_BLOCK: -1,
+  DOC_LINE: -2,
+};
+
 module.exports = grammar({
   name: "giovi",
 
@@ -53,10 +83,12 @@ module.exports = grammar({
   conflicts: $ => [
     [$.iterator, $.iteratorAggregate],
     [$.iteratorUnary],
-    [$.typeFunctionRef],
+    [$.returnStatement],
+    [$.varDeclaration],
     [$._anyIdentifier, $.functionDeclaration],
+    [$._anyIdentifier, $.varDeclaration],
+    [$.typeFunctionRef],
     [$.expression, $.statement],
-    // [$._anyIdentifier, $.expressionCreationStruct],
   ],
 
   extras: $ => [
@@ -80,12 +112,12 @@ module.exports = grammar({
       $.docLine,
       $.docBlock,
     ),
-    docBlock: _ => token(prec(-1, seq(
+    docBlock: _ => token(prec(PREC.DOC_BLOCK, seq(
       '#?{',
       /[^}]*\}+([^#{][^{]*\}+)*/,
       '#'
     ))),
-    docLine: _ => token(prec(-2, seq(
+    docLine: _ => token(prec(PREC.DOC_LINE, seq(
       '#?', /[^\n]*/
     ))),
 
@@ -93,12 +125,12 @@ module.exports = grammar({
       $.commentLine,
       $.commentBlock,
     ),
-    commentBlock: _ => token(prec(-1, seq(
+    commentBlock: _ => token(prec(PREC.COMMENT_BLOCK, seq(
       '#{',
       /[^}]*\}+([^#{][^{]*\}+)*/,
       '#'
     ))),
-    commentLine: _ => token(prec(-2, seq(
+    commentLine: _ => token(prec(PREC.COMMENT_LINE, seq(
       '#', /[^\n]*/
     ))),
 
@@ -111,12 +143,16 @@ module.exports = grammar({
       $.skipStatement,
       $.breakStatement,
       $.redirection,
+      $._declaration,
+      $.returnStatement,
+      $.functionCall,
+    ),
+
+    _declaration: $ => choice(
       $.structDefinition,
       $.constantDeclaration,
       $.varDeclaration,
       $.functionDeclaration,
-      $.returnStatement,
-      $.functionCall,
     ),
 
     _statementOrBlock: $ => prec.left(choice(
@@ -127,18 +163,21 @@ module.exports = grammar({
     structDefinition: $ => seq(
       optional(seq(field("parentType", $.typeIdentifier), ':')),
       field("typename", $.typeIdentifier),
-      token(prec(0, '<')), // TODO: why is lexical precedence needed?
-      // '<',
-      optional($.structBodyDefinition),
-      // '>',
-      token(prec(0, '>')),
+      $.structBodyDefinition,
     ),
 
-    structBodyDefinition: $ => repeat1(seq(choice(
-      $.structFieldDefinition,
-      $.structDefinition,
-      $.functionDeclaration,
-    ), optional(','))),
+    structBodyDefinition: $ => seq(
+      token(prec(0, '<')),
+      repeat(seq(
+        choice(
+          $.structFieldDefinition,
+          $.structDefinition,
+          $.functionDeclaration,
+        ),
+        optional(',')
+      )),
+      token(prec(0, '>')),
+    ),
 
     structFieldDefinition: $ => seq(
       $.identifier, $.type, optional($.defaultDefinition)
@@ -158,10 +197,7 @@ module.exports = grammar({
       $.identifier, $.type, optional($.defaultDefinition)
     ),
 
-    returnStatement: $ => prec.right(choice(
-      seq('=>', $.expression),
-      seq('return', optional($.expression))
-    )),
+    returnStatement: $ => seq(choice('return', '=>'), optional($.expression)),
 
     functionCall: $ => seq(
       $.expression, '(', optional($.functionCallParameters), ')'
@@ -234,7 +270,7 @@ module.exports = grammar({
       $.expression,
     ),
 
-    range: $ => prec.left(seq(
+    range: $ => prec.left(PREC.RANGE, seq(
       field("start", $.expression),
       '..',
       field("end", $.expression),
@@ -270,9 +306,9 @@ module.exports = grammar({
       'constant', $.constantIdentifier, $.type, '<-', $.expression
     ),
 
-    varDeclaration: $ => prec.right(1, seq(
+    varDeclaration: $ => seq(
       $.identifier, $.type, optional($.defaultDefinition)
-    )),
+    ),
 
     defaultDefinition: $ => seq('default', $.expression),
 
@@ -297,41 +333,43 @@ module.exports = grammar({
 
     _expressionParenthesized: $ => seq('{', $.expression, '}'),
 
-    expressionCast: $ => seq($.expression, 'as', $.type),
+    expressionCast: $ => prec(PREC.CAST, seq($.expression, 'as', $.type)),
 
-    expressionTypeCheck: $ => prec(1, seq(
+    expressionTypeCheck: $ => prec(PREC.TYPECHECK, seq(
       $.expression, 'is', optional(choice('not', $.identifier)), $.type)
     ),
 
-    expressionCreationList: $ => prec(1, seq(
+    expressionCreationList: $ => prec(PREC.CREATION_LIST, seq(
       '[', repeat(seq($.listEntry, optional(','))), ']'
     )),
 
     listEntry: $ => choice($.expression, $.range),
 
     // TODO: eventually add [:] and remove list precedence
-    expressionCreationMap: $ => seq(
+    expressionCreationMap: $ => prec(PREC.CREATION_MAP, seq(
       '[', repeat(seq($.mapEntry, optional(','))), ']'
-    ),
+    )),
 
     mapEntry: $ => seq(
       field("key", $.expression), ':', field("val", $.expression)
     ),
 
     // TODO: eventually distinguish tuples and structs
-    expressionCreationStruct: $ => seq(
-      optional(seq(field("typename", $.typeIdentifier), token(prec(1, '.')))),
+    expressionCreationStruct: $ => prec(PREC.CREATION_STRUCT, seq(
+      optional(seq(field("typename", $.typeIdentifier), '.')),
+      $.structFields,
+    )),
+
+    structFields: $ => seq(
       token(prec(0, '<')),
-      optional($.structFields),
+      choice(
+        repeat(seq($.expression, optional(','))),
+        repeat(seq($.identifier, ':', $.expression, optional(','))),
+      ),
       token(prec(0, '>')),
     ),
 
-    structFields: $ => choice(
-      repeat1(seq($.expression, optional(','))),
-      repeat1(seq($.identifier, ':', $.expression, optional(','))),
-    ),
-
-    expressionRef: $ => seq('::', choice(
+    expressionRef: $ => prec(PREC.REF, seq('::', choice(
       $.identifier,
       seq(
         optional(seq(
@@ -339,13 +377,13 @@ module.exports = grammar({
         )),
         $.block
       )
+    ))),
+
+    expressionDot: $ => prec(PREC.DOT, seq(
+      $.expression, '.', choice($._anyIdentifier, $.literalDefault)
     )),
 
-    expressionDot: $ => seq(
-      $.expression, '.', choice($._anyIdentifier, $.literalDefault)
-    ),
-
-    expressionPrefixed: $ => prec.left(2, seq(
+    expressionPrefixed: $ => prec.left(PREC.UNARY, seq(
       field("op", choice(
         '+', '-',
         '!', 'not',
@@ -353,13 +391,13 @@ module.exports = grammar({
       $.expression,
     )),
 
-    expressionAccess: $ => prec.left(1, seq(
+    expressionAccess: $ => prec.left(PREC.ACCESS, seq(
       field("accessed", $.expression),
       field("bop", '@'),
       field("accessor", $._accessKey)
     )),
 
-    _accessKey: $ => prec(1, choice(
+    _accessKey: $ => prec.left(PREC.ACCESS_KEY, choice(
       seq('{', choice($._accessKey, $.expression), '}'),
       alias(choice('@', '%', '*'), $.specialKey),
       $.range,
@@ -367,19 +405,23 @@ module.exports = grammar({
       $.identifier,
     )),
 
-    expressionBinary: $ => prec.left(1, seq(
-      field("lhs", $.expression),
-      field("bop", choice(
-        '^',
-        '*', '/', '%',
-        '+', '-',
-        '<=', '>=', '>', '<',
-        '=', '!=',
-        'in', '~=', '=~',
-        'and', '&', 'or', '|',
-      )),
-      field("rhs", $.expression)
-    )),
+    expressionBinary: $ => choice(
+      $._expressionPower,
+      $._expressionEquality,
+      $._expressionContainment,
+      $._expressionRelational,
+      $._expressionMultiplicative,
+      $._expressionAdditive,
+      $._expressionBoolean,
+    ),
+
+    _expressionPower: $ => prec.left(PREC.POWER, seq($.expression, '^', $.expression)),
+    _expressionEquality: $ => prec.left(PREC.EQUALITY, seq($.expression, choice('=', '!='), $.expression)),
+    _expressionContainment: $ => prec.left(PREC.CONTAINMENT, seq($.expression, optional('not'), choice('in', '~=', '=~'), $.expression)),
+    _expressionRelational: $ => prec.left(PREC.RELATIONAL, seq($.expression, choice('<', '<=', '>=', '>'), $.expression)),
+    _expressionMultiplicative: $ => prec.left(PREC.MULTIPLICATIVE, seq($.expression, choice('*', '/', '%'), $.expression)),
+    _expressionAdditive: $ => prec.left(PREC.ADDITIVE, seq($.expression, choice('+', '-'), $.expression)),
+    _expressionBoolean: $ => prec.left(PREC.BOOL, seq($.expression, choice('and', '&', 'or', '|'), $.expression)),
 
     type: $ => choice(
       $._typeComposite,

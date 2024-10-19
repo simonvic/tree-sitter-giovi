@@ -76,8 +76,8 @@
 (functionCall (expression (identifier) @function.call))
 (expressionFunctionCall (expression (identifier) @function.call))
 
-(struct ["<" ">"] @punctuation)
-(structDefinition ["<" ">"] @punctuation)
+(structFields ["<" ">"] @punctuation)
+(structBodyDefinition ["<" ">"] @punctuation)
 (iteratorAggregate ["<" ">"] @punctuation)
 (structFields (expression (identifier) @variable.member)) 
 (structFields (identifier) @label) 

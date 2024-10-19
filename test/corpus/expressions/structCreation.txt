@@ -3,7 +3,7 @@ empty struct
 ================================================================================
 => Foo.<>
 --------------------------------------------------------------------------------
-(program (statement (returnStatement (expression (struct (typeIdentifier))))))
+(program (statement (returnStatement (expression (struct (typeIdentifier) (structFields))))))
 
 
 ================================================================================
@@ -68,7 +68,7 @@ struct with multiple named fields
 		(identifier) (expression (identifier))))))))
 
 ================================================================================
-struct with relational expression a field
+struct with relational expression as field
 ================================================================================
 => Foo.<a b<c d>
 --------------------------------------------------------------------------------
@@ -77,8 +77,8 @@ struct with relational expression a field
 	(structFields
 		(expression (identifier))
 		(expression (expressionBinary
-			lhs: (expression (identifier))
-			rhs: (expression (identifier))))
+			(expression (identifier))
+			(expression (identifier))))
 		(expression (identifier))))))))
 
 

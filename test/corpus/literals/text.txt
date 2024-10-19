@@ -48,8 +48,8 @@ text with interpolation
 	(statement (returnStatement (expression (literal (literalText (textInterpolation (expression (identifier))))))))
 	(statement (returnStatement (expression (literal (literalText (textInterpolation (expression
 		(expressionBinary
-			lhs: (expression (identifier))
-			rhs: (expression (identifier)))))))))))
+			(expression (identifier))
+			(expression (identifier)))))))))))
 
 ================================================================================
 text block
@@ -81,5 +81,5 @@ text block with interpolation
 	(statement (returnStatement (expression (literal (literalTextBlock (textInterpolation (expression (identifier))))))))
 	(statement (returnStatement (expression (literal (literalTextBlock (textInterpolation (expression
 		(expressionBinary
-			lhs: (expression (identifier))
-			rhs: (expression (identifier)))))))))))
+			(expression (identifier))
+			(expression (identifier)))))))))))

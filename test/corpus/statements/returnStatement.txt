@@ -21,8 +21,8 @@ fun() {
 	(identifier)
 	body: (block
 		(statement (returnStatement (expression (expressionBinary
-			lhs: (expression (literal (literalInteger)))
-			rhs: (expression (literal (literalInteger)))))))))))
+			(expression (literal (literalInteger)))
+			(expression (literal (literalInteger)))))))))))
 
 ================================================================================
 with nothing

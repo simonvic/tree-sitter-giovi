@@ -4,7 +4,8 @@ empty struct
 Foo <>
 --------------------------------------------------------------------------------
 (program (statement (structDefinition
-	typename: (typeIdentifier))))
+	typename: (typeIdentifier)
+	(structBodyDefinition))))
 
 ================================================================================
 empty struct with parent 
@@ -13,7 +14,8 @@ Bar : Foo <>
 --------------------------------------------------------------------------------
 (program (statement (structDefinition
 	parentType: (typeIdentifier)
-	typename: (typeIdentifier))))
+	typename: (typeIdentifier)
+	(structBodyDefinition))))
 
 ================================================================================
 struct with one field 
