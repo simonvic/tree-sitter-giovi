@@ -15,13 +15,13 @@ natural
 --------------------------------------------------------------------------------
 
 (program
-	(statement (returnStatement (expression (literal (literalNatural)))))
-	(statement (returnStatement (expression (literal (literalNatural)))))
-	(statement (returnStatement (expression (literal (literalNatural)))))
-	(statement (returnStatement (expression (literal (literalNatural)))))
-	(statement (returnStatement (expression (literal (literalNatural)))))
-	(statement (returnStatement (expression (literal (literalNatural)))))
-	(statement (returnStatement (expression (literal (literalNatural)))))
-	(statement (returnStatement (expression (literal (literalNatural)))))
-	(statement (returnStatement (expression (literal (literalNatural))))))
+	(statement (returnStatement (expression (literalNatural))))
+	(statement (returnStatement (expression (literalNatural))))
+	(statement (returnStatement (expression (literalNatural))))
+	(statement (returnStatement (expression (literalNatural))))
+	(statement (returnStatement (expression (literalNatural))))
+	(statement (returnStatement (expression (literalNatural))))
+	(statement (returnStatement (expression (literalNatural))))
+	(statement (returnStatement (expression (literalNatural))))
+	(statement (returnStatement (expression (literalNatural)))))
 

@@ -5,7 +5,7 @@ RTL to primitive destination
 --------------------------------------------------------------------------------
 (program (statement (redirection
 	(primitiveDestination)
-	(expression (literal (literalText))))))
+	(expression (literalText)))))
 
 ================================================================================
 RTL to var declaration
@@ -16,7 +16,7 @@ t Text <- "hello world"
 	(varDeclaration
 		(identifier)
 		(type (typeIdentifier)))
-	(expression (literal (literalText))))))
+	(expression (literalText)))))
 
 ================================================================================
 RTL to var declaration with default
@@ -27,8 +27,8 @@ t Text default "foo" <- "hello world"
 	(varDeclaration
 		(identifier)
 		(type (typeIdentifier))
-		(defaultDefinition (expression (literal (literalText)))))
-	(expression (literal (literalText))))))
+		(defaultDefinition (expression (literalText))))
+	(expression (literalText)))))
 
 ================================================================================
 LTR to primitive destination
@@ -36,7 +36,7 @@ LTR to primitive destination
 "hello world" -> \out
 --------------------------------------------------------------------------------
 (program (statement (redirection
-	(expression (literal (literalText)))
+	(expression (literalText))
 	(primitiveDestination))))
 
 ================================================================================
@@ -45,7 +45,7 @@ LTR to var declaration
 "hello world" -> t Text
 --------------------------------------------------------------------------------
 (program (statement (redirection
-	(expression (literal (literalText)))
+	(expression (literalText))
 	(varDeclaration
 		(identifier)
 		(type (typeIdentifier))))))
@@ -56,8 +56,8 @@ LTR to var declaration with default
 "hello world" -> t Text default "foo"
 --------------------------------------------------------------------------------
 (program (statement (redirection
-	(expression (literal (literalText)))
+	(expression (literalText))
 	(varDeclaration
 		(identifier)
 		(type (typeIdentifier))
-		(defaultDefinition (expression (literal (literalText))))))))
+		(defaultDefinition (expression (literalText)))))))

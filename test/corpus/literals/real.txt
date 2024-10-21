@@ -17,15 +17,15 @@ real
 --------------------------------------------------------------------------------
 
 (program
-	(statement (returnStatement (expression (literal (literalReal)))))
-	(statement (returnStatement (expression (literal (literalReal)))))
-	(statement (returnStatement (expression (literal (literalReal)))))
-	(statement (returnStatement (expression (literal (literalReal)))))
-	(statement (returnStatement (expression (literal (literalReal)))))
-	(statement (returnStatement (expression (literal (literalReal)))))
-	(statement (returnStatement (expression (literal (literalReal)))))
-	(statement (returnStatement (expression (literal (literalReal)))))
-	(statement (returnStatement (expression (literal (literalReal)))))
-	(statement (returnStatement (expression (literal (literalReal)))))
-	(statement (returnStatement (expression (literal (literalReal))))))
+	(statement (returnStatement (expression (literalReal))))
+	(statement (returnStatement (expression (literalReal))))
+	(statement (returnStatement (expression (literalReal))))
+	(statement (returnStatement (expression (literalReal))))
+	(statement (returnStatement (expression (literalReal))))
+	(statement (returnStatement (expression (literalReal))))
+	(statement (returnStatement (expression (literalReal))))
+	(statement (returnStatement (expression (literalReal))))
+	(statement (returnStatement (expression (literalReal))))
+	(statement (returnStatement (expression (literalReal))))
+	(statement (returnStatement (expression (literalReal)))))
 

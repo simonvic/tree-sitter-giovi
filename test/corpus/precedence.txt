@@ -74,4 +74,4 @@ tuple creation and access precedence
 (program (statement (returnStatement
 	(expression (expressionAccess
 		(expression (struct (structFields)))
-		(literal (literalInteger)))))))
+		(literalInteger))))))

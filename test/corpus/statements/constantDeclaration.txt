@@ -6,4 +6,4 @@ constant PI Real <- 3.14
 (program (statement (constantDeclaration
 	(constantIdentifier)
 	(type (typeIdentifier))
-	(expression (literal (literalReal))))))
+	(expression (literalReal)))))

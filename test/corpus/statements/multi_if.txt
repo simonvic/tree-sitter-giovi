@@ -36,46 +36,46 @@ if x {
 	subject: (expression (identifier))
 	(switchBlock
 	(switchLabel
-		case: (caseMatch (expression (literal (literalInteger))))
+		case: (caseMatch (expression (literalInteger)))
 		body: (block))
 	(switchLabel
-		case: (caseMatch (expression (literal (literalInteger))))
+		case: (caseMatch (expression (literalInteger)))
 		body: (block))
 	(switchLabel
-		case: (caseMatch (expression (literal (literalInteger))))
+		case: (caseMatch (expression (literalInteger)))
 		body: (block))
 	(switchLabel
-		case: (caseMatch (expression (literal (literalInteger))))
+		case: (caseMatch (expression (literalInteger)))
 		body: (block))
 	(switchLabel
-		case: (caseMatch (expression (literal (literalInteger))))
+		case: (caseMatch (expression (literalInteger)))
 		body: (block))
 	(switchLabel
-		case: (caseMatch (expression (literal (literalInteger))))
+		case: (caseMatch (expression (literalInteger)))
 		body: (block))
 	(switchLabel
-		case: (caseMatch (expression (literal (literalBool))))
+		case: (caseMatch (expression (literalBool)))
 		body: (block))
 	(switchLabel
-		case: (caseMatch (expression (literal (literalBool))))
+		case: (caseMatch (expression (literalBool)))
 		body: (block))
 	(switchLabel
-		case: (caseMatch (expression (literal (literalBool))))
+		case: (caseMatch (expression (literalBool)))
 		body: (block))
 	(switchLabel
-		case: (caseMatch (expression (literal (literalBool))))
+		case: (caseMatch (expression (literalBool)))
 		body: (block))
 	(switchLabel
-		case: (caseMatch (expression (literal (literalInteger))))
-		body: (block))
-	(switchLabel
-		case: (caseMatch (expression (identifier)))
+		case: (caseMatch (expression (literalInteger)))
 		body: (block))
 	(switchLabel
 		case: (caseMatch (expression (identifier)))
 		body: (block))
 	(switchLabel
-		case: (caseMatch (expression (literal (literalInteger))))
+		case: (caseMatch (expression (identifier)))
+		body: (block))
+	(switchLabel
+		case: (caseMatch (expression (literalInteger)))
 		body: (block))
 	(switchLabel
 		case: (caseMatch (expression (identifier)))
@@ -94,23 +94,23 @@ if x {
 		body: (block))
 	(switchLabel
 		case: (caseMatch
-			(caseMatch (expression (literal (literalInteger))))
-			(caseMatch (expression (literal (literalInteger)))))
+			(caseMatch (expression (literalInteger)))
+			(caseMatch (expression (literalInteger))))
 		body: (block))
 	(switchLabel
 		case: (caseMatch
-			(caseMatch (expression (literal (literalInteger))))
-			(caseMatch (expression (literal (literalInteger)))))
+			(caseMatch (expression (literalInteger)))
+			(caseMatch (expression (literalInteger))))
 		body: (block))
 	(switchLabel
 		case: (caseMatch
-			(caseMatch (expression (literal (literalInteger))))
-			(caseMatch (expression (literal (literalInteger)))))
+			(caseMatch (expression (literalInteger)))
+			(caseMatch (expression (literalInteger))))
 		body: (block))
 	(switchLabel
 		case: (caseMatch
-			(caseMatch (expression (literal (literalInteger))))
-			(caseMatch (expression (literal (literalInteger)))))
+			(caseMatch (expression (literalInteger)))
+			(caseMatch (expression (literalInteger))))
 		body: (block))))))
 
 ================================================================================
@@ -124,7 +124,7 @@ if x {
 	subject: (expression (identifier))
 	(switchBlock
 		(switchLabel
-			case: (caseMatch (expression (literal (literalInteger))))
+			case: (caseMatch (expression (literalInteger)))
 			body: (block)))
 	elseBody: (block))))
 

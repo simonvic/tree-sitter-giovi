@@ -22,5 +22,5 @@ repeat if true {}
 (program
 	(statement
 		(repeatStatement
-			condition: (expression (literal (literalBool)))
+			condition: (expression (literalBool))
 			body: (block))))

@@ -101,7 +101,9 @@ module.exports = grammar({
 
   supertypes: $ => [
     $.comment,
-    $.doc
+    $.doc,
+    $.literal,
+    // TODO: eventually add expressions and statements
   ],
 
   rules: {

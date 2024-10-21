@@ -40,7 +40,7 @@ Foo <i Int default 69>
 		(structFieldDefinition
 			(identifier)
 			(type (typeIdentifier))
-			(defaultDefinition (expression (literal (literalInteger)))))))))
+			(defaultDefinition (expression (literalInteger))))))))
 
 ================================================================================
 struct with multiple fields
@@ -74,8 +74,8 @@ Foo <
 		(structFieldDefinition
 			(identifier)
 			(type (typeIdentifier))
-			(defaultDefinition (expression (literal (literalInteger)))))
+			(defaultDefinition (expression (literalInteger))))
 		(structFieldDefinition
 			(identifier)
 			(type (typeIdentifier))
-			(defaultDefinition (expression (literal (literalInteger)))))))))
+			(defaultDefinition (expression (literalInteger))))))))

@@ -12,7 +12,7 @@ someList@69()
 --------------------------------------------------------------------------------
 (program (statement (functionCall (expression (expressionAccess
 	(expression (identifier))
-	(literal (literalInteger)))))))
+	(literalInteger))))))
 
 ================================================================================
 invocation with argument

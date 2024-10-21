@@ -8,6 +8,6 @@ bool
 --------------------------------------------------------------------------------
 
 (program
-	(statement (returnStatement (expression (literal (literalBool)))))
-	(statement (returnStatement (expression (literal (literalBool))))))
+	(statement (returnStatement (expression (literalBool))))
+	(statement (returnStatement (expression (literalBool)))))
 
