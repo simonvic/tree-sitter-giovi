@@ -1147,10 +1147,6 @@
           "named": true
         },
         {
-          "type": "statement",
-          "named": true
-        },
-        {
           "type": "structDefinition",
           "named": true
         },

@@ -145,62 +145,70 @@
       }
     },
     "statement": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "statement"
-            },
-            {
-              "type": "STRING",
-              "value": ";"
-            }
-          ]
-        },
-        {
-          "type": "SYMBOL",
-          "name": "ifStatement"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "switchStatement"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "repeatStatement"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "forStatement"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "skipStatement"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "breakStatement"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "redirection"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_declaration"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "returnStatement"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "functionCall"
-        }
-      ]
+      "type": "PREC_LEFT",
+      "value": 0,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "ifStatement"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "switchStatement"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "repeatStatement"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "forStatement"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "skipStatement"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "breakStatement"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "redirection"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_declaration"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "returnStatement"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "functionCall"
+              }
+            ]
+          },
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "STRING",
+                "value": ";"
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
+          }
+        ]
+      }
     },
     "_declaration": {
       "type": "CHOICE",
@@ -224,21 +232,17 @@
       ]
     },
     "_statementOrBlock": {
-      "type": "PREC_LEFT",
-      "value": 0,
-      "content": {
-        "type": "CHOICE",
-        "members": [
-          {
-            "type": "SYMBOL",
-            "name": "statement"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "block"
-          }
-        ]
-      }
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "statement"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "block"
+        }
+      ]
     },
     "structDefinition": {
       "type": "SEQ",

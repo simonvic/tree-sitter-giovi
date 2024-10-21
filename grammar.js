@@ -134,19 +134,21 @@ module.exports = grammar({
       '#', /[^\n]*/
     ))),
 
-    statement: $ => choice(
-      seq($.statement, ';'),
-      $.ifStatement,
-      $.switchStatement,
-      $.repeatStatement,
-      $.forStatement,
-      $.skipStatement,
-      $.breakStatement,
-      $.redirection,
-      $._declaration,
-      $.returnStatement,
-      $.functionCall,
-    ),
+    statement: $ => prec.left(seq(
+      choice(
+        $.ifStatement,
+        $.switchStatement,
+        $.repeatStatement,
+        $.forStatement,
+        $.skipStatement,
+        $.breakStatement,
+        $.redirection,
+        $._declaration,
+        $.returnStatement,
+        $.functionCall,
+      ),
+      optional(';')
+    )),
 
     _declaration: $ => choice(
       $.structDefinition,
@@ -155,10 +157,10 @@ module.exports = grammar({
       $.functionDeclaration,
     ),
 
-    _statementOrBlock: $ => prec.left(choice(
+    _statementOrBlock: $ => choice(
       $.statement,
       $.block
-    )),
+    ),
 
     structDefinition: $ => seq(
       optional(seq(field("parentType", $.typeIdentifier), ':')),
