@@ -1,7 +1,6 @@
 ================================================================================
 multi if
 ================================================================================
-
 if x {
 	< 69 do {}
 	<= 69 do {}
@@ -32,109 +31,117 @@ if x {
 	= 69 or = 420 do {}
 	= 69 | = 420 do {}
 }
-
 --------------------------------------------------------------------------------
+(program (statement (switchStatement
+	subject: (expression (identifier))
+	(switchBlock
+	(switchLabel
+		case: (caseMatch (expression (literal (literalInteger))))
+		body: (block))
+	(switchLabel
+		case: (caseMatch (expression (literal (literalInteger))))
+		body: (block))
+	(switchLabel
+		case: (caseMatch (expression (literal (literalInteger))))
+		body: (block))
+	(switchLabel
+		case: (caseMatch (expression (literal (literalInteger))))
+		body: (block))
+	(switchLabel
+		case: (caseMatch (expression (literal (literalInteger))))
+		body: (block))
+	(switchLabel
+		case: (caseMatch (expression (literal (literalInteger))))
+		body: (block))
+	(switchLabel
+		case: (caseMatch (expression (literal (literalBool))))
+		body: (block))
+	(switchLabel
+		case: (caseMatch (expression (literal (literalBool))))
+		body: (block))
+	(switchLabel
+		case: (caseMatch (expression (literal (literalBool))))
+		body: (block))
+	(switchLabel
+		case: (caseMatch (expression (literal (literalBool))))
+		body: (block))
+	(switchLabel
+		case: (caseMatch (expression (literal (literalInteger))))
+		body: (block))
+	(switchLabel
+		case: (caseMatch (expression (identifier)))
+		body: (block))
+	(switchLabel
+		case: (caseMatch (expression (identifier)))
+		body: (block))
+	(switchLabel
+		case: (caseMatch (expression (literal (literalInteger))))
+		body: (block))
+	(switchLabel
+		case: (caseMatch (expression (identifier)))
+		body: (block))
+	(switchLabel
+		case: (caseMatch (expression (identifier)))
+		body: (block))
+	(switchLabel
+		case: (caseMatch (type (typeIdentifier)))
+		body: (block))
+	(switchLabel
+		case: (caseMatch (identifier) (type (typeIdentifier)))
+		body: (block))
+	(switchLabel
+		case: (caseMatch (type (typeIdentifier)))
+		body: (block))
+	(switchLabel
+		case: (caseMatch
+			(caseMatch (expression (literal (literalInteger))))
+			(caseMatch (expression (literal (literalInteger)))))
+		body: (block))
+	(switchLabel
+		case: (caseMatch
+			(caseMatch (expression (literal (literalInteger))))
+			(caseMatch (expression (literal (literalInteger)))))
+		body: (block))
+	(switchLabel
+		case: (caseMatch
+			(caseMatch (expression (literal (literalInteger))))
+			(caseMatch (expression (literal (literalInteger)))))
+		body: (block))
+	(switchLabel
+		case: (caseMatch
+			(caseMatch (expression (literal (literalInteger))))
+			(caseMatch (expression (literal (literalInteger)))))
+		body: (block))))))
 
-(program
-	(statement
-		(switchStatement
-			subject: (expression (identifier))
-			(switchBlock
-				(switchLabel
-					case: (caseMatch (expression (literal (literalInteger))))
-					body: (block))
-				(switchLabel
-					case: (caseMatch (expression (literal (literalInteger))))
-					body: (block))
-				(switchLabel
-					case: (caseMatch (expression (literal (literalInteger))))
-					body: (block))
-				(switchLabel
-					case: (caseMatch (expression (literal (literalInteger))))
-					body: (block))
-				(switchLabel
-					case: (caseMatch (expression (literal (literalInteger))))
-					body: (block))
-				(switchLabel
-					case: (caseMatch (expression (literal (literalInteger))))
-					body: (block))
-				(switchLabel
-					case: (caseMatch (expression (literal (literalBool))))
-					body: (block))
-				(switchLabel
-					case: (caseMatch (expression (literal (literalBool))))
-					body: (block))
-				(switchLabel
-					case: (caseMatch (expression (literal (literalBool))))
-					body: (block))
-				(switchLabel
-					case: (caseMatch (expression (literal (literalBool))))
-					body: (block))
-				(switchLabel
-					case: (caseMatch (expression (literal (literalInteger))))
-					body: (block))
-				(switchLabel
-					case: (caseMatch (expression (identifier)))
-					body: (block))
-				(switchLabel
-					case: (caseMatch (expression (identifier)))
-					body: (block))
-				(switchLabel
-					case: (caseMatch (expression (literal (literalInteger))))
-					body: (block))
-				(switchLabel
-					case: (caseMatch (expression (identifier)))
-					body: (block))
-				(switchLabel
-					case: (caseMatch (expression (identifier)))
-					body: (block))
-				(switchLabel
-					case: (caseMatch (type (typeIdentifier)))
-					body: (block))
-				(switchLabel
-					case: (caseMatch (identifier) (type (typeIdentifier)))
-					body: (block))
-				(switchLabel
-					case: (caseMatch (type (typeIdentifier)))
-					body: (block))
-				(switchLabel
-					case: (caseMatch
-						(caseMatch (expression (literal (literalInteger))))
-						(caseMatch (expression (literal (literalInteger)))))
-					body: (block))
-				(switchLabel
-					case: (caseMatch
-						(caseMatch (expression (literal (literalInteger))))
-						(caseMatch (expression (literal (literalInteger)))))
-					body: (block))
-				(switchLabel
-					case: (caseMatch
-						(caseMatch (expression (literal (literalInteger))))
-						(caseMatch (expression (literal (literalInteger)))))
-					body: (block))
-				(switchLabel
-					case: (caseMatch
-						(caseMatch (expression (literal (literalInteger))))
-						(caseMatch (expression (literal (literalInteger)))))
-					body: (block))))))
 ================================================================================
 multi if with else
 ================================================================================
-
 if x {
 	= 69 do {}
-} else {
-
-}
-
+} else { }
 --------------------------------------------------------------------------------
+(program (statement (switchStatement
+	subject: (expression (identifier))
+	(switchBlock
+		(switchLabel
+			case: (caseMatch (expression (literal (literalInteger))))
+			body: (block)))
+	elseBody: (block))))
 
-(program
-	(statement
-		(switchStatement
-			subject: (expression (identifier))
-			(switchBlock
-				(switchLabel
-					case: (caseMatch (expression (literal (literalInteger))))
-					body: (block)))
-			elseBody: (block))))
+================================================================================
+multi if with return statements
+================================================================================
+if x {
+	= a do => a
+	= b do => b
+}
+--------------------------------------------------------------------------------
+(program (statement (switchStatement
+	subject: (expression (identifier))
+	(switchBlock
+		(switchLabel
+			case: (caseMatch (expression (identifier)))
+			body: (block))
+		(switchLabel
+			case: (caseMatch (expression (identifier)))
+			body: (block)))
