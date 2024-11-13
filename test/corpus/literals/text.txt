@@ -6,8 +6,12 @@ simple text
 => "69"
 => "😀"
 => "#"
+=> "$"
+=> "$ awf"
 --------------------------------------------------------------------------------
 (program
+	(statement (returnStatement (expression (literalText))))
+	(statement (returnStatement (expression (literalText))))
 	(statement (returnStatement (expression (literalText))))
 	(statement (returnStatement (expression (literalText))))
 	(statement (returnStatement (expression (literalText))))
@@ -44,7 +48,7 @@ text with interpolation
 => "hello ${a + b} world"
 --------------------------------------------------------------------------------
 (program
-	(statement (returnStatement (expression (literalText (textInterpolation (identifier))))))
+	(statement (returnStatement (expression (literalText (textInterpolation)))))
 	(statement (returnStatement (expression (literalText (textInterpolation (expression (identifier)))))))
 	(statement (returnStatement (expression (literalText (textInterpolation (expression
 		(expressionBinary
@@ -77,7 +81,7 @@ text block with interpolation
 => "{hello ${a + b} world}"
 --------------------------------------------------------------------------------
 (program
-	(statement (returnStatement (expression (literalTextBlock (textInterpolation (identifier))))))
+	(statement (returnStatement (expression (literalTextBlock (textInterpolation)))))
 	(statement (returnStatement (expression (literalTextBlock (textInterpolation (expression (identifier)))))))
 	(statement (returnStatement (expression (literalTextBlock (textInterpolation (expression
 		(expressionBinary

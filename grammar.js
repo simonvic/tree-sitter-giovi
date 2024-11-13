@@ -528,14 +528,15 @@ module.exports = grammar({
     )),
 
     textInterpolation: $ => choice(
-      seq('$', $._anyIdentifier),
+      seq('$', token.immediate(choice(IDENTIFIER, ALLUPPERCASE_IDENTIFIER))),
       seq('${', $.expression, '}'),
     ),
 
     literalText: $ => seq(
       '"',
       repeat(choice(
-        /[^"\\$]/,
+        '$',
+        /[^"\\]/,
         $.escapeSequence,
         $.textInterpolation,
       )),
@@ -545,6 +546,7 @@ module.exports = grammar({
     literalTextBlock: $ => seq(
       '"{',
       repeat(choice(
+        '$',
         /[^\\]/,
         $.escapeSequence,
         $.textInterpolation
