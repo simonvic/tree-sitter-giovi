@@ -221,17 +221,40 @@ module.exports = grammar({
     )),
 
     switchStatement: $ => prec.right(seq(
-      'if', field('subject', $.expression), $.switchBlock,
-      optional(seq('else', field('elseBody', $._statementOrBlock)))
+      'if',
+      field("subject", $.expression),
+      field("body", $.switchBlock),
+      optional(seq(
+        "else",
+        field("elseBody", $._statementOrBlock)
+      ))
     )),
 
     switchBlock: $ => seq('{', repeat1($.switchLabel), '}'),
-    switchLabel: $ => seq(field("case", $.caseMatch), 'do', field("body", $._statementOrBlock)),
+    switchLabel: $ => prec(1, seq(
+      field("cases", $.cases),
+      optional(seq(
+        'when',
+        field("guard", $.expression)
+      )),
+      'do',
+      field("body", $._statementOrBlock)
+    )),
 
-    caseMatch: $ => prec.left(1, choice(
-      seq('{', field("case", $.caseMatch), '}'),
-      seq($.caseMatch, field("bop", choice('and', '&', 'or', '|')), $.caseMatch),
-      seq($.caseMatch, 'when', field("guard", $.expression)),
+    cases: $ => seq(
+      $._caseMatch,
+      repeat(seq(
+        choice('and', '&', 'or', '|'),
+        $._caseMatch
+      )),
+    ),
+
+    _caseMatch: $ => choice(
+      $._caseMatchParenthesized,
+      $.caseMatch,
+    ),
+    _caseMatchParenthesized: $ => seq('{', $.caseMatch, '}'),
+    caseMatch: $ => prec(99, choice(
       seq(choice('<', '<=', '>=', '>', '=', '!=', 'and', '&', 'or', '|'), $.expression),
       seq(optional('not'), choice('in', '=~', '~='), $.expression),
       seq('is', optional(choice('not', $.identifier)), $.type),

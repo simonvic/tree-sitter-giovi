@@ -8,110 +8,142 @@ if x {
 	> 69 do {}
 	= 69 do {}
 	!= 69 do {}
-
 	and true do {}
 	& true do {}
 	or true do {}
 	| true do {}
-
 	=~ 69 do {}
 	~= list do {}
 	in list do {}
-
 	not =~ 69 do {}
 	not ~= list do {}
 	not in list do {}
-
 	is Type do {}
 	is x Type do {}
 	is not Type do {}
+}
+--------------------------------------------------------------------------------
+(program (statement (switchStatement
+	subject: (expression (identifier))
+	body: (switchBlock
+		(switchLabel
+			cases: (cases (caseMatch (expression (literalInteger))))
+			body: (block))
+		(switchLabel
+			cases: (cases (caseMatch (expression (literalInteger))))
+			body: (block))
+		(switchLabel
+			cases: (cases (caseMatch (expression (literalInteger))))
+			body: (block))
+		(switchLabel
+			cases: (cases (caseMatch (expression (literalInteger))))
+			body: (block))
+		(switchLabel
+			cases: (cases (caseMatch (expression (literalInteger))))
+			body: (block))
+		(switchLabel
+			cases: (cases (caseMatch (expression (literalInteger))))
+			body: (block))
+		(switchLabel
+			cases: (cases (caseMatch (expression (literalBool))))
+			body: (block))
+		(switchLabel
+			cases: (cases (caseMatch (expression (literalBool))))
+			body: (block))
+		(switchLabel
+			cases: (cases (caseMatch (expression (literalBool))))
+			body: (block))
+		(switchLabel
+			cases: (cases (caseMatch (expression (literalBool))))
+			body: (block))
+		(switchLabel
+			cases: (cases (caseMatch (expression (literalInteger))))
+			body: (block))
+		(switchLabel
+			cases: (cases (caseMatch (expression (identifier))))
+			body: (block))
+		(switchLabel
+			cases: (cases (caseMatch (expression (identifier))))
+			body: (block))
+		(switchLabel
+			cases: (cases (caseMatch (expression (literalInteger))))
+			body: (block))
+		(switchLabel
+			cases: (cases (caseMatch (expression (identifier))))
+			body: (block))
+		(switchLabel
+			cases: (cases (caseMatch (expression (identifier))))
+			body: (block))
+		(switchLabel
+			cases: (cases (caseMatch (type (typeIdentifier))))
+			body: (block))
+		(switchLabel
+			cases: (cases (caseMatch (identifier) (type (typeIdentifier))))
+			body: (block))
+		(switchLabel
+			cases: (cases (caseMatch (type (typeIdentifier))))
+			body: (block))))))
 
+================================================================================
+multi if with multi cases
+================================================================================
+if x {
 	= 69 and = 420 do {}
 	= 69 & = 420 do {}
 	= 69 or = 420 do {}
 	= 69 | = 420 do {}
 }
 --------------------------------------------------------------------------------
-(program (statement (switchStatement
-	subject: (expression (identifier))
-	(switchBlock
-	(switchLabel
-		case: (caseMatch (expression (literalInteger)))
-		body: (block))
-	(switchLabel
-		case: (caseMatch (expression (literalInteger)))
-		body: (block))
-	(switchLabel
-		case: (caseMatch (expression (literalInteger)))
-		body: (block))
-	(switchLabel
-		case: (caseMatch (expression (literalInteger)))
-		body: (block))
-	(switchLabel
-		case: (caseMatch (expression (literalInteger)))
-		body: (block))
-	(switchLabel
-		case: (caseMatch (expression (literalInteger)))
-		body: (block))
-	(switchLabel
-		case: (caseMatch (expression (literalBool)))
-		body: (block))
-	(switchLabel
-		case: (caseMatch (expression (literalBool)))
-		body: (block))
-	(switchLabel
-		case: (caseMatch (expression (literalBool)))
-		body: (block))
-	(switchLabel
-		case: (caseMatch (expression (literalBool)))
-		body: (block))
-	(switchLabel
-		case: (caseMatch (expression (literalInteger)))
-		body: (block))
-	(switchLabel
-		case: (caseMatch (expression (identifier)))
-		body: (block))
-	(switchLabel
-		case: (caseMatch (expression (identifier)))
-		body: (block))
-	(switchLabel
-		case: (caseMatch (expression (literalInteger)))
-		body: (block))
-	(switchLabel
-		case: (caseMatch (expression (identifier)))
-		body: (block))
-	(switchLabel
-		case: (caseMatch (expression (identifier)))
-		body: (block))
-	(switchLabel
-		case: (caseMatch (type (typeIdentifier)))
-		body: (block))
-	(switchLabel
-		case: (caseMatch (identifier) (type (typeIdentifier)))
-		body: (block))
-	(switchLabel
-		case: (caseMatch (type (typeIdentifier)))
-		body: (block))
-	(switchLabel
-		case: (caseMatch
-			(caseMatch (expression (literalInteger)))
-			(caseMatch (expression (literalInteger))))
-		body: (block))
-	(switchLabel
-		case: (caseMatch
-			(caseMatch (expression (literalInteger)))
-			(caseMatch (expression (literalInteger))))
-		body: (block))
-	(switchLabel
-		case: (caseMatch
-			(caseMatch (expression (literalInteger)))
-			(caseMatch (expression (literalInteger))))
-		body: (block))
-	(switchLabel
-		case: (caseMatch
-			(caseMatch (expression (literalInteger)))
-			(caseMatch (expression (literalInteger))))
-		body: (block))))))
+(program
+	(statement (switchStatement
+		subject: (expression (identifier))
+		body: (switchBlock
+			(switchLabel
+				cases: (cases
+					(caseMatch (expression (literalInteger)))
+					(caseMatch (expression (literalInteger))))
+				body: (block))
+			(switchLabel
+				cases: (cases
+					(caseMatch (expression (literalInteger)))
+					(caseMatch (expression (literalInteger))))
+				body: (block))
+			(switchLabel
+				cases: (cases
+					(caseMatch (expression (literalInteger)))
+					(caseMatch (expression (literalInteger))))
+				body: (block))
+			(switchLabel
+				cases: (cases
+					(caseMatch (expression (literalInteger)))
+					(caseMatch (expression (literalInteger))))
+				body: (block))))))
+
+================================================================================
+multi if with guards
+================================================================================
+if x {
+	= 69 when true do {}
+	= 69 or = 420 when true and true do {}
+}
+--------------------------------------------------------------------------------
+(program
+	(statement (switchStatement
+		subject: (expression (identifier))
+		body: (switchBlock
+			(switchLabel
+				cases: (cases
+					(caseMatch (expression (literalInteger))))
+				guard: (expression (literalBool))
+				body: (block))
+			(switchLabel
+				cases: (cases
+					(caseMatch (expression (literalInteger)))
+					(caseMatch (expression (literalInteger))))
+				guard: (expression (expressionBinary
+					(expression (literalBool))
+					(expression (literalBool))))
+				body: (block))))))
 
 ================================================================================
 multi if with else
@@ -122,9 +154,9 @@ if x {
 --------------------------------------------------------------------------------
 (program (statement (switchStatement
 	subject: (expression (identifier))
-	(switchBlock
+	body: (switchBlock
 		(switchLabel
-			case: (caseMatch (expression (literalInteger)))
+			cases: (cases (caseMatch (expression (literalInteger))))
 			body: (block)))
 	elseBody: (block))))
 
@@ -138,10 +170,10 @@ if x {
 --------------------------------------------------------------------------------
 (program (statement (switchStatement
 	subject: (expression (identifier))
-	(switchBlock
+	body: (switchBlock
 		(switchLabel
-			case: (caseMatch (expression (identifier)))
-			body: (block))
+			cases: (cases (caseMatch (expression (identifier))))
+			body: (statement (returnStatement (expression (identifier)))))
 		(switchLabel
-			case: (caseMatch (expression (identifier)))
-			body: (block)))
+			cases: (cases (caseMatch (expression (identifier))))
+			body: (statement (returnStatement (expression (identifier)))))))))

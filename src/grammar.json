@@ -706,8 +706,12 @@
             }
           },
           {
-            "type": "SYMBOL",
-            "name": "switchBlock"
+            "type": "FIELD",
+            "name": "body",
+            "content": {
+              "type": "SYMBOL",
+              "name": "switchBlock"
+            }
           },
           {
             "type": "CHOICE",
@@ -758,116 +762,137 @@
       ]
     },
     "switchLabel": {
+      "type": "PREC",
+      "value": 1,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "FIELD",
+            "name": "cases",
+            "content": {
+              "type": "SYMBOL",
+              "name": "cases"
+            }
+          },
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "STRING",
+                    "value": "when"
+                  },
+                  {
+                    "type": "FIELD",
+                    "name": "guard",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "expression"
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
+          },
+          {
+            "type": "STRING",
+            "value": "do"
+          },
+          {
+            "type": "FIELD",
+            "name": "body",
+            "content": {
+              "type": "SYMBOL",
+              "name": "_statementOrBlock"
+            }
+          }
+        ]
+      }
+    },
+    "cases": {
       "type": "SEQ",
       "members": [
         {
-          "type": "FIELD",
-          "name": "case",
-          "content": {
-            "type": "SYMBOL",
-            "name": "caseMatch"
-          }
+          "type": "SYMBOL",
+          "name": "_caseMatch"
         },
         {
-          "type": "STRING",
-          "value": "do"
-        },
-        {
-          "type": "FIELD",
-          "name": "body",
+          "type": "REPEAT",
           "content": {
-            "type": "SYMBOL",
-            "name": "_statementOrBlock"
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "STRING",
+                    "value": "and"
+                  },
+                  {
+                    "type": "STRING",
+                    "value": "&"
+                  },
+                  {
+                    "type": "STRING",
+                    "value": "or"
+                  },
+                  {
+                    "type": "STRING",
+                    "value": "|"
+                  }
+                ]
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_caseMatch"
+              }
+            ]
           }
         }
       ]
     },
+    "_caseMatch": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_caseMatchParenthesized"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "caseMatch"
+        }
+      ]
+    },
+    "_caseMatchParenthesized": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "{"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "caseMatch"
+        },
+        {
+          "type": "STRING",
+          "value": "}"
+        }
+      ]
+    },
     "caseMatch": {
-      "type": "PREC_LEFT",
-      "value": 1,
+      "type": "PREC",
+      "value": 99,
       "content": {
         "type": "CHOICE",
         "members": [
-          {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "STRING",
-                "value": "{"
-              },
-              {
-                "type": "FIELD",
-                "name": "case",
-                "content": {
-                  "type": "SYMBOL",
-                  "name": "caseMatch"
-                }
-              },
-              {
-                "type": "STRING",
-                "value": "}"
-              }
-            ]
-          },
-          {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "SYMBOL",
-                "name": "caseMatch"
-              },
-              {
-                "type": "FIELD",
-                "name": "bop",
-                "content": {
-                  "type": "CHOICE",
-                  "members": [
-                    {
-                      "type": "STRING",
-                      "value": "and"
-                    },
-                    {
-                      "type": "STRING",
-                      "value": "&"
-                    },
-                    {
-                      "type": "STRING",
-                      "value": "or"
-                    },
-                    {
-                      "type": "STRING",
-                      "value": "|"
-                    }
-                  ]
-                }
-              },
-              {
-                "type": "SYMBOL",
-                "name": "caseMatch"
-              }
-            ]
-          },
-          {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "SYMBOL",
-                "name": "caseMatch"
-              },
-              {
-                "type": "STRING",
-                "value": "when"
-              },
-              {
-                "type": "FIELD",
-                "name": "guard",
-                "content": {
-                  "type": "SYMBOL",
-                  "name": "expression"
-                }
-              }
-            ]
-          },
           {
             "type": "SEQ",
             "members": [

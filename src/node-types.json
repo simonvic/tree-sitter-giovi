@@ -63,58 +63,11 @@
   {
     "type": "caseMatch",
     "named": true,
-    "fields": {
-      "bop": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "&",
-            "named": false
-          },
-          {
-            "type": "and",
-            "named": false
-          },
-          {
-            "type": "or",
-            "named": false
-          },
-          {
-            "type": "|",
-            "named": false
-          }
-        ]
-      },
-      "case": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "caseMatch",
-            "named": true
-          }
-        ]
-      },
-      "guard": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "expression",
-            "named": true
-          }
-        ]
-      }
-    },
+    "fields": {},
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
-        {
-          "type": "caseMatch",
-          "named": true
-        },
         {
           "type": "expression",
           "named": true
@@ -125,6 +78,21 @@
         },
         {
           "type": "type",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "cases",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "caseMatch",
           "named": true
         }
       ]
@@ -1316,12 +1284,22 @@
           }
         ]
       },
-      "case": {
+      "cases": {
         "multiple": false,
         "required": true,
         "types": [
           {
-            "type": "caseMatch",
+            "type": "cases",
+            "named": true
+          }
+        ]
+      },
+      "guard": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "expression",
             "named": true
           }
         ]
@@ -1332,6 +1310,16 @@
     "type": "switchStatement",
     "named": true,
     "fields": {
+      "body": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "switchBlock",
+            "named": true
+          }
+        ]
+      },
       "elseBody": {
         "multiple": false,
         "required": false,
@@ -1356,16 +1344,6 @@
           }
         ]
       }
-    },
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "switchBlock",
-          "named": true
-        }
-      ]
     }
   },
   {
