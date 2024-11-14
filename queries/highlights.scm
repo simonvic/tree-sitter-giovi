@@ -81,7 +81,7 @@
 ] @constant.builtin
 
 (functionDeclaration (identifier) @function)
-(functionCall (expression (identifier) @function.call))
+(invocation (expression (identifier) @function.call))
 (expressionFunctionCall (expression (identifier) @function.call))
 
 (structFields ["<" ">"] @punctuation)

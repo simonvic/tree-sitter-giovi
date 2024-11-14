@@ -227,10 +227,6 @@
           "named": true
         },
         {
-          "type": "expressionFunctionCall",
-          "named": true
-        },
-        {
           "type": "expressionPrefixed",
           "named": true
         },
@@ -244,6 +240,10 @@
         },
         {
           "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "invocation",
           "named": true
         },
         {
@@ -393,25 +393,6 @@
         },
         {
           "type": "typeIdentifier",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "expressionFunctionCall",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "actualParameters",
-          "named": true
-        },
-        {
-          "type": "expression",
           "named": true
         }
       ]
@@ -591,25 +572,6 @@
     }
   },
   {
-    "type": "functionCall",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "actualParameters",
-          "named": true
-        },
-        {
-          "type": "expression",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "functionDeclaration",
     "named": true,
     "fields": {
@@ -697,6 +659,25 @@
           }
         ]
       }
+    }
+  },
+  {
+    "type": "invocation",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "actualParameters",
+          "named": true
+        },
+        {
+          "type": "expression",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -1114,15 +1095,15 @@
           "named": true
         },
         {
-          "type": "functionCall",
-          "named": true
-        },
-        {
           "type": "functionDeclaration",
           "named": true
         },
         {
           "type": "ifStatement",
+          "named": true
+        },
+        {
+          "type": "invocation",
           "named": true
         },
         {

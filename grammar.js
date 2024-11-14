@@ -146,7 +146,7 @@ module.exports = grammar({
         $.redirection,
         $._declaration,
         $.returnStatement,
-        $.functionCall,
+        $.invocation,
       ),
       optional(';')
     )),
@@ -211,9 +211,7 @@ module.exports = grammar({
 
     returnStatement: $ => seq(choice('return', '=>'), optional($.expression)),
 
-    functionCall: $ => prec(PREC.INVOCATION, seq(
-      $.expression, $.actualParameters
-    )),
+    invocation: $ => prec(PREC.INVOCATION, seq($.expression, $.actualParameters)),
 
     actualParameters: $ => seq(
       '(',
@@ -368,7 +366,7 @@ module.exports = grammar({
       alias($.expressionCreationMap, $.map),
       alias($.expressionCreationStruct, $.struct),
       $.expressionRef,
-      alias($.functionCall, $.expressionFunctionCall),
+      $.invocation,
       $.expressionDot,
       $.expressionAccess,
       $.expressionBinary,

@@ -15,7 +15,7 @@
 ; blocks
 (block) @block.outer
 
-(functionCall) @call.outer
+(invocation) @call.outer
 
 (formalParameters
   "," @_start

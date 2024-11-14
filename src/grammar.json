@@ -191,7 +191,7 @@
               },
               {
                 "type": "SYMBOL",
-                "name": "functionCall"
+                "name": "invocation"
               }
             ]
           },
@@ -566,7 +566,7 @@
         }
       ]
     },
-    "functionCall": {
+    "invocation": {
       "type": "PREC",
       "value": 10,
       "content": {
@@ -1746,13 +1746,8 @@
           "name": "expressionRef"
         },
         {
-          "type": "ALIAS",
-          "content": {
-            "type": "SYMBOL",
-            "name": "functionCall"
-          },
-          "named": true,
-          "value": "expressionFunctionCall"
+          "type": "SYMBOL",
+          "name": "invocation"
         },
         {
           "type": "SYMBOL",

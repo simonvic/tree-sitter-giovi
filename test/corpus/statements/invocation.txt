@@ -4,7 +4,7 @@ simple invocation
 f()
 --------------------------------------------------------------------------------
 (program (statement
-	(functionCall
+	(invocation
 		(expression (identifier))
 		(actualParameters))))
 
@@ -14,7 +14,7 @@ invocation from expression
 someList@69()
 --------------------------------------------------------------------------------
 (program (statement
-	(functionCall
+	(invocation
 		(expression (expressionAccess
 			(expression (identifier))
 			(literalInteger)))
@@ -25,7 +25,7 @@ invocation with argument
 ================================================================================
 f(a)
 --------------------------------------------------------------------------------
-(program (statement (functionCall
+(program (statement (invocation
 	(expression (identifier))
 	(actualParameters
 		(actualParameter (expression (identifier)))))))
@@ -35,7 +35,7 @@ invocation with labeled argument
 ================================================================================
 f(l: a)
 --------------------------------------------------------------------------------
-(program (statement (functionCall
+(program (statement (invocation
 	(expression (identifier))
 	(actualParameters
 		(actualParameter
@@ -47,7 +47,7 @@ invocation with arguments
 ================================================================================
 f(a,b,)
 --------------------------------------------------------------------------------
-(program (statement (functionCall
+(program (statement (invocation
 	(expression (identifier))
 	(actualParameters
 		(actualParameter (expression (identifier)))
@@ -58,7 +58,7 @@ invocation with labeled arguments
 ================================================================================
 f(l1: a, l2: b)
 --------------------------------------------------------------------------------
-(program (statement (functionCall
+(program (statement (invocation
 	(expression (identifier))
 	(actualParameters
 		(actualParameter
