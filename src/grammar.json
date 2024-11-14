@@ -889,7 +889,7 @@
     },
     "caseMatch": {
       "type": "PREC",
-      "value": 99,
+      "value": 2,
       "content": {
         "type": "CHOICE",
         "members": [

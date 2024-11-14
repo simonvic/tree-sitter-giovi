@@ -254,7 +254,7 @@ module.exports = grammar({
       $.caseMatch,
     ),
     _caseMatchParenthesized: $ => seq('{', $.caseMatch, '}'),
-    caseMatch: $ => prec(99, choice(
+    caseMatch: $ => prec(2, choice(
       seq(choice('<', '<=', '>=', '>', '=', '!=', 'and', '&', 'or', '|'), $.expression),
       seq(optional('not'), choice('in', '=~', '~='), $.expression),
       seq('is', optional(choice('not', $.identifier)), $.type),
