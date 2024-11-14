@@ -1,38 +1,38 @@
 ================================================================================
-with value
+return value
 ================================================================================
 fun() {
 	=> 69
 }
 --------------------------------------------------------------------------------
 (program (statement (functionDeclaration
-	(identifier)
+	name: (identifier)
 	body: (block
 		(statement (returnStatement (expression (literalInteger))))))))
 
 ================================================================================
-with expression
+return expression
 ================================================================================
 fun() {
 	=> 69 + 69
 }
 --------------------------------------------------------------------------------
 (program (statement (functionDeclaration
-	(identifier)
+	name: (identifier)
 	body: (block
 		(statement (returnStatement (expression (expressionBinary
 			(expression (literalInteger))
 			(expression (literalInteger))))))))))
 
 ================================================================================
-with nothing
+return nothing
 ================================================================================
 fun() {
 	return
 }
 --------------------------------------------------------------------------------
 (program (statement (functionDeclaration
-	(identifier)
+	name: (identifier)
 	body: (block
 		(statement (returnStatement))))))
 

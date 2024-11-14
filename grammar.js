@@ -167,7 +167,7 @@ module.exports = grammar({
     structDefinition: $ => seq(
       optional(seq(field("parentType", $.typeIdentifier), ':')),
       field("typename", $.typeIdentifier),
-      $.structBodyDefinition,
+      field("body", $.structBodyDefinition),
     ),
 
     structBodyDefinition: $ => seq(
@@ -184,11 +184,13 @@ module.exports = grammar({
     ),
 
     structFieldDefinition: $ => seq(
-      $.identifier, $.type, optional($.defaultDefinition)
+      field("name", $.identifier),
+      field("type", $.type),
+      field("default", optional($.defaultDefinition))
     ),
 
     functionDeclaration: $ => seq(
-      $.identifier, '(', optional($.formalParameters), ')',
+      field("name", $.identifier), '(', optional($.formalParameters), ')',
       optional(seq('=>', field("returnType", $.type))),
       field("body", $.block)
     ),
@@ -198,7 +200,9 @@ module.exports = grammar({
     ),
 
     formalParameter: $ => seq(
-      $.identifier, $.type, optional($.defaultDefinition)
+      field("name", $.identifier),
+      field("type", $.type),
+      field("default", optional($.defaultDefinition))
     ),
 
     returnStatement: $ => seq(choice('return', '=>'), optional($.expression)),
@@ -330,11 +334,17 @@ module.exports = grammar({
     ),
 
     constantDeclaration: $ => seq(
-      'constant', $.constantIdentifier, $.type, '<-', $.expression
+      'constant',
+      field("name", $.constantIdentifier),
+      field("type", $.type),
+      '<-',
+      field("value", $.expression)
     ),
 
     varDeclaration: $ => seq(
-      $.identifier, $.type, optional($.defaultDefinition)
+      field("name", $.identifier),
+      field("type", $.type),
+      field("default", optional($.defaultDefinition))
     ),
 
     defaultDefinition: $ => seq('default', $.expression),

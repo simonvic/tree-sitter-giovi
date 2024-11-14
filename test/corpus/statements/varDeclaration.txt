@@ -4,8 +4,8 @@ var declaration
 i Int
 --------------------------------------------------------------------------------
 (program (statement (varDeclaration
-	(identifier)
-	(type (typeIdentifier)))))
+	name: (identifier)
+	type: (type (typeIdentifier)))))
 
 ================================================================================
 var declaration with default override
@@ -13,6 +13,6 @@ var declaration with default override
 i Int default 69
 --------------------------------------------------------------------------------
 (program (statement (varDeclaration
-	(identifier)
-	(type (typeIdentifier))
-	(defaultDefinition (expression (literalInteger))))))
+	name: (identifier)
+	type: (type (typeIdentifier))
+	default: (defaultDefinition (expression (literalInteger))))))

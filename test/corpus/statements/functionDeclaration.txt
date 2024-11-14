@@ -1,99 +1,98 @@
 ================================================================================
-simple
+simple function declaration
 ================================================================================
 fun() {}
 --------------------------------------------------------------------------------
 (program (statement (functionDeclaration
-	(identifier)
+	name: (identifier)
 	body: (block))))
 
 ================================================================================
-with return
+function declaration with return
 ================================================================================
 fun() => Int {}
 --------------------------------------------------------------------------------
 (program (statement (functionDeclaration
-	(identifier)
+	name: (identifier)
 	returnType: (type (typeIdentifier))
 	body: (block))))
 
 ================================================================================
-with one arg
+function declaration with one arg
 ================================================================================
 fun(a Int) {}
 --------------------------------------------------------------------------------
 (program (statement (functionDeclaration
-	(identifier)
+	name: (identifier)
 	(formalParameters
 		(formalParameter
-			(identifier)
-			(type (typeIdentifier))))
+			name: (identifier)
+			type: (type (typeIdentifier))))
 	body: (block))))
 
 ================================================================================
-with one arg default
+function declaration with one arg default
 ================================================================================
 fun(a Int default 69) {}
 --------------------------------------------------------------------------------
 (program (statement (functionDeclaration
-	(identifier)
+	name: (identifier)
 	(formalParameters
 		(formalParameter
-			(identifier)
-			(type (typeIdentifier))
-			(defaultDefinition (expression (literalInteger)))))
+			name: (identifier)
+			type: (type (typeIdentifier))
+			default: (defaultDefinition (expression (literalInteger)))))
 	body: (block))))
 
 ================================================================================
-with multiple arg 
+function declaration with multiple arg 
 ================================================================================
 fun(a Int, b Int) {}
 --------------------------------------------------------------------------------
 (program (statement (functionDeclaration
-	(identifier)
+	name: (identifier)
 	(formalParameters
 		(formalParameter
-			(identifier)
-			(type (typeIdentifier)))
+			name: (identifier)
+			type: (type (typeIdentifier)))
 		(formalParameter
-			(identifier)
-			(type (typeIdentifier))))
+			name: (identifier)
+			type: (type (typeIdentifier))))
 	body: (block))))
 
 ================================================================================
-with multiple arg default
+function declaration with multiple arg default
 ================================================================================
 fun(a Int default 69, b Int default 420) {}
 --------------------------------------------------------------------------------
 (program (statement (functionDeclaration
-	(identifier)
+	name: (identifier)
 	(formalParameters
 		(formalParameter
-			(identifier)
-			(type (typeIdentifier))
-			(defaultDefinition (expression (literalInteger))))
+			name: (identifier)
+			type: (type (typeIdentifier))
+			default: (defaultDefinition (expression (literalInteger))))
 		(formalParameter
-			(identifier)
-			(type (typeIdentifier))
-			(defaultDefinition (expression (literalInteger)))))
+			name: (identifier)
+			type: (type (typeIdentifier))
+			default: (defaultDefinition (expression (literalInteger)))))
 	body: (block))))
 
 ================================================================================
-with multiple arg default and return
+function declaration with multiple arg default and return
 ================================================================================
 fun(a Int default 69, b Int default 420) => Int {}
 --------------------------------------------------------------------------------
 (program (statement (functionDeclaration
-	(identifier)
+	name: (identifier)
 	(formalParameters
 		(formalParameter
-			(identifier)
-			(type (typeIdentifier))
-			(defaultDefinition (expression (literalInteger))))
+			name: (identifier)
+			type: (type (typeIdentifier))
+			default: (defaultDefinition (expression (literalInteger))))
 		(formalParameter
-			(identifier)
-			(type (typeIdentifier))
-			(defaultDefinition (expression (literalInteger)))))
+			name: (identifier)
+			type: (type (typeIdentifier))
+			default: (defaultDefinition (expression (literalInteger)))))
 	returnType: (type (typeIdentifier))
 	body: (block))))
-
