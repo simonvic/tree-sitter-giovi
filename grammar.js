@@ -382,9 +382,13 @@ module.exports = grammar({
 
     listEntry: $ => choice($.expression, $.range),
 
-    // TODO: eventually add [:] and remove list precedence
     expressionCreationMap: $ => prec(PREC.CREATION_MAP, seq(
-      '[', repeat(seq($.mapEntry, optional(','))), ']'
+      '[',
+      choice(
+        ':',
+        repeat1(seq($.mapEntry, optional(','))),
+      ),
+      ']'
     )),
 
     mapEntry: $ => seq(
