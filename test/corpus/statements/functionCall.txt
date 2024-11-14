@@ -3,16 +3,22 @@ simple invocation
 ================================================================================
 f()
 --------------------------------------------------------------------------------
-(program (statement (functionCall (expression (identifier)))))
+(program (statement
+	(functionCall
+		(expression (identifier))
+		(functionCallParameters))))
 
 ================================================================================
 invocation from expression
 ================================================================================
 someList@69()
 --------------------------------------------------------------------------------
-(program (statement (functionCall (expression (expressionAccess
-	(expression (identifier))
-	(literalInteger))))))
+(program (statement
+	(functionCall
+		(expression (expressionAccess
+			(expression (identifier))
+			(literalInteger)))
+		(functionCallParameters))))
 
 ================================================================================
 invocation with argument
