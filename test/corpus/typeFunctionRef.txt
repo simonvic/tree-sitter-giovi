@@ -5,7 +5,7 @@ f ::()
 --------------------------------------------------------------------------------
 (program (statement (varDeclaration
 	(identifier)
-	(type (typeFunctionRef)))))
+	(type (typeFunctionRef (formalParameters))))))
 
 ================================================================================
 function variable with one argument
@@ -44,6 +44,7 @@ f ::() => Int
 (program (statement (varDeclaration
 	(identifier)
 	(type (typeFunctionRef
+		(formalParameters)
 		(type (typeIdentifier)))))))
 
 ================================================================================

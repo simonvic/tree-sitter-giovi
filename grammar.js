@@ -190,13 +190,18 @@ module.exports = grammar({
     ),
 
     functionDeclaration: $ => seq(
-      field("name", $.identifier), '(', optional($.formalParameters), ')',
+      field("name", $.identifier),
+      $.formalParameters,
       optional(seq('=>', field("returnType", $.type))),
       field("body", $.block)
     ),
 
     formalParameters: $ => seq(
-      $.formalParameter, repeat(seq(',', $.formalParameter)), optional(',')
+      '(',
+      optional(seq(
+        $.formalParameter, repeat(seq(',', $.formalParameter)), optional(','),
+      )),
+      ')'
     ),
 
     formalParameter: $ => seq(
@@ -414,7 +419,8 @@ module.exports = grammar({
       $.identifier,
       seq(
         optional(seq(
-          '(', optional($.formalParameters), ')', optional(seq('=>', $.type))
+          $.formalParameters,
+          optional(seq('=>', $.type))
         )),
         $.block
       )
@@ -484,7 +490,7 @@ module.exports = grammar({
     ),
 
     typeFunctionRef: $ => seq(
-      '::', '(', optional($.formalParameters), ')', optional(seq('=>', $.type))
+      '::', $.formalParameters, optional(seq('=>', $.type))
     ),
 
     _primary: $ => choice(

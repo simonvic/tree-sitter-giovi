@@ -5,6 +5,7 @@ fun() {}
 --------------------------------------------------------------------------------
 (program (statement (functionDeclaration
 	name: (identifier)
+	(formalParameters)
 	body: (block))))
 
 ================================================================================
@@ -14,6 +15,7 @@ fun() => Int {}
 --------------------------------------------------------------------------------
 (program (statement (functionDeclaration
 	name: (identifier)
+	(formalParameters)
 	returnType: (type (typeIdentifier))
 	body: (block))))
 

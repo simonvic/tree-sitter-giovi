@@ -17,7 +17,9 @@ ref with empty parameters
 ================================================================================
 => ::(){}
 --------------------------------------------------------------------------------
-(program (statement (returnStatement (expression (expressionRef (block))))))
+(program (statement (returnStatement (expression (expressionRef
+	(formalParameters)
+	(block))))))
 
 ================================================================================
 ref with one parameter
@@ -52,6 +54,7 @@ ref with return type
 => ::() => Int {}
 --------------------------------------------------------------------------------
 (program (statement (returnStatement (expression (expressionRef
+	(formalParameters)
 	(type (typeIdentifier))
 	(block))))))
 

@@ -1,38 +1,24 @@
 ================================================================================
 return value
 ================================================================================
-fun() {
-	=> 69
-}
+=> 69
 --------------------------------------------------------------------------------
-(program (statement (functionDeclaration
-	name: (identifier)
-	body: (block
-		(statement (returnStatement (expression (literalInteger))))))))
+(program (statement (returnStatement (expression (literalInteger)))))
 
 ================================================================================
 return expression
 ================================================================================
-fun() {
-	=> 69 + 69
-}
+=> 69 + 69
 --------------------------------------------------------------------------------
-(program (statement (functionDeclaration
-	name: (identifier)
-	body: (block
-		(statement (returnStatement (expression (expressionBinary
-			(expression (literalInteger))
-			(expression (literalInteger))))))))))
+(program (statement (returnStatement (expression
+	(expressionBinary
+		(expression (literalInteger))
+		(expression (literalInteger)))))))
 
 ================================================================================
 return nothing
 ================================================================================
-fun() {
-	return
-}
+return
 --------------------------------------------------------------------------------
-(program (statement (functionDeclaration
-	name: (identifier)
-	body: (block
-		(statement (returnStatement))))))
+(program (statement (returnStatement)))
 
