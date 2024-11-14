@@ -37,10 +37,9 @@ const LITERAL_REAL_DECIMAL = choice(
 );
 const LITERAL_REAL_HEX = seq(HEX_SIGNIFICAND, BINARY_EXPONENT, optional('r'));
 
-const LETTER_OR_DIGIT_OR_UNDERSCORE = choice(/[a-zA-Z]/, DIGIT_DEC, '_');
-const IDENTIFIER = seq(/[a-z]/, repeat(LETTER_OR_DIGIT_OR_UNDERSCORE));
-const ALLUPPERCASE_IDENTIFIER = seq(/[A-Z]/, repeat(choice(/[A-Z]/, DIGIT_DEC, '_')));
-const UPPERCASE_IDENTIFIER = seq(/[A-Z]/, repeat(LETTER_OR_DIGIT_OR_UNDERSCORE));
+const IDENTIFIER = /[a-z][a-zA-Z0-9_]*/;
+const ALLUPPERCASE_IDENTIFIER = /[A-Z][A-Z0-9_]*/;
+const UPPERCASE_IDENTIFIER = /[A-Z][a-zA-Z0-9_]*/;
 
 const REDIR_OP_LTR = choice('->', '->+', '->-', '->*', '->/');
 const REDIR_OP_RTL = choice('<-', '+<-', '-<-', '*<-', '/<-');
