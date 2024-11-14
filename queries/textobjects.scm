@@ -32,16 +32,16 @@
   (#make-range! "parameter.outer" @parameter.inner @_end)
   )
 
-(functionCallParameters
+(actualParameters
   "," @_start
   .
-  (functionCallParameter) @parameter.inner
+  (actualParameter) @parameter.inner
   (#make-range! "parameter.outer" @_start @parameter.inner)
   )
 
-(functionCallParameters
+(actualParameters
   .
-  (functionCallParameter) @parameter.inner
+  (actualParameter) @parameter.inner
   .
   ","? @_end
   (#make-range! "parameter.outer" @parameter.inner @_end)

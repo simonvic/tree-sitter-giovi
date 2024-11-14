@@ -575,11 +575,11 @@
         },
         {
           "type": "SYMBOL",
-          "name": "functionCallParameters"
+          "name": "actualParameters"
         }
       ]
     },
-    "functionCallParameters": {
+    "actualParameters": {
       "type": "SEQ",
       "members": [
         {
@@ -594,7 +594,7 @@
               "members": [
                 {
                   "type": "SYMBOL",
-                  "name": "functionCallParameter"
+                  "name": "actualParameter"
                 },
                 {
                   "type": "REPEAT",
@@ -607,7 +607,7 @@
                       },
                       {
                         "type": "SYMBOL",
-                        "name": "functionCallParameter"
+                        "name": "actualParameter"
                       }
                     ]
                   }
@@ -637,7 +637,7 @@
         }
       ]
     },
-    "functionCallParameter": {
+    "actualParameter": {
       "type": "SEQ",
       "members": [
         {

@@ -212,18 +212,18 @@ module.exports = grammar({
     returnStatement: $ => seq(choice('return', '=>'), optional($.expression)),
 
     functionCall: $ => seq(
-      $.expression, $.functionCallParameters
+      $.expression, $.actualParameters
     ),
 
-    functionCallParameters: $ => seq(
+    actualParameters: $ => seq(
       '(',
       optional(seq(
-        $.functionCallParameter, repeat(seq(',', $.functionCallParameter)), optional(','),
+        $.actualParameter, repeat(seq(',', $.actualParameter)), optional(','),
       )),
       ')'
     ),
 
-    functionCallParameter: $ => seq(
+    actualParameter: $ => seq(
       optional(field("label", seq($.identifier, ':'))), $.expression
     ),
 

@@ -46,6 +46,51 @@
     ]
   },
   {
+    "type": "actualParameter",
+    "named": true,
+    "fields": {
+      "label": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": ":",
+            "named": false
+          },
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "actualParameters",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "actualParameter",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "block",
     "named": true,
     "fields": {},
@@ -362,11 +407,11 @@
       "required": true,
       "types": [
         {
-          "type": "expression",
+          "type": "actualParameters",
           "named": true
         },
         {
-          "type": "functionCallParameters",
+          "type": "expression",
           "named": true
         }
       ]
@@ -554,56 +599,11 @@
       "required": true,
       "types": [
         {
-          "type": "expression",
+          "type": "actualParameters",
           "named": true
         },
         {
-          "type": "functionCallParameters",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "functionCallParameter",
-    "named": true,
-    "fields": {
-      "label": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": ":",
-            "named": false
-          },
-          {
-            "type": "identifier",
-            "named": true
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
           "type": "expression",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "functionCallParameters",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "functionCallParameter",
           "named": true
         }
       ]

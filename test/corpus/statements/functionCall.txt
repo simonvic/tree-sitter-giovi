@@ -6,7 +6,7 @@ f()
 (program (statement
 	(functionCall
 		(expression (identifier))
-		(functionCallParameters))))
+		(actualParameters))))
 
 ================================================================================
 invocation from expression
@@ -18,7 +18,7 @@ someList@69()
 		(expression (expressionAccess
 			(expression (identifier))
 			(literalInteger)))
-		(functionCallParameters))))
+		(actualParameters))))
 
 ================================================================================
 invocation with argument
@@ -27,8 +27,8 @@ f(a)
 --------------------------------------------------------------------------------
 (program (statement (functionCall
 	(expression (identifier))
-	(functionCallParameters
-		(functionCallParameter (expression (identifier)))))))
+	(actualParameters
+		(actualParameter (expression (identifier)))))))
 
 ================================================================================
 invocation with labeled argument
@@ -37,8 +37,8 @@ f(l: a)
 --------------------------------------------------------------------------------
 (program (statement (functionCall
 	(expression (identifier))
-	(functionCallParameters
-		(functionCallParameter
+	(actualParameters
+		(actualParameter
 			label: (identifier)
 			(expression (identifier)))))))
 
@@ -49,9 +49,9 @@ f(a,b,)
 --------------------------------------------------------------------------------
 (program (statement (functionCall
 	(expression (identifier))
-	(functionCallParameters
-		(functionCallParameter (expression (identifier)))
-		(functionCallParameter (expression (identifier)))))))
+	(actualParameters
+		(actualParameter (expression (identifier)))
+		(actualParameter (expression (identifier)))))))
 
 ================================================================================
 invocation with labeled arguments
@@ -60,11 +60,11 @@ f(l1: a, l2: b)
 --------------------------------------------------------------------------------
 (program (statement (functionCall
 	(expression (identifier))
-	(functionCallParameters
-		(functionCallParameter
+	(actualParameters
+		(actualParameter
 			label: (identifier)
 			(expression (identifier)))
-		(functionCallParameter
+		(actualParameter
 			label: (identifier)
 			(expression (identifier)))))))
 
