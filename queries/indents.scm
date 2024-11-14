@@ -6,6 +6,8 @@
   (structDefinition)
   (formalParameters)
   (functionCallParameters)
+  (switchBlock)
+  (switchLabel)
 ] @indent.begin
 
 [
