@@ -54,7 +54,7 @@ const PREC = {
   CREATION_STRUCT: 12,
 
   REF: 11,
-  INVOKATION: 10,
+  INVOCATION: 10,
   UNARY: 9,
   ACCESS: 8,
   POWER: 7,
@@ -211,9 +211,9 @@ module.exports = grammar({
 
     returnStatement: $ => seq(choice('return', '=>'), optional($.expression)),
 
-    functionCall: $ => seq(
+    functionCall: $ => prec(PREC.INVOCATION, seq(
       $.expression, $.actualParameters
-    ),
+    )),
 
     actualParameters: $ => seq(
       '(',
