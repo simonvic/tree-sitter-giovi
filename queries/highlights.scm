@@ -28,6 +28,14 @@
 (identifier) @variable
 (typeIdentifier) @type
 (constantIdentifier) @constant
+(
+ (textInterpolation) @variable
+ (#match? @variable "[A-Za-z][A-Za-z0-9_]*$")
+ )
+(
+ (textInterpolation) @constant
+ (#match? @constant "[A-Z][A-Z0-9_]*$")
+ )
 
 [
  "(" ")"
