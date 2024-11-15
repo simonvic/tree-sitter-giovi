@@ -82,7 +82,6 @@
 
 (functionDeclaration (identifier) @function)
 (invocation (expression (identifier) @function.call))
-(expressionFunctionCall (expression (identifier) @function.call))
 
 (structFields ["<" ">"] @punctuation)
 (structBodyDefinition ["<" ">"] @punctuation)
