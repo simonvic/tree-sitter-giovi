@@ -11,7 +11,7 @@
 #define ALIAS_COUNT 1
 #define TOKEN_COUNT 90
 #define EXTERNAL_TOKEN_COUNT 0
-#define FIELD_COUNT 27
+#define FIELD_COUNT 29
 #define MAX_ALIAS_SEQUENCE_LENGTH 6
 #define PRODUCTION_ID_COUNT 29
 
@@ -134,7 +134,7 @@ enum ts_symbol_identifiers {
   sym_iteratorUnary = 116,
   sym_iteratorMap = 117,
   sym_iteratorAggregate = 118,
-  sym_iterated = 119,
+  sym_iterable = 119,
   sym_range = 120,
   sym_skipStatement = 121,
   sym_breakStatement = 122,
@@ -321,7 +321,7 @@ static const char * const ts_symbol_names[] = {
   [sym_iteratorUnary] = "iteratorUnary",
   [sym_iteratorMap] = "iteratorMap",
   [sym_iteratorAggregate] = "iteratorAggregate",
-  [sym_iterated] = "iterated",
+  [sym_iterable] = "iterable",
   [sym_range] = "range",
   [sym_skipStatement] = "skipStatement",
   [sym_breakStatement] = "breakStatement",
@@ -508,7 +508,7 @@ static const TSSymbol ts_symbol_map[] = {
   [sym_iteratorUnary] = sym_iteratorUnary,
   [sym_iteratorMap] = sym_iteratorMap,
   [sym_iteratorAggregate] = sym_iteratorAggregate,
-  [sym_iterated] = sym_iterated,
+  [sym_iterable] = sym_iterable,
   [sym_range] = sym_range,
   [sym_skipStatement] = sym_skipStatement,
   [sym_breakStatement] = sym_breakStatement,
@@ -1053,7 +1053,7 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
     .visible = true,
     .named = true,
   },
-  [sym_iterated] = {
+  [sym_iterable] = {
     .visible = true,
     .named = true,
   },
@@ -1329,22 +1329,24 @@ enum ts_field_identifiers {
   field_end = 9,
   field_guard = 10,
   field_initSize = 11,
-  field_key = 12,
-  field_keyType = 13,
-  field_label = 14,
-  field_name = 15,
-  field_op = 16,
-  field_parentType = 17,
-  field_returnType = 18,
-  field_start = 19,
-  field_step = 20,
-  field_subject = 21,
-  field_type = 22,
-  field_typename = 23,
-  field_val = 24,
-  field_value = 25,
-  field_valueType = 26,
-  field_whole = 27,
+  field_iterated = 12,
+  field_iterator = 13,
+  field_key = 14,
+  field_keyType = 15,
+  field_label = 16,
+  field_name = 17,
+  field_op = 18,
+  field_parentType = 19,
+  field_returnType = 20,
+  field_start = 21,
+  field_step = 22,
+  field_subject = 23,
+  field_type = 24,
+  field_typename = 25,
+  field_val = 26,
+  field_value = 27,
+  field_valueType = 28,
+  field_whole = 29,
 };
 
 static const char * const ts_field_names[] = {
@@ -1360,6 +1362,8 @@ static const char * const ts_field_names[] = {
   [field_end] = "end",
   [field_guard] = "guard",
   [field_initSize] = "initSize",
+  [field_iterated] = "iterated",
+  [field_iterator] = "iterator",
   [field_key] = "key",
   [field_keyType] = "keyType",
   [field_label] = "label",
@@ -1401,11 +1405,11 @@ static const TSFieldMapSlice ts_field_map_slices[PRODUCTION_ID_COUNT] = {
   [21] = {.index = 41, .length = 2},
   [22] = {.index = 43, .length = 3},
   [23] = {.index = 46, .length = 2},
-  [24] = {.index = 48, .length = 1},
-  [25] = {.index = 49, .length = 3},
-  [26] = {.index = 52, .length = 2},
-  [27] = {.index = 54, .length = 1},
-  [28] = {.index = 55, .length = 3},
+  [24] = {.index = 48, .length = 3},
+  [25] = {.index = 51, .length = 3},
+  [26] = {.index = 54, .length = 2},
+  [27] = {.index = 56, .length = 1},
+  [28] = {.index = 57, .length = 3},
 };
 
 static const TSFieldMapEntry ts_field_map_entries[] = {
@@ -1481,16 +1485,18 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_val, 3},
   [48] =
     {field_body, 5},
-  [49] =
+    {field_iterated, 3},
+    {field_iterator, 1},
+  [51] =
     {field_end, 2},
     {field_start, 0},
     {field_step, 4},
-  [52] =
+  [54] =
     {field_keyType, 1},
     {field_valueType, 3},
-  [54] =
+  [56] =
     {field_initSize, 3},
-  [55] =
+  [57] =
     {field_body, 4},
     {field_cases, 0},
     {field_guard, 2},
@@ -34564,7 +34570,7 @@ static const uint16_t ts_small_parse_table[] = {
     STATE(1080), 1,
       sym_expression,
     STATE(1627), 1,
-      sym_iterated,
+      sym_iterable,
     STATE(1628), 1,
       sym_range,
     ACTIONS(3), 2,
@@ -35071,7 +35077,7 @@ static const uint16_t ts_small_parse_table[] = {
     STATE(1080), 1,
       sym_expression,
     STATE(1619), 1,
-      sym_iterated,
+      sym_iterable,
     STATE(1628), 1,
       sym_range,
     ACTIONS(3), 2,
@@ -36513,7 +36519,7 @@ static const uint16_t ts_small_parse_table[] = {
     STATE(1080), 1,
       sym_expression,
     STATE(1623), 1,
-      sym_iterated,
+      sym_iterable,
     STATE(1628), 1,
       sym_range,
     ACTIONS(3), 2,
@@ -91780,7 +91786,7 @@ static const TSParseActionEntry ts_parse_actions[] = {
   [2058] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_caseMatch, 3, 0, 0),
   [2060] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_caseMatch, 2, 0, 0),
   [2062] = {.entry = {.count = 1, .reusable = true}}, SHIFT(676),
-  [2064] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_iterated, 1, 0, 0),
+  [2064] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_iterable, 1, 0, 0),
   [2066] = {.entry = {.count = 1, .reusable = true}}, SHIFT(826),
   [2068] = {.entry = {.count = 1, .reusable = true}}, SHIFT(601),
   [2070] = {.entry = {.count = 1, .reusable = true}}, SHIFT(986),

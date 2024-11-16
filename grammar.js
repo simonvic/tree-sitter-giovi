@@ -277,7 +277,11 @@ module.exports = grammar({
     ),
 
     forStatement: $ => seq(
-      'for', $.iterator, 'in', $.iterated, 'do',
+      'for',
+      field("iterator", $.iterator),
+      'in',
+      field("iterated", $.iterable),
+      'do',
       field("body", $._statementOrBlock)
     ),
 
@@ -303,7 +307,7 @@ module.exports = grammar({
       '>',
     ),
 
-    iterated: $ => choice(
+    iterable: $ => choice(
       $.range,
       $.expression,
     ),

@@ -1,11 +1,11 @@
 ================================================================================
-start end
+range start end
 ================================================================================
 for _ in 0..10 do {}
 --------------------------------------------------------------------------------
 (program (forStatement
-	(iterator (literalPlaceholder))
-	(iterated (range
+	iterator: (iterator (literalPlaceholder))
+	iterated: (iterable (range
 		start: (literalInteger)
 		end: (literalInteger)))
 	body: (block)))

@@ -548,21 +548,27 @@
             "named": true
           }
         ]
+      },
+      "iterated": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "iterable",
+            "named": true
+          }
+        ]
+      },
+      "iterator": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "iterator",
+            "named": true
+          }
+        ]
       }
-    },
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "iterated",
-          "named": true
-        },
-        {
-          "type": "iterator",
-          "named": true
-        }
-      ]
     }
   },
   {
@@ -726,7 +732,7 @@
     }
   },
   {
-    "type": "iterated",
+    "type": "iterable",
     "named": true,
     "fields": {},
     "children": {

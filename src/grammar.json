@@ -1109,16 +1109,24 @@
           "value": "for"
         },
         {
-          "type": "SYMBOL",
-          "name": "iterator"
+          "type": "FIELD",
+          "name": "iterator",
+          "content": {
+            "type": "SYMBOL",
+            "name": "iterator"
+          }
         },
         {
           "type": "STRING",
           "value": "in"
         },
         {
-          "type": "SYMBOL",
-          "name": "iterated"
+          "type": "FIELD",
+          "name": "iterated",
+          "content": {
+            "type": "SYMBOL",
+            "name": "iterable"
+          }
         },
         {
           "type": "STRING",
@@ -1296,7 +1304,7 @@
         }
       ]
     },
-    "iterated": {
+    "iterable": {
       "type": "CHOICE",
       "members": [
         {
