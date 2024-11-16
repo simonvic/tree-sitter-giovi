@@ -7,5 +7,5 @@ simple
 	(returnStatement
 		(expressionCast
 			(identifier)
-			(type (typeIdentifier)))))
+			(typeIdentifier))))
 

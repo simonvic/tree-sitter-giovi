@@ -105,7 +105,8 @@ module.exports = grammar({
     $.literal,
     $.statement,
     $.expression,
-    // TODO: eventually add expressions and statements
+    $.type,
+    $.typeComposite,
   ],
 
   rules: {
@@ -479,12 +480,12 @@ module.exports = grammar({
     _expressionBoolean: $ => prec.left(PREC.BOOL, seq($.expression, choice('and', '&', 'or', '|'), $.expression)),
 
     type: $ => choice(
-      $._typeComposite,
+      $.typeComposite,
       $.typeIdentifier,
       $.typeFunctionRef
     ),
 
-    _typeComposite: $ => choice(
+    typeComposite: $ => choice(
       $.typeList,
       $.typeMap,
     ),

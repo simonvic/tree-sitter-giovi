@@ -178,6 +178,38 @@
     ]
   },
   {
+    "type": "type",
+    "named": true,
+    "subtypes": [
+      {
+        "type": "typeComposite",
+        "named": true
+      },
+      {
+        "type": "typeFunctionRef",
+        "named": true
+      },
+      {
+        "type": "typeIdentifier",
+        "named": true
+      }
+    ]
+  },
+  {
+    "type": "typeComposite",
+    "named": true,
+    "subtypes": [
+      {
+        "type": "typeList",
+        "named": true
+      },
+      {
+        "type": "typeMap",
+        "named": true
+      }
+    ]
+  },
+  {
     "type": "actualParameter",
     "named": true,
     "fields": {
@@ -1371,33 +1403,6 @@
       "types": [
         {
           "type": "expression",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "type",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "typeFunctionRef",
-          "named": true
-        },
-        {
-          "type": "typeIdentifier",
-          "named": true
-        },
-        {
-          "type": "typeList",
-          "named": true
-        },
-        {
-          "type": "typeMap",
           "named": true
         }
       ]

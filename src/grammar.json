@@ -2731,7 +2731,7 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "_typeComposite"
+          "name": "typeComposite"
         },
         {
           "type": "SYMBOL",
@@ -2743,7 +2743,7 @@
         }
       ]
     },
-    "_typeComposite": {
+    "typeComposite": {
       "type": "CHOICE",
       "members": [
         {
@@ -4723,6 +4723,8 @@
     "doc",
     "literal",
     "statement",
-    "expression"
+    "expression",
+    "type",
+    "typeComposite"
   ]
 }

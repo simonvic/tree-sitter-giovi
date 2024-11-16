@@ -27,7 +27,7 @@ Foo <i Int>
 	body: (structBodyDefinition
 		(structFieldDefinition
 			name: (identifier)
-			type: (type (typeIdentifier))))))
+			type: (typeIdentifier)))))
 
 ================================================================================
 struct with one field with default override
@@ -39,7 +39,7 @@ Foo <i Int default 69>
 	body: (structBodyDefinition
 		(structFieldDefinition
 			name: (identifier)
-			type: (type (typeIdentifier))
+			type: (typeIdentifier)
 			default: (defaultDefinition (literalInteger))))))
 
 ================================================================================
@@ -55,10 +55,10 @@ Foo <
 	body: (structBodyDefinition
 		(structFieldDefinition
 			name: (identifier)
-			type: (type (typeIdentifier)))
+			type: (typeIdentifier))
 		(structFieldDefinition
 			name: (identifier)
-			type: (type (typeIdentifier))))))
+			type: (typeIdentifier)))))
 
 ================================================================================
 struct with multiple fields with default override
@@ -73,9 +73,9 @@ Foo <
 	body: (structBodyDefinition
 		(structFieldDefinition
 			name: (identifier)
-			type: (type (typeIdentifier))
+			type: (typeIdentifier)
 			default: (defaultDefinition (literalInteger)))
 		(structFieldDefinition
 			name: (identifier)
-			type: (type (typeIdentifier))
+			type: (typeIdentifier)
 			default: (defaultDefinition (literalInteger))))))

@@ -30,7 +30,7 @@ ref with one parameter
 	(formalParameters
 		(formalParameter
 			(identifier)
-			(type (typeIdentifier))))
+			(typeIdentifier)))
 	(block))))
 
 ================================================================================
@@ -42,10 +42,10 @@ ref with multiple parameters
 	(formalParameters
 		(formalParameter
 			(identifier)
-			(type (typeIdentifier)))
+			(typeIdentifier))
 		(formalParameter
 			(identifier)
-			(type (typeIdentifier))))
+			(typeIdentifier)))
 	(block))))
 
 ================================================================================
@@ -55,7 +55,7 @@ ref with return type
 --------------------------------------------------------------------------------
 (program (returnStatement (expressionRef
 	(formalParameters)
-	(type (typeIdentifier))
+	(typeIdentifier)
 	(block))))
 
 ================================================================================
@@ -67,8 +67,8 @@ ref with one parameter and return type
 	(formalParameters
 		(formalParameter
 			(identifier)
-			(type (typeIdentifier))))
-	(type (typeIdentifier))
+			(typeIdentifier)))
+	(typeIdentifier)
 	(block))))
 
 ================================================================================
@@ -80,10 +80,10 @@ ref with multiple parameters
 	(formalParameters
 		(formalParameter
 			(identifier)
-			(type (typeIdentifier)))
+			(typeIdentifier))
 		(formalParameter
 			(identifier)
-			(type (typeIdentifier))))
-	(type (typeIdentifier))
+			(typeIdentifier)))
+	(typeIdentifier)
 	(block))))
 

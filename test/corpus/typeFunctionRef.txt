@@ -5,7 +5,7 @@ f ::()
 --------------------------------------------------------------------------------
 (program (varDeclaration
 	(identifier)
-	(type (typeFunctionRef (formalParameters)))))
+	(typeFunctionRef (formalParameters))))
 
 ================================================================================
 function variable with one argument
@@ -14,11 +14,11 @@ f ::(a Int)
 --------------------------------------------------------------------------------
 (program (varDeclaration
 	(identifier)
-	(type (typeFunctionRef
+	(typeFunctionRef
 		(formalParameters
 			(formalParameter
 				(identifier)
-				(type (typeIdentifier))))))))
+				(typeIdentifier))))))
 
 ================================================================================
 function variable with multiple arguments
@@ -27,14 +27,14 @@ f ::(a Int, b Int)
 --------------------------------------------------------------------------------
 (program (varDeclaration
 	(identifier)
-	(type (typeFunctionRef
+	(typeFunctionRef
 		(formalParameters
 			(formalParameter
 				(identifier)
-				(type (typeIdentifier)))
+				(typeIdentifier))
 			(formalParameter
 				(identifier)
-				(type (typeIdentifier))))))))
+				(typeIdentifier))))))
 
 ================================================================================
 function variable with return type
@@ -43,9 +43,9 @@ f ::() => Int
 --------------------------------------------------------------------------------
 (program (varDeclaration
 	(identifier)
-	(type (typeFunctionRef
+	(typeFunctionRef
 		(formalParameters)
-		(type (typeIdentifier))))))
+		(typeIdentifier))))
 
 ================================================================================
 function variable with one argument and return type
@@ -54,12 +54,12 @@ f ::(a Int) => Int
 --------------------------------------------------------------------------------
 (program (varDeclaration
 	(identifier)
-	(type (typeFunctionRef
+	(typeFunctionRef
 		(formalParameters
 			(formalParameter
 				(identifier)
-				(type (typeIdentifier))))
-		(type (typeIdentifier))))))
+				(typeIdentifier)))
+		(typeIdentifier))))
 
 ================================================================================
 function variable with multiple arguments and return type
@@ -68,12 +68,12 @@ f ::(a Int, b Int) => Int
 --------------------------------------------------------------------------------
 (program (varDeclaration
 	(identifier)
-	(type (typeFunctionRef
+	(typeFunctionRef
 		(formalParameters
 			(formalParameter
 				(identifier)
-				(type (typeIdentifier)))
+				(typeIdentifier))
 			(formalParameter
 				(identifier)
-				(type (typeIdentifier))))
-		(type (typeIdentifier))))))
+				(typeIdentifier)))
+		(typeIdentifier))))

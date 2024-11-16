@@ -16,7 +16,7 @@ fun() => Int {}
 (program (functionDeclaration
 	name: (identifier)
 	(formalParameters)
-	returnType: (type (typeIdentifier))
+	returnType: (typeIdentifier)
 	body: (block)))
 
 ================================================================================
@@ -29,7 +29,7 @@ fun(a Int) {}
 	(formalParameters
 		(formalParameter
 			name: (identifier)
-			type: (type (typeIdentifier))))
+			type: (typeIdentifier)))
 	body: (block)))
 
 ================================================================================
@@ -42,7 +42,7 @@ fun(a Int default 69) {}
 	(formalParameters
 		(formalParameter
 			name: (identifier)
-			type: (type (typeIdentifier))
+			type: (typeIdentifier)
 			default: (defaultDefinition (literalInteger))))
 	body: (block)))
 
@@ -56,10 +56,10 @@ fun(a Int, b Int) {}
 	(formalParameters
 		(formalParameter
 			name: (identifier)
-			type: (type (typeIdentifier)))
+			type: (typeIdentifier))
 		(formalParameter
 			name: (identifier)
-			type: (type (typeIdentifier))))
+			type: (typeIdentifier)))
 	body: (block)))
 
 ================================================================================
@@ -72,11 +72,11 @@ fun(a Int default 69, b Int default 420) {}
 	(formalParameters
 		(formalParameter
 			name: (identifier)
-			type: (type (typeIdentifier))
+			type: (typeIdentifier)
 			default: (defaultDefinition (literalInteger)))
 		(formalParameter
 			name: (identifier)
-			type: (type (typeIdentifier))
+			type: (typeIdentifier)
 			default: (defaultDefinition (literalInteger))))
 	body: (block)))
 
@@ -90,11 +90,11 @@ fun(a Int default 69, b Int default 420) => Int {}
 	(formalParameters
 		(formalParameter
 			name: (identifier)
-			type: (type (typeIdentifier))
+			type: (typeIdentifier)
 			default: (defaultDefinition (literalInteger)))
 		(formalParameter
 			name: (identifier)
-			type: (type (typeIdentifier))
+			type: (typeIdentifier)
 			default: (defaultDefinition (literalInteger))))
-	returnType: (type (typeIdentifier))
+	returnType: (typeIdentifier)
 	body: (block)))
