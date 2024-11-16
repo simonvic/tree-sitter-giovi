@@ -3,62 +3,62 @@ empty list creation
 ================================================================================
 => []
 --------------------------------------------------------------------------------
-(program (statement (returnStatement (expression (list)))))
+(program (returnStatement (expression (list))))
 
 ================================================================================
 list creation with one value
 ================================================================================
 => [a]
 --------------------------------------------------------------------------------
-(program (statement (returnStatement (expression (list
-	(listEntry (expression (identifier))))))))
+(program (returnStatement (expression (list
+	(listEntry (expression (identifier)))))))
 
 ================================================================================
 list creation with multiple values
 ================================================================================
 => [a b c]
 --------------------------------------------------------------------------------
-(program (statement (returnStatement (expression (list
+(program (returnStatement (expression (list
 	(listEntry (expression (identifier)))
 	(listEntry (expression (identifier)))
-	(listEntry (expression (identifier))))))))
+	(listEntry (expression (identifier)))))))
 
 ================================================================================
 list creation with multiple comma separated values
 ================================================================================
 => [a, b, c]
 --------------------------------------------------------------------------------
-(program (statement (returnStatement (expression (list
+(program (returnStatement (expression (list
 	(listEntry (expression (identifier)))
 	(listEntry (expression (identifier)))
-	(listEntry (expression (identifier))))))))
+	(listEntry (expression (identifier)))))))
 
 ================================================================================
 nested empty list creation
 ================================================================================
 => [[]]
 --------------------------------------------------------------------------------
-(program (statement (returnStatement (expression (list
-	(listEntry (expression (list))))))))
+(program (returnStatement (expression (list
+	(listEntry (expression (list)))))))
 
 ================================================================================
 nested list creation
 ================================================================================
 => [[a]]
 --------------------------------------------------------------------------------
-(program (statement (returnStatement (expression (list
+(program (returnStatement (expression (list
 	(listEntry (expression (list
-		(listEntry (expression (identifier)))))))))))
+		(listEntry (expression (identifier))))))))))
 
 ================================================================================
 nested multiple list creation
 ================================================================================
 => [[a], [b], [c]]
 --------------------------------------------------------------------------------
-(program (statement (returnStatement (expression (list
+(program (returnStatement (expression (list
 	(listEntry (expression (list
 		(listEntry (expression (identifier))))))
 	(listEntry (expression (list
 		(listEntry (expression (identifier))))))
 	(listEntry (expression (list
-		(listEntry (expression (identifier)))))))))))
+		(listEntry (expression (identifier))))))))))

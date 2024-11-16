@@ -14,7 +14,7 @@ comment line
 	(commentLine)
 	(commentLine)
 	(commentLine)
-	(statement (returnStatement (expression (identifier))))
+	(returnStatement (expression (identifier)))
 	(commentLine)
 	(commentLine)
 	(commentLine))
@@ -84,7 +84,7 @@ block
 --------------------------------------------------------------------------------
 (program
 	(commentBlock)
-	(statement (returnStatement (expression (identifier)))))
+	(returnStatement (expression (identifier))))
 
 ================================================================================
 comment block after statement
@@ -97,7 +97,7 @@ block
 }#
 --------------------------------------------------------------------------------
 (program
-	(statement (returnStatement (expression (identifier))))
+	(returnStatement (expression (identifier)))
 	(commentBlock))
 
 ================================================================================
@@ -105,7 +105,7 @@ comment block inline statement
 ================================================================================
 => #{ this is a comment block }# a
 --------------------------------------------------------------------------------
-(program (statement (returnStatement (commentBlock) (expression (identifier)))))
+(program (returnStatement (commentBlock) (expression (identifier))))
 
 ================================================================================
 comment block with nested opening tag
@@ -113,6 +113,6 @@ comment block with nested opening tag
 => #{ you open a comment with the '#{' token. }# foo
 --------------------------------------------------------------------------------
 (program 
-	(statement (returnStatement
+	(returnStatement
 		(commentBlock)
-		(expression (identifier)))))
+		(expression (identifier))))

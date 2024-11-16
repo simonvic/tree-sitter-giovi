@@ -3,62 +3,62 @@ simple invocation
 ================================================================================
 f()
 --------------------------------------------------------------------------------
-(program (statement
+(program
 	(invocation
 		(expression (identifier))
-		(actualParameters))))
+		(actualParameters)))
 
 ================================================================================
 invocation from expression
 ================================================================================
 someList@69()
 --------------------------------------------------------------------------------
-(program (statement
+(program
 	(invocation
 		(expression (expressionAccess
 			(expression (identifier))
 			(literalInteger)))
-		(actualParameters))))
+		(actualParameters)))
 
 ================================================================================
 invocation with argument
 ================================================================================
 f(a)
 --------------------------------------------------------------------------------
-(program (statement (invocation
+(program (invocation
 	(expression (identifier))
 	(actualParameters
-		(actualParameter (expression (identifier)))))))
+		(actualParameter (expression (identifier))))))
 
 ================================================================================
 invocation with labeled argument
 ================================================================================
 f(l: a)
 --------------------------------------------------------------------------------
-(program (statement (invocation
+(program (invocation
 	(expression (identifier))
 	(actualParameters
 		(actualParameter
 			label: (identifier)
-			(expression (identifier)))))))
+			(expression (identifier))))))
 
 ================================================================================
 invocation with arguments
 ================================================================================
 f(a,b,)
 --------------------------------------------------------------------------------
-(program (statement (invocation
+(program (invocation
 	(expression (identifier))
 	(actualParameters
 		(actualParameter (expression (identifier)))
-		(actualParameter (expression (identifier)))))))
+		(actualParameter (expression (identifier))))))
 
 ================================================================================
 invocation with labeled arguments
 ================================================================================
 f(l1: a, l2: b)
 --------------------------------------------------------------------------------
-(program (statement (invocation
+(program (invocation
 	(expression (identifier))
 	(actualParameters
 		(actualParameter
@@ -66,5 +66,5 @@ f(l1: a, l2: b)
 			(expression (identifier)))
 		(actualParameter
 			label: (identifier)
-			(expression (identifier)))))))
+			(expression (identifier))))))
 

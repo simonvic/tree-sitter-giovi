@@ -3,9 +3,9 @@ start end
 ================================================================================
 for _ in 0..10 do {}
 --------------------------------------------------------------------------------
-(program (statement (forStatement
+(program (forStatement
 	(iterator (literalPlaceholder))
 	(iterated (range
 		start: (expression (literalInteger))
 		end: (expression (literalInteger))))
-	body: (block))))
+	body: (block)))

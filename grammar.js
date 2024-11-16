@@ -103,6 +103,7 @@ module.exports = grammar({
     $.comment,
     $.doc,
     $.literal,
+    $.statement
     // TODO: eventually add expressions and statements
   ],
 

@@ -1,7 +1,6 @@
 ================================================================================
 real
 ================================================================================
-
 => 6.9
 => 6.9r
 => 69r
@@ -13,19 +12,17 @@ real
 => 1e+10
 => 1e-10
 => 0x1p69
-
 --------------------------------------------------------------------------------
-
 (program
-	(statement (returnStatement (expression (literalReal))))
-	(statement (returnStatement (expression (literalReal))))
-	(statement (returnStatement (expression (literalReal))))
-	(statement (returnStatement (expression (literalReal))))
-	(statement (returnStatement (expression (literalReal))))
-	(statement (returnStatement (expression (literalReal))))
-	(statement (returnStatement (expression (literalReal))))
-	(statement (returnStatement (expression (literalReal))))
-	(statement (returnStatement (expression (literalReal))))
-	(statement (returnStatement (expression (literalReal))))
-	(statement (returnStatement (expression (literalReal)))))
+	(returnStatement (expression (literalReal)))
+	(returnStatement (expression (literalReal)))
+	(returnStatement (expression (literalReal)))
+	(returnStatement (expression (literalReal)))
+	(returnStatement (expression (literalReal)))
+	(returnStatement (expression (literalReal)))
+	(returnStatement (expression (literalReal)))
+	(returnStatement (expression (literalReal)))
+	(returnStatement (expression (literalReal)))
+	(returnStatement (expression (literalReal)))
+	(returnStatement (expression (literalReal))))
 

@@ -23,7 +23,7 @@ if x {
 	is not Type do {}
 }
 --------------------------------------------------------------------------------
-(program (statement (switchStatement
+(program (switchStatement
 	subject: (expression (identifier))
 	body: (switchBlock
 		(switchLabel
@@ -82,7 +82,7 @@ if x {
 			body: (block))
 		(switchLabel
 			cases: (cases (caseMatch (type (typeIdentifier))))
-			body: (block))))))
+			body: (block)))))
 
 ================================================================================
 multi if with multi cases
@@ -95,7 +95,7 @@ if x {
 }
 --------------------------------------------------------------------------------
 (program
-	(statement (switchStatement
+	(switchStatement
 		subject: (expression (identifier))
 		body: (switchBlock
 			(switchLabel
@@ -117,7 +117,7 @@ if x {
 				cases: (cases
 					(caseMatch (expression (literalInteger)))
 					(caseMatch (expression (literalInteger))))
-				body: (block))))))
+				body: (block)))))
 
 ================================================================================
 multi if with guards
@@ -128,7 +128,7 @@ if x {
 }
 --------------------------------------------------------------------------------
 (program
-	(statement (switchStatement
+	(switchStatement
 		subject: (expression (identifier))
 		body: (switchBlock
 			(switchLabel
@@ -143,7 +143,7 @@ if x {
 				guard: (expression (expressionBinary
 					(expression (literalBool))
 					(expression (literalBool))))
-				body: (block))))))
+				body: (block)))))
 
 ================================================================================
 multi if with else
@@ -152,13 +152,13 @@ if x {
 	= 69 do {}
 } else { }
 --------------------------------------------------------------------------------
-(program (statement (switchStatement
+(program (switchStatement
 	subject: (expression (identifier))
 	body: (switchBlock
 		(switchLabel
 			cases: (cases (caseMatch (expression (literalInteger))))
 			body: (block)))
-	elseBody: (block))))
+	elseBody: (block)))
 
 ================================================================================
 multi if with return statements
@@ -168,12 +168,12 @@ if x {
 	= b do => b
 }
 --------------------------------------------------------------------------------
-(program (statement (switchStatement
+(program (switchStatement
 	subject: (expression (identifier))
 	body: (switchBlock
 		(switchLabel
 			cases: (cases (caseMatch (expression (identifier))))
-			body: (statement (returnStatement (expression (identifier)))))
+			body: (returnStatement (expression (identifier))))
 		(switchLabel
 			cases: (cases (caseMatch (expression (identifier))))
-			body: (statement (returnStatement (expression (identifier)))))))))
+			body: (returnStatement (expression (identifier)))))))

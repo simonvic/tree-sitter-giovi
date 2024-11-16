@@ -3,42 +3,42 @@ ref identifier
 ================================================================================
 => ::f
 --------------------------------------------------------------------------------
-(program (statement (returnStatement (expression (expressionRef (identifier))))))
+(program (returnStatement (expression (expressionRef (identifier)))))
 
 ================================================================================
 ref with only body
 ================================================================================
 => ::{}
 --------------------------------------------------------------------------------
-(program (statement (returnStatement (expression (expressionRef (block))))))
+(program (returnStatement (expression (expressionRef (block)))))
 
 ================================================================================
 ref with empty parameters
 ================================================================================
 => ::(){}
 --------------------------------------------------------------------------------
-(program (statement (returnStatement (expression (expressionRef
+(program (returnStatement (expression (expressionRef
 	(formalParameters)
-	(block))))))
+	(block)))))
 
 ================================================================================
 ref with one parameter
 ================================================================================
 => ::(a Int){}
 --------------------------------------------------------------------------------
-(program (statement (returnStatement (expression (expressionRef
+(program (returnStatement (expression (expressionRef
 	(formalParameters
 		(formalParameter
 			(identifier)
 			(type (typeIdentifier))))
-	(block))))))
+	(block)))))
 
 ================================================================================
 ref with multiple parameters
 ================================================================================
 => ::(a Int, b Int){}
 --------------------------------------------------------------------------------
-(program (statement (returnStatement (expression (expressionRef
+(program (returnStatement (expression (expressionRef
 	(formalParameters
 		(formalParameter
 			(identifier)
@@ -46,37 +46,37 @@ ref with multiple parameters
 		(formalParameter
 			(identifier)
 			(type (typeIdentifier))))
-	(block))))))
+	(block)))))
 
 ================================================================================
 ref with return type
 ================================================================================
 => ::() => Int {}
 --------------------------------------------------------------------------------
-(program (statement (returnStatement (expression (expressionRef
+(program (returnStatement (expression (expressionRef
 	(formalParameters)
 	(type (typeIdentifier))
-	(block))))))
+	(block)))))
 
 ================================================================================
 ref with one parameter and return type
 ================================================================================
 => ::(a Int) => Int {}
 --------------------------------------------------------------------------------
-(program (statement (returnStatement (expression (expressionRef
+(program (returnStatement (expression (expressionRef
 	(formalParameters
 		(formalParameter
 			(identifier)
 			(type (typeIdentifier))))
 	(type (typeIdentifier))
-	(block))))))
+	(block)))))
 
 ================================================================================
 ref with multiple parameters
 ================================================================================
 => ::(a Int, b Int) => Int {}
 --------------------------------------------------------------------------------
-(program (statement (returnStatement (expression (expressionRef
+(program (returnStatement (expression (expressionRef
 	(formalParameters
 		(formalParameter
 			(identifier)
@@ -85,5 +85,5 @@ ref with multiple parameters
 			(identifier)
 			(type (typeIdentifier))))
 	(type (typeIdentifier))
-	(block))))))
+	(block)))))
 

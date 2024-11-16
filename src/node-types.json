@@ -46,6 +46,64 @@
     ]
   },
   {
+    "type": "statement",
+    "named": true,
+    "subtypes": [
+      {
+        "type": "breakStatement",
+        "named": true
+      },
+      {
+        "type": "constantDeclaration",
+        "named": true
+      },
+      {
+        "type": "forStatement",
+        "named": true
+      },
+      {
+        "type": "functionDeclaration",
+        "named": true
+      },
+      {
+        "type": "ifStatement",
+        "named": true
+      },
+      {
+        "type": "invocation",
+        "named": true
+      },
+      {
+        "type": "redirection",
+        "named": true
+      },
+      {
+        "type": "repeatStatement",
+        "named": true
+      },
+      {
+        "type": "returnStatement",
+        "named": true
+      },
+      {
+        "type": "skipStatement",
+        "named": true
+      },
+      {
+        "type": "structDefinition",
+        "named": true
+      },
+      {
+        "type": "switchStatement",
+        "named": true
+      },
+      {
+        "type": "varDeclaration",
+        "named": true
+      }
+    ]
+  },
+  {
     "type": "actualParameter",
     "named": true,
     "fields": {
@@ -1083,69 +1141,6 @@
     "type": "skipStatement",
     "named": true,
     "fields": {}
-  },
-  {
-    "type": "statement",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "breakStatement",
-          "named": true
-        },
-        {
-          "type": "constantDeclaration",
-          "named": true
-        },
-        {
-          "type": "forStatement",
-          "named": true
-        },
-        {
-          "type": "functionDeclaration",
-          "named": true
-        },
-        {
-          "type": "ifStatement",
-          "named": true
-        },
-        {
-          "type": "invocation",
-          "named": true
-        },
-        {
-          "type": "redirection",
-          "named": true
-        },
-        {
-          "type": "repeatStatement",
-          "named": true
-        },
-        {
-          "type": "returnStatement",
-          "named": true
-        },
-        {
-          "type": "skipStatement",
-          "named": true
-        },
-        {
-          "type": "structDefinition",
-          "named": true
-        },
-        {
-          "type": "switchStatement",
-          "named": true
-        },
-        {
-          "type": "varDeclaration",
-          "named": true
-        }
-      ]
-    }
   },
   {
     "type": "struct",

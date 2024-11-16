@@ -3,66 +3,66 @@ access with literal
 ================================================================================
 => a@69
 --------------------------------------------------------------------------------
-(program (statement (returnStatement (expression (expressionAccess
+(program (returnStatement (expression (expressionAccess
 	accessed: (expression (identifier))
-	accessor: (literalInteger))))))
+	accessor: (literalInteger)))))
 
 ================================================================================
 access with parenthesized literal
 ================================================================================
 => a@{69}
 --------------------------------------------------------------------------------
-(program (statement (returnStatement (expression (expressionAccess
+(program (returnStatement (expression (expressionAccess
 	accessed: (expression (identifier))
-	accessor: (literalInteger))))))
+	accessor: (literalInteger)))))
 
 ================================================================================
 access with identifier
 ================================================================================
 => a@i
 --------------------------------------------------------------------------------
-(program (statement (returnStatement (expression (expressionAccess
+(program (returnStatement (expression (expressionAccess
 	accessed: (expression (identifier))
-	accessor: (identifier))))))
+	accessor: (identifier)))))
 
 ================================================================================
 access with parenthesized identifier
 ================================================================================
 => a@{i}
 --------------------------------------------------------------------------------
-(program (statement (returnStatement (expression (expressionAccess
+(program (returnStatement (expression (expressionAccess
 	accessed: (expression (identifier))
-	accessor: (identifier))))))
+	accessor: (identifier)))))
 
 ================================================================================
 access with expression
 ================================================================================
 => a@{i + j}
 --------------------------------------------------------------------------------
-(program (statement (returnStatement (expression (expressionAccess
+(program (returnStatement (expression (expressionAccess
 	accessed: (expression (identifier))
 	accessor: (expression (expressionBinary
 		(expression (identifier))
-		(expression (identifier)))))))))
+		(expression (identifier))))))))
 
 ================================================================================
 access with range
 ================================================================================
 => a@s..e
 --------------------------------------------------------------------------------
-(program (statement (returnStatement (expression (expressionAccess
+(program (returnStatement (expression (expressionAccess
 	accessed: (expression (identifier))
 	accessor: (range
 		start: (expression (identifier))
-		end: (expression (identifier))))))))
+		end: (expression (identifier)))))))
 
 ================================================================================
 access with parenthesized range
 ================================================================================
 => a@{s..e}
 --------------------------------------------------------------------------------
-(program (statement (returnStatement (expression (expressionAccess
+(program (returnStatement (expression (expressionAccess
 	accessed: (expression (identifier))
 	accessor: (range
 		start: (expression (identifier))
-		end: (expression (identifier))))))))
+		end: (expression (identifier)))))))

@@ -4,8 +4,8 @@ simple
 => a as Int
 --------------------------------------------------------------------------------
 (program
-	(statement (returnStatement
+	(returnStatement
 		(expression (expressionCast
 			(expression (identifier))
-			(type (typeIdentifier)))))))
+			(type (typeIdentifier))))))
 

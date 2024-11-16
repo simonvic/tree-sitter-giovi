@@ -4,10 +4,9 @@ if expression do block
 if true do {}
 --------------------------------------------------------------------------------
 (program
-	(statement
-		(ifStatement
-			condition: (expression (literalBool))
-			body: (block))))
+	(ifStatement
+		condition: (expression (literalBool))
+		body: (block)))
 
 ================================================================================
 if expression do statement
@@ -15,10 +14,9 @@ if expression do statement
 if true do 69 -> \out
 --------------------------------------------------------------------------------
 (program
-	(statement
-		(ifStatement
-			condition: (expression (literalBool))
-			body: (statement (redirection (expression (literalInteger)) (primitiveDestination))))))
+	(ifStatement
+		condition: (expression (literalBool))
+		body: (redirection (expression (literalInteger)) (primitiveDestination))))
 
 ================================================================================
 if expression do block else block
@@ -26,11 +24,10 @@ if expression do block else block
 if true do {} else {}
 --------------------------------------------------------------------------------
 (program
-	(statement
-		(ifStatement
-			condition: (expression (literalBool))
-			body: (block)
-			elseBody: (block))))
+	(ifStatement
+		condition: (expression (literalBool))
+		body: (block)
+		elseBody: (block)))
 
 ================================================================================
 if expression do statement else statement
@@ -38,11 +35,10 @@ if expression do statement else statement
 if true do 69 -> \out else "hello" -> \out
 --------------------------------------------------------------------------------
 (program
-	(statement
-		(ifStatement
-			condition: (expression (literalBool))
-			body: (statement (redirection (expression (literalInteger)) (primitiveDestination)))
-			elseBody: (statement (redirection (expression (literalText)) (primitiveDestination))))))
+	(ifStatement
+		condition: (expression (literalBool))
+		body: (redirection (expression (literalInteger)) (primitiveDestination))
+		elseBody: (redirection (expression (literalText)) (primitiveDestination))))
 
 
 ================================================================================
@@ -53,13 +49,13 @@ if true do
 	else {}
 else {}
 --------------------------------------------------------------------------------
-(program (statement (ifStatement
+(program (ifStatement
 	condition: (expression (literalBool))
-	body: (statement (ifStatement
+	body: (ifStatement
 		condition: (expression (literalBool))
 		body: (block)
-		elseBody: (block)))
-	elseBody: (block))))
+		elseBody: (block))
+	elseBody: (block)))
 
 
 ================================================================================
@@ -71,15 +67,15 @@ else if true do {}
 else {}
 
 --------------------------------------------------------------------------------
-(program (statement (ifStatement
+(program (ifStatement
 	condition: (expression (literalBool))
 	body: (block)
-	elseBody: (statement (ifStatement
+	elseBody: (ifStatement
 		condition: (expression (literalBool))
 		body: (block)
-		elseBody: (statement (ifStatement
+		elseBody: (ifStatement
 			condition: (expression (literalBool))
 			body: (block)
-			elseBody: (block))))))))
+			elseBody: (block)))))
 
 

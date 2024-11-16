@@ -3,7 +3,7 @@ constant declaration
 ================================================================================
 constant PI Real <- 3.14
 --------------------------------------------------------------------------------
-(program (statement (constantDeclaration
+(program (constantDeclaration
 	(constantIdentifier)
 	(type (typeIdentifier))
-	(expression (literalReal)))))
+	(expression (literalReal))))

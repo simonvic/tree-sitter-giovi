@@ -7,18 +7,18 @@ simple
 => not a
 --------------------------------------------------------------------------------
 (program
-	(statement (returnStatement
+	(returnStatement
+		(expression (expressionPrefixed
+			(expression (identifier)))))
+	(returnStatement
+		(expression (expressionPrefixed
+			(expression (identifier)))))
+	(returnStatement
+		(expression (expressionPrefixed
+			(expression (identifier)))))
+	(returnStatement
 		(expression (expressionPrefixed
 			(expression (identifier))))))
-	(statement (returnStatement
-		(expression (expressionPrefixed
-			(expression (identifier))))))
-	(statement (returnStatement
-		(expression (expressionPrefixed
-			(expression (identifier))))))
-	(statement (returnStatement
-		(expression (expressionPrefixed
-			(expression (identifier)))))))
 
 ================================================================================
 double negation
@@ -26,7 +26,7 @@ double negation
 => !!a
 --------------------------------------------------------------------------------
 (program
-	(statement (returnStatement
+	(returnStatement
 		(expression (expressionPrefixed
 			(expression (expressionPrefixed
-				(expression (identifier)))))))))
+				(expression (identifier))))))))

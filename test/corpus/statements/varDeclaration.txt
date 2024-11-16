@@ -3,16 +3,16 @@ var declaration
 ================================================================================
 i Int
 --------------------------------------------------------------------------------
-(program (statement (varDeclaration
+(program (varDeclaration
 	name: (identifier)
-	type: (type (typeIdentifier)))))
+	type: (type (typeIdentifier))))
 
 ================================================================================
 var declaration with default override
 ================================================================================
 i Int default 69
 --------------------------------------------------------------------------------
-(program (statement (varDeclaration
+(program (varDeclaration
 	name: (identifier)
 	type: (type (typeIdentifier))
-	default: (defaultDefinition (expression (literalInteger))))))
+	default: (defaultDefinition (expression (literalInteger)))))

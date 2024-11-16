@@ -11,11 +11,11 @@ constant identifiers
 --------------------------------------------------------------------------------
 
 (program
-	(statement (returnStatement (expression (constantIdentifier))))
-	(statement (returnStatement (expression (constantIdentifier))))
-	(statement (returnStatement (expression (constantIdentifier))))
-	(statement (returnStatement (expression (constantIdentifier))))
-	(statement (returnStatement (expression (constantIdentifier)))))
+	(returnStatement (expression (constantIdentifier)))
+	(returnStatement (expression (constantIdentifier)))
+	(returnStatement (expression (constantIdentifier)))
+	(returnStatement (expression (constantIdentifier)))
+	(returnStatement (expression (constantIdentifier))))
 
 
 ================================================================================
@@ -33,13 +33,13 @@ identifiers
 --------------------------------------------------------------------------------
 
 (program
-	(statement (returnStatement (expression (identifier))))
-	(statement (returnStatement (expression (identifier))))
-	(statement (returnStatement (expression (identifier))))
-	(statement (returnStatement (expression (identifier))))
-	(statement (returnStatement (expression (identifier))))
-	(statement (returnStatement (expression (identifier))))
-	(statement (returnStatement (expression (identifier)))))
+	(returnStatement (expression (identifier)))
+	(returnStatement (expression (identifier)))
+	(returnStatement (expression (identifier)))
+	(returnStatement (expression (identifier)))
+	(returnStatement (expression (identifier)))
+	(returnStatement (expression (identifier)))
+	(returnStatement (expression (identifier))))
 
 
 ================================================================================
@@ -56,11 +56,11 @@ type identifiers
 --------------------------------------------------------------------------------
 
 (program
-	(statement (returnStatement (expression (typeIdentifier))))
-	(statement (returnStatement (expression (typeIdentifier))))
-	(statement (returnStatement (expression (typeIdentifier))))
-	(statement (returnStatement (expression (typeIdentifier))))
-	(statement (returnStatement (expression (typeIdentifier))))
-	(statement (returnStatement (expression (typeIdentifier)))))
+	(returnStatement (expression (typeIdentifier)))
+	(returnStatement (expression (typeIdentifier)))
+	(returnStatement (expression (typeIdentifier)))
+	(returnStatement (expression (typeIdentifier)))
+	(returnStatement (expression (typeIdentifier)))
+	(returnStatement (expression (typeIdentifier))))
 
 

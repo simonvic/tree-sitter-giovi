@@ -3,44 +3,44 @@ empty struct
 ================================================================================
 Foo <>
 --------------------------------------------------------------------------------
-(program (statement (structDefinition
+(program (structDefinition
 	typename: (typeIdentifier)
-	body: (structBodyDefinition))))
+	body: (structBodyDefinition)))
 
 ================================================================================
 empty struct with parent 
 ================================================================================
 Bar : Foo <>
 --------------------------------------------------------------------------------
-(program (statement (structDefinition
+(program (structDefinition
 	parentType: (typeIdentifier)
 	typename: (typeIdentifier)
-	body: (structBodyDefinition))))
+	body: (structBodyDefinition)))
 
 ================================================================================
 struct with one field 
 ================================================================================
 Foo <i Int>
 --------------------------------------------------------------------------------
-(program (statement (structDefinition
+(program (structDefinition
 	typename: (typeIdentifier)
 	body: (structBodyDefinition
 		(structFieldDefinition
 			name: (identifier)
-			type: (type (typeIdentifier)))))))
+			type: (type (typeIdentifier))))))
 
 ================================================================================
 struct with one field with default override
 ================================================================================
 Foo <i Int default 69>
 --------------------------------------------------------------------------------
-(program (statement (structDefinition
+(program (structDefinition
 	typename: (typeIdentifier)
 	body: (structBodyDefinition
 		(structFieldDefinition
 			name: (identifier)
 			type: (type (typeIdentifier))
-			default: (defaultDefinition (expression (literalInteger))))))))
+			default: (defaultDefinition (expression (literalInteger)))))))
 
 ================================================================================
 struct with multiple fields
@@ -50,7 +50,7 @@ Foo <
 	j Int
 >
 --------------------------------------------------------------------------------
-(program (statement (structDefinition
+(program (structDefinition
 	typename: (typeIdentifier)
 	body: (structBodyDefinition
 		(structFieldDefinition
@@ -58,7 +58,7 @@ Foo <
 			type: (type (typeIdentifier)))
 		(structFieldDefinition
 			name: (identifier)
-			type: (type (typeIdentifier)))))))
+			type: (type (typeIdentifier))))))
 
 ================================================================================
 struct with multiple fields with default override
@@ -68,7 +68,7 @@ Foo <
 	j Int default 69
 >
 --------------------------------------------------------------------------------
-(program (statement (structDefinition
+(program (structDefinition
 	typename: (typeIdentifier)
 	body: (structBodyDefinition
 		(structFieldDefinition
@@ -78,4 +78,4 @@ Foo <
 		(structFieldDefinition
 			name: (identifier)
 			type: (type (typeIdentifier))
-			default: (defaultDefinition (expression (literalInteger))))))))
+			default: (defaultDefinition (expression (literalInteger)))))))

@@ -1,7 +1,6 @@
 ================================================================================
 natural
 ================================================================================
-
 => 69n
 => 69_420n
 => 1_000_000n
@@ -11,17 +10,15 @@ natural
 => 0o207_454n
 => 0x10F2Cn
 => 0xFF_FF_FFn
-
 --------------------------------------------------------------------------------
-
 (program
-	(statement (returnStatement (expression (literalNatural))))
-	(statement (returnStatement (expression (literalNatural))))
-	(statement (returnStatement (expression (literalNatural))))
-	(statement (returnStatement (expression (literalNatural))))
-	(statement (returnStatement (expression (literalNatural))))
-	(statement (returnStatement (expression (literalNatural))))
-	(statement (returnStatement (expression (literalNatural))))
-	(statement (returnStatement (expression (literalNatural))))
-	(statement (returnStatement (expression (literalNatural)))))
+	(returnStatement (expression (literalNatural)))
+	(returnStatement (expression (literalNatural)))
+	(returnStatement (expression (literalNatural)))
+	(returnStatement (expression (literalNatural)))
+	(returnStatement (expression (literalNatural)))
+	(returnStatement (expression (literalNatural)))
+	(returnStatement (expression (literalNatural)))
+	(returnStatement (expression (literalNatural)))
+	(returnStatement (expression (literalNatural))))
 

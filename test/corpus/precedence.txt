@@ -3,75 +3,75 @@ algebraic precedence
 ================================================================================
 => a + b * c
 --------------------------------------------------------------------------------
-(program (statement (returnStatement
+(program (returnStatement
 	(expression (expressionBinary
 		(expression (identifier))
 		(expression (expressionBinary
 			(expression (identifier))
-			(expression (identifier)))))))))
+			(expression (identifier))))))))
 
 ================================================================================
 parenthesis precedence
 ================================================================================
 => {a + b} * c
 --------------------------------------------------------------------------------
-(program (statement (returnStatement
+(program (returnStatement
 	(expression (expressionBinary
 		(expression (expression (expressionBinary
 			(expression (identifier))
 			(expression (identifier)))))
-		(expression (identifier)))))))
+		(expression (identifier))))))
 
 ================================================================================
 negation precedence
 ================================================================================
 => !a & not b
 --------------------------------------------------------------------------------
-(program (statement (returnStatement
+(program (returnStatement
 	(expression (expressionBinary
 		(expression (expressionPrefixed (expression (identifier))))
-		(expression (expressionPrefixed (expression (identifier)))))))))
+		(expression (expressionPrefixed (expression (identifier))))))))
 
 ================================================================================
 access precedence
 ================================================================================
 => a@b@c
 --------------------------------------------------------------------------------
-(program (statement (returnStatement
+(program (returnStatement
 	(expression (expressionAccess
 		accessed: (expression (expressionAccess
 			accessed: (expression (identifier))
 			accessor: (identifier)))
-		accessor: (identifier))))))
+		accessor: (identifier)))))
 
 ================================================================================
 dot precedence
 ================================================================================
 => a.b.c
 --------------------------------------------------------------------------------
-(program (statement (returnStatement
+(program (returnStatement
 	(expression (expressionDot
 		(expression (expressionDot
 			(expression (identifier))
 			(identifier)))
-		(identifier))))))
+		(identifier)))))
 
 ================================================================================
 tuple creation and dot precedence
 ================================================================================
 => <>.a
 --------------------------------------------------------------------------------
-(program (statement (returnStatement
+(program (returnStatement
 	(expression (expressionDot
 		(expression (struct (structFields)))
-		(identifier))))))
+		(identifier)))))
 
 ================================================================================
 tuple creation and access precedence
 ================================================================================
 => <>@1
 --------------------------------------------------------------------------------
-(program (statement (returnStatement
+(program (returnStatement
 	(expression (expressionAccess
 		(expression (struct (structFields)))
-		(literalInteger))))))
+		(literalInteger)))))

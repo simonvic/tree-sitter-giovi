@@ -9,30 +9,30 @@ arithmetic
 => a - b
 --------------------------------------------------------------------------------
 (program
-	(statement (returnStatement
+	(returnStatement
+		(expression (expressionBinary
+			(expression (identifier))
+			(expression (identifier)))))
+	(returnStatement
+		(expression (expressionBinary
+			(expression (identifier))
+			(expression (identifier)))))
+	(returnStatement
+		(expression (expressionBinary
+			(expression (identifier))
+			(expression (identifier)))))
+	(returnStatement
+		(expression (expressionBinary
+			(expression (identifier))
+			(expression (identifier)))))
+	(returnStatement
+		(expression (expressionBinary
+			(expression (identifier))
+			(expression (identifier)))))
+	(returnStatement
 		(expression (expressionBinary
 			(expression (identifier))
 			(expression (identifier))))))
-	(statement (returnStatement
-		(expression (expressionBinary
-			(expression (identifier))
-			(expression (identifier))))))
-	(statement (returnStatement
-		(expression (expressionBinary
-			(expression (identifier))
-			(expression (identifier))))))
-	(statement (returnStatement
-		(expression (expressionBinary
-			(expression (identifier))
-			(expression (identifier))))))
-	(statement (returnStatement
-		(expression (expressionBinary
-			(expression (identifier))
-			(expression (identifier))))))
-	(statement (returnStatement
-		(expression (expressionBinary
-			(expression (identifier))
-			(expression (identifier)))))))
 
 ================================================================================
 relational
@@ -43,22 +43,22 @@ relational
 => a > b
 --------------------------------------------------------------------------------
 (program
-	(statement (returnStatement
+	(returnStatement
+		(expression (expressionBinary
+			(expression (identifier))
+			(expression (identifier)))))
+	(returnStatement
+		(expression (expressionBinary
+			(expression (identifier))
+			(expression (identifier)))))
+	(returnStatement
+		(expression (expressionBinary
+			(expression (identifier))
+			(expression (identifier)))))
+	(returnStatement
 		(expression (expressionBinary
 			(expression (identifier))
 			(expression (identifier))))))
-	(statement (returnStatement
-		(expression (expressionBinary
-			(expression (identifier))
-			(expression (identifier))))))
-	(statement (returnStatement
-		(expression (expressionBinary
-			(expression (identifier))
-			(expression (identifier))))))
-	(statement (returnStatement
-		(expression (expressionBinary
-			(expression (identifier))
-			(expression (identifier)))))))
 
 ================================================================================
 equality
@@ -67,14 +67,14 @@ equality
 => a != b
 --------------------------------------------------------------------------------
 (program
-	(statement (returnStatement
+	(returnStatement
+		(expression (expressionBinary
+			(expression (identifier))
+			(expression (identifier)))))
+	(returnStatement
 		(expression (expressionBinary
 			(expression (identifier))
 			(expression (identifier))))))
-	(statement (returnStatement
-		(expression (expressionBinary
-			(expression (identifier))
-			(expression (identifier)))))))
 
 ================================================================================
 containment
@@ -83,14 +83,14 @@ containment
 => a ~= b
 --------------------------------------------------------------------------------
 (program
-	(statement (returnStatement
+	(returnStatement
+		(expression (expressionBinary
+			(expression (identifier))
+			(expression (identifier)))))
+	(returnStatement
 		(expression (expressionBinary
 			(expression (identifier))
 			(expression (identifier))))))
-	(statement (returnStatement
-		(expression (expressionBinary
-			(expression (identifier))
-			(expression (identifier)))))))
 
 ================================================================================
 boolean
@@ -101,22 +101,22 @@ boolean
 => a or b
 --------------------------------------------------------------------------------
 (program
-	(statement (returnStatement
+	(returnStatement
+		(expression (expressionBinary
+			(expression (identifier))
+			(expression (identifier)))))
+	(returnStatement
+		(expression (expressionBinary
+			(expression (identifier))
+			(expression (identifier)))))
+	(returnStatement
+		(expression (expressionBinary
+			(expression (identifier))
+			(expression (identifier)))))
+	(returnStatement
 		(expression (expressionBinary
 			(expression (identifier))
 			(expression (identifier))))))
-	(statement (returnStatement
-		(expression (expressionBinary
-			(expression (identifier))
-			(expression (identifier))))))
-	(statement (returnStatement
-		(expression (expressionBinary
-			(expression (identifier))
-			(expression (identifier))))))
-	(statement (returnStatement
-		(expression (expressionBinary
-			(expression (identifier))
-			(expression (identifier)))))))
 
 ================================================================================
 nested binary expressions
@@ -124,12 +124,12 @@ nested binary expressions
 => a + b + c
 --------------------------------------------------------------------------------
 (program
-	(statement (returnStatement
+	(returnStatement
 		(expression (expressionBinary
 			(expression (expressionBinary
 				(expression (identifier))
 				(expression (identifier))))
-			(expression (identifier))))))
+			(expression (identifier)))))
 )
 
 ================================================================================
@@ -138,9 +138,9 @@ nested parenthesized binary expressions
 => a + {b + c}
 --------------------------------------------------------------------------------
 (program
-	(statement (returnStatement
+	(returnStatement
 		(expression (expressionBinary
 			(expression (identifier))
 			(expression (expression (expressionBinary
 				(expression (identifier))
-				(expression (identifier))))))))))
+				(expression (identifier)))))))))

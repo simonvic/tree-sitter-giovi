@@ -1,13 +1,10 @@
 ================================================================================
 bool
 ================================================================================
-
 => true
 => false
-
 --------------------------------------------------------------------------------
-
 (program
-	(statement (returnStatement (expression (literalBool))))
-	(statement (returnStatement (expression (literalBool)))))
+	(returnStatement (expression (literalBool)))
+	(returnStatement (expression (literalBool))))
 

@@ -3,55 +3,55 @@ simple function declaration
 ================================================================================
 fun() {}
 --------------------------------------------------------------------------------
-(program (statement (functionDeclaration
+(program (functionDeclaration
 	name: (identifier)
 	(formalParameters)
-	body: (block))))
+	body: (block)))
 
 ================================================================================
 function declaration with return
 ================================================================================
 fun() => Int {}
 --------------------------------------------------------------------------------
-(program (statement (functionDeclaration
+(program (functionDeclaration
 	name: (identifier)
 	(formalParameters)
 	returnType: (type (typeIdentifier))
-	body: (block))))
+	body: (block)))
 
 ================================================================================
 function declaration with one arg
 ================================================================================
 fun(a Int) {}
 --------------------------------------------------------------------------------
-(program (statement (functionDeclaration
+(program (functionDeclaration
 	name: (identifier)
 	(formalParameters
 		(formalParameter
 			name: (identifier)
 			type: (type (typeIdentifier))))
-	body: (block))))
+	body: (block)))
 
 ================================================================================
 function declaration with one arg default
 ================================================================================
 fun(a Int default 69) {}
 --------------------------------------------------------------------------------
-(program (statement (functionDeclaration
+(program (functionDeclaration
 	name: (identifier)
 	(formalParameters
 		(formalParameter
 			name: (identifier)
 			type: (type (typeIdentifier))
 			default: (defaultDefinition (expression (literalInteger)))))
-	body: (block))))
+	body: (block)))
 
 ================================================================================
 function declaration with multiple arg 
 ================================================================================
 fun(a Int, b Int) {}
 --------------------------------------------------------------------------------
-(program (statement (functionDeclaration
+(program (functionDeclaration
 	name: (identifier)
 	(formalParameters
 		(formalParameter
@@ -60,14 +60,14 @@ fun(a Int, b Int) {}
 		(formalParameter
 			name: (identifier)
 			type: (type (typeIdentifier))))
-	body: (block))))
+	body: (block)))
 
 ================================================================================
 function declaration with multiple arg default
 ================================================================================
 fun(a Int default 69, b Int default 420) {}
 --------------------------------------------------------------------------------
-(program (statement (functionDeclaration
+(program (functionDeclaration
 	name: (identifier)
 	(formalParameters
 		(formalParameter
@@ -78,14 +78,14 @@ fun(a Int default 69, b Int default 420) {}
 			name: (identifier)
 			type: (type (typeIdentifier))
 			default: (defaultDefinition (expression (literalInteger)))))
-	body: (block))))
+	body: (block)))
 
 ================================================================================
 function declaration with multiple arg default and return
 ================================================================================
 fun(a Int default 69, b Int default 420) => Int {}
 --------------------------------------------------------------------------------
-(program (statement (functionDeclaration
+(program (functionDeclaration
 	name: (identifier)
 	(formalParameters
 		(formalParameter
@@ -97,4 +97,4 @@ fun(a Int default 69, b Int default 420) => Int {}
 			type: (type (typeIdentifier))
 			default: (defaultDefinition (expression (literalInteger)))))
 	returnType: (type (typeIdentifier))
-	body: (block))))
+	body: (block)))
