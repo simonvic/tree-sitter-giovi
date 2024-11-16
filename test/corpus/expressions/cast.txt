@@ -5,7 +5,7 @@ simple
 --------------------------------------------------------------------------------
 (program
 	(returnStatement
-		(expression (expressionCast
-			(expression (identifier))
-			(type (typeIdentifier))))))
+		(expressionCast
+			(identifier)
+			(type (typeIdentifier)))))
 

@@ -14,7 +14,7 @@ comment line
 	(commentLine)
 	(commentLine)
 	(commentLine)
-	(returnStatement (expression (identifier)))
+	(returnStatement (identifier))
 	(commentLine)
 	(commentLine)
 	(commentLine))
@@ -84,7 +84,7 @@ block
 --------------------------------------------------------------------------------
 (program
 	(commentBlock)
-	(returnStatement (expression (identifier))))
+	(returnStatement (identifier)))
 
 ================================================================================
 comment block after statement
@@ -97,7 +97,7 @@ block
 }#
 --------------------------------------------------------------------------------
 (program
-	(returnStatement (expression (identifier)))
+	(returnStatement (identifier))
 	(commentBlock))
 
 ================================================================================
@@ -105,7 +105,7 @@ comment block inline statement
 ================================================================================
 => #{ this is a comment block }# a
 --------------------------------------------------------------------------------
-(program (returnStatement (commentBlock) (expression (identifier))))
+(program (returnStatement (commentBlock) (identifier)))
 
 ================================================================================
 comment block with nested opening tag
@@ -115,4 +115,4 @@ comment block with nested opening tag
 (program 
 	(returnStatement
 		(commentBlock)
-		(expression (identifier))))
+		(identifier)))

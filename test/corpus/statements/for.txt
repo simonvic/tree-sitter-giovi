@@ -5,7 +5,7 @@ for _ in foo do {}
 --------------------------------------------------------------------------------
 (program (forStatement
 	(iterator (literalPlaceholder))
-	(iterated (expression (identifier)))
+	(iterated (identifier))
 	body: (block)))
 
 ================================================================================
@@ -16,7 +16,7 @@ for i in foo do {}
 (program (forStatement
 	(iterator
 		(iteratorUnary (identifier)))
-	(iterated (expression (identifier)))
+	(iterated (identifier))
 	body: (block)))
 
 ================================================================================
@@ -28,7 +28,7 @@ for i Type in foo do {}
 	(iterator (iteratorUnary
 		(identifier)
 		(type (typeIdentifier))))
-	(iterated (expression (identifier)))
+	(iterated (identifier))
 	body: (block)))
 
 ================================================================================
@@ -40,7 +40,7 @@ for i [Type] in foo do {}
 	(iterator (iteratorUnary
 		(identifier)
 		(type (typeList (type (typeIdentifier))))))
-	(iterated (expression (identifier)))
+	(iterated (identifier))
 	body: (block)))
 
 ================================================================================
@@ -52,7 +52,7 @@ for _ : _ in foo do {}
 	(iterator (iteratorMap
 		key: (iterator (literalPlaceholder))
 		val: (iterator (literalPlaceholder))))
-	(iterated (expression (identifier)))
+	(iterated (identifier))
 	body: (block)))
 
 ================================================================================
@@ -64,7 +64,7 @@ for k : _ in foo do {}
 	(iterator (iteratorMap
 		key: (iterator (iteratorUnary (identifier)))
 		val: (iterator (literalPlaceholder))))
-	(iterated (expression (identifier)))
+	(iterated (identifier))
 	body: (block)))
 
 ================================================================================
@@ -76,7 +76,7 @@ for _ : v in foo do {}
 	(iterator (iteratorMap
 		key: (iterator (literalPlaceholder))
 		val: (iterator (iteratorUnary (identifier)))))
-	(iterated (expression (identifier)))
+	(iterated (identifier))
 	body: (block)))
 
 ================================================================================
@@ -88,7 +88,7 @@ for k : v in foo do {}
 	(iterator (iteratorMap
 		key: (iterator (iteratorUnary (identifier)))
 		val: (iterator (iteratorUnary (identifier)))))
-	(iterated (expression (identifier)))
+	(iterated (identifier))
 	body: (block)))
 
 ================================================================================
@@ -103,7 +103,7 @@ for k : v : w in foo do {}
 		val: (iterator (iteratorMap
 			key: (iterator (iteratorUnary (identifier)))
 			val: (iterator (iteratorUnary (identifier)))))))
-	(iterated (expression (identifier)))
+	(iterated (identifier))
 	body: (block)))
 
 ================================================================================
@@ -115,7 +115,7 @@ for [k : v] in foo do {}
 	(iterator (iteratorMap
 		key: (iterator (iteratorUnary (identifier)))
 		val: (iterator (iteratorUnary (identifier)))))
-	(iterated (expression (identifier)))
+	(iterated (identifier))
 	body: (block)))
 
 ================================================================================
@@ -129,7 +129,7 @@ for k : [v : w] in foo do {}
 		val: (iterator (iteratorMap
 			key: (iterator (iteratorUnary (identifier)))
 			val: (iterator (iteratorUnary (identifier)))))))
-	(iterated (expression (identifier)))
+	(iterated (identifier))
 	body: (block)))
 
 ================================================================================
@@ -145,7 +145,7 @@ for k Type : v Type in foo do {}
 		val: (iterator (iteratorUnary
 			(identifier)
 			(type (typeIdentifier))))))
-	(iterated (expression (identifier)))
+	(iterated (identifier))
 	body: (block)))
 
 ================================================================================
@@ -162,7 +162,7 @@ for <a [k : <b c>] d> in foo do {}
 				(iterator (iteratorUnary (identifier)))
 				(iterator (iteratorUnary (identifier)))))))
 		(iterator (iteratorUnary (identifier)))))
-	(iterated (expression (identifier)))
+	(iterated (identifier))
 	body: (block)))
 
 ================================================================================
@@ -176,7 +176,7 @@ for <a [Int]> in foo do {}
 			(identifier)
 			(type (typeList (type (typeIdentifier))))
 			))))
-	(iterated (expression (identifier)))
+	(iterated (identifier))
 	body: (block)))
 
 ================================================================================
@@ -189,7 +189,7 @@ for <a _ c> in foo do {}
 		(iterator (iteratorUnary (identifier)))
 		(iterator (literalPlaceholder))
 		(iterator (iteratorUnary (identifier)))))
-	(iterated (expression (identifier)))
+	(iterated (identifier))
 	body: (block)))
 
 ================================================================================
@@ -203,5 +203,5 @@ for w <a b c> in foo do {}
 		(iterator (iteratorUnary (identifier)))
 		(iterator (iteratorUnary (identifier)))
 		(iterator (iteratorUnary (identifier)))))
-	(iterated (expression (identifier)))
+	(iterated (identifier))
 	body: (block)))

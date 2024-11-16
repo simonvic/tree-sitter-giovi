@@ -43,7 +43,7 @@ fun(a Int default 69) {}
 		(formalParameter
 			name: (identifier)
 			type: (type (typeIdentifier))
-			default: (defaultDefinition (expression (literalInteger)))))
+			default: (defaultDefinition (literalInteger))))
 	body: (block)))
 
 ================================================================================
@@ -73,11 +73,11 @@ fun(a Int default 69, b Int default 420) {}
 		(formalParameter
 			name: (identifier)
 			type: (type (typeIdentifier))
-			default: (defaultDefinition (expression (literalInteger))))
+			default: (defaultDefinition (literalInteger)))
 		(formalParameter
 			name: (identifier)
 			type: (type (typeIdentifier))
-			default: (defaultDefinition (expression (literalInteger)))))
+			default: (defaultDefinition (literalInteger))))
 	body: (block)))
 
 ================================================================================
@@ -91,10 +91,10 @@ fun(a Int default 69, b Int default 420) => Int {}
 		(formalParameter
 			name: (identifier)
 			type: (type (typeIdentifier))
-			default: (defaultDefinition (expression (literalInteger))))
+			default: (defaultDefinition (literalInteger)))
 		(formalParameter
 			name: (identifier)
 			type: (type (typeIdentifier))
-			default: (defaultDefinition (expression (literalInteger)))))
+			default: (defaultDefinition (literalInteger))))
 	returnType: (type (typeIdentifier))
 	body: (block)))

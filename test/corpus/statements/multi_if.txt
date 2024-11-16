@@ -24,55 +24,55 @@ if x {
 }
 --------------------------------------------------------------------------------
 (program (switchStatement
-	subject: (expression (identifier))
+	subject: (identifier)
 	body: (switchBlock
 		(switchLabel
-			cases: (cases (caseMatch (expression (literalInteger))))
+			cases: (cases (caseMatch (literalInteger)))
 			body: (block))
 		(switchLabel
-			cases: (cases (caseMatch (expression (literalInteger))))
+			cases: (cases (caseMatch (literalInteger)))
 			body: (block))
 		(switchLabel
-			cases: (cases (caseMatch (expression (literalInteger))))
+			cases: (cases (caseMatch (literalInteger)))
 			body: (block))
 		(switchLabel
-			cases: (cases (caseMatch (expression (literalInteger))))
+			cases: (cases (caseMatch (literalInteger)))
 			body: (block))
 		(switchLabel
-			cases: (cases (caseMatch (expression (literalInteger))))
+			cases: (cases (caseMatch (literalInteger)))
 			body: (block))
 		(switchLabel
-			cases: (cases (caseMatch (expression (literalInteger))))
+			cases: (cases (caseMatch (literalInteger)))
 			body: (block))
 		(switchLabel
-			cases: (cases (caseMatch (expression (literalBool))))
+			cases: (cases (caseMatch (literalBool)))
 			body: (block))
 		(switchLabel
-			cases: (cases (caseMatch (expression (literalBool))))
+			cases: (cases (caseMatch (literalBool)))
 			body: (block))
 		(switchLabel
-			cases: (cases (caseMatch (expression (literalBool))))
+			cases: (cases (caseMatch (literalBool)))
 			body: (block))
 		(switchLabel
-			cases: (cases (caseMatch (expression (literalBool))))
+			cases: (cases (caseMatch (literalBool)))
 			body: (block))
 		(switchLabel
-			cases: (cases (caseMatch (expression (literalInteger))))
+			cases: (cases (caseMatch (literalInteger)))
 			body: (block))
 		(switchLabel
-			cases: (cases (caseMatch (expression (identifier))))
+			cases: (cases (caseMatch (identifier)))
 			body: (block))
 		(switchLabel
-			cases: (cases (caseMatch (expression (identifier))))
+			cases: (cases (caseMatch (identifier)))
 			body: (block))
 		(switchLabel
-			cases: (cases (caseMatch (expression (literalInteger))))
+			cases: (cases (caseMatch (literalInteger)))
 			body: (block))
 		(switchLabel
-			cases: (cases (caseMatch (expression (identifier))))
+			cases: (cases (caseMatch (identifier)))
 			body: (block))
 		(switchLabel
-			cases: (cases (caseMatch (expression (identifier))))
+			cases: (cases (caseMatch (identifier)))
 			body: (block))
 		(switchLabel
 			cases: (cases (caseMatch (type (typeIdentifier))))
@@ -96,27 +96,27 @@ if x {
 --------------------------------------------------------------------------------
 (program
 	(switchStatement
-		subject: (expression (identifier))
+		subject: (identifier)
 		body: (switchBlock
 			(switchLabel
 				cases: (cases
-					(caseMatch (expression (literalInteger)))
-					(caseMatch (expression (literalInteger))))
+					(caseMatch (literalInteger))
+					(caseMatch (literalInteger)))
 				body: (block))
 			(switchLabel
 				cases: (cases
-					(caseMatch (expression (literalInteger)))
-					(caseMatch (expression (literalInteger))))
+					(caseMatch (literalInteger))
+					(caseMatch (literalInteger)))
 				body: (block))
 			(switchLabel
 				cases: (cases
-					(caseMatch (expression (literalInteger)))
-					(caseMatch (expression (literalInteger))))
+					(caseMatch (literalInteger))
+					(caseMatch (literalInteger)))
 				body: (block))
 			(switchLabel
 				cases: (cases
-					(caseMatch (expression (literalInteger)))
-					(caseMatch (expression (literalInteger))))
+					(caseMatch (literalInteger))
+					(caseMatch (literalInteger)))
 				body: (block)))))
 
 ================================================================================
@@ -129,20 +129,20 @@ if x {
 --------------------------------------------------------------------------------
 (program
 	(switchStatement
-		subject: (expression (identifier))
+		subject: (identifier)
 		body: (switchBlock
 			(switchLabel
 				cases: (cases
-					(caseMatch (expression (literalInteger))))
-				guard: (expression (literalBool))
+					(caseMatch (literalInteger)))
+				guard: (literalBool)
 				body: (block))
 			(switchLabel
 				cases: (cases
-					(caseMatch (expression (literalInteger)))
-					(caseMatch (expression (literalInteger))))
-				guard: (expression (expressionBinary
-					(expression (literalBool))
-					(expression (literalBool))))
+					(caseMatch (literalInteger))
+					(caseMatch (literalInteger)))
+				guard: (expressionBinary
+					(literalBool)
+					(literalBool))
 				body: (block)))))
 
 ================================================================================
@@ -153,10 +153,10 @@ if x {
 } else { }
 --------------------------------------------------------------------------------
 (program (switchStatement
-	subject: (expression (identifier))
+	subject: (identifier)
 	body: (switchBlock
 		(switchLabel
-			cases: (cases (caseMatch (expression (literalInteger))))
+			cases: (cases (caseMatch (literalInteger)))
 			body: (block)))
 	elseBody: (block)))
 
@@ -169,11 +169,11 @@ if x {
 }
 --------------------------------------------------------------------------------
 (program (switchStatement
-	subject: (expression (identifier))
+	subject: (identifier)
 	body: (switchBlock
 		(switchLabel
-			cases: (cases (caseMatch (expression (identifier))))
-			body: (returnStatement (expression (identifier))))
+			cases: (cases (caseMatch (identifier)))
+			body: (returnStatement (identifier)))
 		(switchLabel
-			cases: (cases (caseMatch (expression (identifier))))
-			body: (returnStatement (expression (identifier)))))))
+			cases: (cases (caseMatch (identifier)))
+			body: (returnStatement (identifier))))))

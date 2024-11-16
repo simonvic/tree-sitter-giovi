@@ -8,17 +8,17 @@ simple
 --------------------------------------------------------------------------------
 (program
 	(returnStatement
-		(expression (expressionPrefixed
-			(expression (identifier)))))
+		(expressionPrefixed
+			(identifier)))
 	(returnStatement
-		(expression (expressionPrefixed
-			(expression (identifier)))))
+		(expressionPrefixed
+			(identifier)))
 	(returnStatement
-		(expression (expressionPrefixed
-			(expression (identifier)))))
+		(expressionPrefixed
+			(identifier)))
 	(returnStatement
-		(expression (expressionPrefixed
-			(expression (identifier))))))
+		(expressionPrefixed
+			(identifier))))
 
 ================================================================================
 double negation
@@ -27,6 +27,6 @@ double negation
 --------------------------------------------------------------------------------
 (program
 	(returnStatement
-		(expression (expressionPrefixed
-			(expression (expressionPrefixed
-				(expression (identifier))))))))
+		(expressionPrefixed
+			(expressionPrefixed
+				(identifier)))))

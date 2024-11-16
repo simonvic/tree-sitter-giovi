@@ -5,6 +5,6 @@ bool
 => false
 --------------------------------------------------------------------------------
 (program
-	(returnStatement (expression (literalBool)))
-	(returnStatement (expression (literalBool))))
+	(returnStatement (literalBool))
+	(returnStatement (literalBool)))
 

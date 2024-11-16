@@ -103,7 +103,8 @@ module.exports = grammar({
     $.comment,
     $.doc,
     $.literal,
-    $.statement
+    $.statement,
+    $.expression,
     // TODO: eventually add expressions and statements
   ],
 
@@ -361,7 +362,7 @@ module.exports = grammar({
     primitiveDestination: _ => choice('\\out', '\\err'),
 
     expression: $ => choice(
-      $._expressionParenthesized,
+      $.expressionParenthesized,
       $.expressionCast,
       $.expressionTypeCheck,
       alias($.expressionCreationList, $.list),
@@ -376,7 +377,7 @@ module.exports = grammar({
       $._primary,
     ),
 
-    _expressionParenthesized: $ => seq('{', $.expression, '}'),
+    expressionParenthesized: $ => seq('{', $.expression, '}'),
 
     expressionCast: $ => prec(PREC.CAST, seq($.expression, 'as', $.type)),
 

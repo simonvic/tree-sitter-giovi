@@ -5,9 +5,9 @@ simple
 --------------------------------------------------------------------------------
 (program
 	(returnStatement
-		(expression (expressionDot
-			(expression (identifier))
-			(identifier)))))
+		(expressionDot
+			(identifier)
+			(identifier))))
 
 ================================================================================
 default
@@ -16,9 +16,9 @@ default
 --------------------------------------------------------------------------------
 (program
 	(returnStatement
-		(expression (expressionDot
-			(expression (identifier))
-			(literalDefault)))))
+		(expressionDot
+			(identifier)
+			(literalDefault))))
 
 ================================================================================
 nested
@@ -27,9 +27,9 @@ nested
 --------------------------------------------------------------------------------
 (program
 	(returnStatement
-		(expression (expressionDot
-			(expression (expressionDot
-				(expression (identifier))
-				(identifier)))
-			(identifier)))))
+		(expressionDot
+			(expressionDot
+				(identifier)
+				(identifier))
+			(identifier))))
 

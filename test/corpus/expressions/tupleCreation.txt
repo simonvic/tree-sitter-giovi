@@ -3,7 +3,7 @@ empty tuple
 ================================================================================
 => <>
 --------------------------------------------------------------------------------
-(program (returnStatement (expression (struct (structFields)))))
+(program (returnStatement (struct (structFields))))
 
 
 ================================================================================
@@ -11,9 +11,9 @@ tuple with one field
 ================================================================================
 => <a>
 --------------------------------------------------------------------------------
-(program (returnStatement (expression (struct
+(program (returnStatement (struct
 	(structFields
-		(expression (identifier)))))))
+		(identifier)))))
 
 
 ================================================================================
@@ -21,11 +21,11 @@ tuple with multiple fields
 ================================================================================
 => <a b c>
 --------------------------------------------------------------------------------
-(program (returnStatement (expression (struct
+(program (returnStatement (struct
 	(structFields
-		(expression (identifier))
-		(expression (identifier))
-		(expression (identifier)))))))
+		(identifier)
+		(identifier)
+		(identifier)))))
 
 
 ================================================================================
@@ -33,11 +33,11 @@ tuple with multiple comma separated fields
 ================================================================================
 => <a, b, c>
 --------------------------------------------------------------------------------
-(program (returnStatement (expression (struct
+(program (returnStatement (struct
 	(structFields
-		(expression (identifier))
-		(expression (identifier))
-		(expression (identifier)))))))
+		(identifier)
+		(identifier)
+		(identifier)))))
 
 
 ================================================================================
@@ -45,10 +45,10 @@ tuple with named field
 ================================================================================
 => <a:a>
 --------------------------------------------------------------------------------
-(program (returnStatement (expression (struct
+(program (returnStatement (struct
 	(structFields
 		(identifier)
-		(expression (identifier)))))))
+		(identifier)))))
 
 
 ================================================================================
@@ -56,11 +56,11 @@ tuple with multiple named fields
 ================================================================================
 => <a:a b:b c:c>
 --------------------------------------------------------------------------------
-(program (returnStatement (expression (struct
+(program (returnStatement (struct
 	(structFields
-		(identifier) (expression (identifier))
-		(identifier) (expression (identifier))
-		(identifier) (expression (identifier)))))))
+		(identifier) (identifier)
+		(identifier) (identifier)
+		(identifier) (identifier)))))
 
 
 ================================================================================
@@ -68,13 +68,13 @@ tuple with nested tuple
 ================================================================================
 => <<a b c>>
 --------------------------------------------------------------------------------
-(program (returnStatement (expression (struct
+(program (returnStatement (struct
 	(structFields
-		(expression (struct
+		(struct
 			(structFields
-				(expression (identifier))
-				(expression (identifier))
-				(expression (identifier))))))))))
+				(identifier)
+				(identifier)
+				(identifier)))))))
 
 
 ================================================================================
@@ -82,18 +82,18 @@ tuple with nested tuples
 ================================================================================
 => <<a b c> <d e f>>
 --------------------------------------------------------------------------------
-(program (returnStatement (expression (struct
+(program (returnStatement (struct
 	(structFields
-		(expression (struct
+		(struct
 			(structFields
-				(expression (identifier))
-				(expression (identifier))
-				(expression (identifier)))))
-		(expression (struct
+				(identifier)
+				(identifier)
+				(identifier)))
+		(struct
 			(structFields
-				(expression (identifier))
-				(expression (identifier))
-				(expression (identifier))))))))))
+				(identifier)
+				(identifier)
+				(identifier)))))))
 
 
 ================================================================================
@@ -101,12 +101,12 @@ tuple with relational expression a field
 ================================================================================
 => <a b<c d>
 --------------------------------------------------------------------------------
-(program (returnStatement (expression (struct
+(program (returnStatement (struct
 	(structFields
-		(expression (identifier))
-		(expression (expressionBinary
-			(expression (identifier))
-			(expression (identifier))))
-		(expression (identifier)))))))
+		(identifier)
+		(expressionBinary
+			(identifier)
+			(identifier))
+		(identifier)))))
 
 

@@ -1,5 +1,79 @@
 [
   {
+    "type": "expression",
+    "named": true,
+    "subtypes": [
+      {
+        "type": "constantIdentifier",
+        "named": true
+      },
+      {
+        "type": "expressionAccess",
+        "named": true
+      },
+      {
+        "type": "expressionBinary",
+        "named": true
+      },
+      {
+        "type": "expressionCast",
+        "named": true
+      },
+      {
+        "type": "expressionDot",
+        "named": true
+      },
+      {
+        "type": "expressionParenthesized",
+        "named": true
+      },
+      {
+        "type": "expressionPrefixed",
+        "named": true
+      },
+      {
+        "type": "expressionRef",
+        "named": true
+      },
+      {
+        "type": "expressionTypeCheck",
+        "named": true
+      },
+      {
+        "type": "identifier",
+        "named": true
+      },
+      {
+        "type": "invocation",
+        "named": true
+      },
+      {
+        "type": "list",
+        "named": true
+      },
+      {
+        "type": "literal",
+        "named": true
+      },
+      {
+        "type": "map",
+        "named": true
+      },
+      {
+        "type": "primitiveContent",
+        "named": true
+      },
+      {
+        "type": "struct",
+        "named": true
+      },
+      {
+        "type": "typeIdentifier",
+        "named": true
+      }
+    ]
+  },
+  {
     "type": "literal",
     "named": true,
     "subtypes": [
@@ -181,10 +255,6 @@
           "named": true
         },
         {
-          "type": "identifier",
-          "named": true
-        },
-        {
           "type": "type",
           "named": true
         }
@@ -258,85 +328,6 @@
     }
   },
   {
-    "type": "expression",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "constantIdentifier",
-          "named": true
-        },
-        {
-          "type": "expression",
-          "named": true
-        },
-        {
-          "type": "expressionAccess",
-          "named": true
-        },
-        {
-          "type": "expressionBinary",
-          "named": true
-        },
-        {
-          "type": "expressionCast",
-          "named": true
-        },
-        {
-          "type": "expressionDot",
-          "named": true
-        },
-        {
-          "type": "expressionPrefixed",
-          "named": true
-        },
-        {
-          "type": "expressionRef",
-          "named": true
-        },
-        {
-          "type": "expressionTypeCheck",
-          "named": true
-        },
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "invocation",
-          "named": true
-        },
-        {
-          "type": "list",
-          "named": true
-        },
-        {
-          "type": "literal",
-          "named": true
-        },
-        {
-          "type": "map",
-          "named": true
-        },
-        {
-          "type": "primitiveContent",
-          "named": true
-        },
-        {
-          "type": "struct",
-          "named": true
-        },
-        {
-          "type": "typeIdentifier",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "expressionAccess",
     "named": true,
     "fields": {
@@ -356,14 +347,6 @@
         "types": [
           {
             "type": "expression",
-            "named": true
-          },
-          {
-            "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "literal",
             "named": true
           },
           {
@@ -439,23 +422,26 @@
       "required": true,
       "types": [
         {
-          "type": "constantIdentifier",
-          "named": true
-        },
-        {
           "type": "expression",
-          "named": true
-        },
-        {
-          "type": "identifier",
           "named": true
         },
         {
           "type": "literalDefault",
           "named": true
-        },
+        }
+      ]
+    }
+  },
+  {
+    "type": "expressionParenthesized",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
         {
-          "type": "typeIdentifier",
+          "type": "expression",
           "named": true
         }
       ]
@@ -536,10 +522,6 @@
       "types": [
         {
           "type": "expression",
-          "named": true
-        },
-        {
-          "type": "identifier",
           "named": true
         },
         {
@@ -1273,10 +1255,6 @@
       "types": [
         {
           "type": "expression",
-          "named": true
-        },
-        {
-          "type": "identifier",
           "named": true
         }
       ]

@@ -4,7 +4,7 @@ default
 => default
 --------------------------------------------------------------------------------
 (program
-	(returnStatement (expression (literalDefault))))
+	(returnStatement (literalDefault)))
 
 ================================================================================
 placeholder
@@ -12,5 +12,5 @@ placeholder
 => _
 --------------------------------------------------------------------------------
 (program
-	(returnStatement (expression (literalPlaceholder))))
+	(returnStatement (literalPlaceholder)))
 

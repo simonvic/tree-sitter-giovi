@@ -5,7 +5,7 @@ if true do {}
 --------------------------------------------------------------------------------
 (program
 	(ifStatement
-		condition: (expression (literalBool))
+		condition: (literalBool)
 		body: (block)))
 
 ================================================================================
@@ -15,8 +15,8 @@ if true do 69 -> \out
 --------------------------------------------------------------------------------
 (program
 	(ifStatement
-		condition: (expression (literalBool))
-		body: (redirection (expression (literalInteger)) (primitiveDestination))))
+		condition: (literalBool)
+		body: (redirection (literalInteger) (primitiveDestination))))
 
 ================================================================================
 if expression do block else block
@@ -25,7 +25,7 @@ if true do {} else {}
 --------------------------------------------------------------------------------
 (program
 	(ifStatement
-		condition: (expression (literalBool))
+		condition: (literalBool)
 		body: (block)
 		elseBody: (block)))
 
@@ -36,9 +36,9 @@ if true do 69 -> \out else "hello" -> \out
 --------------------------------------------------------------------------------
 (program
 	(ifStatement
-		condition: (expression (literalBool))
-		body: (redirection (expression (literalInteger)) (primitiveDestination))
-		elseBody: (redirection (expression (literalText)) (primitiveDestination))))
+		condition: (literalBool)
+		body: (redirection (literalInteger) (primitiveDestination))
+		elseBody: (redirection (literalText) (primitiveDestination))))
 
 
 ================================================================================
@@ -50,9 +50,9 @@ if true do
 else {}
 --------------------------------------------------------------------------------
 (program (ifStatement
-	condition: (expression (literalBool))
+	condition: (literalBool)
 	body: (ifStatement
-		condition: (expression (literalBool))
+		condition: (literalBool)
 		body: (block)
 		elseBody: (block))
 	elseBody: (block)))
@@ -68,13 +68,13 @@ else {}
 
 --------------------------------------------------------------------------------
 (program (ifStatement
-	condition: (expression (literalBool))
+	condition: (literalBool)
 	body: (block)
 	elseBody: (ifStatement
-		condition: (expression (literalBool))
+		condition: (literalBool)
 		body: (block)
 		elseBody: (ifStatement
-			condition: (expression (literalBool))
+			condition: (literalBool)
 			body: (block)
 			elseBody: (block)))))
 

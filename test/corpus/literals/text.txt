@@ -10,13 +10,13 @@ simple text
 => "$ awf"
 --------------------------------------------------------------------------------
 (program
-	(returnStatement (expression (literalText)))
-	(returnStatement (expression (literalText)))
-	(returnStatement (expression (literalText)))
-	(returnStatement (expression (literalText)))
-	(returnStatement (expression (literalText)))
-	(returnStatement (expression (literalText)))
-	(returnStatement (expression (literalText))))
+	(returnStatement (literalText))
+	(returnStatement (literalText))
+	(returnStatement (literalText))
+	(returnStatement (literalText))
+	(returnStatement (literalText))
+	(returnStatement (literalText))
+	(returnStatement (literalText)))
 
 ================================================================================
 text with escape sequence
@@ -31,14 +31,14 @@ text with escape sequence
 => "\uf6f6"
 --------------------------------------------------------------------------------
 (program
-	(returnStatement (expression (literalText (escapeSequence))))
-	(returnStatement (expression (literalText (escapeSequence))))
-	(returnStatement (expression (literalText (escapeSequence))))
-	(returnStatement (expression (literalText (escapeSequence))))
-	(returnStatement (expression (literalText (escapeSequence))))
-	(returnStatement (expression (literalText (escapeSequence))))
-	(returnStatement (expression (literalText (escapeSequence))))
-	(returnStatement (expression (literalText (escapeSequence)))))
+	(returnStatement (literalText (escapeSequence)))
+	(returnStatement (literalText (escapeSequence)))
+	(returnStatement (literalText (escapeSequence)))
+	(returnStatement (literalText (escapeSequence)))
+	(returnStatement (literalText (escapeSequence)))
+	(returnStatement (literalText (escapeSequence)))
+	(returnStatement (literalText (escapeSequence)))
+	(returnStatement (literalText (escapeSequence))))
 
 ================================================================================
 text with interpolation
@@ -48,12 +48,12 @@ text with interpolation
 => "hello ${a + b} world"
 --------------------------------------------------------------------------------
 (program
-	(returnStatement (expression (literalText (textInterpolation))))
-	(returnStatement (expression (literalText (textInterpolation (expression (identifier))))))
-	(returnStatement (expression (literalText (textInterpolation (expression
+	(returnStatement (literalText (textInterpolation)))
+	(returnStatement (literalText (textInterpolation (identifier))))
+	(returnStatement (literalText (textInterpolation
 		(expressionBinary
-			(expression (identifier))
-			(expression (identifier)))))))))
+			(identifier)
+			(identifier))))))
 
 ================================================================================
 text block
@@ -67,11 +67,11 @@ text block
 => "{#}"
 --------------------------------------------------------------------------------
 (program
-	(returnStatement (expression (literalTextBlock)))
-	(returnStatement (expression (literalTextBlock)))
-	(returnStatement (expression (literalTextBlock)))
-	(returnStatement (expression (literalTextBlock)))
-	(returnStatement (expression (literalTextBlock))))
+	(returnStatement (literalTextBlock))
+	(returnStatement (literalTextBlock))
+	(returnStatement (literalTextBlock))
+	(returnStatement (literalTextBlock))
+	(returnStatement (literalTextBlock)))
 
 ================================================================================
 text block with interpolation
@@ -81,9 +81,9 @@ text block with interpolation
 => "{hello ${a + b} world}"
 --------------------------------------------------------------------------------
 (program
-	(returnStatement (expression (literalTextBlock (textInterpolation))))
-	(returnStatement (expression (literalTextBlock (textInterpolation (expression (identifier))))))
-	(returnStatement (expression (literalTextBlock (textInterpolation (expression
+	(returnStatement (literalTextBlock (textInterpolation)))
+	(returnStatement (literalTextBlock (textInterpolation (identifier))))
+	(returnStatement (literalTextBlock (textInterpolation
 		(expressionBinary
-			(expression (identifier))
-			(expression (identifier)))))))))
+			(identifier)
+			(identifier))))))

@@ -14,7 +14,7 @@ doc line
 	(docLine)
 	(docLine)
 	(docLine)
-	(returnStatement (expression (identifier)))
+	(returnStatement (identifier))
 	(docLine)
 	(docLine)
 	(docLine))
@@ -84,7 +84,7 @@ block
 --------------------------------------------------------------------------------
 (program
 	(docBlock)
-	(returnStatement (expression (identifier))))
+	(returnStatement (identifier)))
 
 ================================================================================
 doc block after statement
@@ -97,7 +97,7 @@ block
 }#
 --------------------------------------------------------------------------------
 (program
-	(returnStatement (expression (identifier)))
+	(returnStatement (identifier))
 	(docBlock))
 
 ================================================================================
@@ -105,7 +105,7 @@ doc block inline statement
 ================================================================================
 => #?{ this is a doc block }# a
 --------------------------------------------------------------------------------
-(program (returnStatement (docBlock) (expression (identifier))))
+(program (returnStatement (docBlock) (identifier)))
 
 ================================================================================
 doc block with nested opening tag
@@ -115,4 +115,4 @@ doc block with nested opening tag
 (program 
 	(returnStatement
 		(docBlock)
-		(expression (identifier))))
+		(identifier)))

@@ -4,11 +4,11 @@ algebraic precedence
 => a + b * c
 --------------------------------------------------------------------------------
 (program (returnStatement
-	(expression (expressionBinary
-		(expression (identifier))
-		(expression (expressionBinary
-			(expression (identifier))
-			(expression (identifier))))))))
+	(expressionBinary
+		(identifier)
+		(expressionBinary
+			(identifier)
+			(identifier)))))
 
 ================================================================================
 parenthesis precedence
@@ -16,11 +16,11 @@ parenthesis precedence
 => {a + b} * c
 --------------------------------------------------------------------------------
 (program (returnStatement
-	(expression (expressionBinary
-		(expression (expression (expressionBinary
-			(expression (identifier))
-			(expression (identifier)))))
-		(expression (identifier))))))
+	(expressionBinary (expressionParenthesized
+		(expressionBinary
+			(identifier)
+			(identifier)))
+		(identifier))))
 
 ================================================================================
 negation precedence
@@ -28,9 +28,9 @@ negation precedence
 => !a & not b
 --------------------------------------------------------------------------------
 (program (returnStatement
-	(expression (expressionBinary
-		(expression (expressionPrefixed (expression (identifier))))
-		(expression (expressionPrefixed (expression (identifier))))))))
+	(expressionBinary
+		(expressionPrefixed (identifier))
+		(expressionPrefixed (identifier)))))
 
 ================================================================================
 access precedence
@@ -38,11 +38,11 @@ access precedence
 => a@b@c
 --------------------------------------------------------------------------------
 (program (returnStatement
-	(expression (expressionAccess
-		accessed: (expression (expressionAccess
-			accessed: (expression (identifier))
-			accessor: (identifier)))
-		accessor: (identifier)))))
+	(expressionAccess
+		accessed: (expressionAccess
+			accessed: (identifier)
+			accessor: (identifier))
+		accessor: (identifier))))
 
 ================================================================================
 dot precedence
@@ -50,11 +50,11 @@ dot precedence
 => a.b.c
 --------------------------------------------------------------------------------
 (program (returnStatement
-	(expression (expressionDot
-		(expression (expressionDot
-			(expression (identifier))
-			(identifier)))
-		(identifier)))))
+	(expressionDot
+		(expressionDot
+			(identifier)
+			(identifier))
+		(identifier))))
 
 ================================================================================
 tuple creation and dot precedence
@@ -62,9 +62,9 @@ tuple creation and dot precedence
 => <>.a
 --------------------------------------------------------------------------------
 (program (returnStatement
-	(expression (expressionDot
-		(expression (struct (structFields)))
-		(identifier)))))
+	(expressionDot
+		(struct (structFields))
+		(identifier))))
 
 ================================================================================
 tuple creation and access precedence
@@ -72,6 +72,77 @@ tuple creation and access precedence
 => <>@1
 --------------------------------------------------------------------------------
 (program (returnStatement
-	(expression (expressionAccess
-		(expression (struct (structFields)))
-		(literalInteger)))))
+	(expressionAccess
+		(struct (structFields))
+		(literalInteger))))
+
+================================================================================
+access dot and invocation precedence
+:skip
+================================================================================
+=> a@b.c()
+=> {a@b.c}()
+=> {a@b}.c()
+=> a@{b.c}()
+=> a@{b.c()}
+--------------------------------------------------------------------------------
+(program
+	(returnStatement
+		(invocation
+			(expressionDot
+				(expressionAccess
+					(identifier)
+					(identifier))
+				(identifier))
+			(actualParameters)))
+	(returnStatement
+		(invocation
+			(expression
+			(expression
+			(expressionDot
+			(expression
+			(expressionAccess
+			(expression
+			(identifier))
+			(identifier)))
+			(identifier))))
+		(actualParameters)))
+	(returnStatement
+		(expression
+		(invocation
+		(expression
+		(expressionDot
+		(expression
+		(expression
+		(expressionAccess
+		(expression
+		(identifier))
+		(identifier))))
+		(identifier)))
+		(actualParameters))))
+	(returnStatement
+		(expression
+		(invocation
+		(expression
+		(expressionAccess
+		(expression
+		(identifier))
+		(expression
+		(expressionDot
+		(expression
+		(identifier))
+		(identifier)))))
+		(actualParameters))))
+	(returnStatement
+		(expression
+		(expressionAccess
+		(expression
+		(identifier))
+		(expression
+		(invocation
+		(expression
+		(expressionDot
+		(expression
+		(identifier))
+		(identifier)))
+		(actualParameters)))))))

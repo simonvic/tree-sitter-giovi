@@ -10,29 +10,29 @@ arithmetic
 --------------------------------------------------------------------------------
 (program
 	(returnStatement
-		(expression (expressionBinary
-			(expression (identifier))
-			(expression (identifier)))))
+		(expressionBinary
+			(identifier)
+			(identifier)))
 	(returnStatement
-		(expression (expressionBinary
-			(expression (identifier))
-			(expression (identifier)))))
+		(expressionBinary
+			(identifier)
+			(identifier)))
 	(returnStatement
-		(expression (expressionBinary
-			(expression (identifier))
-			(expression (identifier)))))
+		(expressionBinary
+			(identifier)
+			(identifier)))
 	(returnStatement
-		(expression (expressionBinary
-			(expression (identifier))
-			(expression (identifier)))))
+		(expressionBinary
+			(identifier)
+			(identifier)))
 	(returnStatement
-		(expression (expressionBinary
-			(expression (identifier))
-			(expression (identifier)))))
+		(expressionBinary
+			(identifier)
+			(identifier)))
 	(returnStatement
-		(expression (expressionBinary
-			(expression (identifier))
-			(expression (identifier))))))
+		(expressionBinary
+			(identifier)
+			(identifier))))
 
 ================================================================================
 relational
@@ -44,21 +44,21 @@ relational
 --------------------------------------------------------------------------------
 (program
 	(returnStatement
-		(expression (expressionBinary
-			(expression (identifier))
-			(expression (identifier)))))
+		(expressionBinary
+			(identifier)
+			(identifier)))
 	(returnStatement
-		(expression (expressionBinary
-			(expression (identifier))
-			(expression (identifier)))))
+		(expressionBinary
+			(identifier)
+			(identifier)))
 	(returnStatement
-		(expression (expressionBinary
-			(expression (identifier))
-			(expression (identifier)))))
+		(expressionBinary
+			(identifier)
+			(identifier)))
 	(returnStatement
-		(expression (expressionBinary
-			(expression (identifier))
-			(expression (identifier))))))
+		(expressionBinary
+			(identifier)
+			(identifier))))
 
 ================================================================================
 equality
@@ -68,13 +68,13 @@ equality
 --------------------------------------------------------------------------------
 (program
 	(returnStatement
-		(expression (expressionBinary
-			(expression (identifier))
-			(expression (identifier)))))
+		(expressionBinary
+			(identifier)
+			(identifier)))
 	(returnStatement
-		(expression (expressionBinary
-			(expression (identifier))
-			(expression (identifier))))))
+		(expressionBinary
+			(identifier)
+			(identifier))))
 
 ================================================================================
 containment
@@ -84,13 +84,13 @@ containment
 --------------------------------------------------------------------------------
 (program
 	(returnStatement
-		(expression (expressionBinary
-			(expression (identifier))
-			(expression (identifier)))))
+		(expressionBinary
+			(identifier)
+			(identifier)))
 	(returnStatement
-		(expression (expressionBinary
-			(expression (identifier))
-			(expression (identifier))))))
+		(expressionBinary
+			(identifier)
+			(identifier))))
 
 ================================================================================
 boolean
@@ -102,21 +102,21 @@ boolean
 --------------------------------------------------------------------------------
 (program
 	(returnStatement
-		(expression (expressionBinary
-			(expression (identifier))
-			(expression (identifier)))))
+		(expressionBinary
+			(identifier)
+			(identifier)))
 	(returnStatement
-		(expression (expressionBinary
-			(expression (identifier))
-			(expression (identifier)))))
+		(expressionBinary
+			(identifier)
+			(identifier)))
 	(returnStatement
-		(expression (expressionBinary
-			(expression (identifier))
-			(expression (identifier)))))
+		(expressionBinary
+			(identifier)
+			(identifier)))
 	(returnStatement
-		(expression (expressionBinary
-			(expression (identifier))
-			(expression (identifier))))))
+		(expressionBinary
+			(identifier)
+			(identifier))))
 
 ================================================================================
 nested binary expressions
@@ -125,12 +125,11 @@ nested binary expressions
 --------------------------------------------------------------------------------
 (program
 	(returnStatement
-		(expression (expressionBinary
-			(expression (expressionBinary
-				(expression (identifier))
-				(expression (identifier))))
-			(expression (identifier)))))
-)
+		(expressionBinary
+			(expressionBinary
+				(identifier)
+				(identifier))
+			(identifier))))
 
 ================================================================================
 nested parenthesized binary expressions
@@ -139,8 +138,8 @@ nested parenthesized binary expressions
 --------------------------------------------------------------------------------
 (program
 	(returnStatement
-		(expression (expressionBinary
-			(expression (identifier))
-			(expression (expression (expressionBinary
-				(expression (identifier))
-				(expression (identifier)))))))))
+		(expressionBinary
+			(identifier)
+			(expressionParenthesized (expressionBinary
+				(identifier)
+				(identifier))))))

@@ -3,17 +3,17 @@ return value
 ================================================================================
 => 69
 --------------------------------------------------------------------------------
-(program (returnStatement (expression (literalInteger))))
+(program (returnStatement (literalInteger)))
 
 ================================================================================
 return expression
 ================================================================================
 => 69 + 69
 --------------------------------------------------------------------------------
-(program (returnStatement (expression
+(program (returnStatement
 	(expressionBinary
-		(expression (literalInteger))
-		(expression (literalInteger))))))
+		(literalInteger)
+		(literalInteger))))
 
 ================================================================================
 return nothing

@@ -5,9 +5,9 @@ simple
 --------------------------------------------------------------------------------
 (program
 	(returnStatement
-		(expression (expressionTypeCheck
-			(expression (identifier))
-			(type (typeIdentifier))))))
+		(expressionTypeCheck
+			(identifier)
+			(type (typeIdentifier)))))
 
 ================================================================================
 with declaration
@@ -16,10 +16,10 @@ with declaration
 --------------------------------------------------------------------------------
 (program
 	(returnStatement
-		(expression (expressionTypeCheck
-			(expression (identifier))
+		(expressionTypeCheck
 			(identifier)
-			(type (typeIdentifier))))))
+			(identifier)
+			(type (typeIdentifier)))))
 
 ================================================================================
 with negation
@@ -28,7 +28,7 @@ with negation
 --------------------------------------------------------------------------------
 (program
 	(returnStatement
-		(expression (expressionTypeCheck
-			(expression (identifier))
-			(type (typeIdentifier))))))
+		(expressionTypeCheck
+			(identifier)
+			(type (typeIdentifier)))))
 

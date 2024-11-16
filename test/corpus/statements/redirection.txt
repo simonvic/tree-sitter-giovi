@@ -5,7 +5,7 @@ RTL to primitive destination
 --------------------------------------------------------------------------------
 (program (redirection
 	(primitiveDestination)
-	(expression (literalText))))
+	(literalText)))
 
 ================================================================================
 RTL to var declaration
@@ -16,7 +16,7 @@ t Text <- "hello world"
 	(varDeclaration
 		(identifier)
 		(type (typeIdentifier)))
-	(expression (literalText))))
+	(literalText)))
 
 ================================================================================
 RTL to var declaration with default
@@ -27,8 +27,8 @@ t Text default "foo" <- "hello world"
 	(varDeclaration
 		(identifier)
 		(type (typeIdentifier))
-		(defaultDefinition (expression (literalText))))
-	(expression (literalText))))
+		(defaultDefinition (literalText)))
+	(literalText)))
 
 ================================================================================
 LTR to primitive destination
@@ -36,7 +36,7 @@ LTR to primitive destination
 "hello world" -> \out
 --------------------------------------------------------------------------------
 (program (redirection
-	(expression (literalText))
+	(literalText)
 	(primitiveDestination)))
 
 ================================================================================
@@ -45,7 +45,7 @@ LTR to var declaration
 "hello world" -> t Text
 --------------------------------------------------------------------------------
 (program (redirection
-	(expression (literalText))
+	(literalText)
 	(varDeclaration
 		(identifier)
 		(type (typeIdentifier)))))
@@ -56,8 +56,8 @@ LTR to var declaration with default
 "hello world" -> t Text default "foo"
 --------------------------------------------------------------------------------
 (program (redirection
-	(expression (literalText))
+	(literalText)
 	(varDeclaration
 		(identifier)
 		(type (typeIdentifier))
-		(defaultDefinition (expression (literalText))))))
+		(defaultDefinition (literalText)))))

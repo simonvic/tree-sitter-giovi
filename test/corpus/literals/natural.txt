@@ -12,13 +12,13 @@ natural
 => 0xFF_FF_FFn
 --------------------------------------------------------------------------------
 (program
-	(returnStatement (expression (literalNatural)))
-	(returnStatement (expression (literalNatural)))
-	(returnStatement (expression (literalNatural)))
-	(returnStatement (expression (literalNatural)))
-	(returnStatement (expression (literalNatural)))
-	(returnStatement (expression (literalNatural)))
-	(returnStatement (expression (literalNatural)))
-	(returnStatement (expression (literalNatural)))
-	(returnStatement (expression (literalNatural))))
+	(returnStatement (literalNatural))
+	(returnStatement (literalNatural))
+	(returnStatement (literalNatural))
+	(returnStatement (literalNatural))
+	(returnStatement (literalNatural))
+	(returnStatement (literalNatural))
+	(returnStatement (literalNatural))
+	(returnStatement (literalNatural))
+	(returnStatement (literalNatural)))
 

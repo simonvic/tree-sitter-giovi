@@ -15,4 +15,4 @@ i Int default 69
 (program (varDeclaration
 	name: (identifier)
 	type: (type (typeIdentifier))
-	default: (defaultDefinition (expression (literalInteger)))))
+	default: (defaultDefinition (literalInteger))))

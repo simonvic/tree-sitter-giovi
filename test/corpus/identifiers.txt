@@ -11,11 +11,11 @@ constant identifiers
 --------------------------------------------------------------------------------
 
 (program
-	(returnStatement (expression (constantIdentifier)))
-	(returnStatement (expression (constantIdentifier)))
-	(returnStatement (expression (constantIdentifier)))
-	(returnStatement (expression (constantIdentifier)))
-	(returnStatement (expression (constantIdentifier))))
+	(returnStatement (constantIdentifier))
+	(returnStatement (constantIdentifier))
+	(returnStatement (constantIdentifier))
+	(returnStatement (constantIdentifier))
+	(returnStatement (constantIdentifier)))
 
 
 ================================================================================
@@ -33,13 +33,13 @@ identifiers
 --------------------------------------------------------------------------------
 
 (program
-	(returnStatement (expression (identifier)))
-	(returnStatement (expression (identifier)))
-	(returnStatement (expression (identifier)))
-	(returnStatement (expression (identifier)))
-	(returnStatement (expression (identifier)))
-	(returnStatement (expression (identifier)))
-	(returnStatement (expression (identifier))))
+	(returnStatement (identifier))
+	(returnStatement (identifier))
+	(returnStatement (identifier))
+	(returnStatement (identifier))
+	(returnStatement (identifier))
+	(returnStatement (identifier))
+	(returnStatement (identifier)))
 
 
 ================================================================================
@@ -56,11 +56,11 @@ type identifiers
 --------------------------------------------------------------------------------
 
 (program
-	(returnStatement (expression (typeIdentifier)))
-	(returnStatement (expression (typeIdentifier)))
-	(returnStatement (expression (typeIdentifier)))
-	(returnStatement (expression (typeIdentifier)))
-	(returnStatement (expression (typeIdentifier)))
-	(returnStatement (expression (typeIdentifier))))
+	(returnStatement (typeIdentifier))
+	(returnStatement (typeIdentifier))
+	(returnStatement (typeIdentifier))
+	(returnStatement (typeIdentifier))
+	(returnStatement (typeIdentifier))
+	(returnStatement (typeIdentifier)))
 
 

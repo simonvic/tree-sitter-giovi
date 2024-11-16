@@ -8,11 +8,11 @@ simple exact text
 => '#'
 --------------------------------------------------------------------------------
 (program
-	(returnStatement (expression (literalExactText)))
-	(returnStatement (expression (literalExactText)))
-	(returnStatement (expression (literalExactText)))
-	(returnStatement (expression (literalExactText)))
-	(returnStatement (expression (literalExactText))))
+	(returnStatement (literalExactText))
+	(returnStatement (literalExactText))
+	(returnStatement (literalExactText))
+	(returnStatement (literalExactText))
+	(returnStatement (literalExactText)))
 
 ================================================================================
 exact text with escape sequence
@@ -27,14 +27,14 @@ exact text with escape sequence
 => '\uf6f6'
 --------------------------------------------------------------------------------
 (program
-	(returnStatement (expression (literalExactText (escapeSequence))))
-	(returnStatement (expression (literalExactText (escapeSequence))))
-	(returnStatement (expression (literalExactText (escapeSequence))))
-	(returnStatement (expression (literalExactText (escapeSequence))))
-	(returnStatement (expression (literalExactText (escapeSequence))))
-	(returnStatement (expression (literalExactText (escapeSequence))))
-	(returnStatement (expression (literalExactText (escapeSequence))))
-	(returnStatement (expression (literalExactText (escapeSequence)))))
+	(returnStatement (literalExactText (escapeSequence)))
+	(returnStatement (literalExactText (escapeSequence)))
+	(returnStatement (literalExactText (escapeSequence)))
+	(returnStatement (literalExactText (escapeSequence)))
+	(returnStatement (literalExactText (escapeSequence)))
+	(returnStatement (literalExactText (escapeSequence)))
+	(returnStatement (literalExactText (escapeSequence)))
+	(returnStatement (literalExactText (escapeSequence))))
 
 ================================================================================
 exact text with interpolation
@@ -44,9 +44,9 @@ exact text with interpolation
 => 'hello ${a + b} world'
 --------------------------------------------------------------------------------
 (program
-	(returnStatement (expression (literalExactText)))
-	(returnStatement (expression (literalExactText)))
-	(returnStatement (expression (literalExactText))))
+	(returnStatement (literalExactText))
+	(returnStatement (literalExactText))
+	(returnStatement (literalExactText)))
 
 ================================================================================
 exact text block
@@ -60,11 +60,11 @@ exact text block
 => '{#}'
 --------------------------------------------------------------------------------
 (program
-	(returnStatement (expression (literalExactTextBlock)))
-	(returnStatement (expression (literalExactTextBlock)))
-	(returnStatement (expression (literalExactTextBlock)))
-	(returnStatement (expression (literalExactTextBlock)))
-	(returnStatement (expression (literalExactTextBlock))))
+	(returnStatement (literalExactTextBlock))
+	(returnStatement (literalExactTextBlock))
+	(returnStatement (literalExactTextBlock))
+	(returnStatement (literalExactTextBlock))
+	(returnStatement (literalExactTextBlock)))
 
 ================================================================================
 exact text block with interpolation
@@ -74,6 +74,6 @@ exact text block with interpolation
 => '{hello ${a + b} world}'
 --------------------------------------------------------------------------------
 (program
-	(returnStatement (expression (literalExactTextBlock)))
-	(returnStatement (expression (literalExactTextBlock)))
-	(returnStatement (expression (literalExactTextBlock))))
+	(returnStatement (literalExactTextBlock))
+	(returnStatement (literalExactTextBlock))
+	(returnStatement (literalExactTextBlock)))

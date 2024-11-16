@@ -1807,7 +1807,7 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "_expressionParenthesized"
+          "name": "expressionParenthesized"
         },
         {
           "type": "SYMBOL",
@@ -1874,7 +1874,7 @@
         }
       ]
     },
-    "_expressionParenthesized": {
+    "expressionParenthesized": {
       "type": "SEQ",
       "members": [
         {
@@ -4714,6 +4714,7 @@
     "comment",
     "doc",
     "literal",
-    "statement"
+    "statement",
+    "expression"
   ]
 }
