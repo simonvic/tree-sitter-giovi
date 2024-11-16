@@ -78,7 +78,6 @@ tuple creation and access precedence
 
 ================================================================================
 access dot and invocation precedence
-:skip
 ================================================================================
 => a@b.c()
 => {a@b.c}()
@@ -97,52 +96,35 @@ access dot and invocation precedence
 			(actualParameters)))
 	(returnStatement
 		(invocation
-			(expression
-			(expression
+			(expressionParenthesized
+				(expressionDot
+					(expressionAccess
+						(identifier)
+						(identifier))
+					(identifier)))
+			(actualParameters)))
+	(returnStatement
+		(invocation
 			(expressionDot
-			(expression
+				(expressionParenthesized
+					(expressionAccess
+						(identifier)
+						(identifier)))
+				(identifier))
+			(actualParameters)))
+	(returnStatement
+		(invocation
 			(expressionAccess
-			(expression
-			(identifier))
-			(identifier)))
-			(identifier))))
-		(actualParameters)))
+				(identifier)
+				(expressionDot
+					(identifier)
+					(identifier)))
+			(actualParameters)))
 	(returnStatement
-		(expression
-		(invocation
-		(expression
-		(expressionDot
-		(expression
-		(expression
 		(expressionAccess
-		(expression
-		(identifier))
-		(identifier))))
-		(identifier)))
-		(actualParameters))))
-	(returnStatement
-		(expression
-		(invocation
-		(expression
-		(expressionAccess
-		(expression
-		(identifier))
-		(expression
-		(expressionDot
-		(expression
-		(identifier))
-		(identifier)))))
-		(actualParameters))))
-	(returnStatement
-		(expression
-		(expressionAccess
-		(expression
-		(identifier))
-		(expression
-		(invocation
-		(expression
-		(expressionDot
-		(expression
-		(identifier))
-		(identifier)))
-		(actualParameters)))))))
+			(identifier)
+			(invocation
+				(expressionDot
+					(identifier)
+					(identifier))
+				(actualParameters)))))
