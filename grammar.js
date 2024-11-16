@@ -43,6 +43,7 @@ const UPPERCASE_IDENTIFIER = /[A-Z][a-zA-Z0-9_]*/;
 
 const REDIR_OP_LTR = choice('->', '->+', '->-', '->*', '->/');
 const REDIR_OP_RTL = choice('<-', '+<-', '-<-', '*<-', '/<-');
+const SEMICOLON = optional(';');
 
 const PREC = {
   CAST: 17,
@@ -135,21 +136,18 @@ module.exports = grammar({
       '#', /[^\n]*/
     ))),
 
-    statement: $ => prec.left(seq(
-      choice(
-        $.ifStatement,
-        $.switchStatement,
-        $.repeatStatement,
-        $.forStatement,
-        $.skipStatement,
-        $.breakStatement,
-        $.redirection,
-        $._declaration,
-        $.returnStatement,
-        $.invocation,
-      ),
-      optional(';')
-    )),
+    statement: $ => choice(
+      $.ifStatement,
+      $.switchStatement,
+      $.repeatStatement,
+      $.forStatement,
+      $.skipStatement,
+      $.breakStatement,
+      $.redirection,
+      $._declaration,
+      $.returnStatement,
+      $.invocation,
+    ),
 
     _declaration: $ => choice(
       $.structDefinition,
@@ -167,6 +165,7 @@ module.exports = grammar({
       optional(seq(field("parentType", $.typeIdentifier), ':')),
       field("typename", $.typeIdentifier),
       field("body", $.structBodyDefinition),
+      SEMICOLON
     ),
 
     structBodyDefinition: $ => seq(
@@ -317,8 +316,8 @@ module.exports = grammar({
       ))
     )),
 
-    skipStatement: _ => token('skip'),
-    breakStatement: _ => token('break'),
+    skipStatement: _ => seq('skip', SEMICOLON),
+    breakStatement: _ => seq('break', SEMICOLON),
 
     redirection: $ => choice(
       $._redirectionLTR,
@@ -327,16 +326,16 @@ module.exports = grammar({
 
     _redirectionLTR: $ => choice(
       seq($.expression, '->', $.varDeclaration),
-      seq($.expression, REDIR_OP_LTR, $.primitiveDestination),
+      seq($.expression, REDIR_OP_LTR, $.primitiveDestination, SEMICOLON),
       // seq($.expression, REDIR_OP_LTR, $.identifier),
-      seq($.expression, REDIR_OP_LTR, $.expression),
+      seq($.expression, REDIR_OP_LTR, $.expression, SEMICOLON),
     ),
 
     _redirectionRTL: $ => choice(
-      seq($.varDeclaration, '<-', $.expression),
-      seq($.primitiveDestination, REDIR_OP_RTL, $.expression),
+      seq($.varDeclaration, '<-', $.expression, SEMICOLON),
+      seq($.primitiveDestination, REDIR_OP_RTL, $.expression, SEMICOLON),
       // seq($.identifier, REDIR_OP_RTL, $.expression),
-      seq($.expression, REDIR_OP_RTL, $.expression),
+      seq($.expression, REDIR_OP_RTL, $.expression, SEMICOLON),
     ),
 
     constantDeclaration: $ => seq(
@@ -344,13 +343,15 @@ module.exports = grammar({
       field("name", $.constantIdentifier),
       field("type", $.type),
       '<-',
-      field("value", $.expression)
+      field("value", $.expression),
+      SEMICOLON
     ),
 
     varDeclaration: $ => seq(
       field("name", $.identifier),
       field("type", $.type),
-      field("default", optional($.defaultDefinition))
+      field("default", optional($.defaultDefinition)),
+      SEMICOLON
     ),
 
     defaultDefinition: $ => seq('default', $.expression),
