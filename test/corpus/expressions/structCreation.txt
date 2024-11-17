@@ -3,7 +3,7 @@ empty struct
 ================================================================================
 => Foo.<>
 --------------------------------------------------------------------------------
-(program (returnStatement (struct (typeIdentifier) (structFields))))
+(program (returnStatement (struct (typeIdentifier))))
 
 
 ================================================================================
@@ -11,10 +11,11 @@ struct with one field
 ================================================================================
 => Foo.<a>
 --------------------------------------------------------------------------------
-(program (returnStatement (struct
-	(typeIdentifier)
-	(structFields
-		(identifier)))))
+(program (returnStatement
+	(struct
+		typename: (typeIdentifier)
+		(tupleFields
+			(identifier)))))
 
 
 ================================================================================
@@ -23,8 +24,8 @@ struct with multiple fields
 => Foo.<a b c>
 --------------------------------------------------------------------------------
 (program (returnStatement (struct
-	(typeIdentifier)
-	(structFields
+	typename: (typeIdentifier)
+	(tupleFields
 		(identifier)
 		(identifier)
 		(identifier)))))
@@ -36,12 +37,11 @@ struct with multiple comma separated fields
 => Foo.<a, b, c>
 --------------------------------------------------------------------------------
 (program (returnStatement (struct
-	(typeIdentifier)
-	(structFields
+	typename: (typeIdentifier)
+	(tupleFields
 		(identifier)
 		(identifier)
 		(identifier)))))
-
 
 ================================================================================
 struct with named field
@@ -49,10 +49,9 @@ struct with named field
 => Foo.<a:a>
 --------------------------------------------------------------------------------
 (program (returnStatement (struct
-	(typeIdentifier)
-	(structFields
-		(identifier)
-		(identifier)))))
+	typename: (typeIdentifier)
+	(tupleFields
+		name: (identifier) value: (identifier)))))
 
 
 ================================================================================
@@ -61,11 +60,11 @@ struct with multiple named fields
 => Foo.<a:a b:b c:c>
 --------------------------------------------------------------------------------
 (program (returnStatement (struct
-	(typeIdentifier)
-	(structFields
-		(identifier) (identifier)
-		(identifier) (identifier)
-		(identifier) (identifier)))))
+	typename: (typeIdentifier)
+	(tupleFields
+		name: (identifier) value: (identifier)
+		name: (identifier) value: (identifier)
+		name: (identifier) value: (identifier)))))
 
 ================================================================================
 struct with relational expression as field
@@ -74,11 +73,26 @@ struct with relational expression as field
 --------------------------------------------------------------------------------
 (program (returnStatement (struct
 	typename: (typeIdentifier)
-	(structFields
+	(tupleFields
 		(identifier)
 		(expressionBinary
 			(identifier)
 			(identifier))
 		(identifier)))))
+
+
+================================================================================
+struct with relational expression as named field
+================================================================================
+=> Foo.<x:a y:b<c z:d>
+--------------------------------------------------------------------------------
+(program (returnStatement (struct
+	typename: (typeIdentifier)
+	(tupleFields
+		name: (identifier) value: (identifier)
+		name: (identifier) value: (expressionBinary
+			(identifier)
+			(identifier))
+		name: (identifier) value: (identifier)))))
 
 

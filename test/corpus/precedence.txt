@@ -63,7 +63,7 @@ tuple creation and dot precedence
 --------------------------------------------------------------------------------
 (program (returnStatement
 	(expressionDot
-		(struct (structFields))
+		(tuple)
 		(identifier))))
 
 ================================================================================
@@ -73,7 +73,7 @@ tuple creation and access precedence
 --------------------------------------------------------------------------------
 (program (returnStatement
 	(expressionAccess
-		(struct (structFields))
+		(tuple)
 		(literalInteger))))
 
 ================================================================================

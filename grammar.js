@@ -211,7 +211,7 @@ module.exports = grammar({
       field("default", optional($.defaultDefinition))
     ),
 
-    returnStatement: $ => seq(choice('return', '=>'), optional($.expression)),
+    returnStatement: $ => seq(choice('return', '=>'), optional($.expression), SEMICOLON),
 
     invocation: $ => prec(PREC.INVOCATION, seq($.expression, $.actualParameters)),
 
@@ -373,6 +373,7 @@ module.exports = grammar({
       alias($.expressionCreationList, $.list),
       alias($.expressionCreationMap, $.map),
       alias($.expressionCreationStruct, $.struct),
+      alias($.expressionCreationTuple, $.tuple),
       $.expressionRef,
       $.invocation,
       $.expressionDot,
@@ -409,20 +410,32 @@ module.exports = grammar({
       field("key", $.expression), ':', field("val", $.expression)
     ),
 
-    // TODO: eventually distinguish tuples and structs
     expressionCreationStruct: $ => prec(PREC.CREATION_STRUCT, seq(
-      optional(seq(field("typename", $.typeIdentifier), '.')),
-      $.structFields,
+      field("typename", $.typeIdentifier),
+      '.',
+      token(prec(0, '<')),
+      optional($.tupleFields),
+      token(prec(0, '>')),
     )),
 
-    structFields: $ => seq(
+    expressionCreationTuple: $ => seq(
       token(prec(0, '<')),
-      choice(
-        repeat(seq($.expression, optional(','))),
-        repeat(seq($.identifier, ':', $.expression, optional(','))),
-      ),
+      optional($.tupleFields),
       token(prec(0, '>')),
     ),
+
+    tupleFields: $ => choice(
+      $._tupleFieldsPositional,
+      $._tupleFieldsNamed
+    ),
+
+    _tupleFieldsPositional: $ => repeat1(seq($.expression, optional(','))),
+    _tupleFieldsNamed: $ => repeat1(seq(
+      field("name", $.identifier),
+      ':',
+      field("value", $.expression),
+      optional(',')
+    )),
 
     expressionRef: $ => prec(PREC.REF, seq('::', choice(
       $.identifier,

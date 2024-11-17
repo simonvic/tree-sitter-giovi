@@ -83,11 +83,11 @@
 (functionDeclaration (identifier) @function)
 (invocation (expression (identifier) @function.call))
 
-(structFields ["<" ">"] @punctuation)
+(struct ["<" ">"] @punctuation)
+(tuple ["<" ">"] @punctuation)
 (structBodyDefinition ["<" ">"] @punctuation)
 (iteratorAggregate ["<" ">"] @punctuation)
-(structFields (expression (identifier) @variable.member)) 
-(structFields (identifier) @label) 
+(tupleFields name: (_) @label) 
 
 (ERROR) @error
 
