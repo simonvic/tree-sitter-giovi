@@ -124,6 +124,20 @@
     ]
   },
   {
+    "type": "referenceable",
+    "named": true,
+    "subtypes": [
+      {
+        "type": "anonFunction",
+        "named": true
+      },
+      {
+        "type": "identifier",
+        "named": true
+      }
+    ]
+  },
+  {
     "type": "statement",
     "named": true,
     "subtypes": [
@@ -256,6 +270,32 @@
           "named": true
         }
       ]
+    }
+  },
+  {
+    "type": "anonFunction",
+    "named": true,
+    "fields": {
+      "body": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "block",
+            "named": true
+          }
+        ]
+      },
+      "signature": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "functionSignature",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -524,28 +564,17 @@
   {
     "type": "expressionRef",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "block",
-          "named": true
-        },
-        {
-          "type": "formalParameters",
-          "named": true
-        },
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "type",
-          "named": true
-        }
-      ]
+    "fields": {
+      "referenced": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "referenceable",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -682,6 +711,22 @@
           }
         ]
       },
+      "signature": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "functionSignature",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "functionSignature",
+    "named": true,
+    "fields": {
       "returnType": {
         "multiple": false,
         "required": false,
@@ -1453,15 +1498,11 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": true,
+      "multiple": false,
       "required": true,
       "types": [
         {
-          "type": "formalParameters",
-          "named": true
-        },
-        {
-          "type": "type",
+          "type": "functionSignature",
           "named": true
         }
       ]

@@ -87,7 +87,7 @@ module.exports = grammar({
     [$.varDeclaration],
     [$._anyIdentifier, $.functionDeclaration],
     [$._anyIdentifier, $.varDeclaration],
-    [$.typeFunctionRef],
+    [$.functionSignature],
     [$.expression, $.statement],
   ],
 
@@ -101,6 +101,7 @@ module.exports = grammar({
 
   supertypes: $ => [
     $.comment,
+    $.referenceable,
     $.doc,
     $.literal,
     $.statement,
@@ -192,8 +193,7 @@ module.exports = grammar({
 
     functionDeclaration: $ => seq(
       field("name", $.identifier),
-      $.formalParameters,
-      optional(seq('=>', field("returnType", $.type))),
+      field("signature", $.functionSignature),
       field("body", $.block)
     ),
 
@@ -437,16 +437,19 @@ module.exports = grammar({
       optional(',')
     )),
 
-    expressionRef: $ => prec(PREC.REF, seq('::', choice(
+    expressionRef: $ => prec(PREC.REF, seq(
+      '::', field("referenced", $.referenceable)
+    )),
+
+    referenceable: $ => choice(
       $.identifier,
-      seq(
-        optional(seq(
-          $.formalParameters,
-          optional(seq('=>', $.type))
-        )),
-        $.block
-      )
-    ))),
+      $.anonFunction,
+    ),
+
+    anonFunction: $ => seq(
+      field("signature", optional($.functionSignature)),
+      field("body", $.block)
+    ),
 
     expressionDot: $ => prec(PREC.DOT, seq(
       $.expression, '.', choice($._anyIdentifier, $.literalDefault)
@@ -511,8 +514,10 @@ module.exports = grammar({
       '[', field("keyType", $.type), ':', field("valueType", $.type), ']'
     ),
 
-    typeFunctionRef: $ => seq(
-      '::', $.formalParameters, optional(seq('=>', $.type))
+    typeFunctionRef: $ => seq('::', $.functionSignature),
+
+    functionSignature: $ => seq(
+      $.formalParameters, optional(seq('=>', field("returnType", $.type)))
     ),
 
     _primary: $ => choice(

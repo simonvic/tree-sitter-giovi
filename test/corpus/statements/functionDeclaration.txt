@@ -5,7 +5,8 @@ fun() {}
 --------------------------------------------------------------------------------
 (program (functionDeclaration
 	name: (identifier)
-	(formalParameters)
+	signature: (functionSignature
+		(formalParameters))
 	body: (block)))
 
 ================================================================================
@@ -15,8 +16,9 @@ fun() => Int {}
 --------------------------------------------------------------------------------
 (program (functionDeclaration
 	name: (identifier)
-	(formalParameters)
-	returnType: (typeIdentifier)
+	signature: (functionSignature
+		(formalParameters)
+		returnType: (typeIdentifier))
 	body: (block)))
 
 ================================================================================
@@ -26,10 +28,11 @@ fun(a Int) {}
 --------------------------------------------------------------------------------
 (program (functionDeclaration
 	name: (identifier)
-	(formalParameters
-		(formalParameter
-			name: (identifier)
-			type: (typeIdentifier)))
+	signature: (functionSignature
+		(formalParameters
+			(formalParameter
+			 name: (identifier)
+			 type: (typeIdentifier))))
 	body: (block)))
 
 ================================================================================
@@ -39,11 +42,12 @@ fun(a Int default 69) {}
 --------------------------------------------------------------------------------
 (program (functionDeclaration
 	name: (identifier)
-	(formalParameters
-		(formalParameter
-			name: (identifier)
-			type: (typeIdentifier)
-			default: (defaultDefinition (literalInteger))))
+	signature: (functionSignature
+		(formalParameters
+			(formalParameter
+				name: (identifier)
+				type: (typeIdentifier)
+				default: (defaultDefinition (literalInteger)))))
 	body: (block)))
 
 ================================================================================
@@ -53,13 +57,14 @@ fun(a Int, b Int) {}
 --------------------------------------------------------------------------------
 (program (functionDeclaration
 	name: (identifier)
-	(formalParameters
-		(formalParameter
-			name: (identifier)
-			type: (typeIdentifier))
-		(formalParameter
-			name: (identifier)
-			type: (typeIdentifier)))
+	signature: (functionSignature
+		(formalParameters
+			(formalParameter
+				name: (identifier)
+				type: (typeIdentifier))
+			(formalParameter
+				name: (identifier)
+				type: (typeIdentifier))))
 	body: (block)))
 
 ================================================================================
@@ -69,15 +74,16 @@ fun(a Int default 69, b Int default 420) {}
 --------------------------------------------------------------------------------
 (program (functionDeclaration
 	name: (identifier)
-	(formalParameters
-		(formalParameter
-			name: (identifier)
-			type: (typeIdentifier)
-			default: (defaultDefinition (literalInteger)))
-		(formalParameter
-			name: (identifier)
-			type: (typeIdentifier)
-			default: (defaultDefinition (literalInteger))))
+	signature: (functionSignature
+		(formalParameters
+			(formalParameter
+				name: (identifier)
+				type: (typeIdentifier)
+				default: (defaultDefinition (literalInteger)))
+			(formalParameter
+				name: (identifier)
+				type: (typeIdentifier)
+				default: (defaultDefinition (literalInteger)))))
 	body: (block)))
 
 ================================================================================
@@ -87,14 +93,15 @@ fun(a Int default 69, b Int default 420) => Int {}
 --------------------------------------------------------------------------------
 (program (functionDeclaration
 	name: (identifier)
-	(formalParameters
-		(formalParameter
-			name: (identifier)
-			type: (typeIdentifier)
-			default: (defaultDefinition (literalInteger)))
-		(formalParameter
-			name: (identifier)
-			type: (typeIdentifier)
-			default: (defaultDefinition (literalInteger))))
-	returnType: (typeIdentifier)
+	signature: (functionSignature
+		(formalParameters
+			(formalParameter
+				name: (identifier)
+				type: (typeIdentifier)
+				default: (defaultDefinition (literalInteger)))
+			(formalParameter
+				name: (identifier)
+				type: (typeIdentifier)
+				default: (defaultDefinition (literalInteger))))
+		returnType: (typeIdentifier))
 	body: (block)))

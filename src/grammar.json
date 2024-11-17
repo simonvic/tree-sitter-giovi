@@ -394,33 +394,12 @@
           }
         },
         {
-          "type": "SYMBOL",
-          "name": "formalParameters"
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SEQ",
-              "members": [
-                {
-                  "type": "STRING",
-                  "value": "=>"
-                },
-                {
-                  "type": "FIELD",
-                  "name": "returnType",
-                  "content": {
-                    "type": "SYMBOL",
-                    "name": "type"
-                  }
-                }
-              ]
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
+          "type": "FIELD",
+          "name": "signature",
+          "content": {
+            "type": "SYMBOL",
+            "name": "functionSignature"
+          }
         },
         {
           "type": "FIELD",
@@ -2294,63 +2273,57 @@
             "value": "::"
           },
           {
+            "type": "FIELD",
+            "name": "referenced",
+            "content": {
+              "type": "SYMBOL",
+              "name": "referenceable"
+            }
+          }
+        ]
+      }
+    },
+    "referenceable": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "identifier"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "anonFunction"
+        }
+      ]
+    },
+    "anonFunction": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "FIELD",
+          "name": "signature",
+          "content": {
             "type": "CHOICE",
             "members": [
               {
                 "type": "SYMBOL",
-                "name": "identifier"
+                "name": "functionSignature"
               },
               {
-                "type": "SEQ",
-                "members": [
-                  {
-                    "type": "CHOICE",
-                    "members": [
-                      {
-                        "type": "SEQ",
-                        "members": [
-                          {
-                            "type": "SYMBOL",
-                            "name": "formalParameters"
-                          },
-                          {
-                            "type": "CHOICE",
-                            "members": [
-                              {
-                                "type": "SEQ",
-                                "members": [
-                                  {
-                                    "type": "STRING",
-                                    "value": "=>"
-                                  },
-                                  {
-                                    "type": "SYMBOL",
-                                    "name": "type"
-                                  }
-                                ]
-                              },
-                              {
-                                "type": "BLANK"
-                              }
-                            ]
-                          }
-                        ]
-                      },
-                      {
-                        "type": "BLANK"
-                      }
-                    ]
-                  },
-                  {
-                    "type": "SYMBOL",
-                    "name": "block"
-                  }
-                ]
+                "type": "BLANK"
               }
             ]
           }
-        ]
-      }
+        },
+        {
+          "type": "FIELD",
+          "name": "body",
+          "content": {
+            "type": "SYMBOL",
+            "name": "block"
+          }
+        }
+      ]
     },
     "expressionDot": {
       "type": "PREC",
@@ -2906,6 +2879,15 @@
         },
         {
           "type": "SYMBOL",
+          "name": "functionSignature"
+        }
+      ]
+    },
+    "functionSignature": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
           "name": "formalParameters"
         },
         {
@@ -2919,8 +2901,12 @@
                   "value": "=>"
                 },
                 {
-                  "type": "SYMBOL",
-                  "name": "type"
+                  "type": "FIELD",
+                  "name": "returnType",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "type"
+                  }
                 }
               ]
             },
@@ -4774,7 +4760,7 @@
       "varDeclaration"
     ],
     [
-      "typeFunctionRef"
+      "functionSignature"
     ],
     [
       "expression",
@@ -4786,6 +4772,7 @@
   "inline": [],
   "supertypes": [
     "comment",
+    "referenceable",
     "doc",
     "literal",
     "statement",

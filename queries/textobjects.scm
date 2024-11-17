@@ -4,7 +4,7 @@
 
 [
   (functionDeclaration body: (_) @function.inner)
-  (expressionRef (block) @function.inner)
+  (anonFunction body: (_) @function.inner)
 ] @function.outer
 
 
