@@ -1433,24 +1433,24 @@ static const TSFieldMapSlice ts_field_map_slices[PRODUCTION_ID_COUNT] = {
   [14] = {.index = 24, .length = 3},
   [15] = {.index = 27, .length = 2},
   [16] = {.index = 29, .length = 2},
-  [17] = {.index = 31, .length = 3},
-  [18] = {.index = 34, .length = 2},
-  [19] = {.index = 36, .length = 2},
-  [20] = {.index = 38, .length = 1},
-  [21] = {.index = 39, .length = 3},
-  [22] = {.index = 42, .length = 1},
-  [23] = {.index = 43, .length = 3},
-  [24] = {.index = 46, .length = 1},
-  [25] = {.index = 47, .length = 3},
-  [26] = {.index = 50, .length = 2},
-  [27] = {.index = 52, .length = 2},
-  [28] = {.index = 54, .length = 3},
-  [29] = {.index = 57, .length = 2},
-  [30] = {.index = 59, .length = 3},
-  [31] = {.index = 62, .length = 3},
-  [32] = {.index = 65, .length = 2},
-  [33] = {.index = 67, .length = 1},
-  [34] = {.index = 68, .length = 3},
+  [17] = {.index = 31, .length = 2},
+  [18] = {.index = 33, .length = 2},
+  [19] = {.index = 35, .length = 2},
+  [20] = {.index = 37, .length = 1},
+  [21] = {.index = 38, .length = 3},
+  [22] = {.index = 41, .length = 1},
+  [23] = {.index = 42, .length = 3},
+  [24] = {.index = 45, .length = 1},
+  [25] = {.index = 46, .length = 3},
+  [26] = {.index = 49, .length = 2},
+  [27] = {.index = 51, .length = 2},
+  [28] = {.index = 53, .length = 3},
+  [29] = {.index = 56, .length = 2},
+  [30] = {.index = 58, .length = 3},
+  [31] = {.index = 61, .length = 3},
+  [32] = {.index = 64, .length = 2},
+  [33] = {.index = 66, .length = 1},
+  [34] = {.index = 67, .length = 3},
 };
 
 static const TSFieldMapEntry ts_field_map_entries[] = {
@@ -1502,59 +1502,58 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_condition, 1},
   [31] =
     {field_body, 3},
-    {field_condition, 1},
     {field_condition, 2},
-  [34] =
+  [33] =
     {field_key, 0},
     {field_val, 2},
-  [36] =
+  [35] =
     {field_end, 2},
     {field_start, 0},
-  [38] =
+  [37] =
     {field_returnType, 2},
-  [39] =
+  [38] =
     {field_body, 3},
     {field_parentType, 0},
     {field_typename, 2},
-  [42] =
+  [41] =
     {field_typename, 0},
-  [43] =
+  [42] =
     {field_body, 2},
     {field_elseBody, 4},
     {field_subject, 1},
-  [46] =
+  [45] =
     {field_whole, 0},
-  [47] =
+  [46] =
     {field_name, 1},
     {field_type, 2},
     {field_value, 4},
-  [50] =
+  [49] =
     {field_label, 0},
     {field_label, 1},
-  [52] =
+  [51] =
     {field_body, 2},
     {field_cases, 0},
-  [54] =
+  [53] =
     {field_body, 3},
     {field_condition, 1},
     {field_elseBody, 5},
-  [57] =
+  [56] =
     {field_key, 1},
     {field_val, 3},
-  [59] =
+  [58] =
     {field_body, 5},
     {field_iterated, 3},
     {field_iterator, 1},
-  [62] =
+  [61] =
     {field_end, 2},
     {field_start, 0},
     {field_step, 4},
-  [65] =
+  [64] =
     {field_keyType, 1},
     {field_valueType, 3},
-  [67] =
+  [66] =
     {field_initSize, 3},
-  [68] =
+  [67] =
     {field_body, 4},
     {field_cases, 0},
     {field_guard, 2},

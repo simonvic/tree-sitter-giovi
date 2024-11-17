@@ -273,7 +273,7 @@ module.exports = grammar({
     )),
 
     repeatStatement: $ => seq(
-      'repeat', optional(field("condition", seq('if', $.expression))),
+      'repeat', optional(seq('if', field("condition", $.expression))),
       field("body", $._statementOrBlock)
     ),
 
