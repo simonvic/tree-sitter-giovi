@@ -424,6 +424,7 @@ module.exports = grammar({
       token(prec(0, '>')),
     ),
 
+    // TODO: refactor to allow tuple field text object
     tupleFields: $ => choice(
       $._tupleFieldsPositional,
       $._tupleFieldsNamed
@@ -570,7 +571,7 @@ module.exports = grammar({
     ),
 
     escapeSequence: _ => token.immediate(choice(
-      seq('\\', /[btnfrs"'\\$]/),
+      seq('\\', /[btnfrs"'\\${}]/),
       seq('\\u', DIGIT_HEX, DIGIT_HEX, DIGIT_HEX, DIGIT_HEX),
     )),
 

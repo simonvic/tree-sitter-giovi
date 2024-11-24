@@ -3230,6 +3230,11 @@ static const TSStateId ts_primary_state_ids[STATE_COUNT] = {
   [1656] = 1603,
 };
 
+static TSCharacterRange sym_escapeSequence_character_set_1[] = {
+  {'"', '"'}, {'$', '$'}, {'\'', '\''}, {'\\', '\\'}, {'b', 'b'}, {'f', 'f'}, {'n', 'n'}, {'r', 'u'},
+  {'{', '{'}, {'}', '}'},
+};
+
 static bool ts_lex(TSLexer *lexer, TSStateId state) {
   START_LEXER();
   eof = lexer->eof(lexer);
@@ -3687,14 +3692,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
       if (lookahead == 'i') ADVANCE(43);
       if (lookahead == 'o') ADVANCE(49);
       if (lookahead == 'u') ADVANCE(63);
-      if (lookahead == '"' ||
-          lookahead == '$' ||
-          lookahead == '\'' ||
-          lookahead == '\\' ||
-          lookahead == 'b' ||
-          lookahead == 'f' ||
-          lookahead == 'n' ||
-          ('r' <= lookahead && lookahead <= 't')) ADVANCE(158);
+      if (set_contains(sym_escapeSequence_character_set_1, 10, lookahead)) ADVANCE(158);
       END_STATE();
     case 42:
       if (lookahead == 'i') ADVANCE(43);
@@ -3719,14 +3717,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
       END_STATE();
     case 48:
       if (lookahead == 'u') ADVANCE(63);
-      if (lookahead == '"' ||
-          lookahead == '$' ||
-          lookahead == '\'' ||
-          lookahead == '\\' ||
-          lookahead == 'b' ||
-          lookahead == 'f' ||
-          lookahead == 'n' ||
-          ('r' <= lookahead && lookahead <= 't')) ADVANCE(158);
+      if (set_contains(sym_escapeSequence_character_set_1, 10, lookahead)) ADVANCE(158);
       END_STATE();
     case 49:
       if (lookahead == 'u') ADVANCE(47);
