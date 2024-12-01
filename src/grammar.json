@@ -1901,7 +1901,7 @@
     },
     "expressionCast": {
       "type": "PREC",
-      "value": 17,
+      "value": 16,
       "content": {
         "type": "SEQ",
         "members": [
@@ -1922,7 +1922,7 @@
     },
     "expressionTypeCheck": {
       "type": "PREC",
-      "value": 16,
+      "value": 15,
       "content": {
         "type": "SEQ",
         "members": [
@@ -1964,7 +1964,7 @@
     },
     "expressionCreationList": {
       "type": "PREC",
-      "value": 14,
+      "value": 13,
       "content": {
         "type": "SEQ",
         "members": [
@@ -2018,7 +2018,7 @@
     },
     "expressionCreationMap": {
       "type": "PREC",
-      "value": 13,
+      "value": 12,
       "content": {
         "type": "SEQ",
         "members": [
@@ -2092,59 +2092,55 @@
       ]
     },
     "expressionCreationStruct": {
-      "type": "PREC",
-      "value": 12,
-      "content": {
-        "type": "SEQ",
-        "members": [
-          {
-            "type": "FIELD",
-            "name": "typename",
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "FIELD",
+          "name": "typename",
+          "content": {
+            "type": "SYMBOL",
+            "name": "typeIdentifier"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "."
+        },
+        {
+          "type": "TOKEN",
+          "content": {
+            "type": "PREC",
+            "value": 0,
             "content": {
-              "type": "SYMBOL",
-              "name": "typeIdentifier"
-            }
-          },
-          {
-            "type": "STRING",
-            "value": "."
-          },
-          {
-            "type": "TOKEN",
-            "content": {
-              "type": "PREC",
-              "value": 0,
-              "content": {
-                "type": "STRING",
-                "value": "<"
-              }
-            }
-          },
-          {
-            "type": "CHOICE",
-            "members": [
-              {
-                "type": "SYMBOL",
-                "name": "tupleFields"
-              },
-              {
-                "type": "BLANK"
-              }
-            ]
-          },
-          {
-            "type": "TOKEN",
-            "content": {
-              "type": "PREC",
-              "value": 0,
-              "content": {
-                "type": "STRING",
-                "value": ">"
-              }
+              "type": "STRING",
+              "value": "<"
             }
           }
-        ]
-      }
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "tupleFields"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "TOKEN",
+          "content": {
+            "type": "PREC",
+            "value": 0,
+            "content": {
+              "type": "STRING",
+              "value": ">"
+            }
+          }
+        }
+      ]
     },
     "expressionCreationTuple": {
       "type": "SEQ",
@@ -2327,7 +2323,7 @@
     },
     "expressionDot": {
       "type": "PREC",
-      "value": 15,
+      "value": 14,
       "content": {
         "type": "SEQ",
         "members": [
@@ -4758,6 +4754,10 @@
     [
       "_anyIdentifier",
       "varDeclaration"
+    ],
+    [
+      "_anyIdentifier",
+      "expressionCreationStruct"
     ],
     [
       "functionSignature"

@@ -46,13 +46,12 @@ const REDIR_OP_RTL = choice('<-', '+<-', '-<-', '*<-', '/<-');
 const SEMICOLON = optional(';');
 
 const PREC = {
-  CAST: 17,
-  TYPECHECK: 16,
-  DOT: 15,
+  CAST: 16,
+  TYPECHECK: 15,
+  DOT: 14,
 
-  CREATION_LIST: 14,
-  CREATION_MAP: 13,
-  CREATION_STRUCT: 12,
+  CREATION_LIST: 13,
+  CREATION_MAP: 12,
 
   REF: 11,
   INVOCATION: 10,
@@ -87,6 +86,7 @@ module.exports = grammar({
     [$.varDeclaration],
     [$._anyIdentifier, $.functionDeclaration],
     [$._anyIdentifier, $.varDeclaration],
+    [$._anyIdentifier, $.expressionCreationStruct],
     [$.functionSignature],
     [$.expression, $.statement],
   ],
@@ -410,13 +410,13 @@ module.exports = grammar({
       field("key", $.expression), ':', field("val", $.expression)
     ),
 
-    expressionCreationStruct: $ => prec(PREC.CREATION_STRUCT, seq(
+    expressionCreationStruct: $ => seq(
       field("typename", $.typeIdentifier),
       '.',
       token(prec(0, '<')),
       optional($.tupleFields),
       token(prec(0, '>')),
-    )),
+    ),
 
     expressionCreationTuple: $ => seq(
       token(prec(0, '<')),
