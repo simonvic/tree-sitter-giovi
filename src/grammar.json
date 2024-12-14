@@ -305,6 +305,10 @@
                 "members": [
                   {
                     "type": "SYMBOL",
+                    "name": "constantDeclaration"
+                  },
+                  {
+                    "type": "SYMBOL",
                     "name": "structFieldDefinition"
                   },
                   {
@@ -385,6 +389,18 @@
     "functionDeclaration": {
       "type": "SEQ",
       "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "literalSelf"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
         {
           "type": "FIELD",
           "name": "name",
@@ -2296,20 +2312,20 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "FIELD",
-          "name": "signature",
-          "content": {
-            "type": "CHOICE",
-            "members": [
-              {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "FIELD",
+              "name": "signature",
+              "content": {
                 "type": "SYMBOL",
                 "name": "functionSignature"
-              },
-              {
-                "type": "BLANK"
               }
-            ]
-          }
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         },
         {
           "type": "FIELD",
@@ -2900,8 +2916,17 @@
                   "type": "FIELD",
                   "name": "returnType",
                   "content": {
-                    "type": "SYMBOL",
-                    "name": "type"
+                    "type": "CHOICE",
+                    "members": [
+                      {
+                        "type": "SYMBOL",
+                        "name": "literalSelf"
+                      },
+                      {
+                        "type": "SYMBOL",
+                        "name": "type"
+                      }
+                    ]
                   }
                 }
               ]
@@ -2933,6 +2958,10 @@
     "literal": {
       "type": "CHOICE",
       "members": [
+        {
+          "type": "SYMBOL",
+          "name": "literalSelf"
+        },
         {
           "type": "SYMBOL",
           "name": "literalPlaceholder"
@@ -2975,6 +3004,13 @@
       "content": {
         "type": "STRING",
         "value": "default"
+      }
+    },
+    "literalSelf": {
+      "type": "TOKEN",
+      "content": {
+        "type": "STRING",
+        "value": "self"
       }
     },
     "literalBool": {

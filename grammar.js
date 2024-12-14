@@ -176,6 +176,7 @@ module.exports = grammar({
       token(prec(0, '<')),
       repeat(seq(
         choice(
+          $.constantDeclaration,
           $.structFieldDefinition,
           $.structDefinition,
           $.functionDeclaration,
@@ -192,7 +193,8 @@ module.exports = grammar({
     ),
 
     functionDeclaration: $ => seq(
-      field("name", $.identifier),
+      optional($.literalSelf),
+      field("name", $.identifier), // TODO: the identifier should be part of the signature
       field("signature", $.functionSignature),
       field("body", $.block)
     ),
@@ -448,7 +450,7 @@ module.exports = grammar({
     ),
 
     anonFunction: $ => seq(
-      field("signature", optional($.functionSignature)),
+      optional(field("signature", $.functionSignature)),
       field("body", $.block)
     ),
 
@@ -518,7 +520,8 @@ module.exports = grammar({
     typeFunctionRef: $ => seq('::', $.functionSignature),
 
     functionSignature: $ => seq(
-      $.formalParameters, optional(seq('=>', field("returnType", $.type)))
+      $.formalParameters,
+      optional(seq('=>', field("returnType", choice($.literalSelf, $.type))))
     ),
 
     _primary: $ => choice(
@@ -528,6 +531,7 @@ module.exports = grammar({
     ),
 
     literal: $ => choice(
+      $.literalSelf,
       $.literalPlaceholder,
       $.literalDefault,
       $.literalBool,
@@ -539,6 +543,7 @@ module.exports = grammar({
 
     literalPlaceholder: _ => token('_'),
     literalDefault: _ => token('default'),
+    literalSelf: _ => token('self'),
     literalBool: _ => token(choice('true', 'false')),
     literalReal: _ => token(choice(LITERAL_REAL_DECIMAL, LITERAL_REAL_HEX,)),
 

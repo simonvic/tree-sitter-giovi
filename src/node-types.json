@@ -114,6 +114,10 @@
         "named": true
       },
       {
+        "type": "literalSelf",
+        "named": true
+      },
+      {
         "type": "literalText",
         "named": true
       },
@@ -721,6 +725,16 @@
           }
         ]
       }
+    },
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "literalSelf",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -731,6 +745,10 @@
         "multiple": false,
         "required": false,
         "types": [
+          {
+            "type": "literalSelf",
+            "named": true
+          },
           {
             "type": "type",
             "named": true
@@ -1241,6 +1259,10 @@
       "multiple": true,
       "required": false,
       "types": [
+        {
+          "type": "constantDeclaration",
+          "named": true
+        },
         {
           "type": "functionDeclaration",
           "named": true
@@ -1866,6 +1888,10 @@
   },
   {
     "type": "literalReal",
+    "named": true
+  },
+  {
+    "type": "literalSelf",
     "named": true
   },
   {

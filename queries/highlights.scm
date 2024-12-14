@@ -22,6 +22,8 @@
 (literalExactTextBlock ["'{" "}'"] @punctuation)
 (textInterpolation ["$" "${" "}"] @punctuation)
 
+(literalSelf) @variable.builtin
+(functionDeclaration (literalSelf) @keyword)
 (literalDefault) @variable.builtin
 (literalPlaceholder) @variable.builtin
 
