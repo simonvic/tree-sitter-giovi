@@ -40,6 +40,7 @@ const LITERAL_REAL_HEX = seq(HEX_SIGNIFICAND, BINARY_EXPONENT, optional('r'));
 const IDENTIFIER = /[a-z][a-zA-Z0-9_]*/;
 const ALLUPPERCASE_IDENTIFIER = /[A-Z][A-Z0-9_]*/;
 const UPPERCASE_IDENTIFIER = /[A-Z][a-zA-Z0-9_]*/;
+const RESERVERD_IDENTIFIER = /_[a-zA-Z0-9_]+/;
 
 const REDIR_OP_LTR = choice('->', '->+', '->-', '->*', '->/');
 const REDIR_OP_RTL = choice('<-', '+<-', '-<-', '*<-', '/<-');
@@ -335,14 +336,14 @@ module.exports = grammar({
 
     _redirectionLTR: $ => choice(
       seq($.expression, '->', $.varDeclaration),
-      seq($.expression, REDIR_OP_LTR, $.primitiveDestination, SEMICOLON),
+      //seq($.expression, REDIR_OP_LTR, $.reservedIdentifier, SEMICOLON),
       // seq($.expression, REDIR_OP_LTR, $.identifier),
       seq($.expression, REDIR_OP_LTR, $.expression, SEMICOLON),
     ),
 
     _redirectionRTL: $ => choice(
       seq($.varDeclaration, '<-', $.expression, SEMICOLON),
-      seq($.primitiveDestination, REDIR_OP_RTL, $.expression, SEMICOLON),
+      //seq($.reservedIdentifier, REDIR_OP_RTL, $.expression, SEMICOLON),
       // seq($.identifier, REDIR_OP_RTL, $.expression),
       seq($.expression, REDIR_OP_RTL, $.expression, SEMICOLON),
     ),
@@ -364,9 +365,6 @@ module.exports = grammar({
     ),
 
     defaultDefinition: $ => seq('default', $.expression),
-
-    primitiveContent: _ => '\\in',
-    primitiveDestination: _ => choice('\\out', '\\err'),
 
     expression: $ => choice(
       $.expressionParenthesized,
@@ -527,7 +525,7 @@ module.exports = grammar({
     _primary: $ => choice(
       $.literal,
       $._anyIdentifier,
-      $.primitiveContent,
+      $.reservedIdentifier,
     ),
 
     literal: $ => choice(
@@ -634,6 +632,7 @@ module.exports = grammar({
     identifier: _ => token(IDENTIFIER),
     constantIdentifier: _ => token(ALLUPPERCASE_IDENTIFIER),
     typeIdentifier: _ => token(choice(UPPERCASE_IDENTIFIER, ALLUPPERCASE_IDENTIFIER)),
+    reservedIdentifier: _ => token(RESERVERD_IDENTIFIER),
 
   }
 

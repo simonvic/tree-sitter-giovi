@@ -11,12 +11,12 @@ if true do {}
 ================================================================================
 if expression do statement
 ================================================================================
-if true do 69 -> \out
+if true do 69 -> _out
 --------------------------------------------------------------------------------
 (program
 	(ifStatement
 		condition: (literalBool)
-		body: (redirection (literalInteger) (primitiveDestination))))
+		body: (redirection (literalInteger) (reservedIdentifier))))
 
 ================================================================================
 if expression do block else block
@@ -32,13 +32,13 @@ if true do {} else {}
 ================================================================================
 if expression do statement else statement
 ================================================================================
-if true do 69 -> \out else "hello" -> \out
+if true do 69 -> _out else "hello" -> _out
 --------------------------------------------------------------------------------
 (program
 	(ifStatement
 		condition: (literalBool)
-		body: (redirection (literalInteger) (primitiveDestination))
-		elseBody: (redirection (literalText) (primitiveDestination))))
+		body: (redirection (literalInteger) (reservedIdentifier))
+		elseBody: (redirection (literalText) (reservedIdentifier))))
 
 
 ================================================================================

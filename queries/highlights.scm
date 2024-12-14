@@ -77,10 +77,7 @@
 
 (forStatement "in" @keyword)
 
-[
- (primitiveDestination)
- (primitiveContent)
-] @constant.builtin
+(reservedIdentifier) @constant.builtin
 
 (functionDeclaration (identifier) @function)
 (invocation (expression (identifier) @function.call))

@@ -60,7 +60,7 @@
         "named": true
       },
       {
-        "type": "primitiveContent",
+        "type": "reservedIdentifier",
         "named": true
       },
       {
@@ -1096,11 +1096,6 @@
     }
   },
   {
-    "type": "primitiveDestination",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "program",
     "named": true,
     "root": true,
@@ -1162,10 +1157,6 @@
       "types": [
         {
           "type": "expression",
-          "named": true
-        },
-        {
-          "type": "primitiveDestination",
           "named": true
         },
         {
@@ -1783,14 +1774,6 @@
     "named": false
   },
   {
-    "type": "\\err",
-    "named": false
-  },
-  {
-    "type": "\\out",
-    "named": false
-  },
-  {
     "type": "]",
     "named": false
   },
@@ -1903,12 +1886,12 @@
     "named": false
   },
   {
-    "type": "primitiveContent",
-    "named": true
-  },
-  {
     "type": "repeat",
     "named": false
+  },
+  {
+    "type": "reservedIdentifier",
+    "named": true
   },
   {
     "type": "return",

@@ -1487,56 +1487,6 @@
             },
             {
               "type": "SYMBOL",
-              "name": "primitiveDestination"
-            },
-            {
-              "type": "CHOICE",
-              "members": [
-                {
-                  "type": "STRING",
-                  "value": ";"
-                },
-                {
-                  "type": "BLANK"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "expression"
-            },
-            {
-              "type": "CHOICE",
-              "members": [
-                {
-                  "type": "STRING",
-                  "value": "->"
-                },
-                {
-                  "type": "STRING",
-                  "value": "->+"
-                },
-                {
-                  "type": "STRING",
-                  "value": "->-"
-                },
-                {
-                  "type": "STRING",
-                  "value": "->*"
-                },
-                {
-                  "type": "STRING",
-                  "value": "->/"
-                }
-              ]
-            },
-            {
-              "type": "SYMBOL",
               "name": "expression"
             },
             {
@@ -1568,56 +1518,6 @@
             {
               "type": "STRING",
               "value": "<-"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "expression"
-            },
-            {
-              "type": "CHOICE",
-              "members": [
-                {
-                  "type": "STRING",
-                  "value": ";"
-                },
-                {
-                  "type": "BLANK"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "primitiveDestination"
-            },
-            {
-              "type": "CHOICE",
-              "members": [
-                {
-                  "type": "STRING",
-                  "value": "<-"
-                },
-                {
-                  "type": "STRING",
-                  "value": "+<-"
-                },
-                {
-                  "type": "STRING",
-                  "value": "-<-"
-                },
-                {
-                  "type": "STRING",
-                  "value": "*<-"
-                },
-                {
-                  "type": "STRING",
-                  "value": "/<-"
-                }
-              ]
             },
             {
               "type": "SYMBOL",
@@ -1797,23 +1697,6 @@
         {
           "type": "SYMBOL",
           "name": "expression"
-        }
-      ]
-    },
-    "primitiveContent": {
-      "type": "STRING",
-      "value": "\\in"
-    },
-    "primitiveDestination": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "\\out"
-        },
-        {
-          "type": "STRING",
-          "value": "\\err"
         }
       ]
     },
@@ -2951,7 +2834,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "primitiveContent"
+          "name": "reservedIdentifier"
         }
       ]
     },
@@ -4744,6 +4627,13 @@
             "value": "[A-Z][A-Z0-9_]*"
           }
         ]
+      }
+    },
+    "reservedIdentifier": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "_[a-zA-Z0-9_]+"
       }
     }
   },
