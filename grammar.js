@@ -209,6 +209,7 @@ module.exports = grammar({
     ),
 
     formalParameter: $ => seq(
+      optional(seq(field("label", $.identifier), ':')),
       field("name", $.identifier),
       field("type", $.type),
       field("default", optional($.defaultDefinition))

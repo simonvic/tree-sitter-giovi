@@ -82,6 +82,7 @@
 (functionDeclaration (identifier) @function)
 (invocation (expression (identifier) @function.call))
 (actualParameter label: (_) @label)
+(formalParameter label: (_) @label)
 
 (struct ["<" ">"] @punctuation)
 (tuple ["<" ">"] @punctuation)
