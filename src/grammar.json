@@ -1771,6 +1771,15 @@
           "type": "ALIAS",
           "content": {
             "type": "SYMBOL",
+            "name": "expressionCreationRecord"
+          },
+          "named": true,
+          "value": "record"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
             "name": "expressionCreationTuple"
           },
           "named": true,
@@ -2031,6 +2040,34 @@
           "value": "."
         },
         {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "SYMBOL",
+                "name": "expressionCreationRecord"
+              },
+              "named": true,
+              "value": "record"
+            },
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "SYMBOL",
+                "name": "expressionCreationTuple"
+              },
+              "named": true,
+              "value": "tuple"
+            }
+          ]
+        }
+      ]
+    },
+    "expressionCreationRecord": {
+      "type": "SEQ",
+      "members": [
+        {
           "type": "TOKEN",
           "content": {
             "type": "PREC",
@@ -2042,16 +2079,44 @@
           }
         },
         {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "tupleFields"
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
+          "type": "REPEAT1",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "FIELD",
+                "name": "name",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "identifier"
+                }
+              },
+              {
+                "type": "STRING",
+                "value": ":"
+              },
+              {
+                "type": "FIELD",
+                "name": "value",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "expression"
+                }
+              },
+              {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "STRING",
+                    "value": ","
+                  },
+                  {
+                    "type": "BLANK"
+                  }
+                ]
+              }
+            ]
+          }
         },
         {
           "type": "TOKEN",
@@ -2081,16 +2146,28 @@
           }
         },
         {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "tupleFields"
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
+          "type": "REPEAT",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "expression"
+              },
+              {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "STRING",
+                    "value": ","
+                  },
+                  {
+                    "type": "BLANK"
+                  }
+                ]
+              }
+            ]
+          }
         },
         {
           "type": "TOKEN",
@@ -2104,83 +2181,6 @@
           }
         }
       ]
-    },
-    "tupleFields": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "_tupleFieldsPositional"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_tupleFieldsNamed"
-        }
-      ]
-    },
-    "_tupleFieldsPositional": {
-      "type": "REPEAT1",
-      "content": {
-        "type": "SEQ",
-        "members": [
-          {
-            "type": "SYMBOL",
-            "name": "expression"
-          },
-          {
-            "type": "CHOICE",
-            "members": [
-              {
-                "type": "STRING",
-                "value": ","
-              },
-              {
-                "type": "BLANK"
-              }
-            ]
-          }
-        ]
-      }
-    },
-    "_tupleFieldsNamed": {
-      "type": "REPEAT1",
-      "content": {
-        "type": "SEQ",
-        "members": [
-          {
-            "type": "FIELD",
-            "name": "name",
-            "content": {
-              "type": "SYMBOL",
-              "name": "identifier"
-            }
-          },
-          {
-            "type": "STRING",
-            "value": ":"
-          },
-          {
-            "type": "FIELD",
-            "name": "value",
-            "content": {
-              "type": "SYMBOL",
-              "name": "expression"
-            }
-          },
-          {
-            "type": "CHOICE",
-            "members": [
-              {
-                "type": "STRING",
-                "value": ","
-              },
-              {
-                "type": "BLANK"
-              }
-            ]
-          }
-        ]
-      }
     },
     "expressionRef": {
       "type": "PREC",
@@ -2559,8 +2559,15 @@
             "type": "CHOICE",
             "members": [
               {
-                "type": "STRING",
-                "value": "<"
+                "type": "TOKEN",
+                "content": {
+                  "type": "PREC",
+                  "value": 0,
+                  "content": {
+                    "type": "STRING",
+                    "value": "<"
+                  }
+                }
               },
               {
                 "type": "STRING",
@@ -4709,6 +4716,10 @@
     [
       "_anyIdentifier",
       "expressionCreationStruct"
+    ],
+    [
+      "_anyIdentifier",
+      "structDefinition"
     ],
     [
       "functionSignature"

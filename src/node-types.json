@@ -60,6 +60,10 @@
         "named": true
       },
       {
+        "type": "record",
+        "named": true
+      },
+      {
         "type": "reservedIdentifier",
         "named": true
       },
@@ -1158,6 +1162,32 @@
     }
   },
   {
+    "type": "record",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "value": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "redirection",
     "named": true,
     "fields": {},
@@ -1243,10 +1273,14 @@
     },
     "children": {
       "multiple": false,
-      "required": false,
+      "required": true,
       "types": [
         {
-          "type": "tupleFields",
+          "type": "record",
+          "named": true
+        },
+        {
+          "type": "tuple",
           "named": true
         }
       ]
@@ -1465,42 +1499,6 @@
     "type": "tuple",
     "named": true,
     "fields": {},
-    "children": {
-      "multiple": false,
-      "required": false,
-      "types": [
-        {
-          "type": "tupleFields",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "tupleFields",
-    "named": true,
-    "fields": {
-      "name": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "identifier",
-            "named": true
-          }
-        ]
-      },
-      "value": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "expression",
-            "named": true
-          }
-        ]
-      }
-    },
     "children": {
       "multiple": true,
       "required": false,

@@ -88,6 +88,7 @@ module.exports = grammar({
     [$._anyIdentifier, $.functionDeclaration],
     [$._anyIdentifier, $.varDeclaration],
     [$._anyIdentifier, $.expressionCreationStruct],
+    [$._anyIdentifier, $.structDefinition],
     [$.functionSignature],
     [$.expression, $.statement],
   ],
@@ -374,6 +375,7 @@ module.exports = grammar({
       alias($.expressionCreationList, $.list),
       alias($.expressionCreationMap, $.map),
       alias($.expressionCreationStruct, $.struct),
+      alias($.expressionCreationRecord, $.record),
       alias($.expressionCreationTuple, $.tuple),
       $.expressionRef,
       $.invocation,
@@ -414,30 +416,28 @@ module.exports = grammar({
     expressionCreationStruct: $ => seq(
       field("typename", $.typeIdentifier),
       '.',
+      choice(
+        alias($.expressionCreationRecord, $.record),
+        alias($.expressionCreationTuple, $.tuple)
+      ),
+    ),
+
+    expressionCreationRecord: $ => seq(
       token(prec(0, '<')),
-      optional($.tupleFields),
+      repeat1(seq(
+        field("name", $.identifier),
+        ':',
+        field("value", $.expression),
+        optional(',')
+      )),
       token(prec(0, '>')),
     ),
 
     expressionCreationTuple: $ => seq(
       token(prec(0, '<')),
-      optional($.tupleFields),
+      repeat(seq($.expression, optional(','))),
       token(prec(0, '>')),
     ),
-
-    // TODO: refactor to allow tuple field text object
-    tupleFields: $ => choice(
-      $._tupleFieldsPositional,
-      $._tupleFieldsNamed
-    ),
-
-    _tupleFieldsPositional: $ => repeat1(seq($.expression, optional(','))),
-    _tupleFieldsNamed: $ => repeat1(seq(
-      field("name", $.identifier),
-      ':',
-      field("value", $.expression),
-      optional(',')
-    )),
 
     expressionRef: $ => prec(PREC.REF, seq(
       '::', field("referenced", $.referenceable)
@@ -492,7 +492,7 @@ module.exports = grammar({
     _expressionPower: $ => prec.left(PREC.POWER, seq($.expression, '^', $.expression)),
     _expressionEquality: $ => prec.left(PREC.EQUALITY, seq($.expression, choice('=', '!='), $.expression)),
     _expressionContainment: $ => prec.left(PREC.CONTAINMENT, seq($.expression, optional('not'), choice('in', '~=', '=~'), $.expression)),
-    _expressionRelational: $ => prec.left(PREC.RELATIONAL, seq($.expression, choice('<', '<=', '>=', '>'), $.expression)),
+    _expressionRelational: $ => prec.left(PREC.RELATIONAL, seq($.expression, choice(token(prec(0, '<')), '<=', '>=', '>'), $.expression)),
     _expressionMultiplicative: $ => prec.left(PREC.MULTIPLICATIVE, seq($.expression, choice('*', '/', '%'), $.expression)),
     _expressionAdditive: $ => prec.left(PREC.ADDITIVE, seq($.expression, choice('+', '-'), $.expression)),
     _expressionBoolean: $ => prec.left(PREC.BOOL, seq($.expression, choice('and', '&', 'or', '|'), $.expression)),

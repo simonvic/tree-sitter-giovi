@@ -3,7 +3,10 @@ empty struct
 ================================================================================
 => Foo.<>
 --------------------------------------------------------------------------------
-(program (returnStatement (struct (typeIdentifier))))
+(program (returnStatement
+	(struct
+		(typeIdentifier)
+		(tuple))))
 
 
 ================================================================================
@@ -14,7 +17,7 @@ struct with one field
 (program (returnStatement
 	(struct
 		typename: (typeIdentifier)
-		(tupleFields
+		(tuple
 			(identifier)))))
 
 
@@ -25,7 +28,7 @@ struct with multiple fields
 --------------------------------------------------------------------------------
 (program (returnStatement (struct
 	typename: (typeIdentifier)
-	(tupleFields
+	(tuple
 		(identifier)
 		(identifier)
 		(identifier)))))
@@ -38,7 +41,7 @@ struct with multiple comma separated fields
 --------------------------------------------------------------------------------
 (program (returnStatement (struct
 	typename: (typeIdentifier)
-	(tupleFields
+	(tuple
 		(identifier)
 		(identifier)
 		(identifier)))))
@@ -50,7 +53,7 @@ struct with named field
 --------------------------------------------------------------------------------
 (program (returnStatement (struct
 	typename: (typeIdentifier)
-	(tupleFields
+	(record
 		name: (identifier) value: (identifier)))))
 
 
@@ -61,7 +64,7 @@ struct with multiple named fields
 --------------------------------------------------------------------------------
 (program (returnStatement (struct
 	typename: (typeIdentifier)
-	(tupleFields
+	(record
 		name: (identifier) value: (identifier)
 		name: (identifier) value: (identifier)
 		name: (identifier) value: (identifier)))))
@@ -73,7 +76,7 @@ struct with relational expression as field
 --------------------------------------------------------------------------------
 (program (returnStatement (struct
 	typename: (typeIdentifier)
-	(tupleFields
+	(tuple
 		(identifier)
 		(expressionBinary
 			(identifier)
@@ -88,7 +91,7 @@ struct with relational expression as named field
 --------------------------------------------------------------------------------
 (program (returnStatement (struct
 	typename: (typeIdentifier)
-	(tupleFields
+	(record
 		name: (identifier) value: (identifier)
 		name: (identifier) value: (expressionBinary
 			(identifier)
