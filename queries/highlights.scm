@@ -84,11 +84,11 @@
 (actualParameter label: (_) @label)
 (formalParameter label: (_) @label)
 
-(struct ["<" ">"] @punctuation)
 (tuple ["<" ">"] @punctuation)
+(record ["<" ">"] @punctuation)
 (structBodyDefinition ["<" ">"] @punctuation)
 (iteratorAggregate ["<" ">"] @punctuation)
-(tupleFields name: (_) @label) 
+(record name: (_) @label)
 
 (ERROR) @error
 
