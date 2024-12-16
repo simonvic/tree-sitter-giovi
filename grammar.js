@@ -85,7 +85,7 @@ module.exports = grammar({
     [$.iteratorUnary],
     [$.returnStatement],
     [$.varDeclaration],
-    [$._anyIdentifier, $.functionDeclaration],
+    [$.formalParameters, $.actualParameters],
     [$._anyIdentifier, $.varDeclaration],
     [$._anyIdentifier, $.expressionCreationStruct],
     [$._anyIdentifier, $.structDefinition],
@@ -218,7 +218,14 @@ module.exports = grammar({
 
     returnStatement: $ => seq(choice('return', '=>'), optional($.expression), SEMICOLON),
 
-    invocation: $ => prec(PREC.INVOCATION, seq($.expression, $.actualParameters)),
+    invocation: $ =>  choice(
+      prec(PREC.INVOCATION, seq(
+        optional(seq(field("instance", $.expression), '.')),
+        field("invoked", $.identifier),
+        $.actualParameters
+      )),
+      seq(field("invoked", $.expression), $.actualParameters),
+    ),
 
     actualParameters: $ => seq(
       '(',

@@ -828,17 +828,34 @@
   {
     "type": "invocation",
     "named": true,
-    "fields": {},
+    "fields": {
+      "instance": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      },
+      "invoked": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      }
+    },
     "children": {
-      "multiple": true,
+      "multiple": false,
       "required": true,
       "types": [
         {
           "type": "actualParameters",
-          "named": true
-        },
-        {
-          "type": "expression",
           "named": true
         }
       ]

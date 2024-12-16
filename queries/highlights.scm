@@ -80,7 +80,7 @@
 (reservedIdentifier) @constant.builtin
 
 (functionDeclaration (identifier) @function)
-(invocation (expression (identifier) @function.call))
+(invocation invoked: (_) @function.call)
 (actualParameter label: (_) @label)
 (formalParameter label: (_) @label)
 

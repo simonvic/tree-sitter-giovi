@@ -80,51 +80,48 @@ tuple creation and access precedence
 access dot and invocation precedence
 ================================================================================
 => a@b.c()
-=> {a@b.c}()
 => {a@b}.c()
+=> {a@b.c}()
 => a@{b.c}()
 => a@{b.c()}
 --------------------------------------------------------------------------------
 (program
 	(returnStatement
 		(invocation
-			(expressionDot
-				(expressionAccess
-					(identifier)
-					(identifier))
-				(identifier))
+			instance: (expressionAccess
+				accessed: (identifier)
+				accessor: (identifier))
+			invoked: (identifier)
 			(actualParameters)))
 	(returnStatement
 		(invocation
-			(expressionParenthesized
+			instance: (expressionParenthesized
+				(expressionAccess
+				 	 accessed: (identifier)
+				 	 accessor: (identifier)))
+			invoked: (identifier)
+			(actualParameters)))
+	(returnStatement
+		(invocation
+			invoked: (expressionParenthesized
 				(expressionDot
 					(expressionAccess
-						(identifier)
-						(identifier))
+						accessed: (identifier)
+						accessor: (identifier))
 					(identifier)))
 			(actualParameters)))
 	(returnStatement
 		(invocation
-			(expressionDot
-				(expressionParenthesized
-					(expressionAccess
-						(identifier)
-						(identifier)))
-				(identifier))
-			(actualParameters)))
-	(returnStatement
-		(invocation
-			(expressionAccess
-				(identifier)
-				(expressionDot
+			invoked: (expressionAccess
+				accessed: (identifier)
+				accessor: (expressionDot
 					(identifier)
 					(identifier)))
 			(actualParameters)))
 	(returnStatement
 		(expressionAccess
-			(identifier)
-			(invocation
-				(expressionDot
-					(identifier)
-					(identifier))
-				(actualParameters)))))
+			accessed: (identifier)
+			accessor: (invocation
+					instance: (identifier)
+					invoked: (identifier)
+					(actualParameters)))))

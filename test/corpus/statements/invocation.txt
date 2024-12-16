@@ -36,7 +36,7 @@ invocation statement with labeled argument
 f(l: a)
 --------------------------------------------------------------------------------
 (program (invocation
-	(identifier)
+	invoked: (identifier)
 	(actualParameters
 		(actualParameter
 			label: (identifier)
@@ -59,7 +59,7 @@ invocation statement with labeled arguments
 f(l1: a, l2: b)
 --------------------------------------------------------------------------------
 (program (invocation
-	(identifier)
+	invoked: (identifier)
 	(actualParameters
 		(actualParameter
 			label: (identifier)
@@ -68,3 +68,15 @@ f(l1: a, l2: b)
 			label: (identifier)
 			(identifier)))))
 
+================================================================================
+invocation statement of instance
+================================================================================
+foo.foo.foo()
+--------------------------------------------------------------------------------
+(program
+	(invocation
+		instance: (expressionDot
+			(identifier)
+			(identifier))
+		invoked: (identifier)
+		(actualParameters)))
