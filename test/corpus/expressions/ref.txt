@@ -6,6 +6,30 @@ ref identifier
 (program (returnStatement (expressionRef (identifier))))
 
 ================================================================================
+ref qualified identifier
+================================================================================
+=> ::foo.foo.foo
+--------------------------------------------------------------------------------
+(program (returnStatement (expressionRef
+	(expressionDot
+		(identifier)
+		(identifier))
+	(identifier))))
+
+================================================================================
+ref with expression qualified identifier
+================================================================================
+=> ::foo()@foo.foo
+--------------------------------------------------------------------------------
+(program (returnStatement (expressionRef
+	(expressionAccess
+		(invocation
+			(identifier)
+			(actualParameters))
+		(identifier))
+	(identifier))))
+
+================================================================================
 ref with only body
 ================================================================================
 => ::{}

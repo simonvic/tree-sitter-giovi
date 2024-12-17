@@ -89,6 +89,7 @@ module.exports = grammar({
     [$._anyIdentifier, $.varDeclaration],
     [$._anyIdentifier, $.expressionCreationStruct],
     [$._anyIdentifier, $.structDefinition],
+    [$._anyIdentifier, $._referenceable],
     [$.functionSignature],
     [$.expression, $.statement],
   ],
@@ -103,7 +104,6 @@ module.exports = grammar({
 
   supertypes: $ => [
     $.comment,
-    $.referenceable,
     $.doc,
     $.literal,
     $.statement,
@@ -218,7 +218,7 @@ module.exports = grammar({
 
     returnStatement: $ => seq(choice('return', '=>'), optional($.expression), SEMICOLON),
 
-    invocation: $ =>  choice(
+    invocation: $ => choice(
       prec(PREC.INVOCATION, seq(
         optional(seq(field("instance", $.expression), '.')),
         field("invoked", $.identifier),
@@ -447,11 +447,11 @@ module.exports = grammar({
     ),
 
     expressionRef: $ => prec(PREC.REF, seq(
-      '::', field("referenced", $.referenceable)
+      '::', field("referenced", $._referenceable)
     )),
 
-    referenceable: $ => choice(
-      $.identifier,
+    _referenceable: $ => choice(
+      seq(optional(seq($.expression, '.')), $.identifier),
       $.anonFunction,
     ),
 

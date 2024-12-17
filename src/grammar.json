@@ -2248,18 +2248,44 @@
             "name": "referenced",
             "content": {
               "type": "SYMBOL",
-              "name": "referenceable"
+              "name": "_referenceable"
             }
           }
         ]
       }
     },
-    "referenceable": {
+    "_referenceable": {
       "type": "CHOICE",
       "members": [
         {
-          "type": "SYMBOL",
-          "name": "identifier"
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SEQ",
+                  "members": [
+                    {
+                      "type": "SYMBOL",
+                      "name": "expression"
+                    },
+                    {
+                      "type": "STRING",
+                      "value": "."
+                    }
+                  ]
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            },
+            {
+              "type": "SYMBOL",
+              "name": "identifier"
+            }
+          ]
         },
         {
           "type": "SYMBOL",
@@ -4773,6 +4799,10 @@
       "structDefinition"
     ],
     [
+      "_anyIdentifier",
+      "_referenceable"
+    ],
+    [
       "functionSignature"
     ],
     [
@@ -4785,7 +4815,6 @@
   "inline": [],
   "supertypes": [
     "comment",
-    "referenceable",
     "doc",
     "literal",
     "statement",

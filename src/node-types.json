@@ -132,20 +132,6 @@
     ]
   },
   {
-    "type": "referenceable",
-    "named": true,
-    "subtypes": [
-      {
-        "type": "anonFunction",
-        "named": true
-      },
-      {
-        "type": "identifier",
-        "named": true
-      }
-    ]
-  },
-  {
     "type": "statement",
     "named": true,
     "subtypes": [
@@ -574,11 +560,19 @@
     "named": true,
     "fields": {
       "referenced": {
-        "multiple": false,
+        "multiple": true,
         "required": true,
         "types": [
           {
-            "type": "referenceable",
+            "type": ".",
+            "named": false
+          },
+          {
+            "type": "anonFunction",
+            "named": true
+          },
+          {
+            "type": "expression",
             "named": true
           }
         ]
