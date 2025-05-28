@@ -1814,11 +1814,13 @@
   },
   {
     "type": "commentBlock",
-    "named": true
+    "named": true,
+    "extra": true
   },
   {
     "type": "commentLine",
-    "named": true
+    "named": true,
+    "extra": true
   },
   {
     "type": "constant",
@@ -1838,11 +1840,13 @@
   },
   {
     "type": "docBlock",
-    "named": true
+    "named": true,
+    "extra": true
   },
   {
     "type": "docLine",
-    "named": true
+    "named": true,
+    "extra": true
   },
   {
     "type": "else",
