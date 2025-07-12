@@ -1,3 +1,14 @@
+; Modules
+(moduleDeclaration
+  name: (_) @name
+  (#set! "kind" "Module")
+  ) @symbol
+
+(importEntry
+  alias: (_) @name
+  (#set! "kind" "Namespace")
+  ) @symbol
+
 ; Structs
 (structDefinition
   typename: (typeIdentifier) @name

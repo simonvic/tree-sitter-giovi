@@ -71,6 +71,8 @@
   "constant"
   "default"
   "when"
+  "import"
+  "module"
   (skipStatement)
   (breakStatement)
 ] @keyword
@@ -93,6 +95,6 @@
 (ERROR) @error
 
 ; Reserved keywords
-((identifier) @error (#match? @error "^(alias|self|import|module|inf|nan)$"))
+((identifier) @error (#match? @error "^(alias|inf|nan)$"))
 ((constantIdentifier) @error (#match? @error "^(INF|NAN)$"))
 

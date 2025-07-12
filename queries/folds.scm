@@ -1,5 +1,6 @@
 [
   (block)
+  (importStatement)
   (switchStatement)
   (formalParameters)
   (actualParameters)

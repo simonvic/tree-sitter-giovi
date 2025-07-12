@@ -1,3 +1,9 @@
+(importStatement) @context
+
+(moduleDeclaration
+  body: (_) @context.end
+  ) @context
+
 (ifStatement
   body: (_) @context.end
   ) @context
