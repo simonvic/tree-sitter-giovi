@@ -1,40 +1,33 @@
 ; Modules
 (moduleDeclaration
   name: (_) @name
-  (#set! "kind" "Module")
-  ) @symbol
+  (#set! "kind" "Module")) @symbol
 
 (importEntry
   alias: (_) @name
-  (#set! "kind" "Namespace")
-  ) @symbol
+  (#set! "kind" "Namespace")) @symbol
 
 ; Structs
 (structDefinition
   typename: (typeIdentifier) @name
-  (#set! "kind" "Class")
-  ) @symbol
+  (#set! "kind" "Class")) @symbol
 
 ; fields
 (structFieldDefinition
   name: (identifier) @name
-  (#set! "kind" "Field")
-  ) @symbol
+  (#set! "kind" "Field")) @symbol
 
 ; methods
 (functionDeclaration
   name: (identifier) @name
-  (#set! "kind" "Function")
-  ) @symbol
+  (#set! "kind" "Function")) @symbol
 
 ; variables
 (varDeclaration
   name: (identifier) @name
-  (#set! "kind" "Variable")
-  ) @symbol
+  (#set! "kind" "Variable")) @symbol
 
 ; constants
 (constantDeclaration
   name: (constantIdentifier) @name
-  (#set! "kind" "Constant")
-  ) @symbol
+  (#set! "kind" "Constant")) @symbol

@@ -1,70 +1,143 @@
 (commentLine) @comment
+
 (commentBlock) @comment.block
 
 (docLine) @comment.documentation
+
 (docBlock) @comment.documentation.block
 
 (literalBool) @boolean
 
 (literalInteger) @number
+
 (literalNatural) @number.natural
+
 (literalReal) @number.float
 
 (literalText) @string
+
 (literalTextBlock) @string.block
+
 (literalExactText) @string.exact
+
 (literalExactTextBlock) @string.exact.block
 
 (escapeSequence) @string.escape
-(literalText ["\"" "\""] @punctuation)
-(literalTextBlock ["\"{" "}\""] @punctuation)
-(literalExactText ["'" "'"] @punctuation)
-(literalExactTextBlock ["'{" "}'"] @punctuation)
-(textInterpolation ["$" "${" "}"] @punctuation)
+
+(literalText
+  [
+    "\""
+    "\""
+  ] @punctuation)
+
+(literalTextBlock
+  [
+    "\"{"
+    "}\""
+  ] @punctuation)
+
+(literalExactText
+  [
+    "'"
+    "'"
+  ] @punctuation)
+
+(literalExactTextBlock
+  [
+    "'{"
+    "}'"
+  ] @punctuation)
+
+(textInterpolation
+  [
+    "$"
+    "${"
+    "}"
+  ] @punctuation)
 
 (literalSelf) @variable.builtin
-(functionDeclaration (literalSelf) @keyword)
+
+(functionDeclaration
+  (literalSelf) @keyword)
+
 (literalDefault) @variable.builtin
+
 (literalPlaceholder) @variable.builtin
 
 (identifier) @variable
+
 (typeIdentifier) @type
+
 (constantIdentifier) @constant
-(
- (textInterpolation) @variable
- (#match? @variable "[A-Za-z][A-Za-z0-9_]*$")
- )
-(
- (textInterpolation) @constant
- (#match? @constant "[A-Z][A-Z0-9_]*$")
- )
+
+((textInterpolation) @variable
+  (#match? @variable "[A-Za-z][A-Za-z0-9_]*$"))
+
+((textInterpolation) @constant
+  (#match? @constant "[A-Z][A-Z0-9_]*$"))
 
 [
- "(" ")"
- "[" "]"
- "{" "}"
- "," "." ".." ":" ";"
+  "("
+  ")"
+  "["
+  "]"
+  "{"
+  "}"
+  ","
+  "."
+  ".."
+  ":"
+  ";"
 ] @punctuation
 
 [
- "@"
- "+" "-" "*" "/" "%" "^"
- "->" "->+" "->-" "->*" "->/"
- "<-" "+<-" "-<-" "*<-" "/<-"
- "=>" "<" "<=" ">=" ">"
- "=" "!="
- "not" "!" "and" "&" "or" "|"
- "in" "=~" "~="
- "is" "as"
- "::"
+  "@"
+  "+"
+  "-"
+  "*"
+  "/"
+  "%"
+  "^"
+  "->"
+  "->+"
+  "->-"
+  "->*"
+  "->/"
+  "<-"
+  "+<-"
+  "-<-"
+  "*<-"
+  "/<-"
+  "=>"
+  "<"
+  "<="
+  ">="
+  ">"
+  "="
+  "!="
+  "not"
+  "!"
+  "and"
+  "&"
+  "or"
+  "|"
+  "in"
+  "=~"
+  "~="
+  "is"
+  "as"
+  "::"
 ] @operator
 
-(typeFunctionRef "::" @punctuation)
+(typeFunctionRef
+  "::" @punctuation)
 
 (specialKey) @variable.builtin
 
 [
-  "if" "do" "else"
+  "if"
+  "do"
+  "else"
   "repeat"
   "for"
   "return"
@@ -77,24 +150,55 @@
   (breakStatement)
 ] @keyword
 
-(forStatement "in" @keyword)
+(forStatement
+  "in" @keyword)
 
 (reservedIdentifier) @constant.builtin
 
-(functionDeclaration (identifier) @function)
-(invocation invoked: (_) @function.call)
-(actualParameter label: (_) @label)
-(formalParameter label: (_) @label)
+(functionDeclaration
+  (identifier) @function)
 
-(tuple ["<" ">"] @punctuation)
-(record ["<" ">"] @punctuation)
-(structBodyDefinition ["<" ">"] @punctuation)
-(iteratorAggregate ["<" ">"] @punctuation)
-(record name: (_) @label)
+(invocation
+  invoked: (_) @function.call)
+
+(actualParameter
+  label: (_) @label)
+
+(formalParameter
+  label: (_) @label)
+
+(tuple
+  [
+    "<"
+    ">"
+  ] @punctuation)
+
+(record
+  [
+    "<"
+    ">"
+  ] @punctuation)
+
+(structBodyDefinition
+  [
+    "<"
+    ">"
+  ] @punctuation)
+
+(iteratorAggregate
+  [
+    "<"
+    ">"
+  ] @punctuation)
+
+(record
+  name: (_) @label)
 
 (ERROR) @error
 
 ; Reserved keywords
-((identifier) @error (#match? @error "^(alias|inf|nan)$"))
-((constantIdentifier) @error (#match? @error "^(INF|NAN)$"))
+((identifier) @error
+  (#match? @error "^(alias|inf|nan)$"))
 
+((constantIdentifier) @error
+  (#match? @error "^(INF|NAN)$"))
