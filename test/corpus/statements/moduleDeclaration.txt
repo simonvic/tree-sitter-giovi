@@ -1,0 +1,17 @@
+================================================================================
+module declaration
+================================================================================
+module foo {}
+module Foo {}
+module FOO {}
+--------------------------------------------------------------------------------
+(program
+	(moduleDeclaration
+		(identifier)
+		(block))
+	(moduleDeclaration
+		(typeIdentifier)
+		(block))
+	(moduleDeclaration
+		(constantIdentifier)
+		(block)))

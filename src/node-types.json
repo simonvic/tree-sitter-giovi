@@ -156,7 +156,15 @@
         "named": true
       },
       {
+        "type": "importStatement",
+        "named": true
+      },
+      {
         "type": "invocation",
+        "named": true
+      },
+      {
+        "type": "moduleDeclaration",
         "named": true
       },
       {
@@ -820,6 +828,63 @@
     }
   },
   {
+    "type": "importEntry",
+    "named": true,
+    "fields": {
+      "alias": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "constantIdentifier",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "typeIdentifier",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "constantIdentifier",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "typeIdentifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "importStatement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "importEntry",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "invocation",
     "named": true,
     "fields": {
@@ -1114,6 +1179,40 @@
         "types": [
           {
             "type": "expression",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "moduleDeclaration",
+    "named": true,
+    "fields": {
+      "body": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "block",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "constantIdentifier",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "typeIdentifier",
             "named": true
           }
         ]
@@ -1869,6 +1968,10 @@
     "named": false
   },
   {
+    "type": "import",
+    "named": false
+  },
+  {
     "type": "in",
     "named": false
   },
@@ -1899,6 +2002,10 @@
   {
     "type": "literalSelf",
     "named": true
+  },
+  {
+    "type": "module",
+    "named": false
   },
   {
     "type": "not",

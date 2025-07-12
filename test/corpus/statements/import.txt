@@ -1,0 +1,43 @@
+================================================================================
+import
+================================================================================
+import foo
+import foo as FooModule
+import foo.bar
+import foo.Bar.BAZ
+import [
+	foo
+	foo.bar as FooBar
+	Foo.Bar.BAZ as FooBarBaz
+]
+--------------------------------------------------------------------------------
+(program
+	(importStatement
+		(importEntry
+			(identifier)))
+	(importStatement
+		(importEntry
+			(identifier)
+			(typeIdentifier)))
+	(importStatement
+		(importEntry
+			(identifier)
+			(identifier)))
+	(importStatement
+		(importEntry
+			(identifier)
+			(typeIdentifier)
+			(constantIdentifier)))
+	(importStatement
+		(importEntry
+			(identifier))
+		(importEntry
+			(identifier)
+			(identifier)
+			(typeIdentifier))
+		(importEntry
+			(typeIdentifier)
+			(typeIdentifier)
+			(constantIdentifier)
+			(typeIdentifier))))
+

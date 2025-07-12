@@ -143,6 +143,7 @@ module.exports = grammar({
     ))),
 
     statement: $ => choice(
+      $.importStatement,
       $.ifStatement,
       $.switchStatement,
       $.repeatStatement,
@@ -156,6 +157,7 @@ module.exports = grammar({
     ),
 
     _declaration: $ => choice(
+      $.moduleDeclaration,
       $.structDefinition,
       $.constantDeclaration,
       $.varDeclaration,
@@ -165,6 +167,25 @@ module.exports = grammar({
     _statementOrBlock: $ => choice(
       $.statement,
       $.block
+    ),
+
+    importStatement: $ => seq(
+      'import', choice(
+        $.importEntry,
+        seq('[', repeat1(seq($.importEntry, optional(','))), ']')
+      )
+    ),
+
+    importEntry: $ => seq(
+      repeat(seq($._anyIdentifier, '.')),
+      $._anyIdentifier,
+      optional(seq('as', field("alias", $._anyIdentifier)))
+    ),
+
+    moduleDeclaration: $ => seq(
+      'module',
+      field("name", $._anyIdentifier),
+      field("body", $.block)
     ),
 
     structDefinition: $ => seq(
