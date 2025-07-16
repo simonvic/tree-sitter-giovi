@@ -22,30 +22,26 @@
 (invocation) @call.outer
 
 (formalParameters
-  "," @_start
+  "," @parameter.outer
   .
-  (formalParameter) @parameter.inner
-  (#make-range! "parameter.outer" @_start @parameter.inner))
+  (formalParameter) @parameter.inner @parameter.outer)
 
 (formalParameters
   .
-  (formalParameter) @parameter.inner
+  (formalParameter) @parameter.inner @parameter.outer
   .
-  ","? @_end
-  (#make-range! "parameter.outer" @parameter.inner @_end))
+  ","? @parameter.outer)
 
 (actualParameters
-  "," @_start
+  "," @parameter.outer
   .
-  (actualParameter) @parameter.inner
-  (#make-range! "parameter.outer" @_start @parameter.inner))
+  (actualParameter) @parameter.inner @parameter.outer)
 
 (actualParameters
   .
-  (actualParameter) @parameter.inner
+  (actualParameter) @parameter.inner @parameter.outer
   .
-  ","? @_end
-  (#make-range! "parameter.outer" @parameter.inner @_end))
+  ","? @parameter.outer)
 
 [
   (commentLine)
