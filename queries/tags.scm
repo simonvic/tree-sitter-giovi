@@ -2,8 +2,9 @@
   (identifier) @name) @definition.function
 
 (structDefinition
-  typename: (typeIdentifier) @name) @definition.class
+  typename: (_) @name) @definition.class
 
 (invocation) @reference.call
 
-(typeIdentifier) @reference.class
+(type
+  (identifier) @reference.class)

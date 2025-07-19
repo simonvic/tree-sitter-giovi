@@ -5,7 +5,7 @@ empty struct
 --------------------------------------------------------------------------------
 (program (returnStatement
 	(struct
-		(typeIdentifier)
+		(identifier)
 		(tuple))))
 
 
@@ -16,7 +16,7 @@ struct with one field
 --------------------------------------------------------------------------------
 (program (returnStatement
 	(struct
-		typename: (typeIdentifier)
+		typename: (identifier)
 		(tuple
 			(identifier)))))
 
@@ -27,7 +27,7 @@ struct with multiple fields
 => Foo.<a b c>
 --------------------------------------------------------------------------------
 (program (returnStatement (struct
-	typename: (typeIdentifier)
+	typename: (identifier)
 	(tuple
 		(identifier)
 		(identifier)
@@ -40,7 +40,7 @@ struct with multiple comma separated fields
 => Foo.<a, b, c>
 --------------------------------------------------------------------------------
 (program (returnStatement (struct
-	typename: (typeIdentifier)
+	typename: (identifier)
 	(tuple
 		(identifier)
 		(identifier)
@@ -52,7 +52,7 @@ struct with named field
 => Foo.<a:a>
 --------------------------------------------------------------------------------
 (program (returnStatement (struct
-	typename: (typeIdentifier)
+	typename: (identifier)
 	(record
 		name: (identifier) value: (identifier)))))
 
@@ -63,7 +63,7 @@ struct with multiple named fields
 => Foo.<a:a b:b c:c>
 --------------------------------------------------------------------------------
 (program (returnStatement (struct
-	typename: (typeIdentifier)
+	typename: (identifier)
 	(record
 		name: (identifier) value: (identifier)
 		name: (identifier) value: (identifier)
@@ -75,7 +75,7 @@ struct with relational expression as field
 => Foo.<a b<c d>
 --------------------------------------------------------------------------------
 (program (returnStatement (struct
-	typename: (typeIdentifier)
+	typename: (identifier)
 	(tuple
 		(identifier)
 		(expressionBinary
@@ -90,7 +90,7 @@ struct with relational expression as named field
 => Foo.<x:a y:b<c z:d>
 --------------------------------------------------------------------------------
 (program (returnStatement (struct
-	typename: (typeIdentifier)
+	typename: (identifier)
 	(record
 		name: (identifier) value: (identifier)
 		name: (identifier) value: (expressionBinary

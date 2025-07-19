@@ -296,7 +296,7 @@
             "members": [
               {
                 "type": "SYMBOL",
-                "name": "_anyIdentifier"
+                "name": "identifier"
               },
               {
                 "type": "STRING",
@@ -307,7 +307,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_anyIdentifier"
+          "name": "identifier"
         },
         {
           "type": "CHOICE",
@@ -324,7 +324,7 @@
                   "name": "alias",
                   "content": {
                     "type": "SYMBOL",
-                    "name": "_anyIdentifier"
+                    "name": "identifier"
                   }
                 }
               ]
@@ -348,7 +348,7 @@
           "name": "name",
           "content": {
             "type": "SYMBOL",
-            "name": "_anyIdentifier"
+            "name": "identifier"
           }
         },
         {
@@ -375,7 +375,7 @@
                   "name": "parentType",
                   "content": {
                     "type": "SYMBOL",
-                    "name": "typeIdentifier"
+                    "name": "identifier"
                   }
                 },
                 {
@@ -394,7 +394,7 @@
           "name": "typename",
           "content": {
             "type": "SYMBOL",
-            "name": "typeIdentifier"
+            "name": "identifier"
           }
         },
         {
@@ -732,7 +732,7 @@
       "members": [
         {
           "type": "PREC",
-          "value": 10,
+          "value": 15,
           "content": {
             "type": "SEQ",
             "members": [
@@ -1496,28 +1496,36 @@
           "value": "<"
         },
         {
-          "type": "REPEAT1",
+          "type": "SYMBOL",
+          "name": "iterator"
+        },
+        {
+          "type": "REPEAT",
           "content": {
             "type": "SEQ",
             "members": [
               {
-                "type": "SYMBOL",
-                "name": "iterator"
+                "type": "STRING",
+                "value": ","
               },
               {
-                "type": "CHOICE",
-                "members": [
-                  {
-                    "type": "STRING",
-                    "value": ","
-                  },
-                  {
-                    "type": "BLANK"
-                  }
-                ]
+                "type": "SYMBOL",
+                "name": "iterator"
               }
             ]
           }
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": ","
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         },
         {
           "type": "STRING",
@@ -1815,7 +1823,7 @@
           "name": "name",
           "content": {
             "type": "SYMBOL",
-            "name": "constantIdentifier"
+            "name": "identifier"
           }
         },
         {
@@ -2221,7 +2229,7 @@
           "name": "typename",
           "content": {
             "type": "SYMBOL",
-            "name": "typeIdentifier"
+            "name": "identifier"
           }
         },
         {
@@ -2479,7 +2487,7 @@
             "members": [
               {
                 "type": "SYMBOL",
-                "name": "_anyIdentifier"
+                "name": "identifier"
               },
               {
                 "type": "SYMBOL",
@@ -2916,7 +2924,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "typeIdentifier"
+          "name": "identifier"
         },
         {
           "type": "SYMBOL",
@@ -3077,7 +3085,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_anyIdentifier"
+          "name": "identifier"
         },
         {
           "type": "SYMBOL",
@@ -4829,49 +4837,22 @@
         }
       ]
     },
-    "_anyIdentifier": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "identifier"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "constantIdentifier"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "typeIdentifier"
-        }
-      ]
-    },
     "identifier": {
-      "type": "TOKEN",
-      "content": {
-        "type": "PATTERN",
-        "value": "[a-z][a-zA-Z0-9_]*"
-      }
-    },
-    "constantIdentifier": {
-      "type": "TOKEN",
-      "content": {
-        "type": "PATTERN",
-        "value": "[A-Z][A-Z0-9_]*"
-      }
-    },
-    "typeIdentifier": {
       "type": "TOKEN",
       "content": {
         "type": "CHOICE",
         "members": [
           {
             "type": "PATTERN",
-            "value": "[A-Z][a-zA-Z0-9_]*"
+            "value": "[a-z][a-zA-Z0-9_]*"
           },
           {
             "type": "PATTERN",
             "value": "[A-Z][A-Z0-9_]*"
+          },
+          {
+            "type": "PATTERN",
+            "value": "[A-Z][a-zA-Z0-9_]*"
           }
         ]
       }
@@ -4908,13 +4889,6 @@
   ],
   "conflicts": [
     [
-      "iterator",
-      "iteratorAggregate"
-    ],
-    [
-      "iteratorUnary"
-    ],
-    [
       "returnStatement"
     ],
     [
@@ -4925,27 +4899,32 @@
       "actualParameters"
     ],
     [
-      "_anyIdentifier",
-      "varDeclaration"
-    ],
-    [
-      "_anyIdentifier",
-      "expressionCreationStruct"
-    ],
-    [
-      "_anyIdentifier",
-      "structDefinition"
-    ],
-    [
-      "_anyIdentifier",
-      "_referenceable"
-    ],
-    [
       "functionSignature"
     ],
     [
       "expression",
       "statement"
+    ],
+    [
+      "_primary",
+      "expressionCreationStruct"
+    ],
+    [
+      "_primary",
+      "structDefinition"
+    ],
+    [
+      "_primary",
+      "expressionCreationStruct",
+      "_referenceable"
+    ],
+    [
+      "_primary",
+      "_referenceable"
+    ],
+    [
+      "_primary",
+      "varDeclaration"
     ]
   ],
   "precedences": [],

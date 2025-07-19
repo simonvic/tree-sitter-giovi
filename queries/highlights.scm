@@ -66,9 +66,20 @@
 
 (identifier) @variable
 
-(typeIdentifier) @type
+(importEntry
+  (identifier) @module)
 
-(constantIdentifier) @constant
+(moduleDeclaration
+  name: (_) @module)
+
+(structDefinition
+  parentType: (_) @type
+  typename: (_) @type)
+
+(type) @type
+
+(constantDeclaration
+  name: (_) @constant)
 
 ((textInterpolation) @variable
   (#match? @variable "[A-Za-z][A-Za-z0-9_]*$"))
@@ -198,7 +209,4 @@
 
 ; Reserved keywords
 ((identifier) @error
-  (#match? @error "^(alias|inf|nan)$"))
-
-((constantIdentifier) @error
-  (#match? @error "^(INF|NAN)$"))
+  (#match? @error "^(alias|inf|nan|INF|NAN)$"))

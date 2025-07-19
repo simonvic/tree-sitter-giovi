@@ -5,7 +5,7 @@ i Int
 --------------------------------------------------------------------------------
 (program (varDeclaration
 	name: (identifier)
-	type: (typeIdentifier)))
+	type: (identifier)))
 
 ================================================================================
 var declaration with default override
@@ -14,5 +14,5 @@ i Int default 69
 --------------------------------------------------------------------------------
 (program (varDeclaration
 	name: (identifier)
-	type: (typeIdentifier)
+	type: (identifier)
 	default: (defaultDefinition (literalInteger))))

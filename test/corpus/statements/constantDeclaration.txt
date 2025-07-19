@@ -4,6 +4,6 @@ constant declaration
 constant PI Real <- 3.14
 --------------------------------------------------------------------------------
 (program (constantDeclaration
-	(constantIdentifier)
-	(typeIdentifier)
+	(identifier)
+	(identifier)
 	(literalReal)))

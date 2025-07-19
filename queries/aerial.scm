@@ -9,25 +9,25 @@
 
 ; Structs
 (structDefinition
-  typename: (typeIdentifier) @name
+  typename: (_) @name
   (#set! "kind" "Class")) @symbol
 
 ; fields
 (structFieldDefinition
-  name: (identifier) @name
+  name: (_) @name
   (#set! "kind" "Field")) @symbol
 
 ; methods
 (functionDeclaration
-  name: (identifier) @name
+  name: (_) @name
   (#set! "kind" "Function")) @symbol
 
 ; variables
 (varDeclaration
-  name: (identifier) @name
+  name: (_) @name
   (#set! "kind" "Variable")) @symbol
 
 ; constants
 (constantDeclaration
-  name: (constantIdentifier) @name
+  name: (_) @name
   (#set! "kind" "Constant")) @symbol

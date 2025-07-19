@@ -4,10 +4,6 @@
     "named": true,
     "subtypes": [
       {
-        "type": "constantIdentifier",
-        "named": true
-      },
-      {
         "type": "expressionAccess",
         "named": true
       },
@@ -73,10 +69,6 @@
       },
       {
         "type": "tuple",
-        "named": true
-      },
-      {
-        "type": "typeIdentifier",
         "named": true
       }
     ]
@@ -202,15 +194,15 @@
     "named": true,
     "subtypes": [
       {
+        "type": "identifier",
+        "named": true
+      },
+      {
         "type": "typeComposite",
         "named": true
       },
       {
         "type": "typeFunctionRef",
-        "named": true
-      },
-      {
-        "type": "typeIdentifier",
         "named": true
       }
     ]
@@ -363,7 +355,7 @@
         "required": true,
         "types": [
           {
-            "type": "constantIdentifier",
+            "type": "identifier",
             "named": true
           }
         ]
@@ -836,15 +828,7 @@
         "required": false,
         "types": [
           {
-            "type": "constantIdentifier",
-            "named": true
-          },
-          {
             "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "typeIdentifier",
             "named": true
           }
         ]
@@ -855,15 +839,7 @@
       "required": true,
       "types": [
         {
-          "type": "constantIdentifier",
-          "named": true
-        },
-        {
           "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "typeIdentifier",
           "named": true
         }
       ]
@@ -1026,10 +1002,6 @@
       "multiple": true,
       "required": true,
       "types": [
-        {
-          "type": "identifier",
-          "named": true
-        },
         {
           "type": "type",
           "named": true
@@ -1204,15 +1176,7 @@
         "required": true,
         "types": [
           {
-            "type": "constantIdentifier",
-            "named": true
-          },
-          {
             "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "typeIdentifier",
             "named": true
           }
         ]
@@ -1375,7 +1339,7 @@
         "required": true,
         "types": [
           {
-            "type": "typeIdentifier",
+            "type": "identifier",
             "named": true
           }
         ]
@@ -1442,7 +1406,7 @@
         "required": false,
         "types": [
           {
-            "type": "typeIdentifier",
+            "type": "identifier",
             "named": true
           }
         ]
@@ -1452,7 +1416,7 @@
         "required": true,
         "types": [
           {
-            "type": "typeIdentifier",
+            "type": "identifier",
             "named": true
           }
         ]
@@ -1926,10 +1890,6 @@
     "named": false
   },
   {
-    "type": "constantIdentifier",
-    "named": true
-  },
-  {
     "type": "default",
     "named": false
   },
@@ -2033,10 +1993,6 @@
   },
   {
     "type": "specialKey",
-    "named": true
-  },
-  {
-    "type": "typeIdentifier",
     "named": true
   },
   {

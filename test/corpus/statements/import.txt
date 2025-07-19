@@ -18,7 +18,7 @@ import [
 	(importStatement
 		(importEntry
 			(identifier)
-			(typeIdentifier)))
+			(identifier)))
 	(importStatement
 		(importEntry
 			(identifier)
@@ -26,18 +26,18 @@ import [
 	(importStatement
 		(importEntry
 			(identifier)
-			(typeIdentifier)
-			(constantIdentifier)))
+			(identifier)
+			(identifier)))
 	(importStatement
 		(importEntry
 			(identifier))
 		(importEntry
 			(identifier)
 			(identifier)
-			(typeIdentifier))
+			(identifier))
 		(importEntry
-			(typeIdentifier)
-			(typeIdentifier)
-			(constantIdentifier)
-			(typeIdentifier))))
+			(identifier)
+			(identifier)
+			(identifier)
+			(identifier))))
 

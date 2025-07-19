@@ -49,13 +49,13 @@ const SEMICOLON = optional(';');
 const PREC = {
   CAST: 16,
   TYPECHECK: 15,
+  INVOCATION: 15,
   DOT: 14,
 
   CREATION_LIST: 13,
   CREATION_MAP: 12,
 
   REF: 11,
-  INVOCATION: 10,
   UNARY: 9,
   ACCESS: 8,
   POWER: 7,
@@ -81,17 +81,16 @@ module.exports = grammar({
   word: $ => $.identifier,
 
   conflicts: $ => [
-    [$.iterator, $.iteratorAggregate],
-    [$.iteratorUnary],
     [$.returnStatement],
     [$.varDeclaration],
     [$.formalParameters, $.actualParameters],
-    [$._anyIdentifier, $.varDeclaration],
-    [$._anyIdentifier, $.expressionCreationStruct],
-    [$._anyIdentifier, $.structDefinition],
-    [$._anyIdentifier, $._referenceable],
     [$.functionSignature],
     [$.expression, $.statement],
+    [$._primary, $.expressionCreationStruct],
+    [$._primary, $.structDefinition],
+    [$._primary, $.expressionCreationStruct, $._referenceable],
+    [$._primary, $._referenceable],
+    [$._primary, $.varDeclaration],
   ],
 
   extras: $ => [
@@ -177,20 +176,20 @@ module.exports = grammar({
     ),
 
     importEntry: $ => seq(
-      repeat(seq($._anyIdentifier, '.')),
-      $._anyIdentifier,
-      optional(seq('as', field("alias", $._anyIdentifier)))
+      repeat(seq($.identifier, '.')),
+      $.identifier,
+      optional(seq('as', field("alias", $.identifier)))
     ),
 
     moduleDeclaration: $ => seq(
       'module',
-      field("name", $._anyIdentifier),
+      field("name", $.identifier),
       field("body", $.block)
     ),
 
     structDefinition: $ => seq(
-      optional(seq(field("parentType", $.typeIdentifier), ':')),
-      field("typename", $.typeIdentifier),
+      optional(seq(field("parentType", $.identifier), ':')),
+      field("typename", $.identifier),
       field("body", $.structBodyDefinition),
       SEMICOLON
     ),
@@ -328,7 +327,6 @@ module.exports = grammar({
 
     iteratorUnary: $ => seq($.identifier, optional($.type)),
 
-    // TODO: eventually use prec.right
     iteratorMap: $ => prec.left(choice(
       seq('[', field("key", $.iterator), ':', field("val", $.iterator), ']'),
       seq(field("key", $.iterator), ':', field("val", $.iterator)),
@@ -337,7 +335,9 @@ module.exports = grammar({
     iteratorAggregate: $ => seq(
       optional(field("whole", $.iteratorUnary)),
       '<',
-      repeat1(seq($.iterator, optional(','))),
+      $.iterator,
+      repeat(seq(',', $.iterator)),
+      optional(','),
       '>',
     ),
 
@@ -380,7 +380,7 @@ module.exports = grammar({
 
     constantDeclaration: $ => seq(
       'constant',
-      field("name", $.constantIdentifier),
+      field("name", $.identifier),
       field("type", $.type),
       '<-',
       field("value", $.expression),
@@ -442,7 +442,7 @@ module.exports = grammar({
     ),
 
     expressionCreationStruct: $ => seq(
-      field("typename", $.typeIdentifier),
+      field("typename", $.identifier),
       '.',
       choice(
         alias($.expressionCreationRecord, $.record),
@@ -482,7 +482,7 @@ module.exports = grammar({
     ),
 
     expressionDot: $ => prec(PREC.DOT, seq(
-      $.expression, '.', choice($._anyIdentifier, $.literalDefault)
+      $.expression, '.', choice($.identifier, $.literalDefault)
     )),
 
     expressionPrefixed: $ => prec.left(PREC.UNARY, seq(
@@ -527,7 +527,7 @@ module.exports = grammar({
 
     type: $ => choice(
       $.typeComposite,
-      $.typeIdentifier,
+      $.identifier,
       $.typeFunctionRef
     ),
 
@@ -553,7 +553,7 @@ module.exports = grammar({
 
     _primary: $ => choice(
       $.literal,
-      $._anyIdentifier,
+      $.identifier,
       $.reservedIdentifier,
     ),
 
@@ -652,15 +652,7 @@ module.exports = grammar({
       '}\''
     ),
 
-    _anyIdentifier: $ => choice(
-      $.identifier,
-      $.constantIdentifier,
-      $.typeIdentifier
-    ),
-
-    identifier: _ => token(IDENTIFIER),
-    constantIdentifier: _ => token(ALLUPPERCASE_IDENTIFIER),
-    typeIdentifier: _ => token(choice(UPPERCASE_IDENTIFIER, ALLUPPERCASE_IDENTIFIER)),
+    identifier: _ => token(choice(IDENTIFIER, ALLUPPERCASE_IDENTIFIER, UPPERCASE_IDENTIFIER)),
     reservedIdentifier: _ => token(RESERVERD_IDENTIFIER),
 
   }

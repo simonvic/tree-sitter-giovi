@@ -75,13 +75,13 @@ if x {
 			cases: (cases (caseMatch (identifier)))
 			body: (block))
 		(switchLabel
-			cases: (cases (caseMatch (typeIdentifier)))
+			cases: (cases (caseMatch (identifier)))
 			body: (block))
 		(switchLabel
-			cases: (cases (caseMatch (identifier) (typeIdentifier)))
+			cases: (cases (caseMatch (identifier) (identifier)))
 			body: (block))
 		(switchLabel
-			cases: (cases (caseMatch (typeIdentifier)))
+			cases: (cases (caseMatch (identifier)))
 			body: (block)))))
 
 ================================================================================

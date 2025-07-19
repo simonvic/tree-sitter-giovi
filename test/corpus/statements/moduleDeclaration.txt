@@ -10,8 +10,8 @@ module FOO {}
 		(identifier)
 		(block))
 	(moduleDeclaration
-		(typeIdentifier)
+		(identifier)
 		(block))
 	(moduleDeclaration
-		(constantIdentifier)
+		(identifier)
 		(block)))

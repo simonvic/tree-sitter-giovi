@@ -26,7 +26,7 @@ for i Type in foo do {}
 (program (forStatement
 	iterator: (iterator (iteratorUnary
 		(identifier)
-		(typeIdentifier)))
+		(identifier)))
 	iterated: (iterable (identifier))
 	body: (block)))
 
@@ -38,7 +38,7 @@ for i [Type] in foo do {}
 (program (forStatement
 	iterator: (iterator (iteratorUnary
 		(identifier)
-		(typeList (typeIdentifier))))
+		(typeList (identifier))))
 	iterated: (iterable (identifier))
 	body: (block)))
 
@@ -92,16 +92,15 @@ for k : v in foo do {}
 
 ================================================================================
 for k : v : w in foo do block
-:skip
 ================================================================================
 for k : v : w in foo do {}
 --------------------------------------------------------------------------------
 (program (forStatement
 	iterator: (iterator (iteratorMap
-		key: (iterator (iteratorUnary (identifier)))
-		val: (iterator (iteratorMap
+		key: (iterator (iteratorMap
 			key: (iterator (iteratorUnary (identifier)))
-			val: (iterator (iteratorUnary (identifier)))))))
+			val: (iterator (iteratorUnary (identifier)))))
+		val: (iterator (iteratorUnary (identifier)))))
 	iterated: (iterable (identifier))
 	body: (block)))
 
@@ -140,17 +139,17 @@ for k Type : v Type in foo do {}
 	iterator: (iterator (iteratorMap
 		key: (iterator (iteratorUnary
 			(identifier)
-			(typeIdentifier)))
+			(identifier)))
 		val: (iterator (iteratorUnary
 			(identifier)
-			(typeIdentifier)))))
+			(identifier)))))
 	iterated: (iterable (identifier))
 	body: (block)))
 
 ================================================================================
 for <nested iterators> in foo do block
 ================================================================================
-for <a [k : <b c>] d> in foo do {}
+for <a, [k : <b, c>], d> in foo do {}
 --------------------------------------------------------------------------------
 (program (forStatement
 	iterator: (iterator (iteratorAggregate
@@ -173,14 +172,14 @@ for <a [Int]> in foo do {}
 	iterator: (iterator (iteratorAggregate
 		(iterator (iteratorUnary
 			(identifier)
-			(typeList (typeIdentifier))))))
+			(typeList (identifier))))))
 	iterated: (iterable (identifier))
 	body: (block)))
 
 ================================================================================
 for <fields, placeholder> in foo do block
 ================================================================================
-for <a _ c> in foo do {}
+for <a, _, c> in foo do {}
 --------------------------------------------------------------------------------
 (program (forStatement
 	iterator: (iterator (iteratorAggregate
@@ -193,7 +192,7 @@ for <a _ c> in foo do {}
 ================================================================================
 for whole <fields> in foo do block
 ================================================================================
-for w <a b c> in foo do {}
+for w <a, b, c> in foo do {}
 --------------------------------------------------------------------------------
 (program (forStatement
 	iterator: (iterator (iteratorAggregate

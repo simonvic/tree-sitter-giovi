@@ -11,11 +11,11 @@ constant identifiers
 --------------------------------------------------------------------------------
 
 (program
-	(returnStatement (constantIdentifier))
-	(returnStatement (constantIdentifier))
-	(returnStatement (constantIdentifier))
-	(returnStatement (constantIdentifier))
-	(returnStatement (constantIdentifier)))
+	(returnStatement (identifier))
+	(returnStatement (identifier))
+	(returnStatement (identifier))
+	(returnStatement (identifier))
+	(returnStatement (identifier)))
 
 
 ================================================================================
@@ -56,11 +56,11 @@ type identifiers
 --------------------------------------------------------------------------------
 
 (program
-	(returnStatement (typeIdentifier))
-	(returnStatement (typeIdentifier))
-	(returnStatement (typeIdentifier))
-	(returnStatement (typeIdentifier))
-	(returnStatement (typeIdentifier))
-	(returnStatement (typeIdentifier)))
+	(returnStatement (identifier))
+	(returnStatement (identifier))
+	(returnStatement (identifier))
+	(returnStatement (identifier))
+	(returnStatement (identifier))
+	(returnStatement (identifier)))
 
 

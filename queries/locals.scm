@@ -35,7 +35,3 @@
 
 ; References
 (identifier) @local.reference
-
-(typeIdentifier) @local.reference
-
-(constantIdentifier) @local.reference

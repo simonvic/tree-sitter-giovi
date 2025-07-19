@@ -57,7 +57,7 @@ ref with one parameter
 			(formalParameters
 				(formalParameter
 					name: (identifier)
-					type: (typeIdentifier))))
+					type: (identifier))))
 		body: (block)))))
 
 ================================================================================
@@ -71,10 +71,10 @@ ref with multiple parameters
 			(formalParameters
 				(formalParameter
 					name: (identifier)
-					type: (typeIdentifier))
+					type: (identifier))
 				(formalParameter
 					name: (identifier)
-					type: (typeIdentifier))))
+					type: (identifier))))
 		body: (block)))))
 
 ================================================================================
@@ -86,7 +86,7 @@ ref with return type
 	referenced: (anonFunction
 		signature: (functionSignature
 			(formalParameters)
-			returnType: (typeIdentifier))
+			returnType: (identifier))
 		body: (block)))))
 
 ================================================================================
@@ -100,8 +100,8 @@ ref with one parameter and return type
 			(formalParameters
 				(formalParameter
 					name: (identifier)
-					type: (typeIdentifier)))
-			returnType: (typeIdentifier))
+					type: (identifier)))
+			returnType: (identifier))
 		body: (block)))))
 
 ================================================================================
@@ -115,10 +115,10 @@ ref with multiple parameters and return type
 			(formalParameters
 				(formalParameter
 					name: (identifier)
-					type: (typeIdentifier))
+					type: (identifier))
 				(formalParameter
 					name: (identifier)
-					type: (typeIdentifier)))
-			returnType: (typeIdentifier))
+					type: (identifier)))
+			returnType: (identifier))
 		body: (block)))))
 

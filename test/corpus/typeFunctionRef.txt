@@ -19,7 +19,7 @@ f ::(a Int)
 			(formalParameters
 				(formalParameter
 					(identifier)
-					(typeIdentifier)))))))
+					(identifier)))))))
 
 ================================================================================
 function variable with multiple arguments
@@ -33,10 +33,10 @@ f ::(a Int, b Int)
 			(formalParameters
 				(formalParameter
 					(identifier)
-					(typeIdentifier))
+					(identifier))
 				(formalParameter
 					(identifier)
-					(typeIdentifier)))))))
+					(identifier)))))))
 
 ================================================================================
 function variable with return type
@@ -48,7 +48,7 @@ f ::() => Int
 	(typeFunctionRef
 		(functionSignature
 			(formalParameters)
-			(typeIdentifier)))))
+			(identifier)))))
 
 ================================================================================
 function variable with one argument and return type
@@ -62,8 +62,8 @@ f ::(a Int) => Int
 			(formalParameters
 				(formalParameter
 					(identifier)
-					(typeIdentifier)))
-			(typeIdentifier)))))
+					(identifier)))
+			(identifier)))))
 
 ================================================================================
 function variable with multiple arguments and return type
@@ -77,8 +77,8 @@ f ::(a Int, b Int) => Int
 			(formalParameters
 				(formalParameter
 					(identifier)
-					(typeIdentifier))
+					(identifier))
 				(formalParameter
 					(identifier)
-					(typeIdentifier)))
-			(typeIdentifier)))))
+					(identifier)))
+			(identifier)))))
