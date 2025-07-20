@@ -14,30 +14,56 @@ import [
 (program
 	(importStatement
 		(importEntry
-			(identifier)))
+			(importEntryPath (identifier))))
 	(importStatement
 		(importEntry
-			(identifier)
-			(identifier)))
+			(importEntryPath (identifier))
+			alias: (identifier)))
 	(importStatement
 		(importEntry
-			(identifier)
-			(identifier)))
+			(importEntryPath
+				(identifier)
+				(identifier))))
 	(importStatement
 		(importEntry
-			(identifier)
-			(identifier)
-			(identifier)))
+			(importEntryPath
+				(identifier)
+				(identifier)
+				(identifier))))
 	(importStatement
 		(importEntry
-			(identifier))
+			(importEntryPath (identifier)))
 		(importEntry
-			(identifier)
-			(identifier)
-			(identifier))
+			(importEntryPath
+				(identifier)
+				(identifier))
+			alias: (identifier))
 		(importEntry
-			(identifier)
-			(identifier)
-			(identifier)
-			(identifier))))
+			(importEntryPath
+				(identifier)
+				(identifier)
+				(identifier))
+			alias: (identifier))))
 
+================================================================================
+import files
+================================================================================
+import [
+	'foo'
+	'foo' as FooModule
+	'foo'.bar.baz as Baz
+]
+--------------------------------------------------------------------------------
+(program
+	(importStatement
+		(importEntry
+			(importEntryPath (literalExactText)))
+		(importEntry
+			(importEntryPath (literalExactText))
+			alias: (identifier))
+		(importEntry
+			(importEntryPath
+				(literalExactText)
+				(identifier)
+				(identifier))
+			alias: (identifier))))

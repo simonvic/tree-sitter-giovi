@@ -835,11 +835,30 @@
       }
     },
     "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "importEntryPath",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "importEntryPath",
+    "named": true,
+    "fields": {},
+    "children": {
       "multiple": true,
       "required": true,
       "types": [
         {
           "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "literalExactText",
           "named": true
         }
       ]

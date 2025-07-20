@@ -176,9 +176,17 @@ module.exports = grammar({
     ),
 
     importEntry: $ => seq(
-      repeat(seq($.identifier, '.')),
-      $.identifier,
+      $.importEntryPath,
       optional(seq('as', field("alias", $.identifier)))
+    ),
+
+    importEntryPath: $ => choice(
+      $.literalExactText,
+      seq(
+        optional(seq($.literalExactText, '.')),
+        repeat(seq($.identifier, '.')),
+        $.identifier
+      )
     ),
 
     moduleDeclaration: $ => seq(
