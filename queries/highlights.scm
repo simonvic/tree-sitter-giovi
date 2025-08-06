@@ -152,7 +152,7 @@
   "repeat"
   "for"
   "return"
-  "constant"
+  "const"
   "default"
   "when"
   "import"

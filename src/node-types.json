@@ -362,7 +362,7 @@
       },
       "type": {
         "multiple": false,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "type",
@@ -1905,7 +1905,7 @@
     "extra": true
   },
   {
-    "type": "constant",
+    "type": "const",
     "named": false
   },
   {

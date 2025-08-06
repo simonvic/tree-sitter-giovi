@@ -387,9 +387,9 @@ module.exports = grammar({
     ),
 
     constantDeclaration: $ => seq(
-      'constant',
+      'const',
       field("name", $.identifier),
-      field("type", $.type),
+      optional(field("type", $.type)),
       '<-',
       field("value", $.expression),
       SEMICOLON

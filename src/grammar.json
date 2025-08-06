@@ -1855,7 +1855,7 @@
       "members": [
         {
           "type": "STRING",
-          "value": "constant"
+          "value": "const"
         },
         {
           "type": "FIELD",
@@ -1866,12 +1866,20 @@
           }
         },
         {
-          "type": "FIELD",
-          "name": "type",
-          "content": {
-            "type": "SYMBOL",
-            "name": "type"
-          }
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "FIELD",
+              "name": "type",
+              "content": {
+                "type": "SYMBOL",
+                "name": "type"
+              }
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         },
         {
           "type": "STRING",
