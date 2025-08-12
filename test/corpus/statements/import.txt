@@ -9,61 +9,45 @@ import [
 	foo
 	foo.bar as FooBar
 	Foo.Bar.BAZ as FooBarBaz
+	"file://foo/bar.giovi"
+	'file://foo/bar.giovi'
+	"file://foo/bar.giovi".baz.qux
 ]
 --------------------------------------------------------------------------------
 (program
 	(importStatement
 		(importEntry
-			(importEntryPath (identifier))))
+			(importURI (identifier))))
 	(importStatement
 		(importEntry
-			(importEntryPath (identifier))
+			(importURI (identifier))
 			alias: (identifier)))
 	(importStatement
 		(importEntry
-			(importEntryPath
-				(identifier)
-				(identifier))))
+			(importURI (identifier))
+			(importURI (identifier))))
 	(importStatement
 		(importEntry
-			(importEntryPath
-				(identifier)
-				(identifier)
-				(identifier))))
+			(importURI (identifier))
+			(importURI (identifier))
+			(importURI (identifier))))
 	(importStatement
 		(importEntry
-			(importEntryPath (identifier)))
+			(importURI (identifier)))
 		(importEntry
-			(importEntryPath
-				(identifier)
-				(identifier))
+			(importURI (identifier))
+			(importURI (identifier))
 			alias: (identifier))
 		(importEntry
-			(importEntryPath
-				(identifier)
-				(identifier)
-				(identifier))
-			alias: (identifier))))
-
-================================================================================
-import files
-================================================================================
-import [
-	'foo'
-	'foo' as FooModule
-	'foo'.bar.baz as Baz
-]
---------------------------------------------------------------------------------
-(program
-	(importStatement
-		(importEntry
-			(importEntryPath (literalExactText)))
-		(importEntry
-			(importEntryPath (literalExactText))
+			(importURI (identifier))
+			(importURI (identifier))
+			(importURI (identifier))
 			alias: (identifier))
 		(importEntry
-			(importEntryPath
-				(literalExactText)
-				(identifier)
-				(identifier))
-			alias: (identifier))))
+			(importURI (literalText)))
+		(importEntry
+			(importURI (literalExactText)))
+		(importEntry
+			(importURI (literalText))
+			(importURI (identifier))
+			(importURI (identifier)))))
