@@ -12,6 +12,9 @@
   (switchLabel)
 ] @indent.begin
 
+((importStatement)
+  "]" @import.branch @import.end)
+
 (tuple
   ">" @indent.branch @indent.end)
 
@@ -41,4 +44,5 @@
 [
   (ERROR)
   (commentBlock)
+  (docBlock)
 ] @indent.auto
