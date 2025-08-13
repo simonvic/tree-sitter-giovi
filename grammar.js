@@ -92,6 +92,7 @@ module.exports = grammar({
     [$._primary, $._referenceable],
     [$._primary, $.varDeclaration],
     [$.caseMatch, $._expressionBoolean],
+    [$.aliasStatement, $.type],
   ],
 
   extras: $ => [
@@ -144,6 +145,7 @@ module.exports = grammar({
 
     statement: $ => choice(
       $.importStatement,
+      $.aliasStatement,
       $.ifStatement,
       $.switchStatement,
       $.repeatStatement,
@@ -186,6 +188,14 @@ module.exports = grammar({
       $.literalExactText,
       $.literalText,
       $.identifier,
+    ),
+
+    aliasStatement: $ => seq(
+      'alias',
+      $.expression,
+      'as',
+      field("alias", $.identifier),
+      SEMICOLON
     ),
 
     moduleDeclaration: $ => seq(

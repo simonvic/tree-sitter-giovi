@@ -128,6 +128,10 @@
     "named": true,
     "subtypes": [
       {
+        "type": "aliasStatement",
+        "named": true
+      },
+      {
         "type": "breakStatement",
         "named": true
       },
@@ -261,6 +265,32 @@
       "types": [
         {
           "type": "actualParameter",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "aliasStatement",
+    "named": true,
+    "fields": {
+      "alias": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "expression",
           "named": true
         }
       ]
@@ -1884,6 +1914,10 @@
   },
   {
     "type": "^",
+    "named": false
+  },
+  {
+    "type": "alias",
     "named": false
   },
   {

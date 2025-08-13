@@ -153,6 +153,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "aliasStatement"
+        },
+        {
+          "type": "SYMBOL",
           "name": "ifStatement"
         },
         {
@@ -350,6 +354,43 @@
         {
           "type": "SYMBOL",
           "name": "identifier"
+        }
+      ]
+    },
+    "aliasStatement": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "alias"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "expression"
+        },
+        {
+          "type": "STRING",
+          "value": "as"
+        },
+        {
+          "type": "FIELD",
+          "name": "alias",
+          "content": {
+            "type": "SYMBOL",
+            "name": "identifier"
+          }
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": ";"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         }
       ]
     },
@@ -4982,6 +5023,10 @@
     [
       "caseMatch",
       "_expressionBoolean"
+    ],
+    [
+      "aliasStatement",
+      "type"
     ]
   ],
   "precedences": [],

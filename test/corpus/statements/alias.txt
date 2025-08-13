@@ -1,0 +1,21 @@
+================================================================================
+alias
+================================================================================
+alias foo as foo
+alias foo.bar as bar
+alias foo as foo as foo
+--------------------------------------------------------------------------------
+(program
+	(aliasStatement
+		(identifier)
+		alias: (identifier))
+	(aliasStatement
+		(expressionDot
+			(identifier)
+			(identifier))
+		alias: (identifier))
+	(aliasStatement
+		(expressionCast
+			(identifier)
+			(identifier))
+		alias: (identifier)))
