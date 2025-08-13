@@ -1164,7 +1164,7 @@
     },
     "caseMatch": {
       "type": "PREC",
-      "value": 2,
+      "value": 1,
       "content": {
         "type": "CHOICE",
         "members": [
@@ -1189,7 +1189,21 @@
                   {
                     "type": "STRING",
                     "value": ">"
-                  },
+                  }
+                ]
+              },
+              {
+                "type": "SYMBOL",
+                "name": "expression"
+              }
+            ]
+          },
+          {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "CHOICE",
+                "members": [
                   {
                     "type": "STRING",
                     "value": "="
@@ -1197,7 +1211,21 @@
                   {
                     "type": "STRING",
                     "value": "!="
-                  },
+                  }
+                ]
+              },
+              {
+                "type": "SYMBOL",
+                "name": "expression"
+              }
+            ]
+          },
+          {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "CHOICE",
+                "members": [
                   {
                     "type": "STRING",
                     "value": "and"
@@ -4950,6 +4978,10 @@
     [
       "_primary",
       "varDeclaration"
+    ],
+    [
+      "caseMatch",
+      "_expressionBoolean"
     ]
   ],
   "precedences": [],

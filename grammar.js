@@ -91,6 +91,7 @@ module.exports = grammar({
     [$._primary, $.expressionCreationStruct, $._referenceable],
     [$._primary, $._referenceable],
     [$._primary, $.varDeclaration],
+    [$.caseMatch, $._expressionBoolean],
   ],
 
   extras: $ => [
@@ -304,8 +305,10 @@ module.exports = grammar({
       $.caseMatch,
     ),
     _caseMatchParenthesized: $ => seq('{', $.caseMatch, '}'),
-    caseMatch: $ => prec(2, choice(
-      seq(choice('<', '<=', '>=', '>', '=', '!=', 'and', '&', 'or', '|'), $.expression),
+    caseMatch: $ => prec(1, choice(
+      seq(choice('<', '<=', '>=', '>'), $.expression),
+      seq(choice('=', '!='), $.expression),
+      seq(choice('and', '&', 'or', '|'), $.expression),
       seq(optional('not'), choice('in', '=~', '~='), $.expression),
       seq('is', optional(choice('not', $.identifier)), $.type),
     )),
