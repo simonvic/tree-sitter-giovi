@@ -7,6 +7,10 @@
   alias: (_) @name
   (#set! "kind" "Namespace")) @symbol
 
+(aliasStatement
+  alias: (_) @name
+  (#set! "kind" "Namespace")) @symbol
+
 ; Structs
 (structDefinition
   typename: (_) @name

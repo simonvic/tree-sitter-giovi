@@ -155,6 +155,7 @@
   "const"
   "default"
   "when"
+  "alias"
   "import"
   "module"
   (skipStatement)
@@ -209,4 +210,4 @@
 
 ; Reserved keywords
 ((identifier) @error
-  (#match? @error "^(alias|inf|nan|INF|NAN)$"))
+  (#match? @error "^(inf|nan|INF|NAN)$"))
