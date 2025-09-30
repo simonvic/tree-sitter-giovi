@@ -122,7 +122,7 @@ module.exports = grammar({
       $.docBlock,
     ),
     docBlock: _ => token(prec(PREC.DOC_BLOCK, seq(
-      '#?{',
+      '#{?',
       /[^}]*\}+([^#{][^{]*\}+)*/,
       '#'
     ))),
