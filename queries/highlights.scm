@@ -73,7 +73,7 @@
   name: (_) @module)
 
 (structDefinition
-  parentType: (_) @type
+  parentType: (_)? @type
   typename: (_) @type)
 
 (type) @type
