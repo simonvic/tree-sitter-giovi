@@ -50,6 +50,7 @@ const PREC = {
   CAST: 16,
   TYPECHECK: 15,
   INVOCATION: 15,
+  DOTREF: 14,
   DOT: 14,
 
   CREATION_LIST: 13,
@@ -89,6 +90,7 @@ module.exports = grammar({
     [$._primary, $.expressionCreationStruct],
     [$._primary, $.structDefinition],
     [$._primary, $.varDeclaration],
+    [$._primary, $.formalParameter],
     [$.caseMatch, $._expressionBoolean],
     [$.aliasStatement, $.type],
   ],
@@ -426,6 +428,7 @@ module.exports = grammar({
       $.expressionRef,
       $.invocation,
       $.expressionDot,
+      $.expressionDotRef,
       $.expressionAccess,
       $.expressionBinary,
       $.expressionPrefixed,
@@ -501,6 +504,12 @@ module.exports = grammar({
 
     expressionDot: $ => prec(PREC.DOT, seq(
       $.expression, '.', choice($.identifier, $.literalDefault)
+    )),
+
+    expressionDotRef: $ => prec.left(PREC.DOTREF, seq(
+      field("accessed", $.expression),
+      field("bop", '::'),
+      field("accessor", $.identifier)
     )),
 
     expressionPrefixed: $ => prec.left(PREC.UNARY, seq(

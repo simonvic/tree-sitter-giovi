@@ -2090,6 +2090,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "expressionDotRef"
+        },
+        {
+          "type": "SYMBOL",
           "name": "expressionAccess"
         },
         {
@@ -2562,6 +2566,39 @@
                 "name": "literalDefault"
               }
             ]
+          }
+        ]
+      }
+    },
+    "expressionDotRef": {
+      "type": "PREC_LEFT",
+      "value": 14,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "FIELD",
+            "name": "accessed",
+            "content": {
+              "type": "SYMBOL",
+              "name": "expression"
+            }
+          },
+          {
+            "type": "FIELD",
+            "name": "bop",
+            "content": {
+              "type": "STRING",
+              "value": "::"
+            }
+          },
+          {
+            "type": "FIELD",
+            "name": "accessor",
+            "content": {
+              "type": "SYMBOL",
+              "name": "identifier"
+            }
           }
         ]
       }
@@ -4984,6 +5021,10 @@
     [
       "_primary",
       "varDeclaration"
+    ],
+    [
+      "_primary",
+      "formalParameter"
     ],
     [
       "caseMatch",
