@@ -109,6 +109,7 @@ module.exports = grammar({
     $.expression,
     $.type,
     $.typeComposite,
+    $.referenceable,
   ],
 
   rules: {
@@ -485,10 +486,10 @@ module.exports = grammar({
     ),
 
     expressionRef: $ => prec(PREC.REF, seq(
-      '::', field("referenced", $._referenceable)
+      '::', field("referenced", $.referenceable)
     )),
 
-    _referenceable: $ => choice(
+    referenceable: $ => choice(
       $.identifier,
       $.anonFunction,
     ),

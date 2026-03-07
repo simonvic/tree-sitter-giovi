@@ -2488,13 +2488,13 @@
             "name": "referenced",
             "content": {
               "type": "SYMBOL",
-              "name": "_referenceable"
+              "name": "referenceable"
             }
           }
         ]
       }
     },
-    "_referenceable": {
+    "referenceable": {
       "type": "CHOICE",
       "members": [
         {
@@ -5004,7 +5004,8 @@
     "statement",
     "expression",
     "type",
-    "typeComposite"
+    "typeComposite",
+    "referenceable"
   ],
   "reserved": {}
 }

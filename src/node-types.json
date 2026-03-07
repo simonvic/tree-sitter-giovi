@@ -124,6 +124,20 @@
     ]
   },
   {
+    "type": "referenceable",
+    "named": true,
+    "subtypes": [
+      {
+        "type": "anonFunction",
+        "named": true
+      },
+      {
+        "type": "identifier",
+        "named": true
+      }
+    ]
+  },
+  {
     "type": "statement",
     "named": true,
     "subtypes": [
@@ -594,11 +608,7 @@
         "required": true,
         "types": [
           {
-            "type": "anonFunction",
-            "named": true
-          },
-          {
-            "type": "identifier",
+            "type": "referenceable",
             "named": true
           }
         ]
