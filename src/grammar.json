@@ -2498,34 +2498,8 @@
       "type": "CHOICE",
       "members": [
         {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "CHOICE",
-              "members": [
-                {
-                  "type": "SEQ",
-                  "members": [
-                    {
-                      "type": "SYMBOL",
-                      "name": "expression"
-                    },
-                    {
-                      "type": "STRING",
-                      "value": "."
-                    }
-                  ]
-                },
-                {
-                  "type": "BLANK"
-                }
-              ]
-            },
-            {
-              "type": "SYMBOL",
-              "name": "identifier"
-            }
-          ]
+          "type": "SYMBOL",
+          "name": "identifier"
         },
         {
           "type": "SYMBOL",
@@ -5006,15 +4980,6 @@
     [
       "_primary",
       "structDefinition"
-    ],
-    [
-      "_primary",
-      "expressionCreationStruct",
-      "_referenceable"
-    ],
-    [
-      "_primary",
-      "_referenceable"
     ],
     [
       "_primary",

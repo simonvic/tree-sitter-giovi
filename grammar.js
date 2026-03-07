@@ -88,8 +88,6 @@ module.exports = grammar({
     [$.expression, $.statement],
     [$._primary, $.expressionCreationStruct],
     [$._primary, $.structDefinition],
-    [$._primary, $.expressionCreationStruct, $._referenceable],
-    [$._primary, $._referenceable],
     [$._primary, $.varDeclaration],
     [$.caseMatch, $._expressionBoolean],
     [$.aliasStatement, $.type],
@@ -491,7 +489,7 @@ module.exports = grammar({
     )),
 
     _referenceable: $ => choice(
-      seq(optional(seq($.expression, '.')), $.identifier),
+      $.identifier,
       $.anonFunction,
     ),
 

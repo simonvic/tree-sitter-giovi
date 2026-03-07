@@ -590,19 +590,15 @@
     "named": true,
     "fields": {
       "referenced": {
-        "multiple": true,
+        "multiple": false,
         "required": true,
         "types": [
-          {
-            "type": ".",
-            "named": false
-          },
           {
             "type": "anonFunction",
             "named": true
           },
           {
-            "type": "expression",
+            "type": "identifier",
             "named": true
           }
         ]
