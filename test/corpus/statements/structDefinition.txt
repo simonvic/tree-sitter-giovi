@@ -13,7 +13,20 @@ empty struct definition with parent
 Bar : Foo <>
 --------------------------------------------------------------------------------
 (program (structDefinition
-	parentType: (identifier)
+	parentType: (typeQualified
+		typename: (identifier))
+	typename: (identifier)
+	body: (structBodyDefinition)))
+
+================================================================================
+empty struct definition with qualified parent
+================================================================================
+bar.Bar : Foo <>
+--------------------------------------------------------------------------------
+(program (structDefinition
+	parentType: (typeQualified
+		(identifier)
+		typename: (identifier))
 	typename: (identifier)
 	body: (structBodyDefinition)))
 
@@ -27,7 +40,8 @@ Foo <i Int>
 	body: (structBodyDefinition
 		(structFieldDefinition
 			name: (identifier)
-			type: (identifier)))))
+			type: (typeQualified
+				typename: (identifier))))))
 
 ================================================================================
 struct definition with one field with default override
@@ -39,7 +53,8 @@ Foo <i Int default 69>
 	body: (structBodyDefinition
 		(structFieldDefinition
 			name: (identifier)
-			type: (identifier)
+			type: (typeQualified
+				typename: (identifier))
 			default: (defaultDefinition (literalInteger))))))
 
 ================================================================================
@@ -55,10 +70,12 @@ Foo <
 	body: (structBodyDefinition
 		(structFieldDefinition
 			name: (identifier)
-			type: (identifier))
+			type: (typeQualified
+				typename: (identifier)))
 		(structFieldDefinition
 			name: (identifier)
-			type: (identifier)))))
+			type: (typeQualified
+				typename: (identifier))))))
 
 ================================================================================
 struct definition with multiple fields with default override
@@ -73,9 +90,11 @@ Foo <
 	body: (structBodyDefinition
 		(structFieldDefinition
 			name: (identifier)
-			type: (identifier)
+			type: (typeQualified
+				typename: (identifier))
 			default: (defaultDefinition (literalInteger)))
 		(structFieldDefinition
 			name: (identifier)
-			type: (identifier)
+			type: (typeQualified
+				typename: (identifier))
 			default: (defaultDefinition (literalInteger))))))

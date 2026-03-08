@@ -17,5 +17,5 @@ alias foo as foo as foo
 	(aliasStatement
 		(expressionCast
 			(identifier)
-			(identifier))
+			(typeQualified typename: (identifier)))
 		alias: (identifier)))

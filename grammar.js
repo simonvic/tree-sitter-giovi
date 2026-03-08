@@ -87,12 +87,13 @@ module.exports = grammar({
     [$.formalParameters, $.actualParameters],
     [$.functionSignature],
     [$.expression, $.statement],
-    [$._primary, $.expressionCreationStruct],
     [$._primary, $.structDefinition],
     [$._primary, $.varDeclaration],
     [$._primary, $.formalParameter],
+    [$._primary, $.typeQualified],
+    [$.typeQualified],
     [$.caseMatch, $._expressionBoolean],
-    [$.aliasStatement, $.type],
+    [$.aliasStatement, $.typeQualified],
   ],
 
   extras: $ => [
@@ -206,7 +207,7 @@ module.exports = grammar({
     ),
 
     structDefinition: $ => seq(
-      optional(seq(field("parentType", $.identifier), ':')),
+      optional(seq(field("parentType", $.typeQualified), ':')),
       field("typename", $.identifier),
       field("body", $.structBodyDefinition),
       SEMICOLON
@@ -463,7 +464,7 @@ module.exports = grammar({
     ),
 
     expressionCreationStruct: $ => seq(
-      field("typename", $.identifier),
+      field("type", $.typeQualified),
       '.',
       choice(
         alias($.expressionCreationRecord, $.record),
@@ -553,9 +554,14 @@ module.exports = grammar({
     _expressionBoolean: $ => prec.left(PREC.BOOL, seq($.expression, choice('and', '&', 'or', '|'), $.expression)),
 
     type: $ => choice(
+      $.typeQualified,
       $.typeComposite,
-      $.identifier,
       $.typeFunctionRef
+    ),
+
+    typeQualified: $ => seq(
+      repeat(seq($.identifier, '.')),
+      field("typename", $.identifier)
     ),
 
     typeComposite: $ => choice(

@@ -216,15 +216,15 @@
     "named": true,
     "subtypes": [
       {
-        "type": "identifier",
-        "named": true
-      },
-      {
         "type": "typeComposite",
         "named": true
       },
       {
         "type": "typeFunctionRef",
+        "named": true
+      },
+      {
+        "type": "typeQualified",
         "named": true
       }
     ]
@@ -1102,6 +1102,10 @@
       "required": true,
       "types": [
         {
+          "type": "identifier",
+          "named": true
+        },
+        {
           "type": "type",
           "named": true
         }
@@ -1433,12 +1437,12 @@
     "type": "struct",
     "named": true,
     "fields": {
-      "typename": {
+      "type": {
         "multiple": false,
         "required": true,
         "types": [
           {
-            "type": "identifier",
+            "type": "typeQualified",
             "named": true
           }
         ]
@@ -1505,7 +1509,7 @@
         "required": false,
         "types": [
           {
-            "type": "identifier",
+            "type": "typeQualified",
             "named": true
           }
         ]
@@ -1748,6 +1752,32 @@
           }
         ]
       }
+    }
+  },
+  {
+    "type": "typeQualified",
+    "named": true,
+    "fields": {
+      "typename": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
     }
   },
   {

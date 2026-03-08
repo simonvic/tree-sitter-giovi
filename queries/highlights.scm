@@ -73,10 +73,12 @@
   name: (_) @module)
 
 (structDefinition
-  parentType: (_)? @type
   typename: (_) @type)
 
 (type) @type
+
+(typeQualified
+  typename: (_) @type)
 
 (constantDeclaration
   name: (_) @constant)

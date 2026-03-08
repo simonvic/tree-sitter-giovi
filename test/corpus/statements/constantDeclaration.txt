@@ -5,7 +5,7 @@ const PI Real <- 3.14
 --------------------------------------------------------------------------------
 (program (constantDeclaration
 	(identifier)
-	(identifier)
+	(typeQualified (identifier))
 	(literalReal)))
 
 ================================================================================

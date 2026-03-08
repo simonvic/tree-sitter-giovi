@@ -433,7 +433,7 @@
                   "name": "parentType",
                   "content": {
                     "type": "SYMBOL",
-                    "name": "identifier"
+                    "name": "typeQualified"
                   }
                 },
                 {
@@ -2324,10 +2324,10 @@
       "members": [
         {
           "type": "FIELD",
-          "name": "typename",
+          "name": "type",
           "content": {
             "type": "SYMBOL",
-            "name": "identifier"
+            "name": "typeQualified"
           }
         },
         {
@@ -3025,15 +3025,44 @@
       "members": [
         {
           "type": "SYMBOL",
+          "name": "typeQualified"
+        },
+        {
+          "type": "SYMBOL",
           "name": "typeComposite"
         },
         {
           "type": "SYMBOL",
-          "name": "identifier"
+          "name": "typeFunctionRef"
+        }
+      ]
+    },
+    "typeQualified": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "identifier"
+              },
+              {
+                "type": "STRING",
+                "value": "."
+              }
+            ]
+          }
         },
         {
-          "type": "SYMBOL",
-          "name": "typeFunctionRef"
+          "type": "FIELD",
+          "name": "typename",
+          "content": {
+            "type": "SYMBOL",
+            "name": "identifier"
+          }
         }
       ]
     },
@@ -5012,10 +5041,6 @@
     ],
     [
       "_primary",
-      "expressionCreationStruct"
-    ],
-    [
-      "_primary",
       "structDefinition"
     ],
     [
@@ -5027,12 +5052,19 @@
       "formalParameter"
     ],
     [
+      "_primary",
+      "typeQualified"
+    ],
+    [
+      "typeQualified"
+    ],
+    [
       "caseMatch",
       "_expressionBoolean"
     ],
     [
       "aliasStatement",
-      "type"
+      "typeQualified"
     ]
   ],
   "precedences": [],

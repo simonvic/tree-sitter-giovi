@@ -26,7 +26,7 @@ for i Type in foo do {}
 (program (forStatement
 	iterator: (iterator (iteratorUnary
 		(identifier)
-		(identifier)))
+		(typeQualified typename: (identifier))))
 	iterated: (iterable (identifier))
 	body: (block)))
 
@@ -38,7 +38,7 @@ for i [Type] in foo do {}
 (program (forStatement
 	iterator: (iterator (iteratorUnary
 		(identifier)
-		(typeList (identifier))))
+		(typeList (typeQualified typename: (identifier)))))
 	iterated: (iterable (identifier))
 	body: (block)))
 
@@ -139,10 +139,10 @@ for k Type : v Type in foo do {}
 	iterator: (iterator (iteratorMap
 		key: (iterator (iteratorUnary
 			(identifier)
-			(identifier)))
+			(typeQualified typename: (identifier))))
 		val: (iterator (iteratorUnary
 			(identifier)
-			(identifier)))))
+			(typeQualified typename: (identifier))))))
 	iterated: (iterable (identifier))
 	body: (block)))
 
@@ -172,7 +172,7 @@ for <a [Int]> in foo do {}
 	iterator: (iterator (iteratorAggregate
 		(iterator (iteratorUnary
 			(identifier)
-			(typeList (identifier))))))
+			(typeList (typeQualified typename: (identifier)))))))
 	iterated: (iterable (identifier))
 	body: (block)))
 
