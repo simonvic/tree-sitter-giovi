@@ -25,10 +25,7 @@
 (escapeSequence) @string.escape
 
 (literalText
-  [
-    "\""
-    "\""
-  ] @punctuation)
+  "\"" @punctuation)
 
 (literalTextBlock
   [
@@ -37,10 +34,7 @@
   ] @punctuation)
 
 (literalExactText
-  [
-    "'"
-    "'"
-  ] @punctuation)
+  "'" @punctuation)
 
 (literalExactTextBlock
   [
