@@ -66,6 +66,8 @@ const PREC = {
   EQUALITY: 3,
   CONTAINMENT: 2,
   BOOL: 1,
+  BITBOOL: 1,
+  BITSHIFT: 1,
 
   RANGE: 1,
   ACCESS_KEY: 1,
@@ -517,6 +519,7 @@ module.exports = grammar({
       field("op", choice(
         '+', '-',
         '!', 'not',
+        '!!'
       )),
       $.expression,
     )),
@@ -536,6 +539,8 @@ module.exports = grammar({
     )),
 
     expressionBinary: $ => choice(
+      $._expressionBitwiseBool,
+      $._expressionBitwiseShift,
       $._expressionPower,
       $._expressionEquality,
       $._expressionContainment,
@@ -545,6 +550,8 @@ module.exports = grammar({
       $._expressionBoolean,
     ),
 
+    _expressionBitwiseBool: $ => prec.left(PREC.BITBOOL, seq($.expression, choice('&&', '||', '|||'), $.expression)),
+    _expressionBitwiseShift: $ => prec.left(PREC.BITSHIFT, seq($.expression, choice('{<}', '{>}', '{>>}'), $.expression)),
     _expressionPower: $ => prec.left(PREC.POWER, seq($.expression, '^', $.expression)),
     _expressionEquality: $ => prec.left(PREC.EQUALITY, seq($.expression, choice('=', '!='), $.expression)),
     _expressionContainment: $ => prec.left(PREC.CONTAINMENT, seq($.expression, optional('not'), choice('in', '~=', '=~'), $.expression)),

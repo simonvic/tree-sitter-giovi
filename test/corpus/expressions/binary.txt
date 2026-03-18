@@ -119,6 +119,48 @@ boolean
 			(identifier))))
 
 ================================================================================
+bitwise bool
+================================================================================
+=> a && b
+=> a || b
+=> a ||| b
+--------------------------------------------------------------------------------
+(program
+	(returnStatement
+		(expressionBinary
+			(identifier)
+			(identifier)))
+	(returnStatement
+		(expressionBinary
+			(identifier)
+			(identifier)))
+	(returnStatement
+		(expressionBinary
+			(identifier)
+			(identifier))))
+
+================================================================================
+bitwise shift
+================================================================================
+=> a {<} b
+=> a {>} b
+=> a {>>} b
+--------------------------------------------------------------------------------
+(program
+	(returnStatement
+		(expressionBinary
+			(identifier)
+			(identifier)))
+	(returnStatement
+		(expressionBinary
+			(identifier)
+			(identifier)))
+	(returnStatement
+		(expressionBinary
+			(identifier)
+			(identifier))))
+
+================================================================================
 nested binary expressions
 ================================================================================
 => a + b + c

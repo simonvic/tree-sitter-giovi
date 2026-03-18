@@ -2630,6 +2630,10 @@
                 {
                   "type": "STRING",
                   "value": "not"
+                },
+                {
+                  "type": "STRING",
+                  "value": "!!"
                 }
               ]
             }
@@ -2748,6 +2752,14 @@
       "members": [
         {
           "type": "SYMBOL",
+          "name": "_expressionBitwiseBool"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_expressionBitwiseShift"
+        },
+        {
+          "type": "SYMBOL",
           "name": "_expressionPower"
         },
         {
@@ -2775,6 +2787,74 @@
           "name": "_expressionBoolean"
         }
       ]
+    },
+    "_expressionBitwiseBool": {
+      "type": "PREC_LEFT",
+      "value": 1,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "expression"
+          },
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "&&"
+              },
+              {
+                "type": "STRING",
+                "value": "||"
+              },
+              {
+                "type": "STRING",
+                "value": "|||"
+              }
+            ]
+          },
+          {
+            "type": "SYMBOL",
+            "name": "expression"
+          }
+        ]
+      }
+    },
+    "_expressionBitwiseShift": {
+      "type": "PREC_LEFT",
+      "value": 1,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "expression"
+          },
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "{<}"
+              },
+              {
+                "type": "STRING",
+                "value": "{>}"
+              },
+              {
+                "type": "STRING",
+                "value": "{>>}"
+              }
+            ]
+          },
+          {
+            "type": "SYMBOL",
+            "name": "expression"
+          }
+        ]
+      }
     },
     "_expressionPower": {
       "type": "PREC_LEFT",
