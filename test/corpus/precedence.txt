@@ -125,3 +125,43 @@ access dot and invocation precedence
 					instance: (identifier)
 					invoked: (identifier)
 					(actualParameters)))))
+
+================================================================================
+relational precedence
+================================================================================
+=> a <= b <= c
+--------------------------------------------------------------------------------
+(program (returnStatement
+	(expressionBinary
+		(expressionBinary
+			(identifier)
+			(identifier))
+		(identifier))))
+
+================================================================================
+relational and algebric precedence
+================================================================================
+=> 1 + 1 <= 1 + 1
+--------------------------------------------------------------------------------
+(program (returnStatement
+	(expressionBinary
+		(expressionBinary
+			(literalInteger)
+			(literalInteger))
+		(expressionBinary
+			(literalInteger)
+			(literalInteger)))))
+
+================================================================================
+relational and equality precedence
+================================================================================
+=> 1 <= 1 = 2 <= 2
+--------------------------------------------------------------------------------
+(program (returnStatement
+	(expressionBinary
+		(expressionBinary
+			(literalInteger)
+			(literalInteger))
+		(expressionBinary
+			(literalInteger)
+			(literalInteger)))))
