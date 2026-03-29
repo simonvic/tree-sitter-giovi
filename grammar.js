@@ -284,8 +284,8 @@ module.exports = grammar({
     ),
 
     statement_if: $ => prec.right(seq(
-      'if', field('condition', $.expression), 'do', field('body', $._statement_or_block),
-      optional(seq('else', field('else_body', $._statement_or_block)))
+      'if', field("condition", $.expression), 'do', field("body", $._statement_or_block),
+      optional(seq('else', field("else_body", $._statement_or_block)))
     )),
 
     statement_multi_if: $ => prec.right(seq(
