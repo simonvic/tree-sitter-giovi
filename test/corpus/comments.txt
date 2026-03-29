@@ -10,49 +10,49 @@ comment line
 # yeah #giovi is cool
 --------------------------------------------------------------------------------
 (program
-	(commentLine)
-	(commentLine)
-	(commentLine)
-	(commentLine)
-	(returnStatement (identifier))
-	(commentLine)
-	(commentLine)
-	(commentLine))
+	(comment_line)
+	(comment_line)
+	(comment_line)
+	(comment_line)
+	(return_statement (identifier))
+	(comment_line)
+	(comment_line)
+	(comment_line))
 
 ================================================================================
 oneline empty comment block
 ================================================================================
 #{}#
 --------------------------------------------------------------------------------
-(program (commentBlock))
+(program (comment_block))
 
 ================================================================================
 oneline comment block with only whitespaces
 ================================================================================
 #{ }#
 --------------------------------------------------------------------------------
-(program (commentBlock))
+(program (comment_block))
 
 ================================================================================
 oneline comment block with only text
 ================================================================================
 #{giovi}#
 --------------------------------------------------------------------------------
-(program (commentBlock))
+(program (comment_block))
 
 ================================================================================
 oneline comment block with pounds
 ================================================================================
 #{ #### }#
 --------------------------------------------------------------------------------
-(program (commentBlock))
+(program (comment_block))
 
 ================================================================================
 oneline comment block
 ================================================================================
 #{ this is a comment block }#
 --------------------------------------------------------------------------------
-(program (commentBlock))
+(program (comment_block))
 
 ================================================================================
 comment block on multiple lines
@@ -63,14 +63,14 @@ a comment
 block
 }#
 --------------------------------------------------------------------------------
-(program (commentBlock))
+(program (comment_block))
 
 ================================================================================
 two comment blocks on one line
 ================================================================================
 #{ awf }# #{ awfawf }#
 --------------------------------------------------------------------------------
-(program (commentBlock) (commentBlock))
+(program (comment_block) (comment_block))
 
 ================================================================================
 comment block before statement
@@ -83,8 +83,8 @@ block
 => a
 --------------------------------------------------------------------------------
 (program
-	(commentBlock)
-	(returnStatement (identifier)))
+	(comment_block)
+	(return_statement (identifier)))
 
 ================================================================================
 comment block after statement
@@ -97,15 +97,15 @@ block
 }#
 --------------------------------------------------------------------------------
 (program
-	(returnStatement (identifier))
-	(commentBlock))
+	(return_statement (identifier))
+	(comment_block))
 
 ================================================================================
 comment block inline statement
 ================================================================================
 => #{ this is a comment block }# a
 --------------------------------------------------------------------------------
-(program (returnStatement (commentBlock) (identifier)))
+(program (return_statement (comment_block) (identifier)))
 
 ================================================================================
 comment block with nested opening tag
@@ -113,6 +113,6 @@ comment block with nested opening tag
 => #{ you open a comment with the '#{' token. }# foo
 --------------------------------------------------------------------------------
 (program 
-	(returnStatement
-		(commentBlock)
+	(return_statement
+		(comment_block)
 		(identifier)))

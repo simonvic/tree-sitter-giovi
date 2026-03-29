@@ -15,39 +15,39 @@ import [
 ]
 --------------------------------------------------------------------------------
 (program
-	(importStatement
-		(importEntry
-			(importURI (identifier))))
-	(importStatement
-		(importEntry
-			(importURI (identifier))
+	(statement_import
+		(import_entry
+			(import_uri (identifier))))
+	(statement_import
+		(import_entry
+			(import_uri (identifier))
 			alias: (identifier)))
-	(importStatement
-		(importEntry
-			(importURI (identifier))
-			(importURI (identifier))))
-	(importStatement
-		(importEntry
-			(importURI (identifier))
-			(importURI (identifier))
-			(importURI (identifier))))
-	(importStatement
-		(importEntry
-			(importURI (identifier)))
-		(importEntry
-			(importURI (identifier))
-			(importURI (identifier))
+	(statement_import
+		(import_entry
+			(import_uri (identifier))
+			(import_uri (identifier))))
+	(statement_import
+		(import_entry
+			(import_uri (identifier))
+			(import_uri (identifier))
+			(import_uri (identifier))))
+	(statement_import
+		(import_entry
+			(import_uri (identifier)))
+		(import_entry
+			(import_uri (identifier))
+			(import_uri (identifier))
 			alias: (identifier))
-		(importEntry
-			(importURI (identifier))
-			(importURI (identifier))
-			(importURI (identifier))
+		(import_entry
+			(import_uri (identifier))
+			(import_uri (identifier))
+			(import_uri (identifier))
 			alias: (identifier))
-		(importEntry
-			(importURI (literalText)))
-		(importEntry
-			(importURI (literalExactText)))
-		(importEntry
-			(importURI (literalText))
-			(importURI (identifier))
-			(importURI (identifier)))))
+		(import_entry
+			(import_uri (literal_text)))
+		(import_entry
+			(import_uri (literal_exact_text)))
+		(import_entry
+			(import_uri (literal_text))
+			(import_uri (identifier))
+			(import_uri (identifier)))))

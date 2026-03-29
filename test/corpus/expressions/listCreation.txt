@@ -3,62 +3,62 @@ empty list creation
 ================================================================================
 => []
 --------------------------------------------------------------------------------
-(program (returnStatement (list)))
+(program (return_statement (list)))
 
 ================================================================================
 list creation with one value
 ================================================================================
 => [a]
 --------------------------------------------------------------------------------
-(program (returnStatement (list
-	(listEntry (identifier)))))
+(program (return_statement (list
+	(list_entry (identifier)))))
 
 ================================================================================
 list creation with multiple values
 ================================================================================
 => [a b c]
 --------------------------------------------------------------------------------
-(program (returnStatement (list
-	(listEntry (identifier))
-	(listEntry (identifier))
-	(listEntry (identifier)))))
+(program (return_statement (list
+	(list_entry (identifier))
+	(list_entry (identifier))
+	(list_entry (identifier)))))
 
 ================================================================================
 list creation with multiple comma separated values
 ================================================================================
 => [a, b, c]
 --------------------------------------------------------------------------------
-(program (returnStatement (list
-	(listEntry (identifier))
-	(listEntry (identifier))
-	(listEntry (identifier)))))
+(program (return_statement (list
+	(list_entry (identifier))
+	(list_entry (identifier))
+	(list_entry (identifier)))))
 
 ================================================================================
 nested empty list creation
 ================================================================================
 => [[]]
 --------------------------------------------------------------------------------
-(program (returnStatement (list
-	(listEntry (list)))))
+(program (return_statement (list
+	(list_entry (list)))))
 
 ================================================================================
 nested list creation
 ================================================================================
 => [[a]]
 --------------------------------------------------------------------------------
-(program (returnStatement (list
-	(listEntry (list
-		(listEntry (identifier)))))))
+(program (return_statement (list
+	(list_entry (list
+		(list_entry (identifier)))))))
 
 ================================================================================
 nested multiple list creation
 ================================================================================
 => [[a], [b], [c]]
 --------------------------------------------------------------------------------
-(program (returnStatement (list
-	(listEntry (list
-		(listEntry (identifier))))
-	(listEntry (list
-		(listEntry (identifier))))
-	(listEntry (list
-		(listEntry (identifier)))))))
+(program (return_statement (list
+	(list_entry (list
+		(list_entry (identifier))))
+	(list_entry (list
+		(list_entry (identifier))))
+	(list_entry (list
+		(list_entry (identifier)))))))

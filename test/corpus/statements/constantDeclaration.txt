@@ -3,16 +3,16 @@ constant declaration
 ================================================================================
 const PI Real <- 3.14
 --------------------------------------------------------------------------------
-(program (constantDeclaration
+(program (declaration_constant
 	(identifier)
-	(typeQualified (identifier))
-	(literalReal)))
+	(type_qualified (identifier))
+	(literal_real)))
 
 ================================================================================
 constant declaration no type
 ================================================================================
 const PI <- 3.14
 --------------------------------------------------------------------------------
-(program (constantDeclaration
+(program (declaration_constant
 	(identifier)
-	(literalReal)))
+	(literal_real)))

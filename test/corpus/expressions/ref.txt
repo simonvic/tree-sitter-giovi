@@ -3,23 +3,23 @@ ref identifier
 ================================================================================
 => ::f
 --------------------------------------------------------------------------------
-(program (returnStatement (expressionRef (identifier))))
+(program (return_statement (expression_ref (identifier))))
 
 ================================================================================
 ref with only body
 ================================================================================
 => ::{}
 --------------------------------------------------------------------------------
-(program (returnStatement (expressionRef (anonFunction (block)))))
+(program (return_statement (expression_ref (anon_function (block)))))
 
 ================================================================================
 ref with empty parameters
 ================================================================================
 => ::(){}
 --------------------------------------------------------------------------------
-(program (returnStatement (expressionRef
-	referenced: (anonFunction
-		signature: (functionSignature (formalParameters))
+(program (return_statement (expression_ref
+	referenced: (anon_function
+		signature: (function_signature (formal_parameters))
 		body: (block)))))
 
 ================================================================================
@@ -27,13 +27,13 @@ ref with one parameter
 ================================================================================
 => ::(a Int){}
 --------------------------------------------------------------------------------
-(program (returnStatement (expressionRef
-	referenced: (anonFunction
-		signature: (functionSignature
-			(formalParameters
-				(formalParameter
+(program (return_statement (expression_ref
+	referenced: (anon_function
+		signature: (function_signature
+			(formal_parameters
+				(formal_parameter
 					name: (identifier)
-					type: (typeQualified typename: (identifier)))))
+					type: (type_qualified typename: (identifier)))))
 		body: (block)))))
 
 ================================================================================
@@ -41,16 +41,16 @@ ref with multiple parameters
 ================================================================================
 => ::(a Int, b Int){}
 --------------------------------------------------------------------------------
-(program (returnStatement (expressionRef
-	referenced: (anonFunction
-		signature: (functionSignature
-			(formalParameters
-				(formalParameter
+(program (return_statement (expression_ref
+	referenced: (anon_function
+		signature: (function_signature
+			(formal_parameters
+				(formal_parameter
 					name: (identifier)
-					type: (typeQualified typename: (identifier)))
-				(formalParameter
+					type: (type_qualified typename: (identifier)))
+				(formal_parameter
 					name: (identifier)
-					type: (typeQualified typename: (identifier)))))
+					type: (type_qualified typename: (identifier)))))
 		body: (block)))))
 
 ================================================================================
@@ -58,11 +58,11 @@ ref with return type
 ================================================================================
 => ::() => Int {}
 --------------------------------------------------------------------------------
-(program (returnStatement (expressionRef
-	referenced: (anonFunction
-		signature: (functionSignature
-			(formalParameters)
-			returnType: (typeQualified typename: (identifier)))
+(program (return_statement (expression_ref
+	referenced: (anon_function
+		signature: (function_signature
+			(formal_parameters)
+			return_type: (type_qualified typename: (identifier)))
 		body: (block)))))
 
 ================================================================================
@@ -70,14 +70,14 @@ ref with one parameter and return type
 ================================================================================
 => ::(a Int) => Int {}
 --------------------------------------------------------------------------------
-(program (returnStatement (expressionRef
-	referenced: (anonFunction
-		signature: (functionSignature
-			(formalParameters
-				(formalParameter
+(program (return_statement (expression_ref
+	referenced: (anon_function
+		signature: (function_signature
+			(formal_parameters
+				(formal_parameter
 					name: (identifier)
-					type: (typeQualified typename: (identifier))))
-			returnType: (typeQualified typename: (identifier)))
+					type: (type_qualified typename: (identifier))))
+			return_type: (type_qualified typename: (identifier)))
 		body: (block)))))
 
 ================================================================================
@@ -85,16 +85,16 @@ ref with multiple parameters and return type
 ================================================================================
 => ::(a Int, b Int) => Int {}
 --------------------------------------------------------------------------------
-(program (returnStatement (expressionRef
-	referenced: (anonFunction
-		signature: (functionSignature
-			(formalParameters
-				(formalParameter
+(program (return_statement (expression_ref
+	referenced: (anon_function
+		signature: (function_signature
+			(formal_parameters
+				(formal_parameter
 					name: (identifier)
-					type: (typeQualified typename: (identifier)))
-				(formalParameter
+					type: (type_qualified typename: (identifier)))
+				(formal_parameter
 					name: (identifier)
-					type: (typeQualified typename: (identifier))))
-			returnType: (typeQualified typename: (identifier)))
+					type: (type_qualified typename: (identifier))))
+			return_type: (type_qualified typename: (identifier)))
 		body: (block)))))
 

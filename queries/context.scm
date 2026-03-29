@@ -1,22 +1,22 @@
-(importStatement) @context
+(statement_import) @context
 
-(moduleDeclaration
+(declaration_module
   body: (_) @context.end) @context
 
-(ifStatement
+(statement_if
   body: (_) @context.end) @context
 
-(functionDeclaration
+(declaration_function
   body: (_) @context.end) @context
 
-(forStatement
+(statement_for
   body: (_) @context.end) @context
 
-(structDefinition
+(declaration_struct
   body: (_) @context.end) @context
 
-(switchStatement
+(statement_multi_if
   body: (_) @context.end) @context
 
-(switchLabel
+(switch_label
   body: (_) @context.end) @context

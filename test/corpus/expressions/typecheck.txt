@@ -4,10 +4,10 @@ simple
 => a is Int
 --------------------------------------------------------------------------------
 (program
-	(returnStatement
-		(expressionTypeCheck
+	(return_statement
+		(expression_type_check
 			(identifier)
-			(typeQualified (identifier)))))
+			(type_qualified (identifier)))))
 
 ================================================================================
 with declaration
@@ -15,11 +15,11 @@ with declaration
 => a is i Int
 --------------------------------------------------------------------------------
 (program
-	(returnStatement
-		(expressionTypeCheck
+	(return_statement
+		(expression_type_check
 			(identifier)
 			(identifier)
-			(typeQualified (identifier)))))
+			(type_qualified (identifier)))))
 
 ================================================================================
 with negation
@@ -27,8 +27,8 @@ with negation
 => a is not Int
 --------------------------------------------------------------------------------
 (program
-	(returnStatement
-		(expressionTypeCheck
+	(return_statement
+		(expression_type_check
 			(identifier)
-			(typeQualified (identifier)))))
+			(type_qualified (identifier)))))
 

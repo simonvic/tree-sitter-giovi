@@ -3,25 +3,25 @@ access with literal
 ================================================================================
 => a@69
 --------------------------------------------------------------------------------
-(program (returnStatement (expressionAccess
+(program (return_statement (expression_access
 	accessed: (identifier)
-	accessor: (literalInteger))))
+	accessor: (literal_integer))))
 
 ================================================================================
 access with parenthesized literal
 ================================================================================
 => a@{69}
 --------------------------------------------------------------------------------
-(program (returnStatement (expressionAccess
+(program (return_statement (expression_access
 	accessed: (identifier)
-	accessor: (literalInteger))))
+	accessor: (literal_integer))))
 
 ================================================================================
 access with identifier
 ================================================================================
 => a@i
 --------------------------------------------------------------------------------
-(program (returnStatement (expressionAccess
+(program (return_statement (expression_access
 	accessed: (identifier)
 	accessor: (identifier))))
 
@@ -30,7 +30,7 @@ access with parenthesized identifier
 ================================================================================
 => a@{i}
 --------------------------------------------------------------------------------
-(program (returnStatement (expressionAccess
+(program (return_statement (expression_access
 	accessed: (identifier)
 	accessor: (identifier))))
 
@@ -39,9 +39,9 @@ access with expression
 ================================================================================
 => a@{i + j}
 --------------------------------------------------------------------------------
-(program (returnStatement (expressionAccess
+(program (return_statement (expression_access
 	accessed: (identifier)
-	accessor: (expressionBinary
+	accessor: (expression_binary
 		(identifier)
 		(identifier)))))
 
@@ -50,7 +50,7 @@ access with range
 ================================================================================
 => a@s..e
 --------------------------------------------------------------------------------
-(program (returnStatement (expressionAccess
+(program (return_statement (expression_access
 	accessed: (identifier)
 	accessor: (range
 		start: (identifier)
@@ -61,8 +61,22 @@ access with parenthesized range
 ================================================================================
 => a@{s..e}
 --------------------------------------------------------------------------------
-(program (returnStatement (expressionAccess
+(program (return_statement (expression_access
 	accessed: (identifier)
 	accessor: (range
 		start: (identifier)
 		end: (identifier)))))
+
+================================================================================
+access with parenthesized invocation
+:skip
+================================================================================
+someList@{someIndex()}
+--------------------------------------------------------------------------------
+(program
+	(expression_access
+		(identifier)
+		(invocation
+			(identifier)
+			(actual_parameters))))
+

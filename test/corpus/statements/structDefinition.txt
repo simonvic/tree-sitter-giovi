@@ -3,44 +3,44 @@ empty struct definition
 ================================================================================
 Foo <>
 --------------------------------------------------------------------------------
-(program (structDefinition
+(program (declaration_struct
 	typename: (identifier)
-	body: (structBodyDefinition)))
+	body: (struct_body)))
 
 ================================================================================
 empty struct definition with parent
 ================================================================================
 Bar : Foo <>
 --------------------------------------------------------------------------------
-(program (structDefinition
-	parentType: (typeQualified
+(program (declaration_struct
+	parent_type: (type_qualified
 		typename: (identifier))
 	typename: (identifier)
-	body: (structBodyDefinition)))
+	body: (struct_body)))
 
 ================================================================================
 empty struct definition with qualified parent
 ================================================================================
 bar.Bar : Foo <>
 --------------------------------------------------------------------------------
-(program (structDefinition
-	parentType: (typeQualified
+(program (declaration_struct
+	parent_type: (type_qualified
 		(identifier)
 		typename: (identifier))
 	typename: (identifier)
-	body: (structBodyDefinition)))
+	body: (struct_body)))
 
 ================================================================================
 struct definition with one field
 ================================================================================
 Foo <i Int>
 --------------------------------------------------------------------------------
-(program (structDefinition
+(program (declaration_struct
 	typename: (identifier)
-	body: (structBodyDefinition
-		(structFieldDefinition
+	body: (struct_body
+		(struct_field
 			name: (identifier)
-			type: (typeQualified
+			type: (type_qualified
 				typename: (identifier))))))
 
 ================================================================================
@@ -48,14 +48,14 @@ struct definition with one field with default override
 ================================================================================
 Foo <i Int default 69>
 --------------------------------------------------------------------------------
-(program (structDefinition
+(program (declaration_struct
 	typename: (identifier)
-	body: (structBodyDefinition
-		(structFieldDefinition
+	body: (struct_body
+		(struct_field
 			name: (identifier)
-			type: (typeQualified
+			type: (type_qualified
 				typename: (identifier))
-			default: (defaultDefinition (literalInteger))))))
+			default: (default_definition (literal_integer))))))
 
 ================================================================================
 struct definition with multiple fields
@@ -65,16 +65,16 @@ Foo <
 	j Int
 >
 --------------------------------------------------------------------------------
-(program (structDefinition
+(program (declaration_struct
 	typename: (identifier)
-	body: (structBodyDefinition
-		(structFieldDefinition
+	body: (struct_body
+		(struct_field
 			name: (identifier)
-			type: (typeQualified
+			type: (type_qualified
 				typename: (identifier)))
-		(structFieldDefinition
+		(struct_field
 			name: (identifier)
-			type: (typeQualified
+			type: (type_qualified
 				typename: (identifier))))))
 
 ================================================================================
@@ -85,16 +85,16 @@ Foo <
 	j Int default 69
 >
 --------------------------------------------------------------------------------
-(program (structDefinition
+(program (declaration_struct
 	typename: (identifier)
-	body: (structBodyDefinition
-		(structFieldDefinition
+	body: (struct_body
+		(struct_field
 			name: (identifier)
-			type: (typeQualified
+			type: (type_qualified
 				typename: (identifier))
-			default: (defaultDefinition (literalInteger)))
-		(structFieldDefinition
+			default: (default_definition (literal_integer)))
+		(struct_field
 			name: (identifier)
-			type: (typeQualified
+			type: (type_qualified
 				typename: (identifier))
-			default: (defaultDefinition (literalInteger))))))
+			default: (default_definition (literal_integer))))))

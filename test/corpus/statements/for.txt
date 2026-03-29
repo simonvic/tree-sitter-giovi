@@ -3,8 +3,8 @@ for placeholder in foo do block
 ================================================================================
 for _ in foo do {}
 --------------------------------------------------------------------------------
-(program (forStatement
-	iterator: (iterator (literalPlaceholder))
+(program (statement_for
+	iterator: (iterator (literal_placeholder))
 	iterated: (iterable (identifier))
 	body: (block)))
 
@@ -13,8 +13,8 @@ for unary in foo do block
 ================================================================================
 for i in foo do {}
 --------------------------------------------------------------------------------
-(program (forStatement
-	iterator: (iterator (iteratorUnary (identifier)))
+(program (statement_for
+	iterator: (iterator (iterator_unary (identifier)))
 	iterated: (iterable (identifier))
 	body: (block)))
 
@@ -23,10 +23,10 @@ for typed unary in foo do block
 ================================================================================
 for i Type in foo do {}
 --------------------------------------------------------------------------------
-(program (forStatement
-	iterator: (iterator (iteratorUnary
+(program (statement_for
+	iterator: (iterator (iterator_unary
 		(identifier)
-		(typeQualified typename: (identifier))))
+		(type_qualified typename: (identifier))))
 	iterated: (iterable (identifier))
 	body: (block)))
 
@@ -35,10 +35,10 @@ for composite typed unary in foo do block
 ================================================================================
 for i [Type] in foo do {}
 --------------------------------------------------------------------------------
-(program (forStatement
-	iterator: (iterator (iteratorUnary
+(program (statement_for
+	iterator: (iterator (iterator_unary
 		(identifier)
-		(typeList (typeQualified typename: (identifier)))))
+		(type_list (type_qualified typename: (identifier)))))
 	iterated: (iterable (identifier))
 	body: (block)))
 
@@ -47,10 +47,10 @@ for placeholder : placeholder in foo do block
 ================================================================================
 for _ : _ in foo do {}
 --------------------------------------------------------------------------------
-(program (forStatement
-	iterator: (iterator (iteratorMap
-		key: (iterator (literalPlaceholder))
-		val: (iterator (literalPlaceholder))))
+(program (statement_for
+	iterator: (iterator (iterator_map
+		key: (iterator (literal_placeholder))
+		val: (iterator (literal_placeholder))))
 	iterated: (iterable (identifier))
 	body: (block)))
 
@@ -59,10 +59,10 @@ for key : placeholder in foo do block
 ================================================================================
 for k : _ in foo do {}
 --------------------------------------------------------------------------------
-(program (forStatement
-	iterator: (iterator (iteratorMap
-		key: (iterator (iteratorUnary (identifier)))
-		val: (iterator (literalPlaceholder))))
+(program (statement_for
+	iterator: (iterator (iterator_map
+		key: (iterator (iterator_unary (identifier)))
+		val: (iterator (literal_placeholder))))
 	iterated: (iterable (identifier))
 	body: (block)))
 
@@ -71,10 +71,10 @@ for placeholder : value in foo do block
 ================================================================================
 for _ : v in foo do {}
 --------------------------------------------------------------------------------
-(program (forStatement
-	iterator: (iterator (iteratorMap
-		key: (iterator (literalPlaceholder))
-		val: (iterator (iteratorUnary (identifier)))))
+(program (statement_for
+	iterator: (iterator (iterator_map
+		key: (iterator (literal_placeholder))
+		val: (iterator (iterator_unary (identifier)))))
 	iterated: (iterable (identifier))
 	body: (block)))
 
@@ -83,10 +83,10 @@ for key : value in foo do block
 ================================================================================
 for k : v in foo do {}
 --------------------------------------------------------------------------------
-(program (forStatement
-	iterator: (iterator (iteratorMap
-		key: (iterator (iteratorUnary (identifier)))
-		val: (iterator (iteratorUnary (identifier)))))
+(program (statement_for
+	iterator: (iterator (iterator_map
+		key: (iterator (iterator_unary (identifier)))
+		val: (iterator (iterator_unary (identifier)))))
 	iterated: (iterable (identifier))
 	body: (block)))
 
@@ -95,12 +95,12 @@ for k : v : w in foo do block
 ================================================================================
 for k : v : w in foo do {}
 --------------------------------------------------------------------------------
-(program (forStatement
-	iterator: (iterator (iteratorMap
-		key: (iterator (iteratorMap
-			key: (iterator (iteratorUnary (identifier)))
-			val: (iterator (iteratorUnary (identifier)))))
-		val: (iterator (iteratorUnary (identifier)))))
+(program (statement_for
+	iterator: (iterator (iterator_map
+		key: (iterator (iterator_map
+			key: (iterator (iterator_unary (identifier)))
+			val: (iterator (iterator_unary (identifier)))))
+		val: (iterator (iterator_unary (identifier)))))
 	iterated: (iterable (identifier))
 	body: (block)))
 
@@ -109,10 +109,10 @@ for [ key : value ] in foo do block
 ================================================================================
 for [k : v] in foo do {}
 --------------------------------------------------------------------------------
-(program (forStatement
-	iterator: (iterator (iteratorMap
-		key: (iterator (iteratorUnary (identifier)))
-		val: (iterator (iteratorUnary (identifier)))))
+(program (statement_for
+	iterator: (iterator (iterator_map
+		key: (iterator (iterator_unary (identifier)))
+		val: (iterator (iterator_unary (identifier)))))
 	iterated: (iterable (identifier))
 	body: (block)))
 
@@ -121,12 +121,12 @@ for k : [v : w] in foo do block
 ================================================================================
 for k : [v : w] in foo do {}
 --------------------------------------------------------------------------------
-(program (forStatement
-	iterator: (iterator (iteratorMap
-		key: (iterator (iteratorUnary (identifier)))
-		val: (iterator (iteratorMap
-			key: (iterator (iteratorUnary (identifier)))
-			val: (iterator (iteratorUnary (identifier)))))))
+(program (statement_for
+	iterator: (iterator (iterator_map
+		key: (iterator (iterator_unary (identifier)))
+		val: (iterator (iterator_map
+			key: (iterator (iterator_unary (identifier)))
+			val: (iterator (iterator_unary (identifier)))))))
 	iterated: (iterable (identifier))
 	body: (block)))
 
@@ -135,14 +135,14 @@ for key Type : value Type in foo do block
 ================================================================================
 for k Type : v Type in foo do {}
 --------------------------------------------------------------------------------
-(program (forStatement
-	iterator: (iterator (iteratorMap
-		key: (iterator (iteratorUnary
+(program (statement_for
+	iterator: (iterator (iterator_map
+		key: (iterator (iterator_unary
 			(identifier)
-			(typeQualified typename: (identifier))))
-		val: (iterator (iteratorUnary
+			(type_qualified typename: (identifier))))
+		val: (iterator (iterator_unary
 			(identifier)
-			(typeQualified typename: (identifier))))))
+			(type_qualified typename: (identifier))))))
 	iterated: (iterable (identifier))
 	body: (block)))
 
@@ -151,15 +151,15 @@ for <nested iterators> in foo do block
 ================================================================================
 for <a, [k : <b, c>], d> in foo do {}
 --------------------------------------------------------------------------------
-(program (forStatement
-	iterator: (iterator (iteratorAggregate
-		(iterator (iteratorUnary (identifier)))
-		(iterator (iteratorMap
-			key: (iterator (iteratorUnary (identifier)))
-			val: (iterator (iteratorAggregate
-				(iterator (iteratorUnary (identifier)))
-				(iterator (iteratorUnary (identifier)))))))
-		(iterator (iteratorUnary (identifier)))))
+(program (statement_for
+	iterator: (iterator (iterator_aggregate
+		(iterator (iterator_unary (identifier)))
+		(iterator (iterator_map
+			key: (iterator (iterator_unary (identifier)))
+			val: (iterator (iterator_aggregate
+				(iterator (iterator_unary (identifier)))
+				(iterator (iterator_unary (identifier)))))))
+		(iterator (iterator_unary (identifier)))))
 	iterated: (iterable (identifier))
 	body: (block)))
 
@@ -168,11 +168,11 @@ for <field with composite type> in foo do block
 ================================================================================
 for <a [Int]> in foo do {}
 --------------------------------------------------------------------------------
-(program (forStatement
-	iterator: (iterator (iteratorAggregate
-		(iterator (iteratorUnary
+(program (statement_for
+	iterator: (iterator (iterator_aggregate
+		(iterator (iterator_unary
 			(identifier)
-			(typeList (typeQualified typename: (identifier)))))))
+			(type_list (type_qualified typename: (identifier)))))))
 	iterated: (iterable (identifier))
 	body: (block)))
 
@@ -181,11 +181,11 @@ for <fields, placeholder> in foo do block
 ================================================================================
 for <a, _, c> in foo do {}
 --------------------------------------------------------------------------------
-(program (forStatement
-	iterator: (iterator (iteratorAggregate
-		(iterator (iteratorUnary (identifier)))
-		(iterator (literalPlaceholder))
-		(iterator (iteratorUnary (identifier)))))
+(program (statement_for
+	iterator: (iterator (iterator_aggregate
+		(iterator (iterator_unary (identifier)))
+		(iterator (literal_placeholder))
+		(iterator (iterator_unary (identifier)))))
 	iterated: (iterable (identifier))
 	body: (block)))
 
@@ -194,11 +194,11 @@ for whole <fields> in foo do block
 ================================================================================
 for w <a, b, c> in foo do {}
 --------------------------------------------------------------------------------
-(program (forStatement
-	iterator: (iterator (iteratorAggregate
-		whole: (iteratorUnary (identifier))
-		(iterator (iteratorUnary (identifier)))
-		(iterator (iteratorUnary (identifier)))
-		(iterator (iteratorUnary (identifier)))))
+(program (statement_for
+	iterator: (iterator (iterator_aggregate
+		whole: (iterator_unary (identifier))
+		(iterator (iterator_unary (identifier)))
+		(iterator (iterator_unary (identifier)))
+		(iterator (iterator_unary (identifier)))))
 	iterated: (iterable (identifier))
 	body: (block)))

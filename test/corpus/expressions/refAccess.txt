@@ -3,7 +3,7 @@ identifier ref access
 ================================================================================
 => foo::bar
 --------------------------------------------------------------------------------
-(program (returnStatement (expressionDotRef
+(program (return_statement (expression_dot_ref
 	accessed: (identifier)
 	accessor: (identifier))))
 
@@ -12,9 +12,9 @@ qualified identifier ref access
 ================================================================================
 => foo.bar.baz::foobar
 --------------------------------------------------------------------------------
-(program (returnStatement (expressionDotRef
-	accessed: (expressionDot
-		(expressionDot
+(program (return_statement (expression_dot_ref
+	accessed: (expression_dot
+		(expression_dot
 			(identifier)
 			(identifier))
 		(identifier))

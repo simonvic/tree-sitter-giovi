@@ -87,25 +87,25 @@ module.exports = grammar({
   word: $ => $.identifier,
 
   conflicts: $ => [
-    [$.returnStatement],
-    [$.varDeclaration],
-    [$.formalParameters, $.actualParameters],
-    [$.functionSignature],
+    [$.return_statement],
+    [$.declaration_variable],
+    [$.formal_parameters, $.actual_parameters],
+    [$.function_signature],
     [$.expression, $.statement],
-    [$._primary, $.structDefinition],
-    [$._primary, $.varDeclaration],
-    [$._primary, $.formalParameter],
-    [$._primary, $.typeQualified],
-    [$.typeQualified],
-    [$.caseMatch, $._expressionBoolean],
-    [$.aliasStatement, $.typeQualified],
+    [$._primary, $.declaration_struct],
+    [$._primary, $.declaration_variable],
+    [$._primary, $.formal_parameter],
+    [$._primary, $.type_qualified],
+    [$.type_qualified],
+    [$.case_match, $._expression_boolean],
+    [$.statement_alias, $.type_qualified],
   ],
 
   extras: $ => [
-    $.commentLine,
-    $.commentBlock,
-    $.docLine,
-    $.docBlock,
+    $.comment_line,
+    $.comment_block,
+    $.doc_line,
+    $.doc_block,
     /\s/,
   ],
 
@@ -116,7 +116,7 @@ module.exports = grammar({
     $.statement,
     $.expression,
     $.type,
-    $.typeComposite,
+    $.type_composite,
     $.referenceable,
   ],
 
@@ -125,79 +125,79 @@ module.exports = grammar({
     block: $ => seq('{', repeat($.statement), '}'),
 
     doc: $ => choice(
-      $.docLine,
-      $.docBlock,
+      $.doc_line,
+      $.doc_block,
     ),
-    docBlock: _ => token(prec(LEX_PREC.DOC_BLOCK, seq(
+    doc_block: _ => token(prec(LEX_PREC.DOC_BLOCK, seq(
       '#{?',
       /[^}]*\}+([^#{][^{]*\}+)*/,
       '#'
     ))),
-    docLine: _ => token(prec(LEX_PREC.DOC_LINE, seq(
+    doc_line: _ => token(prec(LEX_PREC.DOC_LINE, seq(
       '#?', /[^\n]*/
     ))),
 
     comment: $ => choice(
-      $.commentLine,
-      $.commentBlock,
+      $.comment_line,
+      $.comment_block,
     ),
-    commentBlock: _ => token(prec(LEX_PREC.COMMENT_BLOCK, seq(
+    comment_block: _ => token(prec(LEX_PREC.COMMENT_BLOCK, seq(
       '#{',
       /[^}]*\}+([^#{][^{]*\}+)*/,
       '#'
     ))),
-    commentLine: _ => token(prec(LEX_PREC.COMMENT_LINE, seq(
+    comment_line: _ => token(prec(LEX_PREC.COMMENT_LINE, seq(
       '#', /[^\n]*/
     ))),
 
     statement: $ => choice(
-      $.importStatement,
-      $.aliasStatement,
-      $.ifStatement,
-      $.switchStatement,
-      $.repeatStatement,
-      $.forStatement,
-      $.skipStatement,
-      $.breakStatement,
+      $.statement_import,
+      $.statement_alias,
+      $.statement_if,
+      $.statement_multi_if,
+      $.statement_repeat,
+      $.statement_for,
+      $.statement_skip,
+      $.statement_break,
       $.redirection,
       $._declaration,
-      $.returnStatement,
+      $.return_statement,
       $.invocation,
     ),
 
     _declaration: $ => choice(
-      $.moduleDeclaration,
-      $.structDefinition,
-      $.constantDeclaration,
-      $.varDeclaration,
-      $.functionDeclaration,
+      $.declaration_module,
+      $.declaration_struct,
+      $.declaration_constant,
+      $.declaration_variable,
+      $.declaration_function,
     ),
 
-    _statementOrBlock: $ => choice(
+    _statement_or_block: $ => choice(
       $.statement,
       $.block
     ),
 
-    importStatement: $ => seq(
+    statement_import: $ => seq(
       'import', choice(
-        $.importEntry,
-        seq('[', repeat1(seq($.importEntry, optional(','))), ']')
+        $.import_entry,
+        seq('[', repeat1(seq($.import_entry, optional(','))), ']')
       )
     ),
 
-    importEntry: $ => seq(
-      $.importURI,
-      repeat(seq('.', $.importURI)),
+    import_entry: $ => seq(
+      $.import_uri,
+      repeat(seq('.', $.import_uri)),
       optional(seq('as', field("alias", $.identifier)))
     ),
 
-    importURI: $ => choice(
-      $.literalExactText,
-      $.literalText,
+    import_uri: $ => choice(
+      $.literal_exact_text,
+      $.literal_text,
       $.identifier,
     ),
 
-    aliasStatement: $ => seq(
+    statement_alias: $ => seq(
       'alias',
       $.expression,
       'as',
@@ -205,124 +205,124 @@ module.exports = grammar({
       SEMICOLON
     ),
 
-    moduleDeclaration: $ => seq(
+    declaration_module: $ => seq(
       'module',
       field("name", $.identifier),
       field("body", $.block)
     ),
 
-    structDefinition: $ => seq(
-      optional(seq(field("parentType", $.typeQualified), ':')),
+    declaration_struct: $ => seq(
+      optional(seq(field("parent_type", $.type_qualified), ':')),
       field("typename", $.identifier),
-      field("body", $.structBodyDefinition),
+      field("body", $.struct_body),
       SEMICOLON
     ),
 
-    structBodyDefinition: $ => seq(
+    struct_body: $ => seq(
       token(prec(0, '<')),
       repeat(seq(
         choice(
-          $.constantDeclaration,
-          $.structFieldDefinition,
-          $.structDefinition,
-          $.functionDeclaration,
+          $.declaration_constant,
+          $.struct_field,
+          $.declaration_struct,
+          $.declaration_function,
         ),
         optional(',')
       )),
       token(prec(0, '>')),
     ),
 
-    structFieldDefinition: $ => seq(
+    struct_field: $ => seq(
       field("name", $.identifier),
       field("type", $.type),
-      field("default", optional($.defaultDefinition))
+      field("default", optional($.default_definition))
     ),
 
-    functionDeclaration: $ => seq(
-      optional($.literalSelf),
+    declaration_function: $ => seq(
+      optional($.literal_self),
       field("name", $.identifier), // TODO: the identifier should be part of the signature
-      field("signature", $.functionSignature),
+      field("signature", $.function_signature),
       field("body", $.block)
     ),
 
-    formalParameters: $ => seq(
+    formal_parameters: $ => seq(
       '(',
       optional(seq(
-        $.formalParameter, repeat(seq(',', $.formalParameter)), optional(','),
+        $.formal_parameter, repeat(seq(',', $.formal_parameter)), optional(','),
       )),
       ')'
     ),
 
-    formalParameter: $ => seq(
+    formal_parameter: $ => seq(
       optional(seq(field("label", $.identifier), ':')),
       field("name", $.identifier),
       field("type", $.type),
-      field("default", optional($.defaultDefinition))
+      field("default", optional($.default_definition))
     ),
 
-    returnStatement: $ => seq(choice('return', '=>'), optional($.expression), SEMICOLON),
+    return_statement: $ => seq(choice('return', '=>'), optional($.expression), SEMICOLON),
 
     invocation: $ => choice(
       prec(PREC.INVOCATION, seq(
         optional(seq(field("instance", $.expression), '.')),
         field("invoked", $.identifier),
-        $.actualParameters
+        $.actual_parameters
       )),
-      seq(field("invoked", $.expression), $.actualParameters),
+      seq(field("invoked", $.expression), $.actual_parameters),
     ),
 
-    actualParameters: $ => seq(
+    actual_parameters: $ => seq(
       '(',
       optional(seq(
-        $.actualParameter, repeat(seq(',', $.actualParameter)), optional(','),
+        $.actual_parameter, repeat(seq(',', $.actual_parameter)), optional(','),
       )),
       ')'
     ),
 
-    actualParameter: $ => seq(
+    actual_parameter: $ => seq(
       optional(field("label", seq($.identifier, ':'))), $.expression
     ),
 
-    ifStatement: $ => prec.right(seq(
-      'if', field('condition', $.expression), 'do', field('body', $._statementOrBlock),
-      optional(seq('else', field('elseBody', $._statementOrBlock)))
+    statement_if: $ => prec.right(seq(
+      'if', field('condition', $.expression), 'do', field('body', $._statement_or_block),
+      optional(seq('else', field('else_body', $._statement_or_block)))
     )),
 
-    switchStatement: $ => prec.right(seq(
+    statement_multi_if: $ => prec.right(seq(
       'if',
       field("subject", $.expression),
-      field("body", $.switchBlock),
+      field("body", $.switch_block),
       optional(seq(
         "else",
-        field("elseBody", $._statementOrBlock)
+        field("else_body", $._statement_or_block)
       ))
     )),
 
-    switchBlock: $ => seq('{', repeat1($.switchLabel), '}'),
-    switchLabel: $ => prec(1, seq(
+    switch_block: $ => seq('{', repeat1($.switch_label), '}'),
+    switch_label: $ => prec(1, seq(
       field("cases", $.cases),
       optional(seq(
         'when',
         field("guard", $.expression)
       )),
       'do',
-      field("body", $._statementOrBlock)
+      field("body", $._statement_or_block)
     )),
 
     cases: $ => seq(
-      $._caseMatch,
+      $._case_match,
       repeat(seq(
         choice('and', '&', 'or', '|'),
-        $._caseMatch
+        $._case_match
       )),
     ),
 
-    _caseMatch: $ => choice(
-      $._caseMatchParenthesized,
-      $.caseMatch,
+    _case_match: $ => choice(
+      $._case_match_parenthesized,
+      $.case_match,
     ),
-    _caseMatchParenthesized: $ => seq('{', $.caseMatch, '}'),
-    caseMatch: $ => prec(1, choice(
+    _case_match_parenthesized: $ => seq('{', $.case_match, '}'),
+    case_match: $ => prec(1, choice(
       seq(choice('<', '<=', '>=', '>'), $.expression),
       seq(choice('=', '!='), $.expression),
       seq(choice('and', '&', 'or', '|'), $.expression),
@@ -330,36 +330,36 @@ module.exports = grammar({
       seq('is', optional(choice('not', $.identifier)), $.type),
     )),
 
-    repeatStatement: $ => seq(
+    statement_repeat: $ => seq(
       'repeat', optional(seq('if', field("condition", $.expression))),
-      field("body", $._statementOrBlock)
+      field("body", $._statement_or_block)
     ),
 
-    forStatement: $ => seq(
+    statement_for: $ => seq(
       'for',
       field("iterator", $.iterator),
       'in',
       field("iterated", $.iterable),
       'do',
-      field("body", $._statementOrBlock)
+      field("body", $._statement_or_block)
     ),
 
     iterator: $ => choice(
-      $.iteratorUnary,
-      $.iteratorMap,
-      $.iteratorAggregate,
-      $.literalPlaceholder,
+      $.iterator_unary,
+      $.iterator_map,
+      $.iterator_aggregate,
+      $.literal_placeholder,
     ),
 
-    iteratorUnary: $ => seq($.identifier, optional($.type)),
+    iterator_unary: $ => seq($.identifier, optional($.type)),
 
-    iteratorMap: $ => prec.left(choice(
+    iterator_map: $ => prec.left(choice(
       seq('[', field("key", $.iterator), ':', field("val", $.iterator), ']'),
       seq(field("key", $.iterator), ':', field("val", $.iterator)),
     )),
 
-    iteratorAggregate: $ => seq(
-      optional(field("whole", $.iteratorUnary)),
+    iterator_aggregate: $ => seq(
+      optional(field("whole", $.iterator_unary)),
       '<',
       $.iterator,
       repeat(seq(',', $.iterator)),
@@ -382,29 +382,29 @@ module.exports = grammar({
       ))
     )),
 
-    skipStatement: _ => seq('skip', SEMICOLON),
-    breakStatement: _ => seq('break', SEMICOLON),
+    statement_skip: _ => seq('skip', SEMICOLON),
+    statement_break: _ => seq('break', SEMICOLON),
 
     redirection: $ => choice(
-      $._redirectionLTR,
-      $._redirectionRTL,
+      $._redirection_ltr,
+      $._redirection_rtl,
     ),
 
-    _redirectionLTR: $ => choice(
-      seq($.expression, '->', $.varDeclaration),
-      //seq($.expression, REDIR_OP_LTR, $.reservedIdentifier, SEMICOLON),
+    _redirection_ltr: $ => choice(
+      seq($.expression, '->', $.declaration_variable),
+      //seq($.expression, REDIR_OP_LTR, $.reserved_identifier, SEMICOLON),
       // seq($.expression, REDIR_OP_LTR, $.identifier),
       seq($.expression, REDIR_OP_LTR, $.expression, SEMICOLON),
     ),
 
-    _redirectionRTL: $ => choice(
-      seq($.varDeclaration, '<-', $.expression, SEMICOLON),
-      //seq($.reservedIdentifier, REDIR_OP_RTL, $.expression, SEMICOLON),
+    _redirection_rtl: $ => choice(
+      seq($.declaration_variable, '<-', $.expression, SEMICOLON),
+      //seq($.reserved_identifier, REDIR_OP_RTL, $.expression, SEMICOLON),
       // seq($.identifier, REDIR_OP_RTL, $.expression),
       seq($.expression, REDIR_OP_RTL, $.expression, SEMICOLON),
     ),
 
-    constantDeclaration: $ => seq(
+    declaration_constant: $ => seq(
       'const',
       field("name", $.identifier),
       optional(field("type", $.type)),
@@ -413,71 +413,71 @@ module.exports = grammar({
       SEMICOLON
     ),
 
-    varDeclaration: $ => seq(
+    declaration_variable: $ => seq(
       field("name", $.identifier),
       field("type", $.type),
-      field("default", optional($.defaultDefinition)),
+      field("default", optional($.default_definition)),
       SEMICOLON
     ),
 
-    defaultDefinition: $ => seq('default', $.expression),
+    default_definition: $ => seq('default', $.expression),
 
     expression: $ => choice(
-      $.expressionParenthesized,
-      $.expressionCast,
-      $.expressionTypeCheck,
-      alias($.expressionCreationList, $.list),
-      alias($.expressionCreationMap, $.map),
-      alias($.expressionCreationStruct, $.struct),
-      alias($.expressionCreationRecord, $.record),
-      alias($.expressionCreationTuple, $.tuple),
-      $.expressionRef,
+      $.expression_parenthesized,
+      $.expression_cast,
+      $.expression_type_check,
+      alias($.expression_creation_list, $.list),
+      alias($.expression_creation_map, $.map),
+      alias($.expression_creation_struct, $.struct),
+      alias($.expression_creation_record, $.record),
+      alias($.expression_creation_tuple, $.tuple),
+      $.expression_ref,
       $.invocation,
-      $.expressionDot,
-      $.expressionDotRef,
-      $.expressionAccess,
-      $.expressionBinary,
-      $.expressionPrefixed,
+      $.expression_dot,
+      $.expression_dot_ref,
+      $.expression_access,
+      $.expression_binary,
+      $.expression_prefixed,
       $._primary,
     ),
 
-    expressionParenthesized: $ => seq('{', $.expression, '}'),
+    expression_parenthesized: $ => seq('{', $.expression, '}'),
 
-    expressionCast: $ => prec(PREC.CAST, seq($.expression, 'as', $.type)),
+    expression_cast: $ => prec(PREC.CAST, seq($.expression, 'as', $.type)),
 
-    expressionTypeCheck: $ => prec(PREC.TYPECHECK, seq(
+    expression_type_check: $ => prec(PREC.TYPECHECK, seq(
       $.expression, 'is', optional(choice('not', $.identifier)), $.type)
     ),
 
-    expressionCreationList: $ => prec(PREC.CREATION_LIST, seq(
-      '[', repeat(seq($.listEntry, optional(','))), ']'
+    expression_creation_list: $ => prec(PREC.CREATION_LIST, seq(
+      '[', repeat(seq($.list_entry, optional(','))), ']'
     )),
 
-    listEntry: $ => choice($.expression, $.range),
+    list_entry: $ => choice($.expression, $.range),
 
-    expressionCreationMap: $ => prec(PREC.CREATION_MAP, seq(
+    expression_creation_map: $ => prec(PREC.CREATION_MAP, seq(
       '[',
       choice(
         ':',
-        repeat1(seq($.mapEntry, optional(','))),
+        repeat1(seq($.map_entry, optional(','))),
       ),
       ']'
     )),
 
-    mapEntry: $ => seq(
+    map_entry: $ => seq(
       field("key", $.expression), ':', field("val", $.expression)
     ),
 
-    expressionCreationStruct: $ => seq(
-      field("type", $.typeQualified),
+    expression_creation_struct: $ => seq(
+      field("type", $.type_qualified),
       '.',
       choice(
-        alias($.expressionCreationRecord, $.record),
-        alias($.expressionCreationTuple, $.tuple)
+        alias($.expression_creation_record, $.record),
+        alias($.expression_creation_tuple, $.tuple)
       ),
     ),
 
-    expressionCreationRecord: $ => seq(
+    expression_creation_record: $ => seq(
       token(prec(0, '<')),
       repeat1(seq(
         field("name", $.identifier),
@@ -488,37 +488,37 @@ module.exports = grammar({
       token(prec(0, '>')),
     ),
 
-    expressionCreationTuple: $ => seq(
+    expression_creation_tuple: $ => seq(
       token(prec(0, '<')),
       repeat(seq($.expression, optional(','))),
       token(prec(0, '>')),
     ),
 
-    expressionRef: $ => prec(PREC.REF, seq(
+    expression_ref: $ => prec(PREC.REF, seq(
       '::', field("referenced", $.referenceable)
     )),
 
     referenceable: $ => choice(
       $.identifier,
-      $.anonFunction,
+      $.anon_function,
     ),
 
-    anonFunction: $ => seq(
-      optional(field("signature", $.functionSignature)),
+    anon_function: $ => seq(
+      optional(field("signature", $.function_signature)),
       field("body", $.block)
     ),
 
-    expressionDot: $ => prec(PREC.DOT, seq(
-      $.expression, '.', choice($.identifier, $.literalDefault)
+    expression_dot: $ => prec(PREC.DOT, seq(
+      $.expression, '.', choice($.identifier, $.literal_default)
     )),
 
-    expressionDotRef: $ => prec.left(PREC.DOTREF, seq(
+    expression_dot_ref: $ => prec.left(PREC.DOTREF, seq(
       field("accessed", $.expression),
       field("bop", '::'),
       field("accessor", $.identifier)
     )),
 
-    expressionPrefixed: $ => prec.left(PREC.UNARY, seq(
+    expression_prefixed: $ => prec.left(PREC.UNARY, seq(
       field("op", choice(
         '+', '-',
         '!', 'not',
@@ -527,97 +527,97 @@ module.exports = grammar({
       $.expression,
     )),
 
-    expressionAccess: $ => prec.left(PREC.ACCESS, seq(
+    expression_access: $ => prec.left(PREC.ACCESS, seq(
       field("accessed", $.expression),
       field("bop", '@'),
-      field("accessor", $._accessKey)
+      field("accessor", $._access_key)
     )),
 
-    _accessKey: $ => prec.left(PREC.ACCESS_KEY, choice(
-      seq('{', choice($._accessKey, $.expression), '}'),
-      alias(choice('@', '%', '*'), $.specialKey),
+    _access_key: $ => prec.left(PREC.ACCESS_KEY, choice(
+      seq('{', choice($._access_key, $.expression), '}'),
+      alias(choice('@', '%', '*'), $.special_key),
       $.range,
       $.literal,
       $.identifier,
     )),
 
-    expressionBinary: $ => choice(
-      $._expressionBitwiseBool,
-      $._expressionBitwiseShift,
-      $._expressionPower,
-      $._expressionEquality,
-      $._expressionContainment,
-      $._expressionRelational,
-      $._expressionMultiplicative,
-      $._expressionAdditive,
-      $._expressionBoolean,
+    expression_binary: $ => choice(
+      $._expression_bitwise_bool,
+      $._expression_bitwise_shift,
+      $._expression_power,
+      $._expression_equality,
+      $._expression_containment,
+      $._expression_relational,
+      $._expression_multiplicative,
+      $._expression_additive,
+      $._expression_boolean,
     ),
 
-    _expressionBitwiseBool: $ => prec.left(PREC.BITBOOL, seq($.expression, choice('&&', '||', '|||'), $.expression)),
-    _expressionBitwiseShift: $ => prec.left(PREC.BITSHIFT, seq($.expression, choice('{<}', '{>}', '{>>}'), $.expression)),
-    _expressionPower: $ => prec.left(PREC.POWER, seq($.expression, '^', $.expression)),
-    _expressionEquality: $ => prec.left(PREC.EQUALITY, seq($.expression, choice('=', '!='), $.expression)),
-    _expressionContainment: $ => prec.left(PREC.CONTAINMENT, seq($.expression, optional('not'), choice('in', '~=', '=~'), $.expression)),
-    _expressionRelational: $ => prec.left(PREC.RELATIONAL, seq($.expression, choice(token(prec(0, '<')), '<=', '>=', '>'), $.expression)),
-    _expressionMultiplicative: $ => prec.left(PREC.MULTIPLICATIVE, seq($.expression, choice('*', '/', '%'), $.expression)),
-    _expressionAdditive: $ => prec.left(PREC.ADDITIVE, seq($.expression, choice('+', '-'), $.expression)),
-    _expressionBoolean: $ => prec.left(PREC.BOOL, seq($.expression, choice('and', '&', 'or', '|'), $.expression)),
+    _expression_bitwise_bool: $ => prec.left(PREC.BITBOOL, seq($.expression, choice('&&', '||', '|||'), $.expression)),
+    _expression_bitwise_shift: $ => prec.left(PREC.BITSHIFT, seq($.expression, choice('{<}', '{>}', '{>>}'), $.expression)),
+    _expression_power: $ => prec.left(PREC.POWER, seq($.expression, '^', $.expression)),
+    _expression_equality: $ => prec.left(PREC.EQUALITY, seq($.expression, choice('=', '!='), $.expression)),
+    _expression_containment: $ => prec.left(PREC.CONTAINMENT, seq($.expression, optional('not'), choice('in', '~=', '=~'), $.expression)),
+    _expression_relational: $ => prec.left(PREC.RELATIONAL, seq($.expression, choice(token(prec(0, '<')), '<=', '>=', '>'), $.expression)),
+    _expression_multiplicative: $ => prec.left(PREC.MULTIPLICATIVE, seq($.expression, choice('*', '/', '%'), $.expression)),
+    _expression_additive: $ => prec.left(PREC.ADDITIVE, seq($.expression, choice('+', '-'), $.expression)),
+    _expression_boolean: $ => prec.left(PREC.BOOL, seq($.expression, choice('and', '&', 'or', '|'), $.expression)),
 
     type: $ => choice(
-      $.typeQualified,
-      $.typeComposite,
-      $.typeFunctionRef
+      $.type_qualified,
+      $.type_composite,
+      $.type_function_ref
     ),
 
-    typeQualified: $ => seq(
+    type_qualified: $ => seq(
       repeat(seq($.identifier, '.')),
       field("typename", $.identifier)
     ),
 
-    typeComposite: $ => choice(
-      $.typeList,
-      $.typeMap,
+    type_composite: $ => choice(
+      $.type_list,
+      $.type_map,
     ),
 
-    typeList: $ => seq(
-      '[', $.type, optional(seq('**', field("initSize", $.expression))), ']'
+    type_list: $ => seq(
+      '[', $.type, optional(seq('**', field("init_size", $.expression))), ']'
     ),
 
-    typeMap: $ => seq(
-      '[', field("keyType", $.type), ':', field("valueType", $.type), ']'
+    type_map: $ => seq(
+      '[', field("key_type", $.type), ':', field("value_type", $.type), ']'
     ),
 
-    typeFunctionRef: $ => seq('::', $.functionSignature),
+    type_function_ref: $ => seq('::', $.function_signature),
 
-    functionSignature: $ => seq(
-      $.formalParameters,
-      optional(seq('=>', field("returnType", choice($.literalSelf, $.type))))
+    function_signature: $ => seq(
+      $.formal_parameters,
+      optional(seq('=>', field("return_type", choice($.literal_self, $.type))))
     ),
 
     _primary: $ => choice(
       $.literal,
       $.identifier,
-      $.reservedIdentifier,
+      $.reserved_identifier,
     ),
 
     literal: $ => choice(
-      $.literalSelf,
-      $.literalPlaceholder,
-      $.literalDefault,
-      $.literalBool,
-      $.literalReal,
-      $.literalNatural,
-      $.literalInteger,
-      $._literalText,
+      $.literal_self,
+      $.literal_placeholder,
+      $.literal_default,
+      $.literal_bool,
+      $.literal_real,
+      $.literal_natural,
+      $.literal_integer,
+      $._literal_text,
     ),
 
-    literalPlaceholder: _ => token('_'),
-    literalDefault: _ => token('default'),
-    literalSelf: _ => token('self'),
-    literalBool: _ => token(choice('true', 'false')),
-    literalReal: _ => token(choice(LITERAL_REAL_DECIMAL, LITERAL_REAL_HEX,)),
+    literal_placeholder: _ => token('_'),
+    literal_default: _ => token('default'),
+    literal_self: _ => token('self'),
+    literal_bool: _ => token(choice('true', 'false')),
+    literal_real: _ => token(choice(LITERAL_REAL_DECIMAL, LITERAL_REAL_HEX,)),
 
-    literalNatural: _ => token(seq(
+    literal_natural: _ => token(seq(
       choice(
         NUMERAL_DEC,
         NUMERAL_HEX,
@@ -627,7 +627,7 @@ module.exports = grammar({
       'n'
     )),
 
-    literalInteger: _ => token(seq(
+    literal_integer: _ => token(seq(
       choice(
         NUMERAL_DEC,
         NUMERAL_HEX,
@@ -638,65 +638,65 @@ module.exports = grammar({
     )),
 
     // TODO: also parse text block incidental whitespace
-    _literalText: $ => choice(
-      $.literalText,
-      $.literalTextBlock,
-      $.literalExactText,
-      $.literalExactTextBlock,
+    _literal_text: $ => choice(
+      $.literal_text,
+      $.literal_text_block,
+      $.literal_exact_text,
+      $.literal_exact_text_block,
     ),
 
-    escapeSequence: _ => token.immediate(choice(
+    escape_sequence: _ => token.immediate(choice(
       seq('\\', /[btnfrs"'\\${}]/),
       seq('\\u', DIGIT_HEX, DIGIT_HEX, DIGIT_HEX, DIGIT_HEX),
     )),
 
-    textInterpolation: $ => choice(
+    text_interpolation: $ => choice(
       seq('$', token.immediate(choice(IDENTIFIER, ALLUPPERCASE_IDENTIFIER))),
       seq('${', $.expression, '}'),
     ),
 
-    literalText: $ => seq(
+    literal_text: $ => seq(
       '"',
       repeat(choice(
         '$',
         /[^"\\]/,
-        $.escapeSequence,
-        $.textInterpolation,
+        $.escape_sequence,
+        $.text_interpolation,
       )),
       '"'
     ),
 
-    literalTextBlock: $ => seq(
+    literal_text_block: $ => seq(
       '"{',
       repeat(choice(
         '$',
         /[^\\]/,
-        $.escapeSequence,
-        $.textInterpolation
+        $.escape_sequence,
+        $.text_interpolation
       )),
       '}"'
     ),
 
-    literalExactText: $ => seq(
+    literal_exact_text: $ => seq(
       '\'',
       repeat(choice(
         /[^'\\]/,
-        $.escapeSequence,
+        $.escape_sequence,
       )),
       '\''
     ),
 
-    literalExactTextBlock: $ => seq(
+    literal_exact_text_block: $ => seq(
       '\'{',
       repeat(choice(
         /[^\\]/,
-        $.escapeSequence
+        $.escape_sequence
       )),
       '}\''
     ),
 
     identifier: _ => token(choice(IDENTIFIER, ALLUPPERCASE_IDENTIFIER, UPPERCASE_IDENTIFIER)),
-    reservedIdentifier: _ => token(RESERVERD_IDENTIFIER),
+    reserved_identifier: _ => token(RESERVERD_IDENTIFIER),
 
   }
 

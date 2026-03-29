@@ -4,8 +4,8 @@ if expression do block
 if true do {}
 --------------------------------------------------------------------------------
 (program
-	(ifStatement
-		condition: (literalBool)
+	(statement_if
+		condition: (literal_bool)
 		body: (block)))
 
 ================================================================================
@@ -14,9 +14,9 @@ if expression do statement
 if true do 69 -> _out
 --------------------------------------------------------------------------------
 (program
-	(ifStatement
-		condition: (literalBool)
-		body: (redirection (literalInteger) (reservedIdentifier))))
+	(statement_if
+		condition: (literal_bool)
+		body: (redirection (literal_integer) (reserved_identifier))))
 
 ================================================================================
 if expression do block else block
@@ -24,10 +24,10 @@ if expression do block else block
 if true do {} else {}
 --------------------------------------------------------------------------------
 (program
-	(ifStatement
-		condition: (literalBool)
+	(statement_if
+		condition: (literal_bool)
 		body: (block)
-		elseBody: (block)))
+		else_body: (block)))
 
 ================================================================================
 if expression do statement else statement
@@ -35,10 +35,10 @@ if expression do statement else statement
 if true do 69 -> _out else "hello" -> _out
 --------------------------------------------------------------------------------
 (program
-	(ifStatement
-		condition: (literalBool)
-		body: (redirection (literalInteger) (reservedIdentifier))
-		elseBody: (redirection (literalText) (reservedIdentifier))))
+	(statement_if
+		condition: (literal_bool)
+		body: (redirection (literal_integer) (reserved_identifier))
+		else_body: (redirection (literal_text) (reserved_identifier))))
 
 
 ================================================================================
@@ -49,13 +49,13 @@ if true do
 	else {}
 else {}
 --------------------------------------------------------------------------------
-(program (ifStatement
-	condition: (literalBool)
-	body: (ifStatement
-		condition: (literalBool)
+(program (statement_if
+	condition: (literal_bool)
+	body: (statement_if
+		condition: (literal_bool)
 		body: (block)
-		elseBody: (block))
-	elseBody: (block)))
+		else_body: (block))
+	else_body: (block)))
 
 
 ================================================================================
@@ -67,15 +67,15 @@ else if true do {}
 else {}
 
 --------------------------------------------------------------------------------
-(program (ifStatement
-	condition: (literalBool)
+(program (statement_if
+	condition: (literal_bool)
 	body: (block)
-	elseBody: (ifStatement
-		condition: (literalBool)
+	else_body: (statement_if
+		condition: (literal_bool)
 		body: (block)
-		elseBody: (ifStatement
-			condition: (literalBool)
+		else_body: (statement_if
+			condition: (literal_bool)
 			body: (block)
-			elseBody: (block)))))
+			else_body: (block)))))
 
 

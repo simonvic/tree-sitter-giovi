@@ -23,65 +23,65 @@ if x {
 	is not Type do {}
 }
 --------------------------------------------------------------------------------
-(program (switchStatement
+(program (statement_multi_if
 	subject: (identifier)
-	body: (switchBlock
-		(switchLabel
-			cases: (cases (caseMatch (literalInteger)))
+	body: (switch_block
+		(switch_label
+			cases: (cases (case_match (literal_integer)))
 			body: (block))
-		(switchLabel
-			cases: (cases (caseMatch (literalInteger)))
+		(switch_label
+			cases: (cases (case_match (literal_integer)))
 			body: (block))
-		(switchLabel
-			cases: (cases (caseMatch (literalInteger)))
+		(switch_label
+			cases: (cases (case_match (literal_integer)))
 			body: (block))
-		(switchLabel
-			cases: (cases (caseMatch (literalInteger)))
+		(switch_label
+			cases: (cases (case_match (literal_integer)))
 			body: (block))
-		(switchLabel
-			cases: (cases (caseMatch (literalInteger)))
+		(switch_label
+			cases: (cases (case_match (literal_integer)))
 			body: (block))
-		(switchLabel
-			cases: (cases (caseMatch (literalInteger)))
+		(switch_label
+			cases: (cases (case_match (literal_integer)))
 			body: (block))
-		(switchLabel
-			cases: (cases (caseMatch (literalBool)))
+		(switch_label
+			cases: (cases (case_match (literal_bool)))
 			body: (block))
-		(switchLabel
-			cases: (cases (caseMatch (literalBool)))
+		(switch_label
+			cases: (cases (case_match (literal_bool)))
 			body: (block))
-		(switchLabel
-			cases: (cases (caseMatch (literalBool)))
+		(switch_label
+			cases: (cases (case_match (literal_bool)))
 			body: (block))
-		(switchLabel
-			cases: (cases (caseMatch (literalBool)))
+		(switch_label
+			cases: (cases (case_match (literal_bool)))
 			body: (block))
-		(switchLabel
-			cases: (cases (caseMatch (literalInteger)))
+		(switch_label
+			cases: (cases (case_match (literal_integer)))
 			body: (block))
-		(switchLabel
-			cases: (cases (caseMatch (identifier)))
+		(switch_label
+			cases: (cases (case_match (identifier)))
 			body: (block))
-		(switchLabel
-			cases: (cases (caseMatch (identifier)))
+		(switch_label
+			cases: (cases (case_match (identifier)))
 			body: (block))
-		(switchLabel
-			cases: (cases (caseMatch (literalInteger)))
+		(switch_label
+			cases: (cases (case_match (literal_integer)))
 			body: (block))
-		(switchLabel
-			cases: (cases (caseMatch (identifier)))
+		(switch_label
+			cases: (cases (case_match (identifier)))
 			body: (block))
-		(switchLabel
-			cases: (cases (caseMatch (identifier)))
+		(switch_label
+			cases: (cases (case_match (identifier)))
 			body: (block))
-		(switchLabel
-			cases: (cases (caseMatch (typeQualified typename: (identifier))))
+		(switch_label
+			cases: (cases (case_match (type_qualified typename: (identifier))))
 			body: (block))
-		(switchLabel
-			cases: (cases (caseMatch (identifier) (typeQualified typename: (identifier))))
+		(switch_label
+			cases: (cases (case_match (identifier) (type_qualified typename: (identifier))))
 			body: (block))
-		(switchLabel
-			cases: (cases (caseMatch (typeQualified typename: (identifier))))
+		(switch_label
+			cases: (cases (case_match (type_qualified typename: (identifier))))
 			body: (block)))))
 
 ================================================================================
@@ -95,28 +95,28 @@ if x {
 }
 --------------------------------------------------------------------------------
 (program
-	(switchStatement
+	(statement_multi_if
 		subject: (identifier)
-		body: (switchBlock
-			(switchLabel
+		body: (switch_block
+			(switch_label
 				cases: (cases
-					(caseMatch (literalInteger))
-					(caseMatch (literalInteger)))
+					(case_match (literal_integer))
+					(case_match (literal_integer)))
 				body: (block))
-			(switchLabel
+			(switch_label
 				cases: (cases
-					(caseMatch (literalInteger))
-					(caseMatch (literalInteger)))
+					(case_match (literal_integer))
+					(case_match (literal_integer)))
 				body: (block))
-			(switchLabel
+			(switch_label
 				cases: (cases
-					(caseMatch (literalInteger))
-					(caseMatch (literalInteger)))
+					(case_match (literal_integer))
+					(case_match (literal_integer)))
 				body: (block))
-			(switchLabel
+			(switch_label
 				cases: (cases
-					(caseMatch (literalInteger))
-					(caseMatch (literalInteger)))
+					(case_match (literal_integer))
+					(case_match (literal_integer)))
 				body: (block)))))
 
 ================================================================================
@@ -127,15 +127,15 @@ if x {
 }
 --------------------------------------------------------------------------------
 (program
-	(switchStatement
+	(statement_multi_if
 		subject: (identifier)
-		body: (switchBlock
-			(switchLabel
+		body: (switch_block
+			(switch_label
 				cases: (cases
-					(caseMatch
-						(expressionBinary
-							(literalBool)
-							(literalBool))))
+					(case_match
+						(expression_binary
+							(literal_bool)
+							(literal_bool))))
 				body: (block)))))
 
 ================================================================================
@@ -147,21 +147,21 @@ if x {
 }
 --------------------------------------------------------------------------------
 (program
-	(switchStatement
+	(statement_multi_if
 		subject: (identifier)
-		body: (switchBlock
-			(switchLabel
+		body: (switch_block
+			(switch_label
 				cases: (cases
-					(caseMatch (literalInteger)))
-				guard: (literalBool)
+					(case_match (literal_integer)))
+				guard: (literal_bool)
 				body: (block))
-			(switchLabel
+			(switch_label
 				cases: (cases
-					(caseMatch (literalInteger))
-					(caseMatch (literalInteger)))
-				guard: (expressionBinary
-					(literalBool)
-					(literalBool))
+					(case_match (literal_integer))
+					(case_match (literal_integer)))
+				guard: (expression_binary
+					(literal_bool)
+					(literal_bool))
 				body: (block)))))
 
 ================================================================================
@@ -171,13 +171,13 @@ if x {
 	= 69 do {}
 } else { }
 --------------------------------------------------------------------------------
-(program (switchStatement
+(program (statement_multi_if
 	subject: (identifier)
-	body: (switchBlock
-		(switchLabel
-			cases: (cases (caseMatch (literalInteger)))
+	body: (switch_block
+		(switch_label
+			cases: (cases (case_match (literal_integer)))
 			body: (block)))
-	elseBody: (block)))
+	else_body: (block)))
 
 ================================================================================
 multi if with return statements
@@ -187,12 +187,12 @@ if x {
 	= b do => b
 }
 --------------------------------------------------------------------------------
-(program (switchStatement
+(program (statement_multi_if
 	subject: (identifier)
-	body: (switchBlock
-		(switchLabel
-			cases: (cases (caseMatch (identifier)))
-			body: (returnStatement (identifier)))
-		(switchLabel
-			cases: (cases (caseMatch (identifier)))
-			body: (returnStatement (identifier))))))
+	body: (switch_block
+		(switch_label
+			cases: (cases (case_match (identifier)))
+			body: (return_statement (identifier)))
+		(switch_label
+			cases: (cases (case_match (identifier)))
+			body: (return_statement (identifier))))))

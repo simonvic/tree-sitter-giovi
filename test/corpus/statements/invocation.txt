@@ -6,7 +6,7 @@ f()
 (program
 	(invocation
 		(identifier)
-		(actualParameters)))
+		(actual_parameters)))
 
 ================================================================================
 invocation statement of expression
@@ -15,10 +15,35 @@ someList@69()
 --------------------------------------------------------------------------------
 (program
 	(invocation
-		(expressionAccess
+		(expression_access
 			(identifier)
-			(literalInteger))
-		(actualParameters)))
+			(literal_integer))
+		(actual_parameters)))
+
+================================================================================
+invocation statement of expression
+:skip
+================================================================================
+someList@someIndex()
+--------------------------------------------------------------------------------
+(program
+	(invocation
+		(expression_access
+			(identifier)
+			(identifier))
+		(actual_parameters)))
+
+================================================================================
+invocation statement of expression
+================================================================================
+someList@{someIndex}()
+--------------------------------------------------------------------------------
+(program
+	(invocation
+		(expression_access
+			(identifier)
+			(identifier))
+		(actual_parameters)))
 
 ================================================================================
 invocation statement with argument
@@ -27,8 +52,8 @@ f(a)
 --------------------------------------------------------------------------------
 (program (invocation
 	(identifier)
-	(actualParameters
-		(actualParameter (identifier)))))
+	(actual_parameters
+		(actual_parameter (identifier)))))
 
 ================================================================================
 invocation statement with labeled argument
@@ -37,8 +62,8 @@ f(l: a)
 --------------------------------------------------------------------------------
 (program (invocation
 	invoked: (identifier)
-	(actualParameters
-		(actualParameter
+	(actual_parameters
+		(actual_parameter
 			label: (identifier)
 			(identifier)))))
 
@@ -49,9 +74,9 @@ f(a,b,)
 --------------------------------------------------------------------------------
 (program (invocation
 	(identifier)
-	(actualParameters
-		(actualParameter (identifier))
-		(actualParameter (identifier)))))
+	(actual_parameters
+		(actual_parameter (identifier))
+		(actual_parameter (identifier)))))
 
 ================================================================================
 invocation statement with labeled arguments
@@ -60,11 +85,11 @@ f(l1: a, l2: b)
 --------------------------------------------------------------------------------
 (program (invocation
 	invoked: (identifier)
-	(actualParameters
-		(actualParameter
+	(actual_parameters
+		(actual_parameter
 			label: (identifier)
 			(identifier))
-		(actualParameter
+		(actual_parameter
 			label: (identifier)
 			(identifier)))))
 
@@ -75,8 +100,8 @@ foo.foo.foo()
 --------------------------------------------------------------------------------
 (program
 	(invocation
-		instance: (expressionDot
+		instance: (expression_dot
 			(identifier)
 			(identifier))
 		invoked: (identifier)
-		(actualParameters)))
+		(actual_parameters)))

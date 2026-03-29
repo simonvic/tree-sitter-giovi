@@ -4,8 +4,8 @@ simple
 => a.b
 --------------------------------------------------------------------------------
 (program
-	(returnStatement
-		(expressionDot
+	(return_statement
+		(expression_dot
 			(identifier)
 			(identifier))))
 
@@ -15,10 +15,10 @@ default
 => a.default
 --------------------------------------------------------------------------------
 (program
-	(returnStatement
-		(expressionDot
+	(return_statement
+		(expression_dot
 			(identifier)
-			(literalDefault))))
+			(literal_default))))
 
 ================================================================================
 nested
@@ -26,9 +26,9 @@ nested
 => a.b.c
 --------------------------------------------------------------------------------
 (program
-	(returnStatement
-		(expressionDot
-			(expressionDot
+	(return_statement
+		(expression_dot
+			(expression_dot
 				(identifier)
 				(identifier))
 			(identifier))))

@@ -1,86 +1,86 @@
-(commentLine) @comment
+(comment_line) @comment
 
-(commentBlock) @comment.block
+(comment_block) @comment.block
 
-(docLine) @comment.documentation
+(doc_line) @comment.documentation
 
-(docBlock) @comment.documentation.block
+(doc_block) @comment.documentation.block
 
-(literalBool) @boolean
+(literal_bool) @boolean
 
-(literalInteger) @number
+(literal_integer) @number
 
-(literalNatural) @number.natural
+(literal_natural) @number.natural
 
-(literalReal) @number.float
+(literal_real) @number.float
 
-(literalText) @string
+(literal_text) @string
 
-(literalTextBlock) @string.block
+(literal_text_block) @string.block
 
-(literalExactText) @string.exact
+(literal_exact_text) @string.exact
 
-(literalExactTextBlock) @string.exact.block
+(literal_exact_text_block) @string.exact.block
 
-(escapeSequence) @string.escape
+(escape_sequence) @string.escape
 
-(literalText
+(literal_text
   "\"" @punctuation)
 
-(literalTextBlock
+(literal_text_block
   [
     "\"{"
     "}\""
   ] @punctuation)
 
-(literalExactText
+(literal_exact_text
   "'" @punctuation)
 
-(literalExactTextBlock
+(literal_exact_text_block
   [
     "'{"
     "}'"
   ] @punctuation)
 
-(textInterpolation
+(text_interpolation
   [
     "$"
     "${"
     "}"
   ] @punctuation)
 
-(literalSelf) @variable.builtin
+(literal_self) @variable.builtin
 
-(functionDeclaration
-  (literalSelf) @keyword)
+(declaration_function
+  (literal_self) @keyword)
 
-(literalDefault) @variable.builtin
+(literal_default) @variable.builtin
 
-(literalPlaceholder) @variable.builtin
+(literal_placeholder) @variable.builtin
 
 (identifier) @variable
 
-(importEntry
+(import_entry
   (identifier) @module)
 
-(moduleDeclaration
+(declaration_module
   name: (_) @module)
 
-(structDefinition
+(declaration_struct
   typename: (_) @type)
 
 (type) @type
 
-(typeQualified
+(type_qualified
   typename: (_) @type)
 
-(constantDeclaration
+(declaration_constant
   name: (_) @constant)
 
-((textInterpolation) @variable
+((text_interpolation) @variable
   (#match? @variable "[A-Za-z][A-Za-z0-9_]*$"))
 
-((textInterpolation) @constant
+((text_interpolation) @constant
   (#match? @constant "[A-Z][A-Z0-9_]*$"))
 
 [
@@ -143,10 +143,10 @@
   "::"
 ] @operator
 
-(typeFunctionRef
+(type_function_ref
   "::" @punctuation)
 
-(specialKey) @variable.builtin
+(special_key) @variable.builtin
 
 [
   "if"
@@ -161,25 +161,25 @@
   "alias"
   "import"
   "module"
-  (skipStatement)
-  (breakStatement)
+  (statement_skip)
+  (statement_break)
 ] @keyword
 
-(forStatement
+(statement_for
   "in" @keyword)
 
-(reservedIdentifier) @constant.builtin
+(reserved_identifier) @constant.builtin
 
-(functionDeclaration
+(declaration_function
   (identifier) @function)
 
 (invocation
   invoked: (_) @function.call)
 
-(actualParameter
+(actual_parameter
   label: (_) @label)
 
-(formalParameter
+(formal_parameter
   label: (_) @label)
 
 (tuple
@@ -194,13 +194,13 @@
     ">"
   ] @punctuation)
 
-(structBodyDefinition
+(struct_body
   [
     "<"
     ">"
   ] @punctuation)
 
-(iteratorAggregate
+(iterator_aggregate
   [
     "<"
     ">"

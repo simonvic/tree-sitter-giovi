@@ -1,37 +1,37 @@
 ; Modules
-(moduleDeclaration
+(declaration_module
   name: (_) @name
   (#set! "kind" "Module")) @symbol
 
-(importEntry
+(import_entry
   alias: (_) @name
   (#set! "kind" "Namespace")) @symbol
 
-(aliasStatement
+(statement_alias
   alias: (_) @name
   (#set! "kind" "Namespace")) @symbol
 
 ; Structs
-(structDefinition
+(declaration_struct
   typename: (_) @name
   (#set! "kind" "Class")) @symbol
 
 ; fields
-(structFieldDefinition
+(struct_field
   name: (_) @name
   (#set! "kind" "Field")) @symbol
 
 ; methods
-(functionDeclaration
+(declaration_function
   name: (_) @name
   (#set! "kind" "Function")) @symbol
 
 ; variables
-(varDeclaration
+(declaration_variable
   name: (_) @name
   (#set! "kind" "Variable")) @symbol
 
 ; constants
-(constantDeclaration
+(declaration_constant
   name: (_) @name
   (#set! "kind" "Constant")) @symbol

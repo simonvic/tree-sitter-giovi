@@ -3,82 +3,82 @@ function variable simple
 ================================================================================
 f ::()
 --------------------------------------------------------------------------------
-(program (varDeclaration
+(program (declaration_variable
 	(identifier)
-	(typeFunctionRef (functionSignature (formalParameters)))))
+	(type_function_ref (function_signature (formal_parameters)))))
 
 ================================================================================
 function variable with one argument
 ================================================================================
 f ::(a Int)
 --------------------------------------------------------------------------------
-(program (varDeclaration
+(program (declaration_variable
 	(identifier)
-	(typeFunctionRef
-		(functionSignature
-			(formalParameters
-				(formalParameter
+	(type_function_ref
+		(function_signature
+			(formal_parameters
+				(formal_parameter
 					(identifier)
-					(typeQualified (identifier))))))))
+					(type_qualified (identifier))))))))
 
 ================================================================================
 function variable with multiple arguments
 ================================================================================
 f ::(a Int, b Int)
 --------------------------------------------------------------------------------
-(program (varDeclaration
+(program (declaration_variable
 	(identifier)
-	(typeFunctionRef
-		(functionSignature
-			(formalParameters
-				(formalParameter
+	(type_function_ref
+		(function_signature
+			(formal_parameters
+				(formal_parameter
 					(identifier)
-					(typeQualified (identifier)))
-				(formalParameter
+					(type_qualified (identifier)))
+				(formal_parameter
 					(identifier)
-					(typeQualified (identifier))))))))
+					(type_qualified (identifier))))))))
 
 ================================================================================
 function variable with return type
 ================================================================================
 f ::() => Int
 --------------------------------------------------------------------------------
-(program (varDeclaration
+(program (declaration_variable
 	(identifier)
-	(typeFunctionRef
-		(functionSignature
-			(formalParameters)
-			(typeQualified (identifier))))))
+	(type_function_ref
+		(function_signature
+			(formal_parameters)
+			(type_qualified (identifier))))))
 
 ================================================================================
 function variable with one argument and return type
 ================================================================================
 f ::(a Int) => Int
 --------------------------------------------------------------------------------
-(program (varDeclaration
+(program (declaration_variable
 	(identifier)
-	(typeFunctionRef
-		(functionSignature
-			(formalParameters
-				(formalParameter
+	(type_function_ref
+		(function_signature
+			(formal_parameters
+				(formal_parameter
 					(identifier)
-					(typeQualified (identifier))))
-			(typeQualified (identifier))))))
+					(type_qualified (identifier))))
+			(type_qualified (identifier))))))
 
 ================================================================================
 function variable with multiple arguments and return type
 ================================================================================
 f ::(a Int, b Int) => Int
 --------------------------------------------------------------------------------
-(program (varDeclaration
+(program (declaration_variable
 	(identifier)
-	(typeFunctionRef
-		(functionSignature
-			(formalParameters
-				(formalParameter
+	(type_function_ref
+		(function_signature
+			(formal_parameters
+				(formal_parameter
 					(identifier)
-					(typeQualified (identifier)))
-				(formalParameter
+					(type_qualified (identifier)))
+				(formal_parameter
 					(identifier)
-					(typeQualified (identifier))))
-			(typeQualified (identifier))))))
+					(type_qualified (identifier))))
+			(type_qualified (identifier))))))

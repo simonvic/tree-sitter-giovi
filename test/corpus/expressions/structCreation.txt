@@ -3,9 +3,9 @@ empty struct
 ================================================================================
 => Foo.<>
 --------------------------------------------------------------------------------
-(program (returnStatement
+(program (return_statement
 	(struct
-		(typeQualified (identifier))
+		(type_qualified (identifier))
 		(tuple))))
 
 
@@ -14,9 +14,9 @@ struct with one field
 ================================================================================
 => Foo.<a>
 --------------------------------------------------------------------------------
-(program (returnStatement
+(program (return_statement
 	(struct
-		type: (typeQualified typename: (identifier))
+		type: (type_qualified typename: (identifier))
 		(tuple
 			(identifier)))))
 
@@ -26,8 +26,8 @@ struct with multiple fields
 ================================================================================
 => Foo.<a b c>
 --------------------------------------------------------------------------------
-(program (returnStatement (struct
-	type: (typeQualified typename: (identifier))
+(program (return_statement (struct
+	type: (type_qualified typename: (identifier))
 	(tuple
 		(identifier)
 		(identifier)
@@ -39,8 +39,8 @@ struct with multiple comma separated fields
 ================================================================================
 => Foo.<a, b, c>
 --------------------------------------------------------------------------------
-(program (returnStatement (struct
-	type: (typeQualified typename: (identifier))
+(program (return_statement (struct
+	type: (type_qualified typename: (identifier))
 	(tuple
 		(identifier)
 		(identifier)
@@ -51,8 +51,8 @@ struct with named field
 ================================================================================
 => Foo.<a:a>
 --------------------------------------------------------------------------------
-(program (returnStatement (struct
-	type: (typeQualified typename: (identifier))
+(program (return_statement (struct
+	type: (type_qualified typename: (identifier))
 	(record
 		name: (identifier) value: (identifier)))))
 
@@ -62,8 +62,8 @@ struct with multiple named fields
 ================================================================================
 => Foo.<a:a b:b c:c>
 --------------------------------------------------------------------------------
-(program (returnStatement (struct
-	type: (typeQualified typename: (identifier))
+(program (return_statement (struct
+	type: (type_qualified typename: (identifier))
 	(record
 		name: (identifier) value: (identifier)
 		name: (identifier) value: (identifier)
@@ -74,11 +74,11 @@ struct with relational expression as field
 ================================================================================
 => Foo.<a b<c d>
 --------------------------------------------------------------------------------
-(program (returnStatement (struct
-	type: (typeQualified typename: (identifier))
+(program (return_statement (struct
+	type: (type_qualified typename: (identifier))
 	(tuple
 		(identifier)
-		(expressionBinary
+		(expression_binary
 			(identifier)
 			(identifier))
 		(identifier)))))
@@ -89,11 +89,11 @@ struct with relational expression as named field
 ================================================================================
 => Foo.<x:a y:b<c z:d>
 --------------------------------------------------------------------------------
-(program (returnStatement (struct
-	type: (typeQualified typename: (identifier))
+(program (return_statement (struct
+	type: (type_qualified typename: (identifier))
 	(record
 		name: (identifier) value: (identifier)
-		name: (identifier) value: (expressionBinary
+		name: (identifier) value: (expression_binary
 			(identifier)
 			(identifier))
 		name: (identifier) value: (identifier)))))

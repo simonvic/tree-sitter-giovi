@@ -1,19 +1,19 @@
-(structDefinition
-  (structBodyDefinition) @class.inner) @class.outer
+(declaration_struct
+  (struct_body) @class.inner) @class.outer
 
-(functionDeclaration) @function.outer
+(declaration_function) @function.outer
 
 [
-  (functionDeclaration
+  (declaration_function
     body: (_) @function.inner)
-  (anonFunction
+  (anon_function
     body: (_) @function.inner)
 ] @function.outer
 
-(forStatement
+(statement_for
   body: (_)? @loop.inner) @loop.outer
 
-(repeatStatement
+(statement_repeat
   body: (_)? @loop.inner) @loop.outer
 
 ; blocks
@@ -21,37 +21,37 @@
 
 (invocation) @call.outer
 
-(formalParameters
+(formal_parameters
   "," @parameter.outer
   .
-  (formalParameter) @parameter.inner @parameter.outer)
+  (formal_parameter) @parameter.inner @parameter.outer)
 
-(formalParameters
+(formal_parameters
   .
-  (formalParameter) @parameter.inner @parameter.outer
+  (formal_parameter) @parameter.inner @parameter.outer
   .
   ","? @parameter.outer)
 
-(actualParameters
+(actual_parameters
   "," @parameter.outer
   .
-  (actualParameter) @parameter.inner @parameter.outer)
+  (actual_parameter) @parameter.inner @parameter.outer)
 
-(actualParameters
+(actual_parameters
   .
-  (actualParameter) @parameter.inner @parameter.outer
+  (actual_parameter) @parameter.inner @parameter.outer
   .
   ","? @parameter.outer)
 
 [
-  (commentLine)
-  (commentBlock)
-  (docLine)
-  (docBlock)
+  (comment_line)
+  (comment_block)
+  (doc_line)
+  (doc_block)
 ] @comment.outer
 
 [
-  (literalInteger)
-  (literalNatural)
-  (literalReal)
+  (literal_integer)
+  (literal_natural)
+  (literal_real)
 ] @number.inner

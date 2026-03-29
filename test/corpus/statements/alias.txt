@@ -6,16 +6,16 @@ alias foo.bar as bar
 alias foo as foo as foo
 --------------------------------------------------------------------------------
 (program
-	(aliasStatement
+	(statement_alias
 		(identifier)
 		alias: (identifier))
-	(aliasStatement
-		(expressionDot
+	(statement_alias
+		(expression_dot
 			(identifier)
 			(identifier))
 		alias: (identifier))
-	(aliasStatement
-		(expressionCast
+	(statement_alias
+		(expression_cast
 			(identifier)
-			(typeQualified typename: (identifier)))
+			(type_qualified typename: (identifier)))
 		alias: (identifier)))

@@ -1,18 +1,18 @@
 [
-  (importStatement)
+  (statement_import)
   (block)
   (list)
   (map)
   (tuple)
   (record)
-  (structDefinition)
-  (formalParameters)
-  (actualParameters)
-  (switchBlock)
-  (switchLabel)
+  (declaration_struct)
+  (formal_parameters)
+  (actual_parameters)
+  (switch_block)
+  (switch_label)
 ] @indent.begin
 
-((importStatement)
+((statement_import)
   "]" @import.branch @import.end)
 
 (tuple
@@ -21,7 +21,7 @@
 (record
   ">" @indent.branch @indent.end)
 
-(structBodyDefinition
+(struct_body
   ">" @indent.branch @indent.end)
 
 [
@@ -39,10 +39,10 @@
   "}"
 ] @indent.end
 
-(commentLine) @indent.ignore
+(comment_line) @indent.ignore
 
 [
   (ERROR)
-  (commentBlock)
-  (docBlock)
+  (comment_block)
+  (doc_block)
 ] @indent.auto

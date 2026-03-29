@@ -1,21 +1,21 @@
 ([
-  (commentBlock)
-  (commentLine)
+  (comment_block)
+  (comment_line)
 ] @injection.content
   (#set! injection.language "comment"))
 
-((literalTextBlock) @injection.content
+((literal_text_block) @injection.content
   (#set! injection.language "textblock")
   (#offset! @injection.content 0 2 0 -2))
 
-((literalExactTextBlock) @injection.content
+((literal_exact_text_block) @injection.content
   (#set! injection.language "textblock")
   (#offset! @injection.content 0 2 0 -2))
 
-((docLine) @injection.content
+((doc_line) @injection.content
   (#set! injection.language "markdown")
   (#offset! @injection.content 0 2 0 0))
 
-((docBlock) @injection.content
+((doc_block) @injection.content
   (#set! injection.language "markdown")
   (#offset! @injection.content 0 3 0 -2))

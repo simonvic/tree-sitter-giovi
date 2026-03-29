@@ -6,6 +6,6 @@ repeat {
 }
 --------------------------------------------------------------------------------
 (program
-	(repeatStatement
+	(statement_repeat
 		body: (block
-			(skipStatement))))
+			(statement_skip))))

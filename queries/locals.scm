@@ -1,36 +1,36 @@
 ; Scopes
 (program) @local.scope
 
-(structDefinition
+(declaration_struct
   body: (_) @local.scope)
 
-(functionDeclaration) @local.scope
+(declaration_function) @local.scope
 
 (block) @local.scope
 
-(ifStatement) @local.scope
+(statement_if) @local.scope
 
-(forStatement) @local.scope
+(statement_for) @local.scope
 
-(repeatStatement) @local.scope
+(statement_repeat) @local.scope
 
 ; Definitions
-(constantDeclaration
+(declaration_constant
   name: (_) @local.definition.constant)
 
-(varDeclaration
+(declaration_variable
   name: (_) @local.definition.var)
 
-(structDefinition
+(declaration_struct
   typename: (_) @local.definition.type)
 
-(structFieldDefinition
+(struct_field
   name: (_) @local.definition.field)
 
-(functionDeclaration
+(declaration_function
   name: (_) @local.definition.function)
 
-(formalParameter
+(formal_parameter
   (identifier) @local.definition.parameter)
 
 ; References

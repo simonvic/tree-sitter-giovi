@@ -9,28 +9,28 @@ arithmetic
 => a - b
 --------------------------------------------------------------------------------
 (program
-	(returnStatement
-		(expressionBinary
+	(return_statement
+		(expression_binary
 			(identifier)
 			(identifier)))
-	(returnStatement
-		(expressionBinary
+	(return_statement
+		(expression_binary
 			(identifier)
 			(identifier)))
-	(returnStatement
-		(expressionBinary
+	(return_statement
+		(expression_binary
 			(identifier)
 			(identifier)))
-	(returnStatement
-		(expressionBinary
+	(return_statement
+		(expression_binary
 			(identifier)
 			(identifier)))
-	(returnStatement
-		(expressionBinary
+	(return_statement
+		(expression_binary
 			(identifier)
 			(identifier)))
-	(returnStatement
-		(expressionBinary
+	(return_statement
+		(expression_binary
 			(identifier)
 			(identifier))))
 
@@ -43,20 +43,20 @@ relational
 => a > b
 --------------------------------------------------------------------------------
 (program
-	(returnStatement
-		(expressionBinary
+	(return_statement
+		(expression_binary
 			(identifier)
 			(identifier)))
-	(returnStatement
-		(expressionBinary
+	(return_statement
+		(expression_binary
 			(identifier)
 			(identifier)))
-	(returnStatement
-		(expressionBinary
+	(return_statement
+		(expression_binary
 			(identifier)
 			(identifier)))
-	(returnStatement
-		(expressionBinary
+	(return_statement
+		(expression_binary
 			(identifier)
 			(identifier))))
 
@@ -67,12 +67,12 @@ equality
 => a != b
 --------------------------------------------------------------------------------
 (program
-	(returnStatement
-		(expressionBinary
+	(return_statement
+		(expression_binary
 			(identifier)
 			(identifier)))
-	(returnStatement
-		(expressionBinary
+	(return_statement
+		(expression_binary
 			(identifier)
 			(identifier))))
 
@@ -83,12 +83,12 @@ containment
 => a ~= b
 --------------------------------------------------------------------------------
 (program
-	(returnStatement
-		(expressionBinary
+	(return_statement
+		(expression_binary
 			(identifier)
 			(identifier)))
-	(returnStatement
-		(expressionBinary
+	(return_statement
+		(expression_binary
 			(identifier)
 			(identifier))))
 
@@ -101,20 +101,20 @@ boolean
 => a or b
 --------------------------------------------------------------------------------
 (program
-	(returnStatement
-		(expressionBinary
+	(return_statement
+		(expression_binary
 			(identifier)
 			(identifier)))
-	(returnStatement
-		(expressionBinary
+	(return_statement
+		(expression_binary
 			(identifier)
 			(identifier)))
-	(returnStatement
-		(expressionBinary
+	(return_statement
+		(expression_binary
 			(identifier)
 			(identifier)))
-	(returnStatement
-		(expressionBinary
+	(return_statement
+		(expression_binary
 			(identifier)
 			(identifier))))
 
@@ -126,16 +126,16 @@ bitwise bool
 => a ||| b
 --------------------------------------------------------------------------------
 (program
-	(returnStatement
-		(expressionBinary
+	(return_statement
+		(expression_binary
 			(identifier)
 			(identifier)))
-	(returnStatement
-		(expressionBinary
+	(return_statement
+		(expression_binary
 			(identifier)
 			(identifier)))
-	(returnStatement
-		(expressionBinary
+	(return_statement
+		(expression_binary
 			(identifier)
 			(identifier))))
 
@@ -147,16 +147,16 @@ bitwise shift
 => a {>>} b
 --------------------------------------------------------------------------------
 (program
-	(returnStatement
-		(expressionBinary
+	(return_statement
+		(expression_binary
 			(identifier)
 			(identifier)))
-	(returnStatement
-		(expressionBinary
+	(return_statement
+		(expression_binary
 			(identifier)
 			(identifier)))
-	(returnStatement
-		(expressionBinary
+	(return_statement
+		(expression_binary
 			(identifier)
 			(identifier))))
 
@@ -166,9 +166,9 @@ nested binary expressions
 => a + b + c
 --------------------------------------------------------------------------------
 (program
-	(returnStatement
-		(expressionBinary
-			(expressionBinary
+	(return_statement
+		(expression_binary
+			(expression_binary
 				(identifier)
 				(identifier))
 			(identifier))))
@@ -179,9 +179,9 @@ nested parenthesized binary expressions
 => a + {b + c}
 --------------------------------------------------------------------------------
 (program
-	(returnStatement
-		(expressionBinary
+	(return_statement
+		(expression_binary
 			(identifier)
-			(expressionParenthesized (expressionBinary
+			(expression_parenthesized (expression_binary
 				(identifier)
 				(identifier))))))

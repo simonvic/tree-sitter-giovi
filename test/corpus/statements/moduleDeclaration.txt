@@ -6,12 +6,12 @@ module Foo {}
 module FOO {}
 --------------------------------------------------------------------------------
 (program
-	(moduleDeclaration
+	(declaration_module
 		(identifier)
 		(block))
-	(moduleDeclaration
+	(declaration_module
 		(identifier)
 		(block))
-	(moduleDeclaration
+	(declaration_module
 		(identifier)
 		(block)))

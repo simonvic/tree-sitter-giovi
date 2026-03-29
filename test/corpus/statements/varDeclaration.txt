@@ -3,9 +3,9 @@ var declaration
 ================================================================================
 i Int
 --------------------------------------------------------------------------------
-(program (varDeclaration
+(program (declaration_variable
 	name: (identifier)
-	type: (typeQualified
+	type: (type_qualified
 		typename: (identifier))))
 
 ================================================================================
@@ -13,8 +13,8 @@ var declaration with default override
 ================================================================================
 i Int default 69
 --------------------------------------------------------------------------------
-(program (varDeclaration
+(program (declaration_variable
 	name: (identifier)
-	type: (typeQualified
+	type: (type_qualified
 		typename: (identifier))
-	default: (defaultDefinition (literalInteger))))
+	default: (default_definition (literal_integer))))

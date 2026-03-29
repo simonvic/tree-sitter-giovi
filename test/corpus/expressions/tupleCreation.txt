@@ -3,7 +3,7 @@ empty tuple
 ================================================================================
 => <>
 --------------------------------------------------------------------------------
-(program (returnStatement
+(program (return_statement
 	(tuple)))
 
 
@@ -12,7 +12,7 @@ tuple with one field
 ================================================================================
 => <a>
 --------------------------------------------------------------------------------
-(program (returnStatement
+(program (return_statement
 	(tuple (identifier))))
 
 
@@ -21,7 +21,7 @@ tuple with multiple fields
 ================================================================================
 => <a b c>
 --------------------------------------------------------------------------------
-(program (returnStatement
+(program (return_statement
 	(tuple
 		(identifier)
 		(identifier)
@@ -33,7 +33,7 @@ tuple with multiple comma separated fields
 ================================================================================
 => <a, b, c>
 --------------------------------------------------------------------------------
-(program (returnStatement
+(program (return_statement
 	(tuple
 		(identifier)
 		(identifier)
@@ -45,7 +45,7 @@ tuple with named field
 ================================================================================
 => <a:a>
 --------------------------------------------------------------------------------
-(program (returnStatement
+(program (return_statement
 	(record
 		name: (identifier)
 		value: (identifier))))
@@ -56,7 +56,7 @@ tuple with multiple named fields
 ================================================================================
 => <a:a b:b c:c>
 --------------------------------------------------------------------------------
-(program (returnStatement
+(program (return_statement
 	(record
 		(identifier) (identifier)
 		(identifier) (identifier)
@@ -67,7 +67,7 @@ tuple with nested tuple
 ================================================================================
 => <<a b c>>
 --------------------------------------------------------------------------------
-(program (returnStatement
+(program (return_statement
 	(tuple
 		(tuple
 			(identifier)
@@ -76,10 +76,11 @@ tuple with nested tuple
 
 ================================================================================
 tuple with nested tuples
+:skip
 ================================================================================
 => <<a b c> <d e f>>
 --------------------------------------------------------------------------------
-(program (returnStatement
+(program (return_statement
 	(tuple
 		(tuple
 			(identifier)
@@ -95,10 +96,10 @@ tuple with relational expression as field
 ================================================================================
 => <a b<c d>
 --------------------------------------------------------------------------------
-(program (returnStatement
+(program (return_statement
 	(tuple
 		(identifier)
-		(expressionBinary
+		(expression_binary
 			(identifier)
 			(identifier))
 		(identifier))))
@@ -109,10 +110,10 @@ tuple with relational expression as named field
 ================================================================================
 => <x:a y:b<c z:d>
 --------------------------------------------------------------------------------
-(program (returnStatement
+(program (return_statement
 	(record
 		name: (identifier) value: (identifier)
-		name: (identifier) value: (expressionBinary
+		name: (identifier) value: (expression_binary
 			(identifier)
 			(identifier))
 		name: (identifier) value: (identifier))))

@@ -4,7 +4,7 @@ repeat
 repeat {}
 --------------------------------------------------------------------------------
 (program
-	(repeatStatement
+	(statement_repeat
 		body: (block)))
 
 ================================================================================
@@ -13,6 +13,6 @@ repeat if condition
 repeat if true {}
 --------------------------------------------------------------------------------
 (program
-	(repeatStatement
-		condition: (literalBool)
+	(statement_repeat
+		condition: (literal_bool)
 		body: (block)))

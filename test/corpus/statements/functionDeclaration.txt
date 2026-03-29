@@ -3,10 +3,10 @@ simple function declaration
 ================================================================================
 fun() {}
 --------------------------------------------------------------------------------
-(program (functionDeclaration
+(program (declaration_function
 	name: (identifier)
-	signature: (functionSignature
-		(formalParameters))
+	signature: (function_signature
+		(formal_parameters))
 	body: (block)))
 
 ================================================================================
@@ -14,11 +14,11 @@ function declaration with return
 ================================================================================
 fun() => Int {}
 --------------------------------------------------------------------------------
-(program (functionDeclaration
+(program (declaration_function
 	name: (identifier)
-	signature: (functionSignature
-		(formalParameters)
-		returnType: (typeQualified typename: (identifier)))
+	signature: (function_signature
+		(formal_parameters)
+		return_type: (type_qualified typename: (identifier)))
 	body: (block)))
 
 ================================================================================
@@ -26,13 +26,13 @@ function declaration with one arg
 ================================================================================
 fun(a Int) {}
 --------------------------------------------------------------------------------
-(program (functionDeclaration
+(program (declaration_function
 	name: (identifier)
-	signature: (functionSignature
-		(formalParameters
-			(formalParameter
+	signature: (function_signature
+		(formal_parameters
+			(formal_parameter
 			 name: (identifier)
-			 type: (typeQualified typename: (identifier)))))
+			 type: (type_qualified typename: (identifier)))))
 	body: (block)))
 
 ================================================================================
@@ -40,14 +40,14 @@ function declaration with one arg default
 ================================================================================
 fun(a Int default 69) {}
 --------------------------------------------------------------------------------
-(program (functionDeclaration
+(program (declaration_function
 	name: (identifier)
-	signature: (functionSignature
-		(formalParameters
-			(formalParameter
+	signature: (function_signature
+		(formal_parameters
+			(formal_parameter
 				name: (identifier)
-				type: (typeQualified typename: (identifier))
-				default: (defaultDefinition (literalInteger)))))
+				type: (type_qualified typename: (identifier))
+				default: (default_definition (literal_integer)))))
 	body: (block)))
 
 ================================================================================
@@ -55,16 +55,16 @@ function declaration with multiple arg
 ================================================================================
 fun(a Int, b Int) {}
 --------------------------------------------------------------------------------
-(program (functionDeclaration
+(program (declaration_function
 	name: (identifier)
-	signature: (functionSignature
-		(formalParameters
-			(formalParameter
+	signature: (function_signature
+		(formal_parameters
+			(formal_parameter
 				name: (identifier)
-				type: (typeQualified typename: (identifier)))
-			(formalParameter
+				type: (type_qualified typename: (identifier)))
+			(formal_parameter
 				name: (identifier)
-				type: (typeQualified typename: (identifier)))))
+				type: (type_qualified typename: (identifier)))))
 	body: (block)))
 
 ================================================================================
@@ -72,18 +72,18 @@ function declaration with multiple arg default
 ================================================================================
 fun(a Int default 69, b Int default 420) {}
 --------------------------------------------------------------------------------
-(program (functionDeclaration
+(program (declaration_function
 	name: (identifier)
-	signature: (functionSignature
-		(formalParameters
-			(formalParameter
+	signature: (function_signature
+		(formal_parameters
+			(formal_parameter
 				name: (identifier)
-				type: (typeQualified typename: (identifier))
-				default: (defaultDefinition (literalInteger)))
-			(formalParameter
+				type: (type_qualified typename: (identifier))
+				default: (default_definition (literal_integer)))
+			(formal_parameter
 				name: (identifier)
-				type: (typeQualified typename: (identifier))
-				default: (defaultDefinition (literalInteger)))))
+				type: (type_qualified typename: (identifier))
+				default: (default_definition (literal_integer)))))
 	body: (block)))
 
 ================================================================================
@@ -91,17 +91,17 @@ function declaration with multiple arg default and return
 ================================================================================
 fun(a Int default 69, b Int default 420) => Int {}
 --------------------------------------------------------------------------------
-(program (functionDeclaration
+(program (declaration_function
 	name: (identifier)
-	signature: (functionSignature
-		(formalParameters
-			(formalParameter
+	signature: (function_signature
+		(formal_parameters
+			(formal_parameter
 				name: (identifier)
-				type: (typeQualified typename: (identifier))
-				default: (defaultDefinition (literalInteger)))
-			(formalParameter
+				type: (type_qualified typename: (identifier))
+				default: (default_definition (literal_integer)))
+			(formal_parameter
 				name: (identifier)
-				type: (typeQualified typename: (identifier))
-				default: (defaultDefinition (literalInteger))))
-		returnType: (typeQualified typename: (identifier)))
+				type: (type_qualified typename: (identifier))
+				default: (default_definition (literal_integer))))
+		return_type: (type_qualified typename: (identifier)))
 	body: (block)))
