@@ -72,6 +72,9 @@ const PREC = {
   RANGE: 1,
   ACCESS_KEY: 1,
 
+};
+
+const LEX_PREC = {
   COMMENT_BLOCK: -1,
   COMMENT_LINE: -2,
   DOC_BLOCK: -1,
@@ -125,12 +128,12 @@ module.exports = grammar({
       $.docLine,
       $.docBlock,
     ),
-    docBlock: _ => token(prec(PREC.DOC_BLOCK, seq(
+    docBlock: _ => token(prec(LEX_PREC.DOC_BLOCK, seq(
       '#{?',
       /[^}]*\}+([^#{][^{]*\}+)*/,
       '#'
     ))),
-    docLine: _ => token(prec(PREC.DOC_LINE, seq(
+    docLine: _ => token(prec(LEX_PREC.DOC_LINE, seq(
       '#?', /[^\n]*/
     ))),
 
@@ -138,12 +141,12 @@ module.exports = grammar({
       $.commentLine,
       $.commentBlock,
     ),
-    commentBlock: _ => token(prec(PREC.COMMENT_BLOCK, seq(
+    commentBlock: _ => token(prec(LEX_PREC.COMMENT_BLOCK, seq(
       '#{',
       /[^}]*\}+([^#{][^{]*\}+)*/,
       '#'
     ))),
-    commentLine: _ => token(prec(PREC.COMMENT_LINE, seq(
+    commentLine: _ => token(prec(LEX_PREC.COMMENT_LINE, seq(
       '#', /[^\n]*/
     ))),
 
