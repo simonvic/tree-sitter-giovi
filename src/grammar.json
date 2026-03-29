@@ -2106,7 +2106,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_primary"
+          "name": "primary"
         }
       ]
     },
@@ -3290,7 +3290,7 @@
         }
       ]
     },
-    "_primary": {
+    "primary": {
       "type": "CHOICE",
       "members": [
         {
@@ -5120,19 +5120,19 @@
       "statement"
     ],
     [
-      "_primary",
+      "primary",
       "declaration_struct"
     ],
     [
-      "_primary",
+      "primary",
       "declaration_variable"
     ],
     [
-      "_primary",
+      "primary",
       "formal_parameter"
     ],
     [
-      "_primary",
+      "primary",
       "type_qualified"
     ],
     [
@@ -5153,6 +5153,7 @@
   "supertypes": [
     "comment",
     "doc",
+    "primary",
     "literal",
     "statement",
     "expression",

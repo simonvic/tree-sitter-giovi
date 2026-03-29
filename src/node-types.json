@@ -40,10 +40,6 @@
         "named": true
       },
       {
-        "type": "identifier",
-        "named": true
-      },
-      {
         "type": "invocation",
         "named": true
       },
@@ -52,19 +48,15 @@
         "named": true
       },
       {
-        "type": "literal",
-        "named": true
-      },
-      {
         "type": "map",
         "named": true
       },
       {
-        "type": "record",
+        "type": "primary",
         "named": true
       },
       {
-        "type": "reserved_identifier",
+        "type": "record",
         "named": true
       },
       {
@@ -165,6 +157,24 @@
       },
       {
         "type": "literal_text_block",
+        "named": true
+      }
+    ]
+  },
+  {
+    "type": "primary",
+    "named": true,
+    "subtypes": [
+      {
+        "type": "identifier",
+        "named": true
+      },
+      {
+        "type": "literal",
+        "named": true
+      },
+      {
+        "type": "reserved_identifier",
         "named": true
       }
     ]
@@ -381,6 +391,10 @@
       "types": [
         {
           "type": "expression",
+          "named": true
+        },
+        {
+          "type": "identifier",
           "named": true
         },
         {
@@ -623,6 +637,14 @@
             "named": true
           },
           {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "literal",
+            "named": true
+          },
+          {
             "type": "range",
             "named": true
           },
@@ -756,6 +778,10 @@
       "types": [
         {
           "type": "expression",
+          "named": true
+        },
+        {
+          "type": "identifier",
           "named": true
         },
         {
@@ -947,6 +973,10 @@
           "named": true
         },
         {
+          "type": "identifier",
+          "named": true
+        },
+        {
           "type": "type",
           "named": true
         }
@@ -1113,6 +1143,10 @@
         "types": [
           {
             "type": "expression",
+            "named": true
+          },
+          {
+            "type": "identifier",
             "named": true
           }
         ]

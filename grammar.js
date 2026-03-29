@@ -92,10 +92,10 @@ module.exports = grammar({
     [$.formal_parameters, $.actual_parameters],
     [$.function_signature],
     [$.expression, $.statement],
-    [$._primary, $.declaration_struct],
-    [$._primary, $.declaration_variable],
-    [$._primary, $.formal_parameter],
-    [$._primary, $.type_qualified],
+    [$.primary, $.declaration_struct],
+    [$.primary, $.declaration_variable],
+    [$.primary, $.formal_parameter],
+    [$.primary, $.type_qualified],
     [$.type_qualified],
     [$.case_match, $.expression_boolean],
     [$.statement_alias, $.type_qualified],
@@ -112,6 +112,7 @@ module.exports = grammar({
   supertypes: $ => [
     $.comment,
     $.doc,
+    $.primary,
     $.literal,
     $.statement,
     $.expression,
@@ -439,7 +440,7 @@ module.exports = grammar({
       $.expression_access,
       $.expression_binary,
       $.expression_prefixed,
-      $._primary,
+      $.primary,
     ),
 
     expression_parenthesized: $ => seq('{', $.expression, '}'),
@@ -595,7 +596,7 @@ module.exports = grammar({
       optional(seq('=>', field("return_type", choice($.literal_self, $.type))))
     ),
 
-    _primary: $ => choice(
+    primary: $ => choice(
       $.literal,
       $.identifier,
       $.reserved_identifier,
