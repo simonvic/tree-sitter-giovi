@@ -51,7 +51,7 @@ text with interpolation
 	(return_statement (literal_text (text_interpolation)))
 	(return_statement (literal_text (text_interpolation (identifier))))
 	(return_statement (literal_text (text_interpolation
-		(expression_binary
+		(expression_additive
 			(identifier)
 			(identifier))))))
 
@@ -84,6 +84,6 @@ text block with interpolation
 	(return_statement (literal_text_block (text_interpolation)))
 	(return_statement (literal_text_block (text_interpolation (identifier))))
 	(return_statement (literal_text_block (text_interpolation
-		(expression_binary
+		(expression_additive
 			(identifier)
 			(identifier))))))

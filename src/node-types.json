@@ -78,6 +78,48 @@
     ]
   },
   {
+    "type": "expression_binary",
+    "named": true,
+    "subtypes": [
+      {
+        "type": "expression_additive",
+        "named": true
+      },
+      {
+        "type": "expression_bitwise_bool",
+        "named": true
+      },
+      {
+        "type": "expression_bitwise_shift",
+        "named": true
+      },
+      {
+        "type": "expression_boolean",
+        "named": true
+      },
+      {
+        "type": "expression_containment",
+        "named": true
+      },
+      {
+        "type": "expression_equality",
+        "named": true
+      },
+      {
+        "type": "expression_multiplicative",
+        "named": true
+      },
+      {
+        "type": "expression_power",
+        "named": true
+      },
+      {
+        "type": "expression_relational",
+        "named": true
+      }
+    ]
+  },
+  {
     "type": "literal",
     "named": true,
     "subtypes": [
@@ -611,7 +653,52 @@
     }
   },
   {
-    "type": "expression_binary",
+    "type": "expression_additive",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "expression_bitwise_bool",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "expression_bitwise_shift",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "expression_boolean",
     "named": true,
     "fields": {},
     "children": {
@@ -639,6 +726,21 @@
         },
         {
           "type": "type",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "expression_containment",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "expression",
           "named": true
         }
       ]
@@ -700,11 +802,56 @@
     }
   },
   {
+    "type": "expression_equality",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "expression_multiplicative",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "expression_parenthesized",
     "named": true,
     "fields": {},
     "children": {
       "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "expression_power",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
       "required": true,
       "types": [
         {
@@ -770,6 +917,21 @@
           }
         ]
       }
+    }
+  },
+  {
+    "type": "expression_relational",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "expression",
+          "named": true
+        }
+      ]
     }
   },
   {

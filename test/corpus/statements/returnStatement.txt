@@ -11,7 +11,7 @@ return expression
 => 69 + 69
 --------------------------------------------------------------------------------
 (program (return_statement
-	(expression_binary
+	(expression_additive
 		(literal_integer)
 		(literal_integer))))
 

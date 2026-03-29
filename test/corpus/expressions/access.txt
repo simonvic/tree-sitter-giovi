@@ -41,7 +41,7 @@ access with expression
 --------------------------------------------------------------------------------
 (program (return_statement (expression_access
 	accessed: (identifier)
-	accessor: (expression_binary
+	accessor: (expression_additive
 		(identifier)
 		(identifier)))))
 

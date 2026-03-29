@@ -4,9 +4,9 @@ algebraic precedence
 => a + b * c
 --------------------------------------------------------------------------------
 (program (return_statement
-	(expression_binary
+	(expression_additive
 		(identifier)
-		(expression_binary
+		(expression_multiplicative
 			(identifier)
 			(identifier)))))
 
@@ -16,8 +16,8 @@ parenthesis precedence
 => {a + b} * c
 --------------------------------------------------------------------------------
 (program (return_statement
-	(expression_binary (expression_parenthesized
-		(expression_binary
+	(expression_multiplicative (expression_parenthesized
+		(expression_additive
 			(identifier)
 			(identifier)))
 		(identifier))))
@@ -28,7 +28,7 @@ negation precedence
 => !a & not b
 --------------------------------------------------------------------------------
 (program (return_statement
-	(expression_binary
+	(expression_boolean
 		(expression_prefixed (identifier))
 		(expression_prefixed (identifier)))))
 
@@ -132,8 +132,8 @@ relational precedence
 => a <= b <= c
 --------------------------------------------------------------------------------
 (program (return_statement
-	(expression_binary
-		(expression_binary
+	(expression_relational
+		(expression_relational
 			(identifier)
 			(identifier))
 		(identifier))))
@@ -144,11 +144,11 @@ relational and algebric precedence
 => 1 + 1 <= 1 + 1
 --------------------------------------------------------------------------------
 (program (return_statement
-	(expression_binary
-		(expression_binary
+	(expression_relational
+		(expression_additive
 			(literal_integer)
 			(literal_integer))
-		(expression_binary
+		(expression_additive
 			(literal_integer)
 			(literal_integer)))))
 
@@ -158,10 +158,10 @@ relational and equality precedence
 => 1 <= 1 = 2 <= 2
 --------------------------------------------------------------------------------
 (program (return_statement
-	(expression_binary
-		(expression_binary
+	(expression_equality
+		(expression_relational
 			(literal_integer)
 			(literal_integer))
-		(expression_binary
+		(expression_relational
 			(literal_integer)
 			(literal_integer)))))

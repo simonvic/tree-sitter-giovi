@@ -2752,43 +2752,43 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "_expression_bitwise_bool"
+          "name": "expression_bitwise_bool"
         },
         {
           "type": "SYMBOL",
-          "name": "_expression_bitwise_shift"
+          "name": "expression_bitwise_shift"
         },
         {
           "type": "SYMBOL",
-          "name": "_expression_power"
+          "name": "expression_power"
         },
         {
           "type": "SYMBOL",
-          "name": "_expression_equality"
+          "name": "expression_equality"
         },
         {
           "type": "SYMBOL",
-          "name": "_expression_containment"
+          "name": "expression_containment"
         },
         {
           "type": "SYMBOL",
-          "name": "_expression_relational"
+          "name": "expression_relational"
         },
         {
           "type": "SYMBOL",
-          "name": "_expression_multiplicative"
+          "name": "expression_multiplicative"
         },
         {
           "type": "SYMBOL",
-          "name": "_expression_additive"
+          "name": "expression_additive"
         },
         {
           "type": "SYMBOL",
-          "name": "_expression_boolean"
+          "name": "expression_boolean"
         }
       ]
     },
-    "_expression_bitwise_bool": {
+    "expression_bitwise_bool": {
       "type": "PREC_LEFT",
       "value": 1,
       "content": {
@@ -2822,7 +2822,7 @@
         ]
       }
     },
-    "_expression_bitwise_shift": {
+    "expression_bitwise_shift": {
       "type": "PREC_LEFT",
       "value": 1,
       "content": {
@@ -2856,7 +2856,7 @@
         ]
       }
     },
-    "_expression_power": {
+    "expression_power": {
       "type": "PREC_LEFT",
       "value": 7,
       "content": {
@@ -2877,7 +2877,7 @@
         ]
       }
     },
-    "_expression_equality": {
+    "expression_equality": {
       "type": "PREC_LEFT",
       "value": 3,
       "content": {
@@ -2907,7 +2907,7 @@
         ]
       }
     },
-    "_expression_containment": {
+    "expression_containment": {
       "type": "PREC_LEFT",
       "value": 2,
       "content": {
@@ -2953,7 +2953,7 @@
         ]
       }
     },
-    "_expression_relational": {
+    "expression_relational": {
       "type": "PREC_LEFT",
       "value": 4,
       "content": {
@@ -2998,7 +2998,7 @@
         ]
       }
     },
-    "_expression_multiplicative": {
+    "expression_multiplicative": {
       "type": "PREC_LEFT",
       "value": 6,
       "content": {
@@ -3032,7 +3032,7 @@
         ]
       }
     },
-    "_expression_additive": {
+    "expression_additive": {
       "type": "PREC_LEFT",
       "value": 5,
       "content": {
@@ -3062,7 +3062,7 @@
         ]
       }
     },
-    "_expression_boolean": {
+    "expression_boolean": {
       "type": "PREC_LEFT",
       "value": 1,
       "content": {
@@ -5140,7 +5140,7 @@
     ],
     [
       "case_match",
-      "_expression_boolean"
+      "expression_boolean"
     ],
     [
       "statement_alias",
@@ -5156,6 +5156,7 @@
     "literal",
     "statement",
     "expression",
+    "expression_binary",
     "type",
     "type_composite",
     "referenceable"

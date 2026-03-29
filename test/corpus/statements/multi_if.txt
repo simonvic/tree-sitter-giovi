@@ -133,7 +133,7 @@ if x {
 			(switch_label
 				cases: (cases
 					(case_match
-						(expression_binary
+						(expression_boolean
 							(literal_bool)
 							(literal_bool))))
 				body: (block)))))
@@ -159,7 +159,7 @@ if x {
 				cases: (cases
 					(case_match (literal_integer))
 					(case_match (literal_integer)))
-				guard: (expression_binary
+				guard: (expression_boolean
 					(literal_bool)
 					(literal_bool))
 				body: (block)))))

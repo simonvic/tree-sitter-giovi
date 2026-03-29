@@ -99,7 +99,7 @@ tuple with relational expression as field
 (program (return_statement
 	(tuple
 		(identifier)
-		(expression_binary
+		(expression_relational
 			(identifier)
 			(identifier))
 		(identifier))))
@@ -113,7 +113,7 @@ tuple with relational expression as named field
 (program (return_statement
 	(record
 		name: (identifier) value: (identifier)
-		name: (identifier) value: (expression_binary
+		name: (identifier) value: (expression_relational
 			(identifier)
 			(identifier))
 		name: (identifier) value: (identifier))))

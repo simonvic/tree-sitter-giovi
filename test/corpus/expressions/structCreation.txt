@@ -78,7 +78,7 @@ struct with relational expression as field
 	type: (type_qualified typename: (identifier))
 	(tuple
 		(identifier)
-		(expression_binary
+		(expression_relational
 			(identifier)
 			(identifier))
 		(identifier)))))
@@ -93,7 +93,7 @@ struct with relational expression as named field
 	type: (type_qualified typename: (identifier))
 	(record
 		name: (identifier) value: (identifier)
-		name: (identifier) value: (expression_binary
+		name: (identifier) value: (expression_relational
 			(identifier)
 			(identifier))
 		name: (identifier) value: (identifier)))))
