@@ -98,3 +98,53 @@ ref with multiple parameters and return type
 			return_type: (type_qualified typename: (identifier)))
 		body: (block)))))
 
+================================================================================
+list of refs
+================================================================================
+=> [
+	::{}
+	::{}
+	::{}
+]
+--------------------------------------------------------------------------------
+(program (return_statement
+	(list
+		(list_entry
+			(expression_ref
+				(anon_function
+					(block))))
+		(list_entry
+			(expression_ref
+				(anon_function
+					(block))))
+		(list_entry
+			(expression_ref
+				(anon_function
+					(block)))))))
+
+================================================================================
+map of refs
+================================================================================
+=> [
+	"foo" : ::{}
+	"bar" : ::{}
+	"bar" : ::{}
+]
+--------------------------------------------------------------------------------
+(program (return_statement
+	(map
+		(map_entry
+			(literal_text)
+			(expression_ref
+				(anon_function
+					(block))))
+		(map_entry
+			(literal_text)
+			(expression_ref
+				(anon_function
+					(block))))
+		(map_entry
+			(literal_text)
+			(expression_ref
+				(anon_function
+					(block)))))))
