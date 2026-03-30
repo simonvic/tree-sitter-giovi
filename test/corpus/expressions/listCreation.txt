@@ -62,3 +62,49 @@ nested multiple list creation
 		(list_entry (identifier))))
 	(list_entry (list
 		(list_entry (identifier)))))))
+
+================================================================================
+list of two tuples
+================================================================================
+=> [
+	<foo bar baz>
+	<foo bar baz>
+]
+--------------------------------------------------------------------------------
+(program (statement_return (list
+	(list_entry
+		(tuple
+			(identifier)
+			(identifier)
+			(identifier)))
+	(list_entry
+		(tuple
+			(identifier)
+			(identifier)
+			(identifier))))))
+
+================================================================================
+list of three tuples
+================================================================================
+=> [
+	<foo bar baz>
+	<foo bar baz>
+	<foo bar baz>
+]
+--------------------------------------------------------------------------------
+(program (statement_return (list
+	(list_entry
+		(tuple
+			(identifier)
+			(identifier)
+			(identifier)))
+	(list_entry
+		(tuple
+			(identifier)
+			(identifier)
+			(identifier)))
+	(list_entry
+		(tuple
+			(identifier)
+			(identifier)
+			(identifier))))))
