@@ -61,3 +61,21 @@ LTR to var declaration with default
 		(identifier)
 		(type_qualified (identifier))
 		(default_definition (literal_text)))))
+
+================================================================================
+Two LTR with prefixed expression
+================================================================================
+foo -> bar
++foo -> bar
+::foo -> bar
+--------------------------------------------------------------------------------
+(program
+	(redirection
+		(identifier)
+		(identifier))
+	(redirection
+		(expression_prefixed (identifier))
+		(identifier))
+	(redirection
+		(expression_ref (identifier))
+		(identifier)))
