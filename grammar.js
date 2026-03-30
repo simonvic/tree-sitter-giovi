@@ -47,27 +47,28 @@ const REDIR_OP_RTL = choice('<-', '+<-', '-<-', '*<-', '/<-');
 const SEMICOLON = optional(';');
 
 const PREC = {
-  CAST: 16,
-  TYPECHECK: 15,
-  INVOCATION: 15,
-  DOTREF: 14,
-  DOT: 14,
+  CAST: 12,
+  TYPECHECK: 11,
+  INVOCATION: 11,
+  DOTREF: 10,
+  DOT: 10,
 
-  CREATION_LIST: 13,
-  CREATION_MAP: 12,
+  CREATION_LIST: 9,
+  CREATION_MAP: 8,
+  CREATION_TUPLE: 8,
 
-  REF: 11,
-  UNARY: 9,
-  ACCESS: 8,
-  POWER: 7,
-  MULTIPLICATIVE: 6,
-  ADDITIVE: 5,
-  RELATIONAL: 4,
-  EQUALITY: 3,
-  CONTAINMENT: 2,
-  BOOL: 1,
-  BITBOOL: 1,
-  BITSHIFT: 1,
+  REF: 7,
+  UNARY: 5,
+  ACCESS: 4,
+  POWER: 3,
+  MULTIPLICATIVE: 2,
+  ADDITIVE: 1,
+  RELATIONAL: 0,
+  EQUALITY: -1,
+  CONTAINMENT: -2,
+  BOOL: -3,
+  BITBOOL: -3,
+  BITSHIFT: -3,
 
   RANGE: 1,
   ACCESS_KEY: 1,
@@ -99,6 +100,14 @@ module.exports = grammar({
     [$.type_qualified],
     [$.case_match_boolean, $.expression_boolean],
     [$.statement_alias, $.type_qualified],
+    [$.expression_relational, $.statement_return],
+    [$.expression_relational, $.expression_creation_tuple],
+    [$.expression_relational, $.expression_creation_record],
+    [$.expression_relational, $.declaration_constant],
+    [$.expression_relational, $.default_definition],
+    [$.expression_relational, $._redirection_ltr],
+    [$.expression_relational, $._redirection_rtl],
+    [$.expression_relational, $.map_entry],
   ],
 
   extras: $ => [
@@ -222,7 +231,7 @@ module.exports = grammar({
     ),
 
     struct_body: $ => seq(
-      token(prec(0, '<')),
+      '<',
       repeat(seq(
         choice(
           $.declaration_constant,
@@ -232,7 +241,7 @@ module.exports = grammar({
         ),
         optional(',')
       )),
-      token(prec(0, '>')),
+      '>',
     ),
 
     struct_field: $ => seq(
@@ -400,12 +409,12 @@ module.exports = grammar({
       $._redirection_rtl,
     ),
 
-    _redirection_ltr: $ => choice(
+    _redirection_ltr: $ => prec(99, choice(
       seq($.expression, '->', $.declaration_variable),
       //seq($.expression, REDIR_OP_LTR, $.reserved_identifier, SEMICOLON),
       // seq($.expression, REDIR_OP_LTR, $.identifier),
       seq($.expression, REDIR_OP_LTR, $.expression, SEMICOLON),
-    ),
+    )),
 
     _redirection_rtl: $ => choice(
       seq($.declaration_variable, '<-', $.expression, SEMICOLON),
@@ -463,7 +472,7 @@ module.exports = grammar({
       '[', repeat(seq($.list_entry, optional(','))), ']'
     )),
 
-    list_entry: $ => choice($.expression, $.range),
+    list_entry: $ => prec(99, choice($.expression, $.range)),
 
     expression_creation_map: $ => prec(PREC.CREATION_MAP, seq(
       '[',
@@ -488,21 +497,21 @@ module.exports = grammar({
     ),
 
     expression_creation_record: $ => seq(
-      token(prec(0, '<')),
+      '<',
       repeat1(seq(
         field("name", $.identifier),
         ':',
         field("value", $.expression),
         optional(',')
       )),
-      token(prec(0, '>')),
+      '>',
     ),
 
-    expression_creation_tuple: $ => seq(
-      token(prec(0, '<')),
+    expression_creation_tuple: $ => prec.dynamic(PREC.CREATION_TUPLE, seq(
+      '<',
       repeat(seq($.expression, optional(','))),
-      token(prec(0, '>')),
-    ),
+      '>',
+    )),
 
     expression_ref: $ => prec(PREC.REF, seq(
       '::', field("referenced", $.referenceable)
@@ -568,7 +577,7 @@ module.exports = grammar({
     expression_power: $ => prec.left(PREC.POWER, seq($.expression, '^', $.expression)),
     expression_equality: $ => prec.left(PREC.EQUALITY, seq($.expression, choice('=', '!='), $.expression)),
     expression_containment: $ => prec.left(PREC.CONTAINMENT, seq($.expression, optional('not'), choice('in', '~=', '=~'), $.expression)),
-    expression_relational: $ => prec.left(PREC.RELATIONAL, seq($.expression, choice(token(prec(0, '<')), '<=', '>=', '>'), $.expression)),
+    expression_relational: $ => prec.left(PREC.RELATIONAL, seq($.expression, choice('<', '<=', '>=', '>'), $.expression)),
     expression_multiplicative: $ => prec.left(PREC.MULTIPLICATIVE, seq($.expression, choice('*', '/', '%'), $.expression)),
     expression_additive: $ => prec.left(PREC.ADDITIVE, seq($.expression, choice('+', '-'), $.expression)),
     expression_boolean: $ => prec.left(PREC.BOOL, seq($.expression, choice('and', '&', 'or', '|'), $.expression)),
