@@ -1220,7 +1220,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "case_match_type_check"
+          "name": "case_match_typecheck"
         }
       ]
     },
@@ -1360,7 +1360,7 @@
         ]
       }
     },
-    "case_match_type_check": {
+    "case_match_typecheck": {
       "type": "PREC",
       "value": 15,
       "content": {
@@ -2061,7 +2061,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "expression_type_check"
+          "name": "expression_typecheck"
         },
         {
           "type": "ALIAS",
@@ -2180,7 +2180,7 @@
         ]
       }
     },
-    "expression_type_check": {
+    "expression_typecheck": {
       "type": "PREC",
       "value": 15,
       "content": {

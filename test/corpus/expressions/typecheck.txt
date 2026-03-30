@@ -5,7 +5,7 @@ simple
 --------------------------------------------------------------------------------
 (program
 	(return_statement
-		(expression_type_check
+		(expression_typecheck
 			(identifier)
 			(type_qualified (identifier)))))
 
@@ -16,7 +16,7 @@ with declaration
 --------------------------------------------------------------------------------
 (program
 	(return_statement
-		(expression_type_check
+		(expression_typecheck
 			(identifier)
 			(identifier)
 			(type_qualified (identifier)))))
@@ -28,7 +28,7 @@ with negation
 --------------------------------------------------------------------------------
 (program
 	(return_statement
-		(expression_type_check
+		(expression_typecheck
 			(identifier)
 			(type_qualified (identifier)))))
 

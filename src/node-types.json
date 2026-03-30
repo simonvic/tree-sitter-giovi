@@ -20,7 +20,7 @@
         "named": true
       },
       {
-        "type": "case_match_type_check",
+        "type": "case_match_typecheck",
         "named": true
       }
     ]
@@ -62,7 +62,7 @@
         "named": true
       },
       {
-        "type": "expression_type_check",
+        "type": "expression_typecheck",
         "named": true
       },
       {
@@ -468,7 +468,7 @@
     }
   },
   {
-    "type": "case_match_type_check",
+    "type": "case_match_typecheck",
     "named": true,
     "fields": {},
     "children": {
@@ -1043,7 +1043,7 @@
     }
   },
   {
-    "type": "expression_type_check",
+    "type": "expression_typecheck",
     "named": true,
     "fields": {},
     "children": {

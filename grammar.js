@@ -331,14 +331,14 @@ module.exports = grammar({
       $.case_match_equality,
       $.case_match_boolean,
       $.case_match_containment,
-      $.case_match_type_check,
+      $.case_match_typecheck,
     ),
 
     case_match_relational: $ => prec(PREC.RELATIONAL, seq(choice('<', '<=', '>=', '>'), $.expression)),
     case_match_equality: $ => prec(PREC.EQUALITY, seq(choice('=', '!='), $.expression)),
     case_match_boolean: $ => prec(PREC.BOOL, seq(choice('and', '&', 'or', '|'), $.expression)),
     case_match_containment: $ => prec(PREC.CONTAINMENT, seq(optional('not'), choice('in', '=~', '~='), $.expression)),
-    case_match_type_check: $ => prec(PREC.TYPECHECK, seq('is', optional(choice('not', $.identifier)), $.type)),
+    case_match_typecheck: $ => prec(PREC.TYPECHECK, seq('is', optional(choice('not', $.identifier)), $.type)),
 
     statement_repeat: $ => seq(
       'repeat', optional(seq('if', field("condition", $.expression))),
@@ -435,7 +435,7 @@ module.exports = grammar({
     expression: $ => choice(
       $.expression_parenthesized,
       $.expression_cast,
-      $.expression_type_check,
+      $.expression_typecheck,
       alias($.expression_creation_list, $.list),
       alias($.expression_creation_map, $.map),
       alias($.expression_creation_struct, $.struct),
@@ -455,7 +455,7 @@ module.exports = grammar({
 
     expression_cast: $ => prec(PREC.CAST, seq($.expression, 'as', $.type)),
 
-    expression_type_check: $ => prec(PREC.TYPECHECK, seq(
+    expression_typecheck: $ => prec(PREC.TYPECHECK, seq(
       $.expression, 'is', optional(choice('not', $.identifier)), $.type)
     ),
 
