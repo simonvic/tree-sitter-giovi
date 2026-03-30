@@ -87,7 +87,7 @@ module.exports = grammar({
   word: $ => $.identifier,
 
   conflicts: $ => [
-    [$.return_statement],
+    [$.statement_return],
     [$.declaration_variable],
     [$.formal_parameters, $.actual_parameters],
     [$.function_signature],
@@ -164,7 +164,7 @@ module.exports = grammar({
       $.statement_break,
       $.redirection,
       $._declaration,
-      $.return_statement,
+      $.statement_return,
       $.invocation,
     ),
 
@@ -263,7 +263,7 @@ module.exports = grammar({
       field("default", optional($.default_definition))
     ),
 
-    return_statement: $ => seq(choice('return', '=>'), optional($.expression), SEMICOLON),
+    statement_return: $ => seq(choice('return', '=>'), optional($.expression), SEMICOLON),
 
     invocation: $ => choice(
       prec(PREC.INVOCATION, seq(

@@ -8,11 +8,11 @@ simple exact text
 => '#'
 --------------------------------------------------------------------------------
 (program
-	(return_statement (literal_exact_text))
-	(return_statement (literal_exact_text))
-	(return_statement (literal_exact_text))
-	(return_statement (literal_exact_text))
-	(return_statement (literal_exact_text)))
+	(statement_return (literal_exact_text))
+	(statement_return (literal_exact_text))
+	(statement_return (literal_exact_text))
+	(statement_return (literal_exact_text))
+	(statement_return (literal_exact_text)))
 
 ================================================================================
 exact text with escape sequence
@@ -27,14 +27,14 @@ exact text with escape sequence
 => '\uf6f6'
 --------------------------------------------------------------------------------
 (program
-	(return_statement (literal_exact_text (escape_sequence)))
-	(return_statement (literal_exact_text (escape_sequence)))
-	(return_statement (literal_exact_text (escape_sequence)))
-	(return_statement (literal_exact_text (escape_sequence)))
-	(return_statement (literal_exact_text (escape_sequence)))
-	(return_statement (literal_exact_text (escape_sequence)))
-	(return_statement (literal_exact_text (escape_sequence)))
-	(return_statement (literal_exact_text (escape_sequence))))
+	(statement_return (literal_exact_text (escape_sequence)))
+	(statement_return (literal_exact_text (escape_sequence)))
+	(statement_return (literal_exact_text (escape_sequence)))
+	(statement_return (literal_exact_text (escape_sequence)))
+	(statement_return (literal_exact_text (escape_sequence)))
+	(statement_return (literal_exact_text (escape_sequence)))
+	(statement_return (literal_exact_text (escape_sequence)))
+	(statement_return (literal_exact_text (escape_sequence))))
 
 ================================================================================
 exact text with interpolation
@@ -44,9 +44,9 @@ exact text with interpolation
 => 'hello ${a + b} world'
 --------------------------------------------------------------------------------
 (program
-	(return_statement (literal_exact_text))
-	(return_statement (literal_exact_text))
-	(return_statement (literal_exact_text)))
+	(statement_return (literal_exact_text))
+	(statement_return (literal_exact_text))
+	(statement_return (literal_exact_text)))
 
 ================================================================================
 exact text block
@@ -60,11 +60,11 @@ exact text block
 => '{#}'
 --------------------------------------------------------------------------------
 (program
-	(return_statement (literal_exact_text_block))
-	(return_statement (literal_exact_text_block))
-	(return_statement (literal_exact_text_block))
-	(return_statement (literal_exact_text_block))
-	(return_statement (literal_exact_text_block)))
+	(statement_return (literal_exact_text_block))
+	(statement_return (literal_exact_text_block))
+	(statement_return (literal_exact_text_block))
+	(statement_return (literal_exact_text_block))
+	(statement_return (literal_exact_text_block)))
 
 ================================================================================
 exact text block with interpolation
@@ -74,6 +74,6 @@ exact text block with interpolation
 => '{hello ${a + b} world}'
 --------------------------------------------------------------------------------
 (program
-	(return_statement (literal_exact_text_block))
-	(return_statement (literal_exact_text_block))
-	(return_statement (literal_exact_text_block)))
+	(statement_return (literal_exact_text_block))
+	(statement_return (literal_exact_text_block))
+	(statement_return (literal_exact_text_block)))

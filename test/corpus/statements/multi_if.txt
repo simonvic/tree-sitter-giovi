@@ -192,7 +192,7 @@ if x {
 	body: (switch_block
 		(switch_label
 			cases: (cases (case_match_equality (identifier)))
-			body: (return_statement (identifier)))
+			body: (statement_return (identifier)))
 		(switch_label
 			cases: (cases (case_match_equality (identifier)))
-			body: (return_statement (identifier))))))
+			body: (statement_return (identifier))))))

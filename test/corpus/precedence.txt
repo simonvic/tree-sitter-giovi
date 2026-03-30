@@ -3,7 +3,7 @@ algebraic precedence
 ================================================================================
 => a + b * c
 --------------------------------------------------------------------------------
-(program (return_statement
+(program (statement_return
 	(expression_additive
 		(identifier)
 		(expression_multiplicative
@@ -15,7 +15,7 @@ parenthesis precedence
 ================================================================================
 => {a + b} * c
 --------------------------------------------------------------------------------
-(program (return_statement
+(program (statement_return
 	(expression_multiplicative (expression_parenthesized
 		(expression_additive
 			(identifier)
@@ -27,7 +27,7 @@ negation precedence
 ================================================================================
 => !a & not b
 --------------------------------------------------------------------------------
-(program (return_statement
+(program (statement_return
 	(expression_boolean
 		(expression_prefixed (identifier))
 		(expression_prefixed (identifier)))))
@@ -37,7 +37,7 @@ access precedence
 ================================================================================
 => a@b@c
 --------------------------------------------------------------------------------
-(program (return_statement
+(program (statement_return
 	(expression_access
 		accessed: (expression_access
 			accessed: (identifier)
@@ -49,7 +49,7 @@ dot precedence
 ================================================================================
 => a.b.c
 --------------------------------------------------------------------------------
-(program (return_statement
+(program (statement_return
 	(expression_dot
 		(expression_dot
 			(identifier)
@@ -61,7 +61,7 @@ tuple creation and dot precedence
 ================================================================================
 => <>.a
 --------------------------------------------------------------------------------
-(program (return_statement
+(program (statement_return
 	(expression_dot
 		(tuple)
 		(identifier))))
@@ -71,7 +71,7 @@ tuple creation and access precedence
 ================================================================================
 => <>@1
 --------------------------------------------------------------------------------
-(program (return_statement
+(program (statement_return
 	(expression_access
 		(tuple)
 		(literal_integer))))
@@ -86,14 +86,14 @@ access dot and invocation precedence
 => a@{b.c()}
 --------------------------------------------------------------------------------
 (program
-	(return_statement
+	(statement_return
 		(invocation
 			instance: (expression_access
 				accessed: (identifier)
 				accessor: (identifier))
 			invoked: (identifier)
 			(actual_parameters)))
-	(return_statement
+	(statement_return
 		(invocation
 			instance: (expression_parenthesized
 				(expression_access
@@ -101,7 +101,7 @@ access dot and invocation precedence
 				 	 accessor: (identifier)))
 			invoked: (identifier)
 			(actual_parameters)))
-	(return_statement
+	(statement_return
 		(invocation
 			invoked: (expression_parenthesized
 				(expression_dot
@@ -110,7 +110,7 @@ access dot and invocation precedence
 						accessor: (identifier))
 					(identifier)))
 			(actual_parameters)))
-	(return_statement
+	(statement_return
 		(invocation
 			invoked: (expression_access
 				accessed: (identifier)
@@ -118,7 +118,7 @@ access dot and invocation precedence
 					(identifier)
 					(identifier)))
 			(actual_parameters)))
-	(return_statement
+	(statement_return
 		(expression_access
 			accessed: (identifier)
 			accessor: (invocation
@@ -131,7 +131,7 @@ relational precedence
 ================================================================================
 => a <= b <= c
 --------------------------------------------------------------------------------
-(program (return_statement
+(program (statement_return
 	(expression_relational
 		(expression_relational
 			(identifier)
@@ -143,7 +143,7 @@ relational and algebric precedence
 ================================================================================
 => 1 + 1 <= 1 + 1
 --------------------------------------------------------------------------------
-(program (return_statement
+(program (statement_return
 	(expression_relational
 		(expression_additive
 			(literal_integer)
@@ -157,7 +157,7 @@ relational and equality precedence
 ================================================================================
 => 1 <= 1 = 2 <= 2
 --------------------------------------------------------------------------------
-(program (return_statement
+(program (statement_return
 	(expression_equality
 		(expression_relational
 			(literal_integer)

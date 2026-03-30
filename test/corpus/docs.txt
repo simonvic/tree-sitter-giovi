@@ -14,7 +14,7 @@ doc line
 	(doc_line)
 	(doc_line)
 	(doc_line)
-	(return_statement (identifier))
+	(statement_return (identifier))
 	(doc_line)
 	(doc_line)
 	(doc_line))
@@ -84,7 +84,7 @@ block
 --------------------------------------------------------------------------------
 (program
 	(doc_block)
-	(return_statement (identifier)))
+	(statement_return (identifier)))
 
 ================================================================================
 doc block after statement
@@ -97,7 +97,7 @@ block
 }#
 --------------------------------------------------------------------------------
 (program
-	(return_statement (identifier))
+	(statement_return (identifier))
 	(doc_block))
 
 ================================================================================
@@ -105,7 +105,7 @@ doc block inline statement
 ================================================================================
 => #{? this is a doc block }# a
 --------------------------------------------------------------------------------
-(program (return_statement (doc_block) (identifier)))
+(program (statement_return (doc_block) (identifier)))
 
 ================================================================================
 doc block with nested opening tag
@@ -113,6 +113,6 @@ doc block with nested opening tag
 => #{? you open a doc with the '#{?' token. }# foo
 --------------------------------------------------------------------------------
 (program 
-	(return_statement
+	(statement_return
 		(doc_block)
 		(identifier)))

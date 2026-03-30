@@ -5,6 +5,6 @@ bool
 => false
 --------------------------------------------------------------------------------
 (program
-	(return_statement (literal_bool))
-	(return_statement (literal_bool)))
+	(statement_return (literal_bool))
+	(statement_return (literal_bool)))
 

@@ -14,15 +14,15 @@ real
 => 0x1p69
 --------------------------------------------------------------------------------
 (program
-	(return_statement (literal_real))
-	(return_statement (literal_real))
-	(return_statement (literal_real))
-	(return_statement (literal_real))
-	(return_statement (literal_real))
-	(return_statement (literal_real))
-	(return_statement (literal_real))
-	(return_statement (literal_real))
-	(return_statement (literal_real))
-	(return_statement (literal_real))
-	(return_statement (literal_real)))
+	(statement_return (literal_real))
+	(statement_return (literal_real))
+	(statement_return (literal_real))
+	(statement_return (literal_real))
+	(statement_return (literal_real))
+	(statement_return (literal_real))
+	(statement_return (literal_real))
+	(statement_return (literal_real))
+	(statement_return (literal_real))
+	(statement_return (literal_real))
+	(statement_return (literal_real)))
 

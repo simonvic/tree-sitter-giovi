@@ -7,16 +7,16 @@ simple
 => not a
 --------------------------------------------------------------------------------
 (program
-	(return_statement
+	(statement_return
 		(expression_prefixed
 			(identifier)))
-	(return_statement
+	(statement_return
 		(expression_prefixed
 			(identifier)))
-	(return_statement
+	(statement_return
 		(expression_prefixed
 			(identifier)))
-	(return_statement
+	(statement_return
 		(expression_prefixed
 			(identifier))))
 
@@ -26,7 +26,7 @@ double negation
 => ! !a
 --------------------------------------------------------------------------------
 (program
-	(return_statement
+	(statement_return
 		(expression_prefixed
 			(expression_prefixed
 				(identifier)))))
@@ -37,6 +37,6 @@ bit not
 => !!a
 --------------------------------------------------------------------------------
 (program
-	(return_statement
+	(statement_return
 		(expression_prefixed
 			(identifier))))

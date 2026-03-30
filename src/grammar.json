@@ -189,7 +189,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "return_statement"
+          "name": "statement_return"
         },
         {
           "type": "SYMBOL",
@@ -743,7 +743,7 @@
         }
       ]
     },
-    "return_statement": {
+    "statement_return": {
       "type": "SEQ",
       "members": [
         {
@@ -5135,7 +5135,7 @@
   ],
   "conflicts": [
     [
-      "return_statement"
+      "statement_return"
     ],
     [
       "declaration_variable"

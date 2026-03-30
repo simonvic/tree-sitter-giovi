@@ -4,7 +4,7 @@ simple
 => a.b
 --------------------------------------------------------------------------------
 (program
-	(return_statement
+	(statement_return
 		(expression_dot
 			(identifier)
 			(identifier))))
@@ -15,7 +15,7 @@ default
 => a.default
 --------------------------------------------------------------------------------
 (program
-	(return_statement
+	(statement_return
 		(expression_dot
 			(identifier)
 			(literal_default))))
@@ -26,7 +26,7 @@ nested
 => a.b.c
 --------------------------------------------------------------------------------
 (program
-	(return_statement
+	(statement_return
 		(expression_dot
 			(expression_dot
 				(identifier)

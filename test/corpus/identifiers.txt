@@ -11,11 +11,11 @@ constant identifiers
 --------------------------------------------------------------------------------
 
 (program
-	(return_statement (identifier))
-	(return_statement (identifier))
-	(return_statement (identifier))
-	(return_statement (identifier))
-	(return_statement (identifier)))
+	(statement_return (identifier))
+	(statement_return (identifier))
+	(statement_return (identifier))
+	(statement_return (identifier))
+	(statement_return (identifier)))
 
 
 ================================================================================
@@ -33,13 +33,13 @@ identifiers
 --------------------------------------------------------------------------------
 
 (program
-	(return_statement (identifier))
-	(return_statement (identifier))
-	(return_statement (identifier))
-	(return_statement (identifier))
-	(return_statement (identifier))
-	(return_statement (identifier))
-	(return_statement (identifier)))
+	(statement_return (identifier))
+	(statement_return (identifier))
+	(statement_return (identifier))
+	(statement_return (identifier))
+	(statement_return (identifier))
+	(statement_return (identifier))
+	(statement_return (identifier)))
 
 
 ================================================================================
@@ -56,11 +56,11 @@ type identifiers
 --------------------------------------------------------------------------------
 
 (program
-	(return_statement (identifier))
-	(return_statement (identifier))
-	(return_statement (identifier))
-	(return_statement (identifier))
-	(return_statement (identifier))
-	(return_statement (identifier)))
+	(statement_return (identifier))
+	(statement_return (identifier))
+	(statement_return (identifier))
+	(statement_return (identifier))
+	(statement_return (identifier))
+	(statement_return (identifier)))
 
 

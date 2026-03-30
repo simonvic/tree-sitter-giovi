@@ -3,7 +3,7 @@ access with literal
 ================================================================================
 => a@69
 --------------------------------------------------------------------------------
-(program (return_statement (expression_access
+(program (statement_return (expression_access
 	accessed: (identifier)
 	accessor: (literal_integer))))
 
@@ -12,7 +12,7 @@ access with parenthesized literal
 ================================================================================
 => a@{69}
 --------------------------------------------------------------------------------
-(program (return_statement (expression_access
+(program (statement_return (expression_access
 	accessed: (identifier)
 	accessor: (literal_integer))))
 
@@ -21,7 +21,7 @@ access with identifier
 ================================================================================
 => a@i
 --------------------------------------------------------------------------------
-(program (return_statement (expression_access
+(program (statement_return (expression_access
 	accessed: (identifier)
 	accessor: (identifier))))
 
@@ -30,7 +30,7 @@ access with parenthesized identifier
 ================================================================================
 => a@{i}
 --------------------------------------------------------------------------------
-(program (return_statement (expression_access
+(program (statement_return (expression_access
 	accessed: (identifier)
 	accessor: (identifier))))
 
@@ -39,7 +39,7 @@ access with expression
 ================================================================================
 => a@{i + j}
 --------------------------------------------------------------------------------
-(program (return_statement (expression_access
+(program (statement_return (expression_access
 	accessed: (identifier)
 	accessor: (expression_additive
 		(identifier)
@@ -50,7 +50,7 @@ access with range
 ================================================================================
 => a@s..e
 --------------------------------------------------------------------------------
-(program (return_statement (expression_access
+(program (statement_return (expression_access
 	accessed: (identifier)
 	accessor: (range
 		start: (identifier)
@@ -61,7 +61,7 @@ access with parenthesized range
 ================================================================================
 => a@{s..e}
 --------------------------------------------------------------------------------
-(program (return_statement (expression_access
+(program (statement_return (expression_access
 	accessed: (identifier)
 	accessor: (range
 		start: (identifier)

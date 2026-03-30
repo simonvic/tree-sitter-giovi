@@ -3,14 +3,14 @@ empty map
 ================================================================================
 => [:]
 --------------------------------------------------------------------------------
-(program (return_statement (map)))
+(program (statement_return (map)))
 
 ================================================================================
 map with one entry
 ================================================================================
 => [a:a]
 --------------------------------------------------------------------------------
-(program (return_statement (map
+(program (statement_return (map
 	(map_entry
 		key: (identifier)
 		val: (identifier))
@@ -21,7 +21,7 @@ map with multiple entries
 ================================================================================
 => [a:a b:b c:c]
 --------------------------------------------------------------------------------
-(program (return_statement (map
+(program (statement_return (map
 	(map_entry
 		key: (identifier)
 		val: (identifier))
@@ -38,7 +38,7 @@ map with multiple comma separated entries
 ================================================================================
 => [a:a, b:b, c:c]
 --------------------------------------------------------------------------------
-(program (return_statement (map
+(program (statement_return (map
 	(map_entry
 		key: (identifier)
 		val: (identifier))
@@ -55,7 +55,7 @@ nested map as value
 ================================================================================
 => [a:[b:b]]
 --------------------------------------------------------------------------------
-(program (return_statement (map
+(program (statement_return (map
 	(map_entry
 		key: (identifier)
 		val: (map
@@ -68,7 +68,7 @@ nested map as key
 ================================================================================
 => [[a:a]:b]
 --------------------------------------------------------------------------------
-(program (return_statement (map
+(program (statement_return (map
 	(map_entry
 		key: (map
 			(map_entry
@@ -81,7 +81,7 @@ nested map as key and as value
 ================================================================================
 => [[a:a]:[b:b]]
 --------------------------------------------------------------------------------
-(program (return_statement (map
+(program (statement_return (map
 	(map_entry
 		key: (map
 			(map_entry
@@ -97,7 +97,7 @@ list of maps
 ================================================================================
 => [[a:a] [b:b] [c:c]]
 --------------------------------------------------------------------------------
-(program (return_statement (list
+(program (statement_return (list
 	(list_entry (map
 		(map_entry
 			key: (identifier)

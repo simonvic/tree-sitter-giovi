@@ -9,27 +9,27 @@ arithmetic
 => a - b
 --------------------------------------------------------------------------------
 (program
-	(return_statement
+	(statement_return
 		(expression_power
 			(identifier)
 			(identifier)))
-	(return_statement
+	(statement_return
 		(expression_multiplicative
 			(identifier)
 			(identifier)))
-	(return_statement
+	(statement_return
 		(expression_multiplicative
 			(identifier)
 			(identifier)))
-	(return_statement
+	(statement_return
 		(expression_multiplicative
 			(identifier)
 			(identifier)))
-	(return_statement
+	(statement_return
 		(expression_additive
 			(identifier)
 			(identifier)))
-	(return_statement
+	(statement_return
 		(expression_additive
 			(identifier)
 			(identifier))))
@@ -43,19 +43,19 @@ relational
 => a > b
 --------------------------------------------------------------------------------
 (program
-	(return_statement
+	(statement_return
 		(expression_relational
 			(identifier)
 			(identifier)))
-	(return_statement
+	(statement_return
 		(expression_relational
 			(identifier)
 			(identifier)))
-	(return_statement
+	(statement_return
 		(expression_relational
 			(identifier)
 			(identifier)))
-	(return_statement
+	(statement_return
 		(expression_relational
 			(identifier)
 			(identifier))))
@@ -67,11 +67,11 @@ equality
 => a != b
 --------------------------------------------------------------------------------
 (program
-	(return_statement
+	(statement_return
 		(expression_equality
 			(identifier)
 			(identifier)))
-	(return_statement
+	(statement_return
 		(expression_equality
 			(identifier)
 			(identifier))))
@@ -83,11 +83,11 @@ containment
 => a ~= b
 --------------------------------------------------------------------------------
 (program
-	(return_statement
+	(statement_return
 		(expression_containment
 			(identifier)
 			(identifier)))
-	(return_statement
+	(statement_return
 		(expression_containment
 			(identifier)
 			(identifier))))
@@ -101,19 +101,19 @@ boolean
 => a or b
 --------------------------------------------------------------------------------
 (program
-	(return_statement
+	(statement_return
 		(expression_boolean
 			(identifier)
 			(identifier)))
-	(return_statement
+	(statement_return
 		(expression_boolean
 			(identifier)
 			(identifier)))
-	(return_statement
+	(statement_return
 		(expression_boolean
 			(identifier)
 			(identifier)))
-	(return_statement
+	(statement_return
 		(expression_boolean
 			(identifier)
 			(identifier))))
@@ -126,15 +126,15 @@ bitwise bool
 => a ||| b
 --------------------------------------------------------------------------------
 (program
-	(return_statement
+	(statement_return
 		(expression_bitwise_bool
 			(identifier)
 			(identifier)))
-	(return_statement
+	(statement_return
 		(expression_bitwise_bool
 			(identifier)
 			(identifier)))
-	(return_statement
+	(statement_return
 		(expression_bitwise_bool
 			(identifier)
 			(identifier))))
@@ -147,15 +147,15 @@ bitwise shift
 => a {>>} b
 --------------------------------------------------------------------------------
 (program
-	(return_statement
+	(statement_return
 		(expression_bitwise_shift
 			(identifier)
 			(identifier)))
-	(return_statement
+	(statement_return
 		(expression_bitwise_shift
 			(identifier)
 			(identifier)))
-	(return_statement
+	(statement_return
 		(expression_bitwise_shift
 			(identifier)
 			(identifier))))
@@ -166,7 +166,7 @@ nested binary expressions
 => a + b + c
 --------------------------------------------------------------------------------
 (program
-	(return_statement
+	(statement_return
 		(expression_additive
 			(expression_additive
 				(identifier)
@@ -179,7 +179,7 @@ nested parenthesized binary expressions
 => a + {b + c}
 --------------------------------------------------------------------------------
 (program
-	(return_statement
+	(statement_return
 		(expression_additive
 			(identifier)
 			(expression_parenthesized (expression_additive

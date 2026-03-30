@@ -10,13 +10,13 @@ simple text
 => "$ awf"
 --------------------------------------------------------------------------------
 (program
-	(return_statement (literal_text))
-	(return_statement (literal_text))
-	(return_statement (literal_text))
-	(return_statement (literal_text))
-	(return_statement (literal_text))
-	(return_statement (literal_text))
-	(return_statement (literal_text)))
+	(statement_return (literal_text))
+	(statement_return (literal_text))
+	(statement_return (literal_text))
+	(statement_return (literal_text))
+	(statement_return (literal_text))
+	(statement_return (literal_text))
+	(statement_return (literal_text)))
 
 ================================================================================
 text with escape sequence
@@ -31,14 +31,14 @@ text with escape sequence
 => "\uf6f6"
 --------------------------------------------------------------------------------
 (program
-	(return_statement (literal_text (escape_sequence)))
-	(return_statement (literal_text (escape_sequence)))
-	(return_statement (literal_text (escape_sequence)))
-	(return_statement (literal_text (escape_sequence)))
-	(return_statement (literal_text (escape_sequence)))
-	(return_statement (literal_text (escape_sequence)))
-	(return_statement (literal_text (escape_sequence)))
-	(return_statement (literal_text (escape_sequence))))
+	(statement_return (literal_text (escape_sequence)))
+	(statement_return (literal_text (escape_sequence)))
+	(statement_return (literal_text (escape_sequence)))
+	(statement_return (literal_text (escape_sequence)))
+	(statement_return (literal_text (escape_sequence)))
+	(statement_return (literal_text (escape_sequence)))
+	(statement_return (literal_text (escape_sequence)))
+	(statement_return (literal_text (escape_sequence))))
 
 ================================================================================
 text with interpolation
@@ -48,9 +48,9 @@ text with interpolation
 => "hello ${a + b} world"
 --------------------------------------------------------------------------------
 (program
-	(return_statement (literal_text (text_interpolation)))
-	(return_statement (literal_text (text_interpolation (identifier))))
-	(return_statement (literal_text (text_interpolation
+	(statement_return (literal_text (text_interpolation)))
+	(statement_return (literal_text (text_interpolation (identifier))))
+	(statement_return (literal_text (text_interpolation
 		(expression_additive
 			(identifier)
 			(identifier))))))
@@ -67,11 +67,11 @@ text block
 => "{#}"
 --------------------------------------------------------------------------------
 (program
-	(return_statement (literal_text_block))
-	(return_statement (literal_text_block))
-	(return_statement (literal_text_block))
-	(return_statement (literal_text_block))
-	(return_statement (literal_text_block)))
+	(statement_return (literal_text_block))
+	(statement_return (literal_text_block))
+	(statement_return (literal_text_block))
+	(statement_return (literal_text_block))
+	(statement_return (literal_text_block)))
 
 ================================================================================
 text block with interpolation
@@ -81,9 +81,9 @@ text block with interpolation
 => "{hello ${a + b} world}"
 --------------------------------------------------------------------------------
 (program
-	(return_statement (literal_text_block (text_interpolation)))
-	(return_statement (literal_text_block (text_interpolation (identifier))))
-	(return_statement (literal_text_block (text_interpolation
+	(statement_return (literal_text_block (text_interpolation)))
+	(statement_return (literal_text_block (text_interpolation (identifier))))
+	(statement_return (literal_text_block (text_interpolation
 		(expression_additive
 			(identifier)
 			(identifier))))))
