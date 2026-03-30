@@ -97,7 +97,7 @@ module.exports = grammar({
     [$.primary, $.formal_parameter],
     [$.primary, $.type_qualified],
     [$.type_qualified],
-    [$.case_match, $.expression_boolean],
+    [$.case_match_boolean, $.expression_boolean],
     [$.statement_alias, $.type_qualified],
   ],
 
@@ -117,6 +117,7 @@ module.exports = grammar({
     $.statement,
     $.expression,
     $.expression_binary,
+    $.case_match,
     $.type,
     $.type_composite,
     $.referenceable,
@@ -301,7 +302,7 @@ module.exports = grammar({
     )),
 
     switch_block: $ => seq('{', repeat1($.switch_label), '}'),
-    switch_label: $ => prec(1, seq(
+    switch_label: $ => seq(
       field("cases", $.cases),
       optional(seq(
         'when',
@@ -309,7 +310,7 @@ module.exports = grammar({
       )),
       'do',
       field("body", $._statement_or_block)
-    )),
+    ),
 
     cases: $ => seq(
       $._case_match,
@@ -324,13 +325,20 @@ module.exports = grammar({
       $.case_match,
     ),
     _case_match_parenthesized: $ => seq('{', $.case_match, '}'),
-    case_match: $ => prec(1, choice(
-      seq(choice('<', '<=', '>=', '>'), $.expression),
-      seq(choice('=', '!='), $.expression),
-      seq(choice('and', '&', 'or', '|'), $.expression),
-      seq(optional('not'), choice('in', '=~', '~='), $.expression),
-      seq('is', optional(choice('not', $.identifier)), $.type),
-    )),
+
+    case_match: $ => choice(
+      $.case_match_relational,
+      $.case_match_equality,
+      $.case_match_boolean,
+      $.case_match_containment,
+      $.case_match_type_check,
+    ),
+
+    case_match_relational: $ => prec(PREC.RELATIONAL, seq(choice('<', '<=', '>=', '>'), $.expression)),
+    case_match_equality: $ => prec(PREC.EQUALITY, seq(choice('=', '!='), $.expression)),
+    case_match_boolean: $ => prec(PREC.BOOL, seq(choice('and', '&', 'or', '|'), $.expression)),
+    case_match_containment: $ => prec(PREC.CONTAINMENT, seq(optional('not'), choice('in', '=~', '~='), $.expression)),
+    case_match_type_check: $ => prec(PREC.TYPECHECK, seq('is', optional(choice('not', $.identifier)), $.type)),
 
     statement_repeat: $ => seq(
       'repeat', optional(seq('if', field("condition", $.expression))),

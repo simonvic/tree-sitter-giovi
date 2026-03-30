@@ -27,61 +27,61 @@ if x {
 	subject: (identifier)
 	body: (switch_block
 		(switch_label
-			cases: (cases (case_match (literal_integer)))
+			cases: (cases (case_match_relational (literal_integer)))
 			body: (block))
 		(switch_label
-			cases: (cases (case_match (literal_integer)))
+			cases: (cases (case_match_relational (literal_integer)))
 			body: (block))
 		(switch_label
-			cases: (cases (case_match (literal_integer)))
+			cases: (cases (case_match_relational (literal_integer)))
 			body: (block))
 		(switch_label
-			cases: (cases (case_match (literal_integer)))
+			cases: (cases (case_match_relational (literal_integer)))
 			body: (block))
 		(switch_label
-			cases: (cases (case_match (literal_integer)))
+			cases: (cases (case_match_equality (literal_integer)))
 			body: (block))
 		(switch_label
-			cases: (cases (case_match (literal_integer)))
+			cases: (cases (case_match_equality (literal_integer)))
 			body: (block))
 		(switch_label
-			cases: (cases (case_match (literal_bool)))
+			cases: (cases (case_match_boolean (literal_bool)))
 			body: (block))
 		(switch_label
-			cases: (cases (case_match (literal_bool)))
+			cases: (cases (case_match_boolean (literal_bool)))
 			body: (block))
 		(switch_label
-			cases: (cases (case_match (literal_bool)))
+			cases: (cases (case_match_boolean (literal_bool)))
 			body: (block))
 		(switch_label
-			cases: (cases (case_match (literal_bool)))
+			cases: (cases (case_match_boolean (literal_bool)))
 			body: (block))
 		(switch_label
-			cases: (cases (case_match (literal_integer)))
+			cases: (cases (case_match_containment (literal_integer)))
 			body: (block))
 		(switch_label
-			cases: (cases (case_match (identifier)))
+			cases: (cases (case_match_containment (identifier)))
 			body: (block))
 		(switch_label
-			cases: (cases (case_match (identifier)))
+			cases: (cases (case_match_containment (identifier)))
 			body: (block))
 		(switch_label
-			cases: (cases (case_match (literal_integer)))
+			cases: (cases (case_match_containment (literal_integer)))
 			body: (block))
 		(switch_label
-			cases: (cases (case_match (identifier)))
+			cases: (cases (case_match_containment (identifier)))
 			body: (block))
 		(switch_label
-			cases: (cases (case_match (identifier)))
+			cases: (cases (case_match_containment (identifier)))
 			body: (block))
 		(switch_label
-			cases: (cases (case_match (type_qualified typename: (identifier))))
+			cases: (cases (case_match_type_check (type_qualified typename: (identifier))))
 			body: (block))
 		(switch_label
-			cases: (cases (case_match (identifier) (type_qualified typename: (identifier))))
+			cases: (cases (case_match_type_check (identifier) (type_qualified typename: (identifier))))
 			body: (block))
 		(switch_label
-			cases: (cases (case_match (type_qualified typename: (identifier))))
+			cases: (cases (case_match_type_check (type_qualified typename: (identifier))))
 			body: (block)))))
 
 ================================================================================
@@ -100,23 +100,23 @@ if x {
 		body: (switch_block
 			(switch_label
 				cases: (cases
-					(case_match (literal_integer))
-					(case_match (literal_integer)))
+					(case_match_equality (literal_integer))
+					(case_match_equality (literal_integer)))
 				body: (block))
 			(switch_label
 				cases: (cases
-					(case_match (literal_integer))
-					(case_match (literal_integer)))
+					(case_match_equality (literal_integer))
+					(case_match_equality (literal_integer)))
 				body: (block))
 			(switch_label
 				cases: (cases
-					(case_match (literal_integer))
-					(case_match (literal_integer)))
+					(case_match_equality (literal_integer))
+					(case_match_equality (literal_integer)))
 				body: (block))
 			(switch_label
 				cases: (cases
-					(case_match (literal_integer))
-					(case_match (literal_integer)))
+					(case_match_equality (literal_integer))
+					(case_match_equality (literal_integer)))
 				body: (block)))))
 
 ================================================================================
@@ -132,7 +132,7 @@ if x {
 		body: (switch_block
 			(switch_label
 				cases: (cases
-					(case_match
+					(case_match_boolean
 						(expression_boolean
 							(literal_bool)
 							(literal_bool))))
@@ -152,13 +152,13 @@ if x {
 		body: (switch_block
 			(switch_label
 				cases: (cases
-					(case_match (literal_integer)))
+					(case_match_equality (literal_integer)))
 				guard: (literal_bool)
 				body: (block))
 			(switch_label
 				cases: (cases
-					(case_match (literal_integer))
-					(case_match (literal_integer)))
+					(case_match_equality (literal_integer))
+					(case_match_equality (literal_integer)))
 				guard: (expression_boolean
 					(literal_bool)
 					(literal_bool))
@@ -175,7 +175,7 @@ if x {
 	subject: (identifier)
 	body: (switch_block
 		(switch_label
-			cases: (cases (case_match (literal_integer)))
+			cases: (cases (case_match_equality (literal_integer)))
 			body: (block)))
 	else_body: (block)))
 
@@ -191,8 +191,8 @@ if x {
 	subject: (identifier)
 	body: (switch_block
 		(switch_label
-			cases: (cases (case_match (identifier)))
+			cases: (cases (case_match_equality (identifier)))
 			body: (return_statement (identifier)))
 		(switch_label
-			cases: (cases (case_match (identifier)))
+			cases: (cases (case_match_equality (identifier)))
 			body: (return_statement (identifier))))))

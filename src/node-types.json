@@ -1,5 +1,31 @@
 [
   {
+    "type": "case_match",
+    "named": true,
+    "subtypes": [
+      {
+        "type": "case_match_boolean",
+        "named": true
+      },
+      {
+        "type": "case_match_containment",
+        "named": true
+      },
+      {
+        "type": "case_match_equality",
+        "named": true
+      },
+      {
+        "type": "case_match_relational",
+        "named": true
+      },
+      {
+        "type": "case_match_type_check",
+        "named": true
+      }
+    ]
+  },
+  {
     "type": "expression",
     "named": true,
     "subtypes": [
@@ -382,17 +408,73 @@
     }
   },
   {
-    "type": "case_match",
+    "type": "case_match_boolean",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "case_match_containment",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "case_match_equality",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "case_match_relational",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "case_match_type_check",
     "named": true,
     "fields": {},
     "children": {
       "multiple": true,
       "required": true,
       "types": [
-        {
-          "type": "expression",
-          "named": true
-        },
         {
           "type": "identifier",
           "named": true
