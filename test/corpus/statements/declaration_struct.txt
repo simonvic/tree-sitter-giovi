@@ -38,7 +38,7 @@ Foo <i Int>
 (program (declaration_struct
 	typename: (identifier)
 	body: (struct_body
-		(struct_field
+		(declaration_field
 			name: (identifier)
 			type: (type_qualified
 				typename: (identifier))))))
@@ -51,7 +51,7 @@ Foo <i Int default 69>
 (program (declaration_struct
 	typename: (identifier)
 	body: (struct_body
-		(struct_field
+		(declaration_field
 			name: (identifier)
 			type: (type_qualified
 				typename: (identifier))
@@ -68,11 +68,11 @@ Foo <
 (program (declaration_struct
 	typename: (identifier)
 	body: (struct_body
-		(struct_field
+		(declaration_field
 			name: (identifier)
 			type: (type_qualified
 				typename: (identifier)))
-		(struct_field
+		(declaration_field
 			name: (identifier)
 			type: (type_qualified
 				typename: (identifier))))))
@@ -88,12 +88,12 @@ Foo <
 (program (declaration_struct
 	typename: (identifier)
 	body: (struct_body
-		(struct_field
+		(declaration_field
 			name: (identifier)
 			type: (type_qualified
 				typename: (identifier))
 			default: (default_definition (literal_integer)))
-		(struct_field
+		(declaration_field
 			name: (identifier)
 			type: (type_qualified
 				typename: (identifier))

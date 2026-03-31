@@ -17,7 +17,7 @@
   (#set! "kind" "Class")) @symbol
 
 ; fields
-(struct_field
+(declaration_field
   name: (_) @name
   (#set! "kind" "Field")) @symbol
 

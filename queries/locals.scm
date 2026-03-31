@@ -24,7 +24,7 @@
 (declaration_struct
   typename: (_) @local.definition.type)
 
-(struct_field
+(declaration_field
   name: (_) @local.definition.field)
 
 (declaration_function

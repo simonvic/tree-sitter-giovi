@@ -556,6 +556,42 @@
     }
   },
   {
+    "type": "declaration_field",
+    "named": true,
+    "fields": {
+      "default": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "default_definition",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "type": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "type",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "declaration_function",
     "named": true,
     "fields": {
@@ -1888,54 +1924,18 @@
           "named": true
         },
         {
+          "type": "declaration_field",
+          "named": true
+        },
+        {
           "type": "declaration_function",
           "named": true
         },
         {
           "type": "declaration_struct",
           "named": true
-        },
-        {
-          "type": "struct_field",
-          "named": true
         }
       ]
-    }
-  },
-  {
-    "type": "struct_field",
-    "named": true,
-    "fields": {
-      "default": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "default_definition",
-            "named": true
-          }
-        ]
-      },
-      "name": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "identifier",
-            "named": true
-          }
-        ]
-      },
-      "type": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "type",
-            "named": true
-          }
-        ]
-      }
     }
   },
   {
@@ -2125,7 +2125,7 @@
       "required": false,
       "types": [
         {
-          "type": "struct_field",
+          "type": "declaration_field",
           "named": true
         }
       ]

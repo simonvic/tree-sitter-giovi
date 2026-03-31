@@ -498,7 +498,7 @@
                   },
                   {
                     "type": "SYMBOL",
-                    "name": "struct_field"
+                    "name": "declaration_field"
                   },
                   {
                     "type": "SYMBOL",
@@ -531,7 +531,7 @@
         }
       ]
     },
-    "struct_field": {
+    "declaration_field": {
       "type": "SEQ",
       "members": [
         {
@@ -3451,7 +3451,7 @@
             "members": [
               {
                 "type": "SYMBOL",
-                "name": "struct_field"
+                "name": "declaration_field"
               },
               {
                 "type": "CHOICE",

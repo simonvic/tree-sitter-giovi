@@ -235,7 +235,7 @@ module.exports = grammar({
       repeat(seq(
         choice(
           $.declaration_constant,
-          $.struct_field,
+          $.declaration_field,
           $.declaration_struct,
           $.declaration_function,
         ),
@@ -244,7 +244,7 @@ module.exports = grammar({
       '>',
     ),
 
-    struct_field: $ => seq(
+    declaration_field: $ => seq(
       field("name", $.identifier),
       field("type", $.type),
       field("default", optional($.default_definition))
@@ -644,7 +644,7 @@ module.exports = grammar({
     type_record: $ => seq(
       'record',
       '<',
-      repeat(seq($.struct_field, optional(','))),
+      repeat(seq($.declaration_field, optional(','))),
       '>',
     ),
 
