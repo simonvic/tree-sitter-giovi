@@ -105,7 +105,6 @@ module.exports = grammar({
     [$.expression_relational, $.expression_creation_record],
     [$.expression_relational, $.declaration_constant],
     [$.expression_relational, $.default_definition],
-    [$.expression_relational, $._redirection_ltr],
     [$.expression_relational, $._redirection_rtl],
     [$.expression_relational, $.map_entry],
   ],
@@ -128,6 +127,7 @@ module.exports = grammar({
     $.expression_binary,
     $.case_match,
     $.type,
+    $.type_product,
     $.type_composite,
     $.referenceable,
   ],
@@ -585,7 +585,8 @@ module.exports = grammar({
     type: $ => choice(
       $.type_qualified,
       $.type_composite,
-      $.type_function_ref
+      $.type_function_ref,
+      $.type_product,
     ),
 
     type_qualified: $ => seq(
@@ -611,6 +612,27 @@ module.exports = grammar({
     function_signature: $ => seq(
       $.formal_parameters,
       optional(seq('=>', field("return_type", choice($.literal_self, $.type))))
+    ),
+
+    type_product: $ => choice(
+      $.type_tuple,
+      $.type_record,
+    ),
+
+    type_tuple: $ => seq(
+      'tuple',
+      '<',
+      repeat(seq($._type_tuple_entry, optional(','))),
+      '>',
+    ),
+
+    _type_tuple_entry: $ => seq($.type, optional($.default_definition)),
+
+    type_record: $ => seq(
+      'record',
+      '<',
+      repeat(seq($.struct_field, optional(','))),
+      '>',
     ),
 
     primary: $ => choice(

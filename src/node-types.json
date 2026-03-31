@@ -302,6 +302,10 @@
         "named": true
       },
       {
+        "type": "type_product",
+        "named": true
+      },
+      {
         "type": "type_qualified",
         "named": true
       }
@@ -317,6 +321,20 @@
       },
       {
         "type": "type_map",
+        "named": true
+      }
+    ]
+  },
+  {
+    "type": "type_product",
+    "named": true,
+    "subtypes": [
+      {
+        "type": "type_record",
+        "named": true
+      },
+      {
+        "type": "type_tuple",
         "named": true
       }
     ]
@@ -2099,6 +2117,40 @@
     }
   },
   {
+    "type": "type_record",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "struct_field",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "type_tuple",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "default_definition",
+          "named": true
+        },
+        {
+          "type": "type",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "!",
     "named": false
   },
@@ -2399,6 +2451,10 @@
     "named": false
   },
   {
+    "type": "record",
+    "named": false
+  },
+  {
     "type": "repeat",
     "named": false
   },
@@ -2417,6 +2473,10 @@
   {
     "type": "special_key",
     "named": true
+  },
+  {
+    "type": "tuple",
+    "named": false
   },
   {
     "type": "when",

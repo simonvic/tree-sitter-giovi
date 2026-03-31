@@ -1,0 +1,74 @@
+================================================================================
+empty tuple type
+================================================================================
+foo tuple <>
+--------------------------------------------------------------------------------
+(program
+	(declaration_variable
+		(identifier)
+		(type_tuple)))
+
+================================================================================
+tuple type with one field
+================================================================================
+foo tuple <Int>
+--------------------------------------------------------------------------------
+(program
+	(declaration_variable
+		(identifier)
+		(type_tuple
+			(type_qualified (identifier)))))
+
+================================================================================
+tuple type with multiple comma separated fields
+================================================================================
+foo tuple <Int,Int,Int,>
+--------------------------------------------------------------------------------
+(program
+	(declaration_variable
+		(identifier)
+		(type_tuple
+			(type_qualified (identifier))
+			(type_qualified (identifier))
+			(type_qualified (identifier)))))
+
+================================================================================
+tuple type with multiple space separated fields
+================================================================================
+foo tuple <Int Int Int>
+--------------------------------------------------------------------------------
+(program
+	(declaration_variable
+		(identifier)
+		(type_tuple
+			(type_qualified (identifier))
+			(type_qualified (identifier))
+			(type_qualified (identifier)))))
+
+================================================================================
+tuple type no keyword with one field
+:skip
+================================================================================
+foo <Int>
+--------------------------------------------------------------------------------
+(program
+	(declaration_variable
+		(identifier)
+		(type_tuple
+			(type_qualified (identifier)))))
+
+================================================================================
+tuple type no keyword with multiple comma separated fields
+:skip
+================================================================================
+foo <Int,Int,Int,>
+--------------------------------------------------------------------------------
+(program
+	(declaration_variable
+		(identifier)
+		(type_tuple
+			(type_qualified (identifier))
+			(type_qualified (identifier))
+			(type_qualified (identifier)))))
+
+

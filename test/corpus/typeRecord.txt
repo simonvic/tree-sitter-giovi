@@ -1,0 +1,75 @@
+================================================================================
+empty record type
+================================================================================
+foo record <>
+--------------------------------------------------------------------------------
+(program
+	(declaration_variable
+		(identifier)
+		(type_record)))
+
+================================================================================
+record type with one field
+================================================================================
+foo record <x Int>
+--------------------------------------------------------------------------------
+(program
+	(declaration_variable
+		(identifier)
+		(type_record
+			(struct_field (identifier) (type_qualified (identifier))))))
+
+
+================================================================================
+record type with multiple comma separated fields
+================================================================================
+foo record <x Int, y Int, z Int,>
+--------------------------------------------------------------------------------
+(program
+	(declaration_variable
+		(identifier)
+		(type_record
+			(struct_field (identifier) (type_qualified (identifier)))
+			(struct_field (identifier) (type_qualified (identifier)))
+			(struct_field (identifier) (type_qualified (identifier))))))
+
+================================================================================
+record type with multiple space separated fields
+================================================================================
+foo record <x Int y Int z Int>
+--------------------------------------------------------------------------------
+(program
+	(declaration_variable
+		(identifier)
+		(type_record
+			(struct_field (identifier) (type_qualified (identifier)))
+			(struct_field (identifier) (type_qualified (identifier)))
+			(struct_field (identifier) (type_qualified (identifier))))))
+
+================================================================================
+record type no keyword with one field
+:skip
+================================================================================
+foo <x Int>
+--------------------------------------------------------------------------------
+(program
+	(declaration_variable
+		(identifier)
+		(type_record
+			(struct_field (identifier) (type_qualified (identifier))))))
+
+================================================================================
+record type no keyword with multiple comma separated fields
+:skip
+================================================================================
+foo <x Int, y Int, z Int>
+--------------------------------------------------------------------------------
+(program
+	(declaration_variable
+		(identifier)
+		(type_record
+			(struct_field (identifier) (type_qualified (identifier)))
+			(struct_field (identifier) (type_qualified (identifier)))
+			(struct_field (identifier) (type_qualified (identifier))))))
+
+

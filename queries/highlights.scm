@@ -168,6 +168,12 @@
 (statement_for
   "in" @keyword)
 
+(type_tuple
+  "tuple" @type.builtin)
+
+(type_record
+  "record" @type.builtin)
+
 (reserved_identifier) @constant.builtin
 
 (declaration_function
@@ -213,7 +219,7 @@
 
 ; Reserved keywords
 ((identifier) @keyword @error
-  (#match? @error "^(inf|nan|INF|NAN|def|function|tuple|record|struct|type)$"))
+  (#match? @error "^(inf|nan|INF|NAN|def|function|type)$"))
 
 ((identifier) @type.builtin
   (#match? @type.builtin "^(Type|Function|Tuple|Record|Struct|Module)$"))
