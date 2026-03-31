@@ -1,5 +1,5 @@
 ================================================================================
-empty struct definition
+empty struct declaration
 ================================================================================
 Foo <>
 --------------------------------------------------------------------------------
@@ -8,7 +8,7 @@ Foo <>
 	body: (struct_body)))
 
 ================================================================================
-empty struct definition with parent
+empty struct declaration with parent
 ================================================================================
 Bar : Foo <>
 --------------------------------------------------------------------------------
@@ -19,7 +19,7 @@ Bar : Foo <>
 	body: (struct_body)))
 
 ================================================================================
-empty struct definition with qualified parent
+empty struct declaration with qualified parent
 ================================================================================
 bar.Bar : Foo <>
 --------------------------------------------------------------------------------
@@ -31,7 +31,7 @@ bar.Bar : Foo <>
 	body: (struct_body)))
 
 ================================================================================
-struct definition with one field
+struct declaration with one field
 ================================================================================
 Foo <i Int>
 --------------------------------------------------------------------------------
@@ -44,7 +44,7 @@ Foo <i Int>
 				typename: (identifier))))))
 
 ================================================================================
-struct definition with one field with default override
+struct declaration with one field with default override
 ================================================================================
 Foo <i Int default 69>
 --------------------------------------------------------------------------------
@@ -58,7 +58,7 @@ Foo <i Int default 69>
 			default: (default_definition (literal_integer))))))
 
 ================================================================================
-struct definition with multiple fields
+struct declaration with multiple fields
 ================================================================================
 Foo <
 	i Int
@@ -78,7 +78,7 @@ Foo <
 				typename: (identifier))))))
 
 ================================================================================
-struct definition with multiple fields with default override
+struct declaration with multiple fields with default override
 ================================================================================
 Foo <
 	i Int default 69
