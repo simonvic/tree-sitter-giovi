@@ -2367,7 +2367,7 @@
               "type": "ALIAS",
               "content": {
                 "type": "SYMBOL",
-                "name": "expression_creation_record"
+                "name": "_expression_creation_record"
               },
               "named": true,
               "value": "record"
@@ -2376,7 +2376,7 @@
               "type": "ALIAS",
               "content": {
                 "type": "SYMBOL",
-                "name": "expression_creation_tuple"
+                "name": "_expression_creation_tuple"
               },
               "named": true,
               "value": "tuple"
@@ -2389,48 +2389,87 @@
       "type": "SEQ",
       "members": [
         {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "record"
+                },
+                {
+                  "type": "STRING",
+                  "value": "."
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_expression_creation_record"
+        }
+      ]
+    },
+    "_expression_creation_record": {
+      "type": "SEQ",
+      "members": [
+        {
           "type": "STRING",
           "value": "<"
         },
         {
-          "type": "REPEAT1",
-          "content": {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "FIELD",
-                "name": "name",
-                "content": {
-                  "type": "SYMBOL",
-                  "name": "identifier"
-                }
-              },
-              {
-                "type": "STRING",
-                "value": ":"
-              },
-              {
-                "type": "FIELD",
-                "name": "value",
-                "content": {
-                  "type": "SYMBOL",
-                  "name": "expression"
-                }
-              },
-              {
-                "type": "CHOICE",
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": ":"
+            },
+            {
+              "type": "REPEAT1",
+              "content": {
+                "type": "SEQ",
                 "members": [
                   {
-                    "type": "STRING",
-                    "value": ","
+                    "type": "FIELD",
+                    "name": "name",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "identifier"
+                    }
                   },
                   {
-                    "type": "BLANK"
+                    "type": "STRING",
+                    "value": ":"
+                  },
+                  {
+                    "type": "FIELD",
+                    "name": "value",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "expression"
+                    }
+                  },
+                  {
+                    "type": "CHOICE",
+                    "members": [
+                      {
+                        "type": "STRING",
+                        "value": ","
+                      },
+                      {
+                        "type": "BLANK"
+                      }
+                    ]
                   }
                 ]
               }
-            ]
-          }
+            }
+          ]
         },
         {
           "type": "STRING",
@@ -2439,6 +2478,36 @@
       ]
     },
     "expression_creation_tuple": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "tuple"
+                },
+                {
+                  "type": "STRING",
+                  "value": "."
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_expression_creation_tuple"
+        }
+      ]
+    },
+    "_expression_creation_tuple": {
       "type": "PREC_DYNAMIC",
       "value": 8,
       "content": {
@@ -5267,11 +5336,11 @@
     ],
     [
       "expression_relational",
-      "expression_creation_tuple"
+      "_expression_creation_tuple"
     ],
     [
       "expression_relational",
-      "expression_creation_record"
+      "_expression_creation_record"
     ],
     [
       "expression_relational",

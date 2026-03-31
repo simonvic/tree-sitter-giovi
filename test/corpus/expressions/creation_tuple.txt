@@ -76,3 +76,19 @@ tuple with relational expression as field
 			(identifier)
 			(identifier))
 		(identifier))))
+
+================================================================================
+tuple with keyword
+================================================================================
+=> tuple.<>
+=> tuple.<a b c>
+--------------------------------------------------------------------------------
+(program
+	(statement_return
+		(tuple))
+	(statement_return
+		(tuple
+			(identifier)
+			(identifier)
+			(identifier))))
+

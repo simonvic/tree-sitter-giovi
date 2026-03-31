@@ -171,7 +171,13 @@
 (type_tuple
   "tuple" @type.builtin)
 
+(tuple
+  "tuple" @type.builtin)
+
 (type_record
+  "record" @type.builtin)
+
+(record
   "record" @type.builtin)
 
 (reserved_identifier) @constant.builtin

@@ -1,11 +1,10 @@
 ================================================================================
 empty record
-:skip
 ================================================================================
 => <:>
 --------------------------------------------------------------------------------
 (program (statement_return
-	(tuple)))
+	(record)))
 
 ================================================================================
 record with one field
@@ -40,3 +39,19 @@ record with relational expression as field
 			(identifier)
 			(identifier))
 		name: (identifier) value: (identifier))))
+
+================================================================================
+record with keyword
+================================================================================
+=> record.<:>
+=> record.<x:a y:b z:c>
+--------------------------------------------------------------------------------
+(program
+	(statement_return
+		(record))
+	(statement_return
+		(record
+			name: (identifier) value: (identifier)
+			name: (identifier) value: (identifier)
+			name: (identifier) value: (identifier))))
+

@@ -101,8 +101,8 @@ module.exports = grammar({
     [$.case_match_boolean, $.expression_boolean],
     [$.statement_alias, $.type_qualified],
     [$.expression_relational, $.statement_return],
-    [$.expression_relational, $.expression_creation_tuple],
-    [$.expression_relational, $.expression_creation_record],
+    [$.expression_relational, $._expression_creation_tuple],
+    [$.expression_relational, $._expression_creation_record],
     [$.expression_relational, $.declaration_constant],
     [$.expression_relational, $.default_definition],
     [$.expression_relational, $._redirection_rtl],
@@ -491,23 +491,36 @@ module.exports = grammar({
       field("type", $.type_qualified),
       '.',
       choice(
-        alias($.expression_creation_record, $.record),
-        alias($.expression_creation_tuple, $.tuple)
+        alias($._expression_creation_record, $.record),
+        alias($._expression_creation_tuple, $.tuple)
       ),
     ),
 
     expression_creation_record: $ => seq(
+      optional(seq('record', '.')),
+      $._expression_creation_record,
+    ),
+
+    _expression_creation_record: $ => seq(
       '<',
-      repeat1(seq(
-        field("name", $.identifier),
+      choice(
         ':',
-        field("value", $.expression),
-        optional(',')
-      )),
+        repeat1(seq(
+          field("name", $.identifier),
+          ':',
+          field("value", $.expression),
+          optional(',')
+        )),
+      ),
       '>',
     ),
 
-    expression_creation_tuple: $ => prec.dynamic(PREC.CREATION_TUPLE, seq(
+    expression_creation_tuple: $ => seq(
+      optional(seq('tuple', '.')),
+      $._expression_creation_tuple,
+    ),
+
+    _expression_creation_tuple: $ => prec.dynamic(PREC.CREATION_TUPLE, seq(
       '<',
       repeat(seq($.expression, optional(','))),
       '>',
