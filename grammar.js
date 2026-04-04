@@ -56,6 +56,7 @@ const PREC = {
   CREATION_LIST: 9,
   CREATION_MAP: 8,
   CREATION_TUPLE: 8,
+  // CREATION_TYPE: 8,
 
   REF: 7,
   UNARY: 5,
@@ -377,7 +378,7 @@ module.exports = grammar({
     _iterator_nested: $ => choice(
       $.iterator_list,
       $.iterator_map,
-      $.iterator_aggregate,
+      $.iterator_product,
       $.iterator_unary,
       $.literal_placeholder
     ),
@@ -388,7 +389,7 @@ module.exports = grammar({
 
     iterator_map: $ => seq('[', $._iterator_map, ']'),
 
-    iterator_aggregate: $ => seq(
+    iterator_product: $ => seq(
       optional(field("whole", $.iterator_unary)),
       '<',
       $._iterator_nested,

@@ -8,7 +8,7 @@
   (list)
   (map)
   (struct)
-  (iterator_aggregate)
+  (iterator_product)
   (comment_block)
   (doc_block)
 ] @fold

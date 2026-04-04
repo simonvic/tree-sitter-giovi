@@ -212,7 +212,7 @@
     ">"
   ] @punctuation)
 
-(iterator_aggregate
+(iterator_product
   [
     "<"
     ">"

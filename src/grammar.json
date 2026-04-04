@@ -1527,7 +1527,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "iterator_aggregate"
+          "name": "iterator_product"
         },
         {
           "type": "SYMBOL",
@@ -1594,7 +1594,7 @@
         }
       ]
     },
-    "iterator_aggregate": {
+    "iterator_product": {
       "type": "SEQ",
       "members": [
         {
