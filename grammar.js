@@ -356,32 +356,43 @@ module.exports = grammar({
 
     statement_for: $ => seq(
       'for',
-      field("iterator", $.iterator),
+      field("iterator", $._iterator),
       'in',
       field("iterated", $.iterable),
       'do',
       field("body", $._statement_or_block)
     ),
 
-    iterator: $ => choice(
-      $.iterator_unary,
+    _iterator: $ => choice(
+      alias($._iterator_map, $.iterator_map),
+      $._iterator_nested
+    ),
+
+    _iterator_map: $ => prec.left(seq(
+      field("key", $._iterator_nested),
+      ':',
+      field("val", $._iterator_nested)
+    )),
+
+    _iterator_nested: $ => choice(
+      $.iterator_list,
       $.iterator_map,
       $.iterator_aggregate,
-      $.literal_placeholder,
+      $.iterator_unary,
+      $.literal_placeholder
     ),
 
     iterator_unary: $ => seq($.identifier, optional($.type)),
 
-    iterator_map: $ => prec.left(choice(
-      seq('[', field("key", $.iterator), ':', field("val", $.iterator), ']'),
-      seq(field("key", $.iterator), ':', field("val", $.iterator)),
-    )),
+    iterator_list: $ => seq('[', $._iterator_nested, ']'),
+
+    iterator_map: $ => seq('[', $._iterator_map, ']'),
 
     iterator_aggregate: $ => seq(
       optional(field("whole", $.iterator_unary)),
       '<',
-      $.iterator,
-      repeat(seq(',', $.iterator)),
+      $._iterator_nested,
+      repeat(seq(',', $._iterator_nested)),
       optional(','),
       '>',
     ),

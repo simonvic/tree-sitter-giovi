@@ -1438,7 +1438,7 @@
           "name": "iterator",
           "content": {
             "type": "SYMBOL",
-            "name": "iterator"
+            "name": "_iterator"
           }
         },
         {
@@ -1467,12 +1467,59 @@
         }
       ]
     },
-    "iterator": {
+    "_iterator": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_iterator_map"
+          },
+          "named": true,
+          "value": "iterator_map"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_iterator_nested"
+        }
+      ]
+    },
+    "_iterator_map": {
+      "type": "PREC_LEFT",
+      "value": 0,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "FIELD",
+            "name": "key",
+            "content": {
+              "type": "SYMBOL",
+              "name": "_iterator_nested"
+            }
+          },
+          {
+            "type": "STRING",
+            "value": ":"
+          },
+          {
+            "type": "FIELD",
+            "name": "val",
+            "content": {
+              "type": "SYMBOL",
+              "name": "_iterator_nested"
+            }
+          }
+        ]
+      }
+    },
+    "_iterator_nested": {
       "type": "CHOICE",
       "members": [
         {
           "type": "SYMBOL",
-          "name": "iterator_unary"
+          "name": "iterator_list"
         },
         {
           "type": "SYMBOL",
@@ -1481,6 +1528,10 @@
         {
           "type": "SYMBOL",
           "name": "iterator_aggregate"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "iterator_unary"
         },
         {
           "type": "SYMBOL",
@@ -1509,72 +1560,39 @@
         }
       ]
     },
+    "iterator_list": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "["
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_iterator_nested"
+        },
+        {
+          "type": "STRING",
+          "value": "]"
+        }
+      ]
+    },
     "iterator_map": {
-      "type": "PREC_LEFT",
-      "value": 0,
-      "content": {
-        "type": "CHOICE",
-        "members": [
-          {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "STRING",
-                "value": "["
-              },
-              {
-                "type": "FIELD",
-                "name": "key",
-                "content": {
-                  "type": "SYMBOL",
-                  "name": "iterator"
-                }
-              },
-              {
-                "type": "STRING",
-                "value": ":"
-              },
-              {
-                "type": "FIELD",
-                "name": "val",
-                "content": {
-                  "type": "SYMBOL",
-                  "name": "iterator"
-                }
-              },
-              {
-                "type": "STRING",
-                "value": "]"
-              }
-            ]
-          },
-          {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "FIELD",
-                "name": "key",
-                "content": {
-                  "type": "SYMBOL",
-                  "name": "iterator"
-                }
-              },
-              {
-                "type": "STRING",
-                "value": ":"
-              },
-              {
-                "type": "FIELD",
-                "name": "val",
-                "content": {
-                  "type": "SYMBOL",
-                  "name": "iterator"
-                }
-              }
-            ]
-          }
-        ]
-      }
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "["
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_iterator_map"
+        },
+        {
+          "type": "STRING",
+          "value": "]"
+        }
+      ]
     },
     "iterator_aggregate": {
       "type": "SEQ",
@@ -1601,7 +1619,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "iterator"
+          "name": "_iterator_nested"
         },
         {
           "type": "REPEAT",
@@ -1614,7 +1632,7 @@
               },
               {
                 "type": "SYMBOL",
-                "name": "iterator"
+                "name": "_iterator_nested"
               }
             ]
           }
