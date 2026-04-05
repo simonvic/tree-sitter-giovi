@@ -108,6 +108,7 @@ module.exports = grammar({
     [$.expression_relational, $.default_definition],
     [$.expression_relational, $._redirection_rtl],
     [$.expression_relational, $.map_entry],
+    [$._iterator, $._iterator_product],
   ],
 
   extras: $ => [
@@ -366,6 +367,7 @@ module.exports = grammar({
 
     _iterator: $ => choice(
       alias($._iterator_map, $.iterator_map),
+      alias($._iterator_product, $.iterator_product),
       $._iterator_nested
     ),
 
@@ -374,6 +376,14 @@ module.exports = grammar({
       ':',
       field("val", $._iterator_nested)
     )),
+
+    _iterator_product: $ => seq(
+      choice(
+        seq($._iterator_nested, repeat(seq(',', $._iterator_nested))),
+        seq('.', $._iterator_nested, repeat(seq(',', '.', $._iterator_nested))),
+      ),
+      optional(','),
+    ),
 
     _iterator_nested: $ => choice(
       $.iterator_list,
@@ -392,10 +402,8 @@ module.exports = grammar({
     iterator_product: $ => seq(
       optional(field("whole", $.iterator_unary)),
       '<',
-      $._iterator_nested,
-      repeat(seq(',', $._iterator_nested)),
-      optional(','),
-      '>',
+      $._iterator_product,
+      '>'
     ),
 
     iterable: $ => choice(

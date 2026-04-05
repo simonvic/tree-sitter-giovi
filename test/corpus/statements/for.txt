@@ -208,3 +208,45 @@ for w <a, b, c> in foo do {}
 		(iterator_unary (identifier)))
 	iterated: (iterable (identifier))
 	body: (block)))
+
+================================================================================
+for field, field, field, in foo do block
+================================================================================
+for a, b, c in foo do {}
+--------------------------------------------------------------------------------
+(program (statement_for
+	iterator: (iterator_product
+		(iterator_unary (identifier))
+		(iterator_unary (identifier))
+		(iterator_unary (identifier)))
+	iterated: (iterable (identifier))
+	body: (block)))
+
+================================================================================
+for .field, .field, .field, in foo do block
+================================================================================
+for .a, .b, .c in foo do {}
+--------------------------------------------------------------------------------
+(program (statement_for
+	iterator: (iterator_product
+		(iterator_unary (identifier))
+		(iterator_unary (identifier))
+		(iterator_unary (identifier)))
+	iterated: (iterable (identifier))
+	body: (block)))
+
+================================================================================
+for nested named fields in foo do block
+================================================================================
+for <.a, .b <.ba, .bb>, .c> in foo do {}
+--------------------------------------------------------------------------------
+(program (statement_for
+	iterator: (iterator_product
+		(iterator_unary (identifier))
+		(iterator_product
+			whole: (iterator_unary (identifier))
+			(iterator_unary (identifier))
+			(iterator_unary (identifier)))
+		(iterator_unary (identifier)))
+	iterated: (iterable (identifier))
+	body: (block)))
