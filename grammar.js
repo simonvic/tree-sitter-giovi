@@ -625,11 +625,14 @@ module.exports = grammar({
     expression_boolean: $ => prec.left(PREC.BOOL, seq($.expression, choice('and', '&', 'or', '|'), $.expression)),
 
     type: $ => choice(
+      $.type_type,
       $.type_qualified,
       $.type_composite,
       $.type_function_ref,
       $.type_product,
     ),
+
+    type_type: _ => 'type',
 
     type_qualified: $ => seq(
       repeat(seq($.identifier, '.')),

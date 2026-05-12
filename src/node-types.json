@@ -312,6 +312,10 @@
       {
         "type": "type_qualified",
         "named": true
+      },
+      {
+        "type": "type_type",
+        "named": true
       }
     ]
   },
@@ -2236,6 +2240,11 @@
         }
       ]
     }
+  },
+  {
+    "type": "type_type",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "!",

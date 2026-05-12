@@ -3320,6 +3320,10 @@
       "members": [
         {
           "type": "SYMBOL",
+          "name": "type_type"
+        },
+        {
+          "type": "SYMBOL",
           "name": "type_qualified"
         },
         {
@@ -3335,6 +3339,10 @@
           "name": "type_product"
         }
       ]
+    },
+    "type_type": {
+      "type": "STRING",
+      "value": "type"
     },
     "type_qualified": {
       "type": "SEQ",
