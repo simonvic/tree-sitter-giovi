@@ -62,6 +62,10 @@
         "named": true
       },
       {
+        "type": "expression_type",
+        "named": true
+      },
+      {
         "type": "expression_typecheck",
         "named": true
       },
@@ -1091,6 +1095,21 @@
       "types": [
         {
           "type": "expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "expression_type",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "type",
           "named": true
         }
       ]
@@ -2552,6 +2571,10 @@
   },
   {
     "type": "tuple",
+    "named": false
+  },
+  {
+    "type": "type",
     "named": false
   },
   {

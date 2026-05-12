@@ -471,6 +471,7 @@ module.exports = grammar({
       alias($.expression_creation_struct, $.struct),
       alias($.expression_creation_record, $.record),
       alias($.expression_creation_tuple, $.tuple),
+      $.expression_type,
       $.expression_ref,
       $.invocation,
       $.expression_dot,
@@ -547,6 +548,8 @@ module.exports = grammar({
       repeat(seq($.expression, optional(','))),
       '>',
     )),
+
+    expression_type: $ => seq('type', '.', $.type),
 
     expression_ref: $ => prec(PREC.REF, seq(
       choice(

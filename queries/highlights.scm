@@ -163,6 +163,7 @@
   "module"
   "struct"
   "function"
+  "type"
   (statement_skip)
   (statement_break)
 ] @keyword
@@ -181,6 +182,9 @@
 
 (record
   "record" @type.builtin)
+
+(expression_type
+  "type" @type.builtin)
 
 (reserved_identifier) @constant.builtin
 

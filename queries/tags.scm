@@ -6,5 +6,5 @@
 
 (invocation) @reference.call
 
-(type
+(type_qualified
   (identifier) @reference.class)
