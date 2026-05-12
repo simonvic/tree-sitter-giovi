@@ -161,6 +161,7 @@
   "alias"
   "import"
   "module"
+  "struct"
   (statement_skip)
   (statement_break)
 ] @keyword

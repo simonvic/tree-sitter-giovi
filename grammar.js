@@ -226,6 +226,7 @@ module.exports = grammar({
     ),
 
     declaration_struct: $ => seq(
+      optional('struct'),
       optional(seq(field("parent_type", $.type_qualified), ':')),
       field("typename", $.identifier),
       field("body", $.struct_body),
@@ -508,6 +509,7 @@ module.exports = grammar({
     ),
 
     expression_creation_struct: $ => seq(
+      optional(seq('struct', '.')),
       field("type", $.type_qualified),
       '.',
       choice(
