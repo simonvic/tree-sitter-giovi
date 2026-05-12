@@ -549,7 +549,11 @@ module.exports = grammar({
     )),
 
     expression_ref: $ => prec(PREC.REF, seq(
-      '::', field("referenced", $.referenceable)
+      choice(
+        '::',
+        seq('function', '.')
+      ),
+      field("referenced", $.referenceable)
     )),
 
     referenceable: $ => choice(
@@ -642,7 +646,7 @@ module.exports = grammar({
       '[', field("key_type", $.type), ':', field("value_type", $.type), ']'
     ),
 
-    type_function_ref: $ => seq('::', $.function_signature),
+    type_function_ref: $ => seq(choice('::', 'function'), $.function_signature),
 
     function_signature: $ => seq(
       $.formal_parameters,

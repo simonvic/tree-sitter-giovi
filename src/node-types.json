@@ -2463,6 +2463,10 @@
     "named": false
   },
   {
+    "type": "function",
+    "named": false
+  },
+  {
     "type": "identifier",
     "named": true
   },

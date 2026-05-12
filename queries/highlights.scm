@@ -162,6 +162,7 @@
   "import"
   "module"
   "struct"
+  "function"
   (statement_skip)
   (statement_break)
 ] @keyword
