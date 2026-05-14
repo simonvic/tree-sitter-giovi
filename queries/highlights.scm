@@ -231,7 +231,7 @@
 
 ; Reserved keywords
 ((identifier) @keyword @error
-  (#match? @error "^(inf|nan|INF|NAN|def|function|type)$"))
+  (#match? @error "^(inf|nan|INF|NAN|def|var|let|at|with|interface)$"))
 
 ((identifier) @type.builtin
   (#match? @type.builtin "^(Type|Function|Tuple|Record|Struct|Module)$"))
