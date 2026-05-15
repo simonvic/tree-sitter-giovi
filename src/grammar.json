@@ -967,7 +967,7 @@
           },
           {
             "type": "FIELD",
-            "name": "body",
+            "name": "consequence",
             "content": {
               "type": "SYMBOL",
               "name": "_statement_or_block"
@@ -985,7 +985,7 @@
                   },
                   {
                     "type": "FIELD",
-                    "name": "else_body",
+                    "name": "alternative",
                     "content": {
                       "type": "SYMBOL",
                       "name": "_statement_or_block"
@@ -1039,7 +1039,7 @@
                   },
                   {
                     "type": "FIELD",
-                    "name": "else_body",
+                    "name": "alternative",
                     "content": {
                       "type": "SYMBOL",
                       "name": "_statement_or_block"
@@ -1117,7 +1117,7 @@
         },
         {
           "type": "FIELD",
-          "name": "body",
+          "name": "consequence",
           "content": {
             "type": "SYMBOL",
             "name": "_statement_or_block"

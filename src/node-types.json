@@ -1827,9 +1827,9 @@
     "type": "statement_if",
     "named": true,
     "fields": {
-      "body": {
+      "alternative": {
         "multiple": false,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "block",
@@ -1851,9 +1851,9 @@
           }
         ]
       },
-      "else_body": {
+      "consequence": {
         "multiple": false,
-        "required": false,
+        "required": true,
         "types": [
           {
             "type": "block",
@@ -1886,17 +1886,7 @@
     "type": "statement_multi_if",
     "named": true,
     "fields": {
-      "body": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "switch_block",
-            "named": true
-          }
-        ]
-      },
-      "else_body": {
+      "alternative": {
         "multiple": false,
         "required": false,
         "types": [
@@ -1906,6 +1896,16 @@
           },
           {
             "type": "statement",
+            "named": true
+          }
+        ]
+      },
+      "body": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "switch_block",
             "named": true
           }
         ]
@@ -2048,7 +2048,17 @@
     "type": "switch_label",
     "named": true,
     "fields": {
-      "body": {
+      "cases": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "cases",
+            "named": true
+          }
+        ]
+      },
+      "consequence": {
         "multiple": false,
         "required": true,
         "types": [
@@ -2058,16 +2068,6 @@
           },
           {
             "type": "statement",
-            "named": true
-          }
-        ]
-      },
-      "cases": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "cases",
             "named": true
           }
         ]

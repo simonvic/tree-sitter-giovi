@@ -13,7 +13,7 @@
 #define ALIAS_COUNT 1
 #define TOKEN_COUNT 100
 #define EXTERNAL_TOKEN_COUNT 0
-#define FIELD_COUNT 34
+#define FIELD_COUNT 35
 #define MAX_ALIAS_SEQUENCE_LENGTH 6
 #define MAX_RESERVED_WORD_SET_SIZE 0
 #define PRODUCTION_ID_COUNT 56
@@ -1640,37 +1640,38 @@ enum ts_field_identifiers {
   field_accessed = 1,
   field_accessor = 2,
   field_alias = 3,
-  field_body = 4,
-  field_bop = 5,
-  field_cases = 6,
-  field_condition = 7,
-  field_default = 8,
-  field_else_body = 9,
-  field_end = 10,
-  field_guard = 11,
-  field_init_size = 12,
-  field_instance = 13,
-  field_invoked = 14,
-  field_iterated = 15,
-  field_iterator = 16,
-  field_key = 17,
-  field_key_type = 18,
-  field_label = 19,
-  field_name = 20,
-  field_op = 21,
-  field_parent_type = 22,
-  field_referenced = 23,
-  field_return_type = 24,
-  field_signature = 25,
-  field_start = 26,
-  field_step = 27,
-  field_subject = 28,
-  field_type = 29,
-  field_typename = 30,
-  field_val = 31,
-  field_value = 32,
-  field_value_type = 33,
-  field_whole = 34,
+  field_alternative = 4,
+  field_body = 5,
+  field_bop = 6,
+  field_cases = 7,
+  field_condition = 8,
+  field_consequence = 9,
+  field_default = 10,
+  field_end = 11,
+  field_guard = 12,
+  field_init_size = 13,
+  field_instance = 14,
+  field_invoked = 15,
+  field_iterated = 16,
+  field_iterator = 17,
+  field_key = 18,
+  field_key_type = 19,
+  field_label = 20,
+  field_name = 21,
+  field_op = 22,
+  field_parent_type = 23,
+  field_referenced = 24,
+  field_return_type = 25,
+  field_signature = 26,
+  field_start = 27,
+  field_step = 28,
+  field_subject = 29,
+  field_type = 30,
+  field_typename = 31,
+  field_val = 32,
+  field_value = 33,
+  field_value_type = 34,
+  field_whole = 35,
 };
 
 static const char * const ts_field_names[] = {
@@ -1678,12 +1679,13 @@ static const char * const ts_field_names[] = {
   [field_accessed] = "accessed",
   [field_accessor] = "accessor",
   [field_alias] = "alias",
+  [field_alternative] = "alternative",
   [field_body] = "body",
   [field_bop] = "bop",
   [field_cases] = "cases",
   [field_condition] = "condition",
+  [field_consequence] = "consequence",
   [field_default] = "default",
-  [field_else_body] = "else_body",
   [field_end] = "end",
   [field_guard] = "guard",
   [field_init_size] = "init_size",
@@ -1851,8 +1853,8 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_name, 0},
     {field_value, 2},
   [53] =
-    {field_body, 3},
     {field_condition, 1},
+    {field_consequence, 3},
   [55] =
     {field_body, 3},
     {field_condition, 2},
@@ -1886,8 +1888,8 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_parent_type, 1},
     {field_typename, 3},
   [77] =
+    {field_alternative, 4},
     {field_body, 2},
-    {field_else_body, 4},
     {field_subject, 1},
   [80] =
     {field_whole, 0},
@@ -1903,12 +1905,12 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_start, 0},
     {field_step, 4},
   [89] =
-    {field_body, 2},
     {field_cases, 0},
+    {field_consequence, 2},
   [91] =
-    {field_body, 3},
+    {field_alternative, 5},
     {field_condition, 1},
-    {field_else_body, 5},
+    {field_consequence, 3},
   [94] =
     {field_body, 5},
     {field_iterated, 3},
@@ -1928,8 +1930,8 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_name, 2},
     {field_type, 3},
   [107] =
-    {field_body, 4},
     {field_cases, 0},
+    {field_consequence, 4},
     {field_guard, 2},
 };
 

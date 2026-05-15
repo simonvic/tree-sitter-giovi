@@ -4,7 +4,7 @@
   body: (_) @context.end) @context
 
 (statement_if
-  body: (_) @context.end) @context
+  consequence: (_) @context.end) @context
 
 (declaration_function
   body: (_) @context.end) @context
@@ -19,4 +19,4 @@
   body: (_) @context.end) @context
 
 (switch_label
-  body: (_) @context.end) @context
+  consequence: (_) @context.end) @context

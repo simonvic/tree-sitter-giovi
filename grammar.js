@@ -299,8 +299,14 @@ module.exports = grammar({
     ),
 
     statement_if: $ => prec.right(seq(
-      'if', field("condition", $.expression), 'do', field("body", $._statement_or_block),
-      optional(seq('else', field("else_body", $._statement_or_block)))
+      'if',
+      field("condition", $.expression),
+      'do',
+      field("consequence", $._statement_or_block),
+      optional(seq(
+        'else',
+        field("alternative", $._statement_or_block)
+      ))
     )),
 
     statement_multi_if: $ => prec.right(seq(
@@ -309,7 +315,7 @@ module.exports = grammar({
       field("body", $.switch_block),
       optional(seq(
         "else",
-        field("else_body", $._statement_or_block)
+        field("alternative", $._statement_or_block)
       ))
     )),
 
@@ -321,7 +327,7 @@ module.exports = grammar({
         field("guard", $.expression)
       )),
       'do',
-      field("body", $._statement_or_block)
+      field("consequence", $._statement_or_block)
     ),
 
     cases: $ => seq(

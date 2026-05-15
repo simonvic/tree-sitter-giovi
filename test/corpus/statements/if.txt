@@ -6,7 +6,7 @@ if true do {}
 (program
 	(statement_if
 		condition: (literal_bool)
-		body: (block)))
+		consequence: (block)))
 
 ================================================================================
 if expression do statement
@@ -16,7 +16,7 @@ if true do 69 -> _out
 (program
 	(statement_if
 		condition: (literal_bool)
-		body: (redirection (literal_integer) (reserved_identifier))))
+		consequence: (redirection (literal_integer) (reserved_identifier))))
 
 ================================================================================
 if expression do block else block
@@ -26,8 +26,8 @@ if true do {} else {}
 (program
 	(statement_if
 		condition: (literal_bool)
-		body: (block)
-		else_body: (block)))
+		consequence: (block)
+		alternative: (block)))
 
 ================================================================================
 if expression do statement else statement
@@ -37,8 +37,8 @@ if true do 69 -> _out else "hello" -> _out
 (program
 	(statement_if
 		condition: (literal_bool)
-		body: (redirection (literal_integer) (reserved_identifier))
-		else_body: (redirection (literal_text) (reserved_identifier))))
+		consequence: (redirection (literal_integer) (reserved_identifier))
+		alternative: (redirection (literal_text) (reserved_identifier))))
 
 
 ================================================================================
@@ -51,11 +51,11 @@ else {}
 --------------------------------------------------------------------------------
 (program (statement_if
 	condition: (literal_bool)
-	body: (statement_if
+	consequence: (statement_if
 		condition: (literal_bool)
-		body: (block)
-		else_body: (block))
-	else_body: (block)))
+		consequence: (block)
+		alternative: (block))
+	alternative: (block)))
 
 
 ================================================================================
@@ -69,13 +69,13 @@ else {}
 --------------------------------------------------------------------------------
 (program (statement_if
 	condition: (literal_bool)
-	body: (block)
-	else_body: (statement_if
+	consequence: (block)
+	alternative: (statement_if
 		condition: (literal_bool)
-		body: (block)
-		else_body: (statement_if
+		consequence: (block)
+		alternative: (statement_if
 			condition: (literal_bool)
-			body: (block)
-			else_body: (block)))))
+			consequence: (block)
+			alternative: (block)))))
 
 
