@@ -18,5 +18,5 @@
 (statement_multi_if
   body: (_) @context.end) @context
 
-(switch_label
+(multi_if_condition
   consequence: (_) @context.end) @context

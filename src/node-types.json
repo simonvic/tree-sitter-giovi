@@ -1640,6 +1640,61 @@
     }
   },
   {
+    "type": "multi_if_body",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "multi_if_condition",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "multi_if_condition",
+    "named": true,
+    "fields": {
+      "cases": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "cases",
+            "named": true
+          }
+        ]
+      },
+      "consequence": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "block",
+            "named": true
+          },
+          {
+            "type": "statement",
+            "named": true
+          }
+        ]
+      },
+      "guard": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "program",
     "named": true,
     "root": true,
@@ -1905,7 +1960,7 @@
         "required": true,
         "types": [
           {
-            "type": "switch_block",
+            "type": "multi_if_body",
             "named": true
           }
         ]
@@ -2027,61 +2082,6 @@
           "named": true
         }
       ]
-    }
-  },
-  {
-    "type": "switch_block",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "switch_label",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "switch_label",
-    "named": true,
-    "fields": {
-      "cases": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "cases",
-            "named": true
-          }
-        ]
-      },
-      "consequence": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "block",
-            "named": true
-          },
-          {
-            "type": "statement",
-            "named": true
-          }
-        ]
-      },
-      "guard": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "expression",
-            "named": true
-          }
-        ]
-      }
     }
   },
   {

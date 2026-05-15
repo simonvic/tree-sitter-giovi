@@ -25,62 +25,62 @@ if x {
 --------------------------------------------------------------------------------
 (program (statement_multi_if
 	subject: (identifier)
-	body: (switch_block
-		(switch_label
+	body: (multi_if_body
+		(multi_if_condition
 			cases: (cases (case_match_relational (literal_integer)))
 			consequence: (block))
-		(switch_label
+		(multi_if_condition
 			cases: (cases (case_match_relational (literal_integer)))
 			consequence: (block))
-		(switch_label
+		(multi_if_condition
 			cases: (cases (case_match_relational (literal_integer)))
 			consequence: (block))
-		(switch_label
+		(multi_if_condition
 			cases: (cases (case_match_relational (literal_integer)))
 			consequence: (block))
-		(switch_label
+		(multi_if_condition
 			cases: (cases (case_match_equality (literal_integer)))
 			consequence: (block))
-		(switch_label
+		(multi_if_condition
 			cases: (cases (case_match_equality (literal_integer)))
 			consequence: (block))
-		(switch_label
+		(multi_if_condition
 			cases: (cases (case_match_boolean (literal_bool)))
 			consequence: (block))
-		(switch_label
+		(multi_if_condition
 			cases: (cases (case_match_boolean (literal_bool)))
 			consequence: (block))
-		(switch_label
+		(multi_if_condition
 			cases: (cases (case_match_boolean (literal_bool)))
 			consequence: (block))
-		(switch_label
+		(multi_if_condition
 			cases: (cases (case_match_boolean (literal_bool)))
 			consequence: (block))
-		(switch_label
+		(multi_if_condition
 			cases: (cases (case_match_containment (literal_integer)))
 			consequence: (block))
-		(switch_label
+		(multi_if_condition
 			cases: (cases (case_match_containment (identifier)))
 			consequence: (block))
-		(switch_label
+		(multi_if_condition
 			cases: (cases (case_match_containment (identifier)))
 			consequence: (block))
-		(switch_label
+		(multi_if_condition
 			cases: (cases (case_match_containment (literal_integer)))
 			consequence: (block))
-		(switch_label
+		(multi_if_condition
 			cases: (cases (case_match_containment (identifier)))
 			consequence: (block))
-		(switch_label
+		(multi_if_condition
 			cases: (cases (case_match_containment (identifier)))
 			consequence: (block))
-		(switch_label
+		(multi_if_condition
 			cases: (cases (case_match_typecheck (type_qualified typename: (identifier))))
 			consequence: (block))
-		(switch_label
+		(multi_if_condition
 			cases: (cases (case_match_typecheck (identifier) (type_qualified typename: (identifier))))
 			consequence: (block))
-		(switch_label
+		(multi_if_condition
 			cases: (cases (case_match_typecheck (type_qualified typename: (identifier))))
 			consequence: (block)))))
 
@@ -97,23 +97,23 @@ if x {
 (program
 	(statement_multi_if
 		subject: (identifier)
-		body: (switch_block
-			(switch_label
+		body: (multi_if_body
+			(multi_if_condition
 				cases: (cases
 					(case_match_equality (literal_integer))
 					(case_match_equality (literal_integer)))
 				consequence: (block))
-			(switch_label
+			(multi_if_condition
 				cases: (cases
 					(case_match_equality (literal_integer))
 					(case_match_equality (literal_integer)))
 				consequence: (block))
-			(switch_label
+			(multi_if_condition
 				cases: (cases
 					(case_match_equality (literal_integer))
 					(case_match_equality (literal_integer)))
 				consequence: (block))
-			(switch_label
+			(multi_if_condition
 				cases: (cases
 					(case_match_equality (literal_integer))
 					(case_match_equality (literal_integer)))
@@ -129,8 +129,8 @@ if x {
 (program
 	(statement_multi_if
 		subject: (identifier)
-		body: (switch_block
-			(switch_label
+		body: (multi_if_body
+			(multi_if_condition
 				cases: (cases
 					(case_match_boolean
 						(expression_boolean
@@ -149,13 +149,13 @@ if x {
 (program
 	(statement_multi_if
 		subject: (identifier)
-		body: (switch_block
-			(switch_label
+		body: (multi_if_body
+			(multi_if_condition
 				cases: (cases
 					(case_match_equality (literal_integer)))
 				guard: (literal_bool)
 				consequence: (block))
-			(switch_label
+			(multi_if_condition
 				cases: (cases
 					(case_match_equality (literal_integer))
 					(case_match_equality (literal_integer)))
@@ -173,8 +173,8 @@ if x {
 --------------------------------------------------------------------------------
 (program (statement_multi_if
 	subject: (identifier)
-	body: (switch_block
-		(switch_label
+	body: (multi_if_body
+		(multi_if_condition
 			cases: (cases (case_match_equality (literal_integer)))
 			consequence: (block)))
 	alternative: (block)))
@@ -189,10 +189,10 @@ if x {
 --------------------------------------------------------------------------------
 (program (statement_multi_if
 	subject: (identifier)
-	body: (switch_block
-		(switch_label
+	body: (multi_if_body
+		(multi_if_condition
 			cases: (cases (case_match_equality (identifier)))
 			consequence: (statement_return (identifier)))
-		(switch_label
+		(multi_if_condition
 			cases: (cases (case_match_equality (identifier)))
 			consequence: (statement_return (identifier))))))

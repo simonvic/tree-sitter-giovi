@@ -312,15 +312,16 @@ module.exports = grammar({
     statement_multi_if: $ => prec.right(seq(
       'if',
       field("subject", $.expression),
-      field("body", $.switch_block),
+      field("body", $.multi_if_body),
       optional(seq(
         "else",
         field("alternative", $._statement_or_block)
       ))
     )),
 
-    switch_block: $ => seq('{', repeat1($.switch_label), '}'),
-    switch_label: $ => seq(
+    multi_if_body: $ => seq('{', repeat1($.multi_if_condition), '}'),
+
+    multi_if_condition: $ => seq(
       field("cases", $.cases),
       optional(seq(
         'when',

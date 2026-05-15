@@ -8,8 +8,8 @@
   (declaration_struct)
   (formal_parameters)
   (actual_parameters)
-  (switch_block)
-  (switch_label)
+  (multi_if_body)
+  (multi_if_condition)
 ] @indent.begin
 
 ((statement_import)

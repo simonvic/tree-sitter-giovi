@@ -1024,7 +1024,7 @@
             "name": "body",
             "content": {
               "type": "SYMBOL",
-              "name": "switch_block"
+              "name": "multi_if_body"
             }
           },
           {
@@ -1055,7 +1055,7 @@
         ]
       }
     },
-    "switch_block": {
+    "multi_if_body": {
       "type": "SEQ",
       "members": [
         {
@@ -1066,7 +1066,7 @@
           "type": "REPEAT1",
           "content": {
             "type": "SYMBOL",
-            "name": "switch_label"
+            "name": "multi_if_condition"
           }
         },
         {
@@ -1075,7 +1075,7 @@
         }
       ]
     },
-    "switch_label": {
+    "multi_if_condition": {
       "type": "SEQ",
       "members": [
         {
