@@ -1,4 +1,5 @@
 {
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/config.schema.json",
   "grammars": [
     {
       "name": "giovi",
@@ -24,9 +25,11 @@
   "bindings": {
     "c": false,
     "go": false,
+    "java": false,
     "node": false,
     "python": false,
     "rust": false,
-    "swift": false
+    "swift": false,
+    "zig": false
   }
 }

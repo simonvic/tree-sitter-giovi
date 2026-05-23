@@ -2,6 +2,7 @@
   "name": "tree-sitter-giovi",
   "version": "0.0.1",
   "description": "Giovi grammar for tree-sitter",
+  "type": "module",
   "repository": "github:simonvic/tree-sitter-giovi",
   "license": "MIT",
   "main": "bindings/node",

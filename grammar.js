@@ -83,7 +83,7 @@ const LEX_PREC = {
   DOC_LINE: -2,
 };
 
-module.exports = grammar({
+export default grammar({
   name: "giovi",
 
   word: $ => $.identifier,
