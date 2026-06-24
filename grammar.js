@@ -132,6 +132,9 @@ export default grammar({
     $.type_composite,
     $.referenceable,
     $.pattern,
+    $.pattern_primary,
+    $.pattern_product_subpattern,
+    $.iterator_pattern,
   ],
 
   rules: {
@@ -366,37 +369,34 @@ export default grammar({
 
     statement_for: $ => seq(
       'for',
-      field("pattern", $.pattern),
+      field("pattern", $.iterator_pattern),
       'in',
       field("iterated", $.iterable),
       'do',
       field("body", $._statement_or_block)
     ),
 
-    pattern: $ => choice(
+    iterator_pattern: $ => choice(
       alias($._pattern_map, $.pattern_map),
-      $._pattern_nested
+      $.pattern,
     ),
 
-    _pattern_map: $ => prec.left(seq(
-      field("key", $._pattern_nested),
-      ':',
-      field("val", $._pattern_nested)
-    )),
-
-    _pattern_nested: $ => choice(
+    pattern: $ => choice(
       $.pattern_list,
       $.pattern_map,
       $.pattern_product,
-      $.pattern_unary,
-      $.literal_placeholder
+      $.pattern_primary,
     ),
 
-    pattern_unary: $ => seq($.identifier, optional($.type)),
-
-    pattern_list: $ => seq('[', $._pattern_nested, ']'),
+    pattern_list: $ => seq('[', $.pattern, ']'),
 
     pattern_map: $ => seq('[', $._pattern_map, ']'),
+
+    _pattern_map: $ => prec.left(seq(
+      field("key", $.pattern),
+      ':',
+      field("val", $.pattern)
+    )),
 
     pattern_product: $ => seq(
       optional(field("whole", $.pattern_unary)),
@@ -408,9 +408,29 @@ export default grammar({
       '>'
     ),
 
-    _pattern_product_positional: $ => seq($._pattern_nested, repeat(seq(',', $._pattern_nested))),
+    pattern_product_subpattern: $ => choice(
+      $.pattern_product,
+      $.pattern_primary
+    ),
 
-    _pattern_product_named: $ => seq('.', $._pattern_nested, repeat(seq(',', '.', $._pattern_nested))),
+    _pattern_product_positional: $ => seq(
+      $.pattern_product_subpattern,
+      repeat(seq(',', $.pattern_product_subpattern)),
+      optional(','),
+    ),
+
+    _pattern_product_named: $ => seq(
+      '.', $.pattern_product_subpattern,
+      repeat(seq(',', '.', $.pattern_product_subpattern)),
+      optional(','),
+    ),
+
+    pattern_primary: $ => choice(
+      $.pattern_unary,
+      $.literal_placeholder
+    ),
+
+    pattern_unary: $ => seq($.identifier, optional($.type)),
 
     iterable: $ => choice(
       $.range,
