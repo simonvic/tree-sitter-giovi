@@ -17,7 +17,7 @@
 #define MAX_ALIAS_SEQUENCE_LENGTH 6
 #define MAX_RESERVED_WORD_SET_SIZE 0
 #define PRODUCTION_ID_COUNT 56
-#define SUPERTYPE_COUNT 10
+#define SUPERTYPE_COUNT 11
 
 enum ts_symbol_identifiers {
   sym_identifier = 1,
@@ -154,7 +154,7 @@ enum ts_symbol_identifiers {
   sym_case_match_typecheck = 132,
   sym_statement_repeat = 133,
   sym_statement_for = 134,
-  sym__iterator = 135,
+  sym_iterator = 135,
   sym__iterator_map = 136,
   sym__iterator_product = 137,
   sym__iterator_nested = 138,
@@ -385,7 +385,7 @@ static const char * const ts_symbol_names[] = {
   [sym_case_match_typecheck] = "case_match_typecheck",
   [sym_statement_repeat] = "statement_repeat",
   [sym_statement_for] = "statement_for",
-  [sym__iterator] = "_iterator",
+  [sym_iterator] = "iterator",
   [sym__iterator_map] = "_iterator_map",
   [sym__iterator_product] = "_iterator_product",
   [sym__iterator_nested] = "_iterator_nested",
@@ -616,7 +616,7 @@ static const TSSymbol ts_symbol_map[] = {
   [sym_case_match_typecheck] = sym_case_match_typecheck,
   [sym_statement_repeat] = sym_statement_repeat,
   [sym_statement_for] = sym_statement_for,
-  [sym__iterator] = sym__iterator,
+  [sym_iterator] = sym_iterator,
   [sym__iterator_map] = sym__iterator_map,
   [sym__iterator_product] = sym__iterator_product,
   [sym__iterator_nested] = sym__iterator_nested,
@@ -1254,9 +1254,10 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
     .visible = true,
     .named = true,
   },
-  [sym__iterator] = {
+  [sym_iterator] = {
     .visible = false,
     .named = true,
+    .supertype = true,
   },
   [sym__iterator_map] = {
     .visible = false,
@@ -3676,6 +3677,7 @@ static const TSSymbol ts_supertype_symbols[SUPERTYPE_COUNT] = {
   sym_case_match,
   sym_expression,
   sym_expression_binary,
+  sym_iterator,
   sym_literal,
   sym_primary,
   sym_referenceable,
@@ -3689,13 +3691,14 @@ static const TSMapSlice ts_supertype_map_slices[] = {
   [sym_case_match] = {.index = 0, .length = 5},
   [sym_expression] = {.index = 5, .length = 17},
   [sym_expression_binary] = {.index = 22, .length = 9},
-  [sym_literal] = {.index = 31, .length = 11},
-  [sym_primary] = {.index = 42, .length = 3},
-  [sym_referenceable] = {.index = 45, .length = 2},
-  [sym_statement] = {.index = 47, .length = 16},
-  [sym_type] = {.index = 63, .length = 5},
-  [sym_type_composite] = {.index = 68, .length = 2},
-  [sym_type_product] = {.index = 70, .length = 2},
+  [sym_iterator] = {.index = 31, .length = 5},
+  [sym_literal] = {.index = 36, .length = 11},
+  [sym_primary] = {.index = 47, .length = 3},
+  [sym_referenceable] = {.index = 50, .length = 2},
+  [sym_statement] = {.index = 52, .length = 16},
+  [sym_type] = {.index = 68, .length = 5},
+  [sym_type_composite] = {.index = 73, .length = 2},
+  [sym_type_product] = {.index = 75, .length = 2},
 };
 
 static const TSSymbol ts_supertype_map_entries[] = {
@@ -3734,6 +3737,12 @@ static const TSSymbol ts_supertype_map_entries[] = {
     sym_expression_power,
     sym_expression_relational,
   [31] =
+    sym_iterator_list,
+    sym_iterator_map,
+    sym_iterator_product,
+    sym_iterator_unary,
+    sym_literal_placeholder,
+  [36] =
     sym_literal_bool,
     sym_literal_default,
     sym_literal_exact_text,
@@ -3745,14 +3754,14 @@ static const TSSymbol ts_supertype_map_entries[] = {
     sym_literal_self,
     sym_literal_text,
     sym_literal_text_block,
-  [42] =
+  [47] =
     sym_identifier,
     sym_literal,
     sym_reserved_identifier,
-  [45] =
+  [50] =
     sym_anon_function,
     sym_identifier,
-  [47] =
+  [52] =
     sym_declaration_constant,
     sym_declaration_function,
     sym_declaration_module,
@@ -3769,16 +3778,16 @@ static const TSSymbol ts_supertype_map_entries[] = {
     sym_statement_repeat,
     sym_statement_return,
     sym_statement_skip,
-  [63] =
+  [68] =
     sym_type_composite,
     sym_type_function_ref,
     sym_type_product,
     sym_type_qualified,
     sym_type_type,
-  [68] =
+  [73] =
     sym_type_list,
     sym_type_map,
-  [70] =
+  [75] =
     sym_type_record,
     sym_type_tuple,
 };
@@ -90491,7 +90500,7 @@ static const uint16_t ts_small_parse_table[] = {
     STATE(1338), 1,
       sym_iterator_unary,
     STATE(1599), 1,
-      sym__iterator,
+      sym_iterator,
     STATE(1634), 1,
       sym__iterator_map,
     STATE(1645), 1,
@@ -90632,7 +90641,7 @@ static const uint16_t ts_small_parse_table[] = {
     STATE(1338), 1,
       sym_iterator_unary,
     STATE(1629), 1,
-      sym__iterator,
+      sym_iterator,
     STATE(1634), 1,
       sym__iterator_map,
     STATE(1645), 1,
@@ -90711,7 +90720,7 @@ static const uint16_t ts_small_parse_table[] = {
     STATE(1645), 1,
       sym__iterator_product,
     STATE(1683), 1,
-      sym__iterator,
+      sym_iterator,
     ACTIONS(3), 2,
       sym_doc_block,
       sym_doc_line,
@@ -99711,7 +99720,7 @@ static const TSParseActionEntry ts_parse_actions[] = {
   [3136] = {.entry = {.count = 1, .reusable = false}}, SHIFT(351),
   [3138] = {.entry = {.count = 1, .reusable = true}}, SHIFT(1244),
   [3140] = {.entry = {.count = 1, .reusable = true}}, SHIFT(1270),
-  [3142] = {.entry = {.count = 2, .reusable = true}}, REDUCE(sym__iterator, 1, 0, 0), REDUCE(sym__iterator_product, 1, 0, 0),
+  [3142] = {.entry = {.count = 2, .reusable = true}}, REDUCE(sym_iterator, 1, 0, 0), REDUCE(sym__iterator_product, 1, 0, 0),
   [3145] = {.entry = {.count = 1, .reusable = false}}, SHIFT(947),
   [3147] = {.entry = {.count = 1, .reusable = false}}, SHIFT(301),
   [3149] = {.entry = {.count = 1, .reusable = true}}, SHIFT(288),
@@ -99944,7 +99953,7 @@ static const TSParseActionEntry ts_parse_actions[] = {
   [3612] = {.entry = {.count = 1, .reusable = true}}, SHIFT(1254),
   [3614] = {.entry = {.count = 1, .reusable = true}}, SHIFT(866),
   [3616] = {.entry = {.count = 1, .reusable = true}}, SHIFT(1193),
-  [3618] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym__iterator, 1, 0, 5),
+  [3618] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_iterator, 1, 0, 5),
   [3620] = {.entry = {.count = 1, .reusable = true}}, SHIFT(1649),
   [3622] = {.entry = {.count = 1, .reusable = true}}, SHIFT(709),
   [3624] = {.entry = {.count = 1, .reusable = true}}, SHIFT(1287),
@@ -99954,7 +99963,7 @@ static const TSParseActionEntry ts_parse_actions[] = {
   [3632] = {.entry = {.count = 1, .reusable = true}}, SHIFT(1568),
   [3634] = {.entry = {.count = 1, .reusable = true}}, SHIFT(1348),
   [3636] = {.entry = {.count = 1, .reusable = true}}, SHIFT(1389),
-  [3638] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym__iterator, 1, 0, 6),
+  [3638] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_iterator, 1, 0, 6),
   [3640] = {.entry = {.count = 1, .reusable = true}}, SHIFT(1356),
   [3642] = {.entry = {.count = 1, .reusable = true}}, SHIFT(1450),
   [3644] = {.entry = {.count = 1, .reusable = true}}, SHIFT(1351),

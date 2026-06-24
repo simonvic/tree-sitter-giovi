@@ -108,7 +108,7 @@ export default grammar({
     [$.expression_relational, $.default_definition],
     [$.expression_relational, $._redirection_rtl],
     [$.expression_relational, $.map_entry],
-    [$._iterator, $._iterator_product],
+    [$.iterator, $._iterator_product],
   ],
 
   extras: $ => [
@@ -132,6 +132,7 @@ export default grammar({
     $.type_product,
     $.type_composite,
     $.referenceable,
+    $.iterator,
   ],
 
   rules: {
@@ -366,14 +367,14 @@ export default grammar({
 
     statement_for: $ => seq(
       'for',
-      field("iterator", $._iterator),
+      field("iterator", $.iterator),
       'in',
       field("iterated", $.iterable),
       'do',
       field("body", $._statement_or_block)
     ),
 
-    _iterator: $ => choice(
+    iterator: $ => choice(
       alias($._iterator_map, $.iterator_map),
       alias($._iterator_product, $.iterator_product),
       $._iterator_nested

@@ -142,6 +142,32 @@
     ]
   },
   {
+    "type": "iterator",
+    "named": true,
+    "subtypes": [
+      {
+        "type": "iterator_list",
+        "named": true
+      },
+      {
+        "type": "iterator_map",
+        "named": true
+      },
+      {
+        "type": "iterator_product",
+        "named": true
+      },
+      {
+        "type": "iterator_unary",
+        "named": true
+      },
+      {
+        "type": "literal_placeholder",
+        "named": true
+      }
+    ]
+  },
+  {
     "type": "literal",
     "named": true,
     "subtypes": [
@@ -1855,23 +1881,7 @@
         "required": true,
         "types": [
           {
-            "type": "iterator_list",
-            "named": true
-          },
-          {
-            "type": "iterator_map",
-            "named": true
-          },
-          {
-            "type": "iterator_product",
-            "named": true
-          },
-          {
-            "type": "iterator_unary",
-            "named": true
-          },
-          {
-            "type": "literal_placeholder",
+            "type": "iterator",
             "named": true
           }
         ]
