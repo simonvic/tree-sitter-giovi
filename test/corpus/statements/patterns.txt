@@ -1,0 +1,89 @@
+================================================================================
+placeholder
+================================================================================
+foo -> _
+--------------------------------------------------------------------------------
+(program
+	(redirection
+		(identifier)
+		(literal_placeholder)))
+
+================================================================================
+unary
+================================================================================
+foo -> foo
+--------------------------------------------------------------------------------
+(program
+	(redirection
+		(identifier)
+		(identifier)))
+
+================================================================================
+product positional
+================================================================================
+foo -> <bar, bar, bar>
+--------------------------------------------------------------------------------
+(program
+	(redirection
+		(identifier)
+		(pattern_product
+			(pattern_unary (identifier))
+			(pattern_unary (identifier))
+			(pattern_unary (identifier)))))
+
+================================================================================
+product positional with whole
+================================================================================
+foo -> foo <bar, bar, bar>
+--------------------------------------------------------------------------------
+(program
+	(redirection
+		(identifier)
+		(pattern_product
+			whole: (pattern_unary (identifier))
+			(pattern_unary (identifier))
+			(pattern_unary (identifier))
+			(pattern_unary (identifier)))))
+
+================================================================================
+product named
+================================================================================
+foo -> <.bar, .bar, .bar>
+--------------------------------------------------------------------------------
+(program
+	(redirection
+		(identifier)
+		(pattern_product
+			(pattern_unary (identifier))
+			(pattern_unary (identifier))
+			(pattern_unary (identifier)))))
+
+================================================================================
+product named with whole
+================================================================================
+foo -> foo <.bar, .bar, .bar>
+--------------------------------------------------------------------------------
+(program
+	(redirection
+		(identifier)
+		(pattern_product
+			whole: (pattern_unary (identifier))
+			(pattern_unary (identifier))
+			(pattern_unary (identifier))
+			(pattern_unary (identifier)))))
+
+================================================================================
+product positional with nested
+================================================================================
+foo -> <bar, <baz, baz>, bar>
+--------------------------------------------------------------------------------
+(program
+	(redirection
+		(identifier)
+		(pattern_product
+			(pattern_unary (identifier))
+			(pattern_product
+				(pattern_unary (identifier))
+				(pattern_unary (identifier)))
+			(pattern_unary (identifier)))))
+
