@@ -87,3 +87,19 @@ foo -> <bar, <baz, baz>, bar>
 				(pattern_member (pattern_unary (identifier)))))
 			(pattern_member (pattern_unary (identifier))))))
 
+================================================================================
+product positional with nested positional with whole
+================================================================================
+foo -> <a, b <ba, bb>, c>
+--------------------------------------------------------------------------------
+(program
+	(redirection
+		(identifier)
+		(pattern_product
+			(pattern_member (pattern_unary (identifier)))
+			(pattern_member (pattern_product
+				whole: (pattern_unary (identifier))
+				(pattern_member (pattern_unary (identifier)))
+				(pattern_member (pattern_unary (identifier)))))
+			(pattern_member (pattern_unary (identifier))))))
+
