@@ -1582,46 +1582,50 @@
       }
     },
     "pattern_product": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "FIELD",
-              "name": "whole",
-              "content": {
-                "type": "SYMBOL",
-                "name": "pattern_unary"
+      "type": "PREC_DYNAMIC",
+      "value": 8,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "FIELD",
+                "name": "whole",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "pattern_unary"
+                }
+              },
+              {
+                "type": "BLANK"
               }
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
-        },
-        {
-          "type": "STRING",
-          "value": "<"
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "_pattern_product_positional"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "_pattern_product_named"
-            }
-          ]
-        },
-        {
-          "type": "STRING",
-          "value": ">"
-        }
-      ]
+            ]
+          },
+          {
+            "type": "STRING",
+            "value": "<"
+          },
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "_pattern_product_positional"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_pattern_product_named"
+              }
+            ]
+          },
+          {
+            "type": "STRING",
+            "value": ">"
+          }
+        ]
+      }
     },
     "pattern_product_subpattern": {
       "type": "CHOICE",
@@ -1690,16 +1694,8 @@
             "type": "SEQ",
             "members": [
               {
-                "type": "CHOICE",
-                "members": [
-                  {
-                    "type": "STRING",
-                    "value": ","
-                  },
-                  {
-                    "type": "BLANK"
-                  }
-                ]
+                "type": "STRING",
+                "value": ","
               },
               {
                 "type": "STRING",
@@ -1900,8 +1896,17 @@
                 "value": "->"
               },
               {
-                "type": "SYMBOL",
-                "name": "declaration_variable"
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "declaration_variable"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "pattern_product"
+                  }
+                ]
               }
             ]
           },
@@ -1965,8 +1970,17 @@
           "type": "SEQ",
           "members": [
             {
-              "type": "SYMBOL",
-              "name": "declaration_variable"
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "declaration_variable"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "pattern_product"
+                }
+              ]
             },
             {
               "type": "STRING",
@@ -5505,11 +5519,13 @@
     ],
     [
       "primary",
-      "declaration_struct"
+      "declaration_struct",
+      "pattern_unary"
     ],
     [
       "primary",
-      "declaration_variable"
+      "declaration_variable",
+      "pattern_unary"
     ],
     [
       "primary",
@@ -5557,6 +5573,18 @@
     [
       "expression_relational",
       "map_entry"
+    ],
+    [
+      "pattern_primary",
+      "literal"
+    ],
+    [
+      "pattern_unary",
+      "declaration_variable"
+    ],
+    [
+      "pattern_unary",
+      "primary"
     ]
   ],
   "precedences": [],

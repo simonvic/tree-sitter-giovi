@@ -94,8 +94,8 @@ export default grammar({
     [$.formal_parameters, $.actual_parameters],
     [$.function_signature],
     [$.expression, $.statement],
-    [$.primary, $.declaration_struct],
-    [$.primary, $.declaration_variable],
+    [$.primary, $.declaration_struct, $.pattern_unary],
+    [$.primary, $.declaration_variable, $.pattern_unary],
     [$.primary, $.formal_parameter],
     [$.primary, $.type_qualified],
     [$.type_qualified],
@@ -108,6 +108,9 @@ export default grammar({
     [$.expression_relational, $.default_definition],
     [$.expression_relational, $._redirection_rtl],
     [$.expression_relational, $.map_entry],
+    [$.pattern_primary, $.literal],
+    [$.pattern_unary, $.declaration_variable],
+    [$.pattern_unary, $.primary],
   ],
 
   extras: $ => [
@@ -398,7 +401,7 @@ export default grammar({
       field("val", $.pattern)
     )),
 
-    pattern_product: $ => seq(
+    pattern_product: $ => prec.dynamic(PREC.CREATION_TUPLE, seq(
       optional(field("whole", $.pattern_unary)),
       '<',
       choice(
@@ -406,7 +409,7 @@ export default grammar({
         $._pattern_product_named,
       ),
       '>'
-    ),
+    )),
 
     pattern_product_subpattern: $ => choice(
       $.pattern_product,
@@ -456,14 +459,14 @@ export default grammar({
     ),
 
     _redirection_ltr: $ => prec(99, choice(
-      seq($.expression, '->', $.declaration_variable),
+      seq($.expression, '->', choice($.declaration_variable, $.pattern_product)),
       //seq($.expression, REDIR_OP_LTR, $.reserved_identifier, SEMICOLON),
       // seq($.expression, REDIR_OP_LTR, $.identifier),
       seq($.expression, REDIR_OP_LTR, $.expression, SEMICOLON),
     )),
 
     _redirection_rtl: $ => choice(
-      seq($.declaration_variable, '<-', $.expression, SEMICOLON),
+      seq(choice($.declaration_variable, $.pattern_product), '<-', $.expression, SEMICOLON),
       //seq($.reserved_identifier, REDIR_OP_RTL, $.expression, SEMICOLON),
       // seq($.identifier, REDIR_OP_RTL, $.expression),
       seq($.expression, REDIR_OP_RTL, $.expression, SEMICOLON),
