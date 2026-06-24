@@ -1447,10 +1447,10 @@
         },
         {
           "type": "FIELD",
-          "name": "iterator",
+          "name": "pattern",
           "content": {
             "type": "SYMBOL",
-            "name": "iterator"
+            "name": "pattern"
           }
         },
         {
@@ -1479,34 +1479,34 @@
         }
       ]
     },
-    "iterator": {
+    "pattern": {
       "type": "CHOICE",
       "members": [
         {
           "type": "ALIAS",
           "content": {
             "type": "SYMBOL",
-            "name": "_iterator_map"
+            "name": "_pattern_map"
           },
           "named": true,
-          "value": "iterator_map"
+          "value": "pattern_map"
         },
         {
           "type": "ALIAS",
           "content": {
             "type": "SYMBOL",
-            "name": "_iterator_product"
+            "name": "_pattern_product"
           },
           "named": true,
-          "value": "iterator_product"
+          "value": "pattern_product"
         },
         {
           "type": "SYMBOL",
-          "name": "_iterator_nested"
+          "name": "_pattern_nested"
         }
       ]
     },
-    "_iterator_map": {
+    "_pattern_map": {
       "type": "PREC_LEFT",
       "value": 0,
       "content": {
@@ -1517,7 +1517,7 @@
             "name": "key",
             "content": {
               "type": "SYMBOL",
-              "name": "_iterator_nested"
+              "name": "_pattern_nested"
             }
           },
           {
@@ -1529,13 +1529,13 @@
             "name": "val",
             "content": {
               "type": "SYMBOL",
-              "name": "_iterator_nested"
+              "name": "_pattern_nested"
             }
           }
         ]
       }
     },
-    "_iterator_product": {
+    "_pattern_product": {
       "type": "SEQ",
       "members": [
         {
@@ -1546,7 +1546,7 @@
               "members": [
                 {
                   "type": "SYMBOL",
-                  "name": "_iterator_nested"
+                  "name": "_pattern_nested"
                 },
                 {
                   "type": "REPEAT",
@@ -1559,7 +1559,7 @@
                       },
                       {
                         "type": "SYMBOL",
-                        "name": "_iterator_nested"
+                        "name": "_pattern_nested"
                       }
                     ]
                   }
@@ -1575,7 +1575,7 @@
                 },
                 {
                   "type": "SYMBOL",
-                  "name": "_iterator_nested"
+                  "name": "_pattern_nested"
                 },
                 {
                   "type": "REPEAT",
@@ -1592,7 +1592,7 @@
                       },
                       {
                         "type": "SYMBOL",
-                        "name": "_iterator_nested"
+                        "name": "_pattern_nested"
                       }
                     ]
                   }
@@ -1615,24 +1615,24 @@
         }
       ]
     },
-    "_iterator_nested": {
+    "_pattern_nested": {
       "type": "CHOICE",
       "members": [
         {
           "type": "SYMBOL",
-          "name": "iterator_list"
+          "name": "pattern_list"
         },
         {
           "type": "SYMBOL",
-          "name": "iterator_map"
+          "name": "pattern_map"
         },
         {
           "type": "SYMBOL",
-          "name": "iterator_product"
+          "name": "pattern_product"
         },
         {
           "type": "SYMBOL",
-          "name": "iterator_unary"
+          "name": "pattern_unary"
         },
         {
           "type": "SYMBOL",
@@ -1640,7 +1640,7 @@
         }
       ]
     },
-    "iterator_unary": {
+    "pattern_unary": {
       "type": "SEQ",
       "members": [
         {
@@ -1661,7 +1661,7 @@
         }
       ]
     },
-    "iterator_list": {
+    "pattern_list": {
       "type": "SEQ",
       "members": [
         {
@@ -1670,7 +1670,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_iterator_nested"
+          "name": "_pattern_nested"
         },
         {
           "type": "STRING",
@@ -1678,7 +1678,7 @@
         }
       ]
     },
-    "iterator_map": {
+    "pattern_map": {
       "type": "SEQ",
       "members": [
         {
@@ -1687,7 +1687,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_iterator_map"
+          "name": "_pattern_map"
         },
         {
           "type": "STRING",
@@ -1695,7 +1695,7 @@
         }
       ]
     },
-    "iterator_product": {
+    "pattern_product": {
       "type": "SEQ",
       "members": [
         {
@@ -1706,7 +1706,7 @@
               "name": "whole",
               "content": {
                 "type": "SYMBOL",
-                "name": "iterator_unary"
+                "name": "pattern_unary"
               }
             },
             {
@@ -1720,7 +1720,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_iterator_product"
+          "name": "_pattern_product"
         },
         {
           "type": "STRING",
@@ -5527,8 +5527,8 @@
       "map_entry"
     ],
     [
-      "iterator",
-      "_iterator_product"
+      "pattern",
+      "_pattern_product"
     ]
   ],
   "precedences": [],
@@ -5547,7 +5547,7 @@
     "type_product",
     "type_composite",
     "referenceable",
-    "iterator"
+    "pattern"
   ],
   "reserved": {}
 }

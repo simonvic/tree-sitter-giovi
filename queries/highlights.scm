@@ -218,7 +218,7 @@
     ">"
   ] @punctuation)
 
-(iterator_product
+(pattern_product
   [
     "<"
     ">"

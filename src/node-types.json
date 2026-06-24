@@ -142,32 +142,6 @@
     ]
   },
   {
-    "type": "iterator",
-    "named": true,
-    "subtypes": [
-      {
-        "type": "iterator_list",
-        "named": true
-      },
-      {
-        "type": "iterator_map",
-        "named": true
-      },
-      {
-        "type": "iterator_product",
-        "named": true
-      },
-      {
-        "type": "iterator_unary",
-        "named": true
-      },
-      {
-        "type": "literal_placeholder",
-        "named": true
-      }
-    ]
-  },
-  {
     "type": "literal",
     "named": true,
     "subtypes": [
@@ -213,6 +187,32 @@
       },
       {
         "type": "literal_text_block",
+        "named": true
+      }
+    ]
+  },
+  {
+    "type": "pattern",
+    "named": true,
+    "subtypes": [
+      {
+        "type": "literal_placeholder",
+        "named": true
+      },
+      {
+        "type": "pattern_list",
+        "named": true
+      },
+      {
+        "type": "pattern_map",
+        "named": true
+      },
+      {
+        "type": "pattern_product",
+        "named": true
+      },
+      {
+        "type": "pattern_unary",
         "named": true
       }
     ]
@@ -1368,156 +1368,6 @@
     }
   },
   {
-    "type": "iterator_list",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "iterator_list",
-          "named": true
-        },
-        {
-          "type": "iterator_map",
-          "named": true
-        },
-        {
-          "type": "iterator_product",
-          "named": true
-        },
-        {
-          "type": "iterator_unary",
-          "named": true
-        },
-        {
-          "type": "literal_placeholder",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "iterator_map",
-    "named": true,
-    "fields": {
-      "key": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "iterator_list",
-            "named": true
-          },
-          {
-            "type": "iterator_map",
-            "named": true
-          },
-          {
-            "type": "iterator_product",
-            "named": true
-          },
-          {
-            "type": "iterator_unary",
-            "named": true
-          },
-          {
-            "type": "literal_placeholder",
-            "named": true
-          }
-        ]
-      },
-      "val": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "iterator_list",
-            "named": true
-          },
-          {
-            "type": "iterator_map",
-            "named": true
-          },
-          {
-            "type": "iterator_product",
-            "named": true
-          },
-          {
-            "type": "iterator_unary",
-            "named": true
-          },
-          {
-            "type": "literal_placeholder",
-            "named": true
-          }
-        ]
-      }
-    }
-  },
-  {
-    "type": "iterator_product",
-    "named": true,
-    "fields": {
-      "whole": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "iterator_unary",
-            "named": true
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "iterator_list",
-          "named": true
-        },
-        {
-          "type": "iterator_map",
-          "named": true
-        },
-        {
-          "type": "iterator_product",
-          "named": true
-        },
-        {
-          "type": "iterator_unary",
-          "named": true
-        },
-        {
-          "type": "literal_placeholder",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "iterator_unary",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "type",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "list",
     "named": true,
     "fields": {},
@@ -1721,6 +1571,156 @@
     }
   },
   {
+    "type": "pattern_list",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "literal_placeholder",
+          "named": true
+        },
+        {
+          "type": "pattern_list",
+          "named": true
+        },
+        {
+          "type": "pattern_map",
+          "named": true
+        },
+        {
+          "type": "pattern_product",
+          "named": true
+        },
+        {
+          "type": "pattern_unary",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "pattern_map",
+    "named": true,
+    "fields": {
+      "key": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "literal_placeholder",
+            "named": true
+          },
+          {
+            "type": "pattern_list",
+            "named": true
+          },
+          {
+            "type": "pattern_map",
+            "named": true
+          },
+          {
+            "type": "pattern_product",
+            "named": true
+          },
+          {
+            "type": "pattern_unary",
+            "named": true
+          }
+        ]
+      },
+      "val": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "literal_placeholder",
+            "named": true
+          },
+          {
+            "type": "pattern_list",
+            "named": true
+          },
+          {
+            "type": "pattern_map",
+            "named": true
+          },
+          {
+            "type": "pattern_product",
+            "named": true
+          },
+          {
+            "type": "pattern_unary",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "pattern_product",
+    "named": true,
+    "fields": {
+      "whole": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "pattern_unary",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "literal_placeholder",
+          "named": true
+        },
+        {
+          "type": "pattern_list",
+          "named": true
+        },
+        {
+          "type": "pattern_map",
+          "named": true
+        },
+        {
+          "type": "pattern_product",
+          "named": true
+        },
+        {
+          "type": "pattern_unary",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "pattern_unary",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "type",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "program",
     "named": true,
     "root": true,
@@ -1876,12 +1876,12 @@
           }
         ]
       },
-      "iterator": {
+      "pattern": {
         "multiple": false,
         "required": true,
         "types": [
           {
-            "type": "iterator",
+            "type": "pattern",
             "named": true
           }
         ]

@@ -4,7 +4,7 @@ for placeholder in foo do block
 for _ in foo do {}
 --------------------------------------------------------------------------------
 (program (statement_for
-	iterator: (literal_placeholder)
+	pattern: (literal_placeholder)
 	iterated: (iterable (identifier))
 	body: (block)))
 
@@ -14,7 +14,7 @@ for unary in foo do block
 for i in foo do {}
 --------------------------------------------------------------------------------
 (program (statement_for
-	iterator: (iterator_unary (identifier))
+	pattern: (pattern_unary (identifier))
 	iterated: (iterable (identifier))
 	body: (block)))
 
@@ -24,7 +24,7 @@ for unary in foo do block
 for [i] in foo do {}
 --------------------------------------------------------------------------------
 (program (statement_for
-	iterator: (iterator_list (iterator_unary (identifier)))
+	pattern: (pattern_list (pattern_unary (identifier)))
 	iterated: (iterable (identifier))
 	body: (block)))
 
@@ -34,7 +34,7 @@ for nested list in foo do block
 for [[i]] in foo do {}
 --------------------------------------------------------------------------------
 (program (statement_for
-	iterator: (iterator_list (iterator_list (iterator_unary (identifier))))
+	pattern: (pattern_list (pattern_list (pattern_unary (identifier))))
 	iterated: (iterable (identifier))
 	body: (block)))
 
@@ -44,7 +44,7 @@ for typed unary in foo do block
 for i Type in foo do {}
 --------------------------------------------------------------------------------
 (program (statement_for
-	iterator: (iterator_unary
+	pattern: (pattern_unary
 		(identifier)
 		(type_qualified typename: (identifier)))
 	iterated: (iterable (identifier))
@@ -56,7 +56,7 @@ for composite typed unary in foo do block
 for i [Type] in foo do {}
 --------------------------------------------------------------------------------
 (program (statement_for
-	iterator: (iterator_unary
+	pattern: (pattern_unary
 		(identifier)
 		(type_list (type_qualified typename: (identifier))))
 	iterated: (iterable (identifier))
@@ -68,7 +68,7 @@ for placeholder : placeholder in foo do block
 for _ : _ in foo do {}
 --------------------------------------------------------------------------------
 (program (statement_for
-	iterator: (iterator_map
+	pattern: (pattern_map
 		key: (literal_placeholder)
 		val: (literal_placeholder))
 	iterated: (iterable (identifier))
@@ -80,8 +80,8 @@ for key : placeholder in foo do block
 for k : _ in foo do {}
 --------------------------------------------------------------------------------
 (program (statement_for
-	iterator: (iterator_map
-		key: (iterator_unary (identifier))
+	pattern: (pattern_map
+		key: (pattern_unary (identifier))
 		val: (literal_placeholder))
 	iterated: (iterable (identifier))
 	body: (block)))
@@ -92,9 +92,9 @@ for placeholder : value in foo do block
 for _ : v in foo do {}
 --------------------------------------------------------------------------------
 (program (statement_for
-	iterator: (iterator_map
+	pattern: (pattern_map
 		key: (literal_placeholder)
-		val: (iterator_unary (identifier)))
+		val: (pattern_unary (identifier)))
 	iterated: (iterable (identifier))
 	body: (block)))
 
@@ -104,9 +104,9 @@ for key : value in foo do block
 for k : v in foo do {}
 --------------------------------------------------------------------------------
 (program (statement_for
-	iterator: (iterator_map
-		key: (iterator_unary (identifier))
-		val: (iterator_unary (identifier)))
+	pattern: (pattern_map
+		key: (pattern_unary (identifier))
+		val: (pattern_unary (identifier)))
 	iterated: (iterable (identifier))
 	body: (block)))
 
@@ -116,9 +116,9 @@ for [ key : value ] in foo do block
 for [k : v] in foo do {}
 --------------------------------------------------------------------------------
 (program (statement_for
-	iterator: (iterator_map
-		key: (iterator_unary (identifier))
-		val: (iterator_unary (identifier)))
+	pattern: (pattern_map
+		key: (pattern_unary (identifier))
+		val: (pattern_unary (identifier)))
 	iterated: (iterable (identifier))
 	body: (block)))
 
@@ -128,11 +128,11 @@ for k : [v : w] in foo do block
 for k : [v : w] in foo do {}
 --------------------------------------------------------------------------------
 (program (statement_for
-	iterator: (iterator_map
-		key: (iterator_unary (identifier))
-		val: (iterator_map
-			key: (iterator_unary (identifier))
-			val: (iterator_unary (identifier))))
+	pattern: (pattern_map
+		key: (pattern_unary (identifier))
+		val: (pattern_map
+			key: (pattern_unary (identifier))
+			val: (pattern_unary (identifier))))
 	iterated: (iterable (identifier))
 	body: (block)))
 
@@ -142,30 +142,30 @@ for key Type : value Type in foo do block
 for k Type : v Type in foo do {}
 --------------------------------------------------------------------------------
 (program (statement_for
-	iterator: (iterator_map
-		key: (iterator_unary
+	pattern: (pattern_map
+		key: (pattern_unary
 			(identifier)
 			(type_qualified typename: (identifier)))
-		val: (iterator_unary
+		val: (pattern_unary
 			(identifier)
 			(type_qualified typename: (identifier))))
 	iterated: (iterable (identifier))
 	body: (block)))
 
 ================================================================================
-for <nested iterators> in foo do block
+for <nested patterns> in foo do block
 ================================================================================
 for <a, [k : <b, c>], d> in foo do {}
 --------------------------------------------------------------------------------
 (program (statement_for
-	iterator: (iterator_product
-		(iterator_unary (identifier))
-		(iterator_map
-			key: (iterator_unary (identifier))
-			val: (iterator_product
-				(iterator_unary (identifier))
-				(iterator_unary (identifier))))
-		(iterator_unary (identifier)))
+	pattern: (pattern_product
+		(pattern_unary (identifier))
+		(pattern_map
+			key: (pattern_unary (identifier))
+			val: (pattern_product
+				(pattern_unary (identifier))
+				(pattern_unary (identifier))))
+		(pattern_unary (identifier)))
 	iterated: (iterable (identifier))
 	body: (block)))
 
@@ -175,8 +175,8 @@ for <field with composite type> in foo do block
 for <a [Int]> in foo do {}
 --------------------------------------------------------------------------------
 (program (statement_for
-	iterator: (iterator_product
-		(iterator_unary
+	pattern: (pattern_product
+		(pattern_unary
 			(identifier)
 			(type_list (type_qualified typename: (identifier)))))
 	iterated: (iterable (identifier))
@@ -188,10 +188,10 @@ for <fields, placeholder> in foo do block
 for <a, _, c> in foo do {}
 --------------------------------------------------------------------------------
 (program (statement_for
-	iterator: (iterator_product
-		(iterator_unary (identifier))
+	pattern: (pattern_product
+		(pattern_unary (identifier))
 		(literal_placeholder)
-		(iterator_unary (identifier)))
+		(pattern_unary (identifier)))
 	iterated: (iterable (identifier))
 	body: (block)))
 
@@ -201,11 +201,11 @@ for whole <fields> in foo do block
 for w <a, b, c> in foo do {}
 --------------------------------------------------------------------------------
 (program (statement_for
-	iterator: (iterator_product
-		whole: (iterator_unary (identifier))
-		(iterator_unary (identifier))
-		(iterator_unary (identifier))
-		(iterator_unary (identifier)))
+	pattern: (pattern_product
+		whole: (pattern_unary (identifier))
+		(pattern_unary (identifier))
+		(pattern_unary (identifier))
+		(pattern_unary (identifier)))
 	iterated: (iterable (identifier))
 	body: (block)))
 
@@ -215,10 +215,10 @@ for field, field, field, in foo do block
 for a, b, c in foo do {}
 --------------------------------------------------------------------------------
 (program (statement_for
-	iterator: (iterator_product
-		(iterator_unary (identifier))
-		(iterator_unary (identifier))
-		(iterator_unary (identifier)))
+	pattern: (pattern_product
+		(pattern_unary (identifier))
+		(pattern_unary (identifier))
+		(pattern_unary (identifier)))
 	iterated: (iterable (identifier))
 	body: (block)))
 
@@ -228,10 +228,10 @@ for .field, .field, .field, in foo do block
 for .a, .b, .c in foo do {}
 --------------------------------------------------------------------------------
 (program (statement_for
-	iterator: (iterator_product
-		(iterator_unary (identifier))
-		(iterator_unary (identifier))
-		(iterator_unary (identifier)))
+	pattern: (pattern_product
+		(pattern_unary (identifier))
+		(pattern_unary (identifier))
+		(pattern_unary (identifier)))
 	iterated: (iterable (identifier))
 	body: (block)))
 
@@ -241,12 +241,12 @@ for nested named fields in foo do block
 for <.a, .b <.ba, .bb>, .c> in foo do {}
 --------------------------------------------------------------------------------
 (program (statement_for
-	iterator: (iterator_product
-		(iterator_unary (identifier))
-		(iterator_product
-			whole: (iterator_unary (identifier))
-			(iterator_unary (identifier))
-			(iterator_unary (identifier)))
-		(iterator_unary (identifier)))
+	pattern: (pattern_product
+		(pattern_unary (identifier))
+		(pattern_product
+			whole: (pattern_unary (identifier))
+			(pattern_unary (identifier))
+			(pattern_unary (identifier)))
+		(pattern_unary (identifier)))
 	iterated: (iterable (identifier))
 	body: (block)))

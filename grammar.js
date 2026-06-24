@@ -108,7 +108,7 @@ export default grammar({
     [$.expression_relational, $.default_definition],
     [$.expression_relational, $._redirection_rtl],
     [$.expression_relational, $.map_entry],
-    [$.iterator, $._iterator_product],
+    [$.pattern, $._pattern_product],
   ],
 
   extras: $ => [
@@ -132,7 +132,7 @@ export default grammar({
     $.type_product,
     $.type_composite,
     $.referenceable,
-    $.iterator,
+    $.pattern,
   ],
 
   rules: {
@@ -367,51 +367,51 @@ export default grammar({
 
     statement_for: $ => seq(
       'for',
-      field("iterator", $.iterator),
+      field("pattern", $.pattern),
       'in',
       field("iterated", $.iterable),
       'do',
       field("body", $._statement_or_block)
     ),
 
-    iterator: $ => choice(
-      alias($._iterator_map, $.iterator_map),
-      alias($._iterator_product, $.iterator_product),
-      $._iterator_nested
+    pattern: $ => choice(
+      alias($._pattern_map, $.pattern_map),
+      alias($._pattern_product, $.pattern_product),
+      $._pattern_nested
     ),
 
-    _iterator_map: $ => prec.left(seq(
-      field("key", $._iterator_nested),
+    _pattern_map: $ => prec.left(seq(
+      field("key", $._pattern_nested),
       ':',
-      field("val", $._iterator_nested)
+      field("val", $._pattern_nested)
     )),
 
-    _iterator_product: $ => seq(
+    _pattern_product: $ => seq(
       choice(
-        seq($._iterator_nested, repeat(seq(',', $._iterator_nested))),
-        seq('.', $._iterator_nested, repeat(seq(',', '.', $._iterator_nested))),
+        seq($._pattern_nested, repeat(seq(',', $._pattern_nested))),
+        seq('.', $._pattern_nested, repeat(seq(',', '.', $._pattern_nested))),
       ),
       optional(','),
     ),
 
-    _iterator_nested: $ => choice(
-      $.iterator_list,
-      $.iterator_map,
-      $.iterator_product,
-      $.iterator_unary,
+    _pattern_nested: $ => choice(
+      $.pattern_list,
+      $.pattern_map,
+      $.pattern_product,
+      $.pattern_unary,
       $.literal_placeholder
     ),
 
-    iterator_unary: $ => seq($.identifier, optional($.type)),
+    pattern_unary: $ => seq($.identifier, optional($.type)),
 
-    iterator_list: $ => seq('[', $._iterator_nested, ']'),
+    pattern_list: $ => seq('[', $._pattern_nested, ']'),
 
-    iterator_map: $ => seq('[', $._iterator_map, ']'),
+    pattern_map: $ => seq('[', $._pattern_map, ']'),
 
-    iterator_product: $ => seq(
-      optional(field("whole", $.iterator_unary)),
+    pattern_product: $ => seq(
+      optional(field("whole", $.pattern_unary)),
       '<',
-      $._iterator_product,
+      $._pattern_product,
       '>'
     ),
 
