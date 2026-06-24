@@ -1492,15 +1492,6 @@
           "value": "pattern_map"
         },
         {
-          "type": "ALIAS",
-          "content": {
-            "type": "SYMBOL",
-            "name": "_pattern_product"
-          },
-          "named": true,
-          "value": "pattern_product"
-        },
-        {
           "type": "SYMBOL",
           "name": "_pattern_nested"
         }
@@ -1534,86 +1525,6 @@
           }
         ]
       }
-    },
-    "_pattern_product": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SEQ",
-              "members": [
-                {
-                  "type": "SYMBOL",
-                  "name": "_pattern_nested"
-                },
-                {
-                  "type": "REPEAT",
-                  "content": {
-                    "type": "SEQ",
-                    "members": [
-                      {
-                        "type": "STRING",
-                        "value": ","
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "_pattern_nested"
-                      }
-                    ]
-                  }
-                }
-              ]
-            },
-            {
-              "type": "SEQ",
-              "members": [
-                {
-                  "type": "STRING",
-                  "value": "."
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "_pattern_nested"
-                },
-                {
-                  "type": "REPEAT",
-                  "content": {
-                    "type": "SEQ",
-                    "members": [
-                      {
-                        "type": "STRING",
-                        "value": ","
-                      },
-                      {
-                        "type": "STRING",
-                        "value": "."
-                      },
-                      {
-                        "type": "SYMBOL",
-                        "name": "_pattern_nested"
-                      }
-                    ]
-                  }
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "STRING",
-              "value": ","
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
-        }
-      ]
     },
     "_pattern_nested": {
       "type": "CHOICE",
@@ -1719,12 +1630,79 @@
           "value": "<"
         },
         {
-          "type": "SYMBOL",
-          "name": "_pattern_product"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_pattern_product_positional"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_pattern_product_named"
+            }
+          ]
         },
         {
           "type": "STRING",
           "value": ">"
+        }
+      ]
+    },
+    "_pattern_product_positional": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_pattern_nested"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "STRING",
+                "value": ","
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_pattern_nested"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "_pattern_product_named": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "."
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_pattern_nested"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "STRING",
+                "value": ","
+              },
+              {
+                "type": "STRING",
+                "value": "."
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_pattern_nested"
+              }
+            ]
+          }
         }
       ]
     },
@@ -5525,10 +5503,6 @@
     [
       "expression_relational",
       "map_entry"
-    ],
-    [
-      "pattern",
-      "_pattern_product"
     ]
   ],
   "precedences": [],

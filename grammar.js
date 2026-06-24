@@ -108,7 +108,6 @@ export default grammar({
     [$.expression_relational, $.default_definition],
     [$.expression_relational, $._redirection_rtl],
     [$.expression_relational, $.map_entry],
-    [$.pattern, $._pattern_product],
   ],
 
   extras: $ => [
@@ -376,7 +375,6 @@ export default grammar({
 
     pattern: $ => choice(
       alias($._pattern_map, $.pattern_map),
-      alias($._pattern_product, $.pattern_product),
       $._pattern_nested
     ),
 
@@ -385,14 +383,6 @@ export default grammar({
       ':',
       field("val", $._pattern_nested)
     )),
-
-    _pattern_product: $ => seq(
-      choice(
-        seq($._pattern_nested, repeat(seq(',', $._pattern_nested))),
-        seq('.', $._pattern_nested, repeat(seq(',', '.', $._pattern_nested))),
-      ),
-      optional(','),
-    ),
 
     _pattern_nested: $ => choice(
       $.pattern_list,
@@ -411,9 +401,16 @@ export default grammar({
     pattern_product: $ => seq(
       optional(field("whole", $.pattern_unary)),
       '<',
-      $._pattern_product,
+      choice(
+        $._pattern_product_positional,
+        $._pattern_product_named,
+      ),
       '>'
     ),
+
+    _pattern_product_positional: $ => seq($._pattern_nested, repeat(seq(',', $._pattern_nested))),
+
+    _pattern_product_named: $ => seq('.', $._pattern_nested, repeat(seq(',', '.', $._pattern_nested))),
 
     iterable: $ => choice(
       $.range,
