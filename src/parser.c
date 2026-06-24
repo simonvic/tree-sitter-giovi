@@ -17,7 +17,7 @@
 #define MAX_ALIAS_SEQUENCE_LENGTH 6
 #define MAX_RESERVED_WORD_SET_SIZE 0
 #define PRODUCTION_ID_COUNT 55
-#define SUPERTYPE_COUNT 14
+#define SUPERTYPE_COUNT 13
 
 enum ts_symbol_identifiers {
   sym_identifier = 1,
@@ -160,7 +160,7 @@ enum ts_symbol_identifiers {
   sym_pattern_map = 138,
   sym__pattern_map = 139,
   sym_pattern_product = 140,
-  sym_pattern_product_subpattern = 141,
+  sym_pattern_member = 141,
   sym__pattern_product_positional = 142,
   sym__pattern_product_named = 143,
   sym_pattern_primary = 144,
@@ -394,7 +394,7 @@ static const char * const ts_symbol_names[] = {
   [sym_pattern_map] = "pattern_map",
   [sym__pattern_map] = "_pattern_map",
   [sym_pattern_product] = "pattern_product",
-  [sym_pattern_product_subpattern] = "pattern_product_subpattern",
+  [sym_pattern_member] = "pattern_member",
   [sym__pattern_product_positional] = "_pattern_product_positional",
   [sym__pattern_product_named] = "_pattern_product_named",
   [sym_pattern_primary] = "pattern_primary",
@@ -628,7 +628,7 @@ static const TSSymbol ts_symbol_map[] = {
   [sym_pattern_map] = sym_pattern_map,
   [sym__pattern_map] = sym__pattern_map,
   [sym_pattern_product] = sym_pattern_product,
-  [sym_pattern_product_subpattern] = sym_pattern_product_subpattern,
+  [sym_pattern_member] = sym_pattern_member,
   [sym__pattern_product_positional] = sym__pattern_product_positional,
   [sym__pattern_product_named] = sym__pattern_product_named,
   [sym_pattern_primary] = sym_pattern_primary,
@@ -1289,10 +1289,9 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
     .visible = true,
     .named = true,
   },
-  [sym_pattern_product_subpattern] = {
-    .visible = false,
+  [sym_pattern_member] = {
+    .visible = true,
     .named = true,
-    .supertype = true,
   },
   [sym__pattern_product_positional] = {
     .visible = false,
@@ -3702,7 +3701,6 @@ static const TSSymbol ts_supertype_symbols[SUPERTYPE_COUNT] = {
   sym_literal,
   sym_pattern,
   sym_pattern_primary,
-  sym_pattern_product_subpattern,
   sym_primary,
   sym_referenceable,
   sym_statement,
@@ -3719,13 +3717,12 @@ static const TSMapSlice ts_supertype_map_slices[] = {
   [sym_literal] = {.index = 33, .length = 11},
   [sym_pattern] = {.index = 44, .length = 4},
   [sym_pattern_primary] = {.index = 48, .length = 2},
-  [sym_pattern_product_subpattern] = {.index = 50, .length = 2},
-  [sym_primary] = {.index = 52, .length = 3},
-  [sym_referenceable] = {.index = 55, .length = 2},
-  [sym_statement] = {.index = 57, .length = 16},
-  [sym_type] = {.index = 73, .length = 5},
-  [sym_type_composite] = {.index = 78, .length = 2},
-  [sym_type_product] = {.index = 80, .length = 2},
+  [sym_primary] = {.index = 50, .length = 3},
+  [sym_referenceable] = {.index = 53, .length = 2},
+  [sym_statement] = {.index = 55, .length = 16},
+  [sym_type] = {.index = 71, .length = 5},
+  [sym_type_composite] = {.index = 76, .length = 2},
+  [sym_type_product] = {.index = 78, .length = 2},
 };
 
 static const TSSymbol ts_supertype_map_entries[] = {
@@ -3787,16 +3784,13 @@ static const TSSymbol ts_supertype_map_entries[] = {
     sym_literal_placeholder,
     sym_pattern_unary,
   [50] =
-    sym_pattern_primary,
-    sym_pattern_product,
-  [52] =
     sym_identifier,
     sym_literal,
     sym_reserved_identifier,
-  [55] =
+  [53] =
     sym_anon_function,
     sym_identifier,
-  [57] =
+  [55] =
     sym_declaration_constant,
     sym_declaration_function,
     sym_declaration_module,
@@ -3813,16 +3807,16 @@ static const TSSymbol ts_supertype_map_entries[] = {
     sym_statement_repeat,
     sym_statement_return,
     sym_statement_skip,
-  [73] =
+  [71] =
     sym_type_composite,
     sym_type_function_ref,
     sym_type_product,
     sym_type_qualified,
     sym_type_type,
-  [78] =
+  [76] =
     sym_type_list,
     sym_type_map,
-  [80] =
+  [78] =
     sym_type_record,
     sym_type_tuple,
 };
@@ -21825,7 +21819,7 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
   [STATE(163)] = {
     [sym_invocation] = STATE(232),
     [sym_pattern_product] = STATE(1539),
-    [sym_pattern_product_subpattern] = STATE(1480),
+    [sym_pattern_member] = STATE(1480),
     [sym__pattern_product_positional] = STATE(1681),
     [sym__pattern_product_named] = STATE(1681),
     [sym_pattern_primary] = STATE(1539),
@@ -24367,7 +24361,7 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
   [STATE(194)] = {
     [sym_invocation] = STATE(232),
     [sym_pattern_product] = STATE(1539),
-    [sym_pattern_product_subpattern] = STATE(1480),
+    [sym_pattern_member] = STATE(1480),
     [sym__pattern_product_positional] = STATE(1681),
     [sym__pattern_product_named] = STATE(1681),
     [sym_pattern_primary] = STATE(1539),
@@ -25597,7 +25591,7 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
   [STATE(209)] = {
     [sym_invocation] = STATE(232),
     [sym_pattern_product] = STATE(1539),
-    [sym_pattern_product_subpattern] = STATE(1480),
+    [sym_pattern_member] = STATE(1480),
     [sym__pattern_product_positional] = STATE(1681),
     [sym__pattern_product_named] = STATE(1681),
     [sym_pattern_primary] = STATE(1539),
@@ -26253,7 +26247,7 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
   [STATE(217)] = {
     [sym_invocation] = STATE(232),
     [sym_pattern_product] = STATE(1539),
-    [sym_pattern_product_subpattern] = STATE(1480),
+    [sym_pattern_member] = STATE(1480),
     [sym__pattern_product_positional] = STATE(1667),
     [sym__pattern_product_named] = STATE(1667),
     [sym_pattern_primary] = STATE(1539),
@@ -26827,7 +26821,7 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
   [STATE(224)] = {
     [sym_invocation] = STATE(232),
     [sym_pattern_product] = STATE(1539),
-    [sym_pattern_product_subpattern] = STATE(1480),
+    [sym_pattern_member] = STATE(1480),
     [sym__pattern_product_positional] = STATE(1681),
     [sym__pattern_product_named] = STATE(1681),
     [sym_pattern_primary] = STATE(1539),
@@ -92081,7 +92075,7 @@ static const uint16_t ts_small_parse_table[] = {
     STATE(1338), 1,
       sym_pattern_unary,
     STATE(1480), 1,
-      sym_pattern_product_subpattern,
+      sym_pattern_member,
     ACTIONS(3), 2,
       sym_doc_block,
       sym_doc_line,
@@ -92125,7 +92119,7 @@ static const uint16_t ts_small_parse_table[] = {
     STATE(1338), 1,
       sym_pattern_unary,
     STATE(1480), 1,
-      sym_pattern_product_subpattern,
+      sym_pattern_member,
     ACTIONS(3), 2,
       sym_doc_block,
       sym_doc_line,
@@ -92150,7 +92144,7 @@ static const uint16_t ts_small_parse_table[] = {
     STATE(1338), 1,
       sym_pattern_unary,
     STATE(1480), 1,
-      sym_pattern_product_subpattern,
+      sym_pattern_member,
     ACTIONS(3), 2,
       sym_doc_block,
       sym_doc_line,
@@ -92628,7 +92622,7 @@ static const uint16_t ts_small_parse_table[] = {
     STATE(1338), 1,
       sym_pattern_unary,
     STATE(1552), 1,
-      sym_pattern_product_subpattern,
+      sym_pattern_member,
     ACTIONS(3), 2,
       sym_doc_block,
       sym_doc_line,
@@ -92673,7 +92667,7 @@ static const uint16_t ts_small_parse_table[] = {
     STATE(1338), 1,
       sym_pattern_unary,
     STATE(1552), 1,
-      sym_pattern_product_subpattern,
+      sym_pattern_member,
     ACTIONS(3), 2,
       sym_doc_block,
       sym_doc_line,
@@ -92843,7 +92837,7 @@ static const uint16_t ts_small_parse_table[] = {
     STATE(1338), 1,
       sym_pattern_unary,
     STATE(1536), 1,
-      sym_pattern_product_subpattern,
+      sym_pattern_member,
     ACTIONS(3), 2,
       sym_doc_block,
       sym_doc_line,
@@ -93145,7 +93139,7 @@ static const uint16_t ts_small_parse_table[] = {
     STATE(1338), 1,
       sym_pattern_unary,
     STATE(1435), 1,
-      sym_pattern_product_subpattern,
+      sym_pattern_member,
     ACTIONS(3), 2,
       sym_doc_block,
       sym_doc_line,
@@ -93399,7 +93393,7 @@ static const uint16_t ts_small_parse_table[] = {
     STATE(1338), 1,
       sym_pattern_unary,
     STATE(1552), 1,
-      sym_pattern_product_subpattern,
+      sym_pattern_member,
     ACTIONS(3), 2,
       sym_doc_block,
       sym_doc_line,
@@ -100437,7 +100431,7 @@ static const TSParseActionEntry ts_parse_actions[] = {
   [3485] = {.entry = {.count = 1, .reusable = true}}, REDUCE(aux_sym__pattern_product_named_repeat1, 3, 0, 0),
   [3487] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_formal_parameter, 5, 0, 53),
   [3489] = {.entry = {.count = 1, .reusable = true}}, SHIFT(445),
-  [3491] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_pattern_product_subpattern, 1, 0, 0),
+  [3491] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_pattern_member, 1, 0, 0),
   [3493] = {.entry = {.count = 1, .reusable = true}}, SHIFT(1493),
   [3495] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_iterator_pattern, 1, 0, 0),
   [3497] = {.entry = {.count = 1, .reusable = true}}, SHIFT(31),

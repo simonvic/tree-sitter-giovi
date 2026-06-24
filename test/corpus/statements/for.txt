@@ -160,13 +160,13 @@ for <a, [k : <b, c>], d> in foo do {}
 --------------------------------------------------------------------------------
 (program (statement_for
 	pattern: (pattern_product
-		(pattern_unary (identifier))
-		(pattern_map
+		(pattern_member (pattern_unary (identifier)))
+		(pattern_member (pattern_map
 			key: (pattern_unary (identifier))
 			val: (pattern_product
 				(pattern_unary (identifier))
-				(pattern_unary (identifier))))
-		(pattern_unary (identifier)))
+				(pattern_unary (identifier)))))
+		(pattern_member (pattern_unary (identifier))))
 	iterated: (iterable (identifier))
 	body: (block)))
 
@@ -177,9 +177,9 @@ for <a [Int]> in foo do {}
 --------------------------------------------------------------------------------
 (program (statement_for
 	pattern: (pattern_product
-		(pattern_unary
+		(pattern_member (pattern_unary
 			(identifier)
-			(type_list (type_qualified typename: (identifier)))))
+			(type_list (type_qualified typename: (identifier))))))
 	iterated: (iterable (identifier))
 	body: (block)))
 
@@ -190,9 +190,9 @@ for <a, _, c> in foo do {}
 --------------------------------------------------------------------------------
 (program (statement_for
 	pattern: (pattern_product
-		(pattern_unary (identifier))
-		(literal_placeholder)
-		(pattern_unary (identifier)))
+		(pattern_member (pattern_unary (identifier)))
+		(pattern_member (literal_placeholder))
+		(pattern_member (pattern_unary (identifier))))
 	iterated: (iterable (identifier))
 	body: (block)))
 
@@ -204,9 +204,9 @@ for w <a, b, c> in foo do {}
 (program (statement_for
 	pattern: (pattern_product
 		whole: (pattern_unary (identifier))
-		(pattern_unary (identifier))
-		(pattern_unary (identifier))
-		(pattern_unary (identifier)))
+		(pattern_member (pattern_unary (identifier)))
+		(pattern_member (pattern_unary (identifier)))
+		(pattern_member (pattern_unary (identifier))))
 	iterated: (iterable (identifier))
 	body: (block)))
 
@@ -218,9 +218,9 @@ for a, b, c in foo do {}
 --------------------------------------------------------------------------------
 (program (statement_for
 	pattern: (pattern_product
-		(pattern_unary (identifier))
-		(pattern_unary (identifier))
-		(pattern_unary (identifier)))
+		(pattern_member (pattern_unary (identifier)))
+		(pattern_member (pattern_unary (identifier)))
+		(pattern_member (pattern_unary (identifier))))
 	iterated: (iterable (identifier))
 	body: (block)))
 
@@ -232,9 +232,9 @@ for .a, .b, .c in foo do {}
 --------------------------------------------------------------------------------
 (program (statement_for
 	pattern: (pattern_product
-		(pattern_unary (identifier))
-		(pattern_unary (identifier))
-		(pattern_unary (identifier)))
+		(pattern_member (pattern_unary (identifier)))
+		(pattern_member (pattern_unary (identifier)))
+		(pattern_member (pattern_unary (identifier))))
 	iterated: (iterable (identifier))
 	body: (block)))
 
@@ -245,11 +245,11 @@ for <.a, .b <.ba, .bb>, .c> in foo do {}
 --------------------------------------------------------------------------------
 (program (statement_for
 	pattern: (pattern_product
-		(pattern_unary (identifier))
-		(pattern_product
+		(pattern_member (pattern_unary (identifier)))
+		(pattern_member (pattern_product
 			whole: (pattern_unary (identifier))
-			(pattern_unary (identifier))
-			(pattern_unary (identifier)))
-		(pattern_unary (identifier)))
+			(pattern_member (pattern_unary (identifier)))
+			(pattern_member (pattern_unary (identifier)))))
+		(pattern_member (pattern_unary (identifier))))
 	iterated: (iterable (identifier))
 	body: (block)))

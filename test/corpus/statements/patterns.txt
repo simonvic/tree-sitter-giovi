@@ -27,9 +27,9 @@ foo -> <bar, bar, bar>
 	(redirection
 		(identifier)
 		(pattern_product
-			(pattern_unary (identifier))
-			(pattern_unary (identifier))
-			(pattern_unary (identifier)))))
+			(pattern_member (pattern_unary (identifier)))
+			(pattern_member (pattern_unary (identifier)))
+			(pattern_member (pattern_unary (identifier))))))
 
 ================================================================================
 product positional with whole
@@ -41,9 +41,9 @@ foo -> foo <bar, bar, bar>
 		(identifier)
 		(pattern_product
 			whole: (pattern_unary (identifier))
-			(pattern_unary (identifier))
-			(pattern_unary (identifier))
-			(pattern_unary (identifier)))))
+			(pattern_member (pattern_unary (identifier)))
+			(pattern_member (pattern_unary (identifier)))
+			(pattern_member (pattern_unary (identifier))))))
 
 ================================================================================
 product named
@@ -54,9 +54,9 @@ foo -> <.bar, .bar, .bar>
 	(redirection
 		(identifier)
 		(pattern_product
-			(pattern_unary (identifier))
-			(pattern_unary (identifier))
-			(pattern_unary (identifier)))))
+			(pattern_member (pattern_unary (identifier)))
+			(pattern_member (pattern_unary (identifier)))
+			(pattern_member (pattern_unary (identifier))))))
 
 ================================================================================
 product named with whole
@@ -68,9 +68,9 @@ foo -> foo <.bar, .bar, .bar>
 		(identifier)
 		(pattern_product
 			whole: (pattern_unary (identifier))
-			(pattern_unary (identifier))
-			(pattern_unary (identifier))
-			(pattern_unary (identifier)))))
+			(pattern_member (pattern_unary (identifier)))
+			(pattern_member (pattern_unary (identifier)))
+			(pattern_member (pattern_unary (identifier))))))
 
 ================================================================================
 product positional with nested
@@ -81,9 +81,9 @@ foo -> <bar, <baz, baz>, bar>
 	(redirection
 		(identifier)
 		(pattern_product
-			(pattern_unary (identifier))
-			(pattern_product
-				(pattern_unary (identifier))
-				(pattern_unary (identifier)))
-			(pattern_unary (identifier)))))
+			(pattern_member (pattern_unary (identifier)))
+			(pattern_member (pattern_product
+				(pattern_member (pattern_unary (identifier)))
+				(pattern_member (pattern_unary (identifier)))))
+			(pattern_member (pattern_unary (identifier))))))
 
