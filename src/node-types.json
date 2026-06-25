@@ -228,6 +228,20 @@
     ]
   },
   {
+    "type": "pattern_map_key",
+    "named": true,
+    "subtypes": [
+      {
+        "type": "pattern_primary",
+        "named": true
+      },
+      {
+        "type": "pattern_product",
+        "named": true
+      }
+    ]
+  },
+  {
     "type": "pattern_member",
     "named": true,
     "subtypes": [
@@ -1632,7 +1646,7 @@
         "required": true,
         "types": [
           {
-            "type": "pattern",
+            "type": "pattern_map_key",
             "named": true
           }
         ]

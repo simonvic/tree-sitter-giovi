@@ -137,6 +137,7 @@ export default grammar({
     $.pattern,
     $.pattern_primary,
     $.pattern_member,
+    $.pattern_map_key,
     $.iterator_pattern,
   ],
 
@@ -396,10 +397,15 @@ export default grammar({
     pattern_map: $ => seq('[', $._pattern_map, ']'),
 
     _pattern_map: $ => prec.left(seq(
-      field("key", $.pattern),
+      field("key", $.pattern_map_key),
       ':',
       field("val", $.pattern)
     )),
+
+    pattern_map_key: $ => choice(
+      $.pattern_product,
+      $.pattern_primary,
+    ),
 
     pattern_product: $ => prec.dynamic(PREC.CREATION_TUPLE, seq(
       optional(field("whole", $.pattern_unary)),

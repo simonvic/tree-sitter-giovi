@@ -1563,7 +1563,7 @@
             "name": "key",
             "content": {
               "type": "SYMBOL",
-              "name": "pattern"
+              "name": "pattern_map_key"
             }
           },
           {
@@ -1580,6 +1580,19 @@
           }
         ]
       }
+    },
+    "pattern_map_key": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "pattern_product"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "pattern_primary"
+        }
+      ]
     },
     "pattern_product": {
       "type": "PREC_DYNAMIC",
@@ -5645,6 +5658,7 @@
     "pattern",
     "pattern_primary",
     "pattern_member",
+    "pattern_map_key",
     "iterator_pattern"
   ],
   "reserved": {}
