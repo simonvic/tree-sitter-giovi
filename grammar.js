@@ -136,6 +136,7 @@ export default grammar({
     $.referenceable,
     $.pattern,
     $.pattern_primary,
+    $.pattern_member,
     $.iterator_pattern,
   ],
 
@@ -422,9 +423,21 @@ export default grammar({
     ),
 
     _pattern_product_named: $ => seq(
-      '.', $.pattern_member,
-      repeat(seq(',', '.', $.pattern_member)),
+      $.pattern_member_named,
+      repeat(seq(',', $.pattern_member_named)),
       optional(','),
+    ),
+
+    pattern_member_named: $ => choice(
+      seq(
+        field("name", $.identifier),
+        ':',
+        field("pattern", $.pattern_member)
+      ),
+      seq(
+        ':',
+        field("pattern", $.pattern_unary)
+      ),
     ),
 
     pattern_primary: $ => choice(

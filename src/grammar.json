@@ -1681,12 +1681,8 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "STRING",
-          "value": "."
-        },
-        {
           "type": "SYMBOL",
-          "name": "pattern_member"
+          "name": "pattern_member_named"
         },
         {
           "type": "REPEAT",
@@ -1698,12 +1694,8 @@
                 "value": ","
               },
               {
-                "type": "STRING",
-                "value": "."
-              },
-              {
                 "type": "SYMBOL",
-                "name": "pattern_member"
+                "name": "pattern_member_named"
               }
             ]
           }
@@ -1717,6 +1709,53 @@
             },
             {
               "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "pattern_member_named": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "FIELD",
+              "name": "name",
+              "content": {
+                "type": "SYMBOL",
+                "name": "identifier"
+              }
+            },
+            {
+              "type": "STRING",
+              "value": ":"
+            },
+            {
+              "type": "FIELD",
+              "name": "pattern",
+              "content": {
+                "type": "SYMBOL",
+                "name": "pattern_member"
+              }
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": ":"
+            },
+            {
+              "type": "FIELD",
+              "name": "pattern",
+              "content": {
+                "type": "SYMBOL",
+                "name": "pattern_unary"
+              }
             }
           ]
         }
@@ -5605,6 +5644,7 @@
     "referenceable",
     "pattern",
     "pattern_primary",
+    "pattern_member",
     "iterator_pattern"
   ],
   "reserved": {}

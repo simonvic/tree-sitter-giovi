@@ -228,6 +228,20 @@
     ]
   },
   {
+    "type": "pattern_member",
+    "named": true,
+    "subtypes": [
+      {
+        "type": "pattern_primary",
+        "named": true
+      },
+      {
+        "type": "pattern_product",
+        "named": true
+      }
+    ]
+  },
+  {
     "type": "pattern_primary",
     "named": true,
     "subtypes": [
@@ -1636,22 +1650,33 @@
     }
   },
   {
-    "type": "pattern_member",
+    "type": "pattern_member_named",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "pattern_primary",
-          "named": true
-        },
-        {
-          "type": "pattern_product",
-          "named": true
-        }
-      ]
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "pattern": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "pattern_member",
+            "named": true
+          },
+          {
+            "type": "pattern_unary",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -1675,6 +1700,10 @@
       "types": [
         {
           "type": "pattern_member",
+          "named": true
+        },
+        {
+          "type": "pattern_member_named",
           "named": true
         }
       ]

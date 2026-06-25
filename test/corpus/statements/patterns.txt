@@ -27,9 +27,9 @@ foo -> <a, b, c>
 	(redirection
 		(identifier)
 		(pattern_product
-			(pattern_member (pattern_unary (identifier)))
-			(pattern_member (pattern_unary (identifier)))
-			(pattern_member (pattern_unary (identifier))))))
+			(pattern_unary (identifier))
+			(pattern_unary (identifier))
+			(pattern_unary (identifier)))))
 
 ================================================================================
 product positional with whole
@@ -41,36 +41,75 @@ foo -> foo <a, b, c>
 		(identifier)
 		(pattern_product
 			whole: (pattern_unary (identifier))
-			(pattern_member (pattern_unary (identifier)))
-			(pattern_member (pattern_unary (identifier)))
-			(pattern_member (pattern_unary (identifier))))))
+			(pattern_unary (identifier))
+			(pattern_unary (identifier))
+			(pattern_unary (identifier)))))
 
 ================================================================================
 product named
 ================================================================================
-foo -> <.a, .b, .c>
+foo -> <x:a, y:b, z:c>
 --------------------------------------------------------------------------------
 (program
 	(redirection
 		(identifier)
 		(pattern_product
-			(pattern_member (pattern_unary (identifier)))
-			(pattern_member (pattern_unary (identifier)))
-			(pattern_member (pattern_unary (identifier))))))
+			(pattern_member_named
+				name: (identifier)
+				pattern: (pattern_unary (identifier)))
+			(pattern_member_named
+				name: (identifier)
+				pattern: (pattern_unary (identifier)))
+			(pattern_member_named
+				name: (identifier)
+				pattern: (pattern_unary (identifier))))))
+
+================================================================================
+product named (equal names)
+================================================================================
+foo -> <:a, :b, :c>
+--------------------------------------------------------------------------------
+(program
+	(redirection
+		(identifier)
+		(pattern_product
+			(pattern_member_named pattern: (pattern_unary (identifier)))
+			(pattern_member_named pattern: (pattern_unary (identifier)))
+			(pattern_member_named pattern: (pattern_unary (identifier))))))
 
 ================================================================================
 product named with whole
 ================================================================================
-foo -> foo <.a, .b, .c>
+foo -> foo <x:a, y:b, z:c>
 --------------------------------------------------------------------------------
 (program
 	(redirection
 		(identifier)
 		(pattern_product
 			whole: (pattern_unary (identifier))
-			(pattern_member (pattern_unary (identifier)))
-			(pattern_member (pattern_unary (identifier)))
-			(pattern_member (pattern_unary (identifier))))))
+			(pattern_member_named
+				name: (identifier)
+				pattern: (pattern_unary (identifier)))
+			(pattern_member_named
+				name: (identifier)
+				pattern: (pattern_unary (identifier)))
+			(pattern_member_named
+				name: (identifier)
+				pattern: (pattern_unary (identifier))))))
+
+================================================================================
+product named (equal names) with whole
+================================================================================
+foo -> foo <:a, :b, :c>
+--------------------------------------------------------------------------------
+(program
+	(redirection
+		(identifier)
+		(pattern_product
+			whole: (pattern_unary (identifier))
+			(pattern_member_named pattern: (pattern_unary (identifier)))
+			(pattern_member_named pattern: (pattern_unary (identifier)))
+			(pattern_member_named pattern: (pattern_unary (identifier))))))
 
 ================================================================================
 product positional with nested positional
@@ -81,11 +120,11 @@ foo -> <a, <b1, b2>, c>
 	(redirection
 		(identifier)
 		(pattern_product
-			(pattern_member (pattern_unary (identifier)))
-			(pattern_member (pattern_product
-				(pattern_member (pattern_unary (identifier)))
-				(pattern_member (pattern_unary (identifier)))))
-			(pattern_member (pattern_unary (identifier))))))
+			(pattern_unary (identifier))
+			(pattern_product
+				(pattern_unary (identifier))
+				(pattern_unary (identifier)))
+			(pattern_unary (identifier)))))
 
 ================================================================================
 product positional with nested positional with whole
@@ -96,10 +135,10 @@ foo -> <a, b <b1, b2>, c>
 	(redirection
 		(identifier)
 		(pattern_product
-			(pattern_member (pattern_unary (identifier)))
-			(pattern_member (pattern_product
+			(pattern_unary (identifier))
+			(pattern_product
 				whole: (pattern_unary (identifier))
-				(pattern_member (pattern_unary (identifier)))
-				(pattern_member (pattern_unary (identifier)))))
-			(pattern_member (pattern_unary (identifier))))))
+				(pattern_unary (identifier))
+				(pattern_unary (identifier)))
+			(pattern_unary (identifier)))))
 

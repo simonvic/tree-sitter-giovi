@@ -153,33 +153,15 @@ for k Type : v Type in foo do {}
 	body: (block)))
 
 ================================================================================
-for <nested patterns> in foo do block
-:skip
-================================================================================
-for <a, [k : <b, c>], d> in foo do {}
---------------------------------------------------------------------------------
-(program (statement_for
-	pattern: (pattern_product
-		(pattern_member (pattern_unary (identifier)))
-		(pattern_member (pattern_map
-			key: (pattern_unary (identifier))
-			val: (pattern_product
-				(pattern_unary (identifier))
-				(pattern_unary (identifier)))))
-		(pattern_member (pattern_unary (identifier))))
-	iterated: (iterable (identifier))
-	body: (block)))
-
-================================================================================
 for <field with composite type> in foo do block
 ================================================================================
 for <a [Int]> in foo do {}
 --------------------------------------------------------------------------------
 (program (statement_for
 	pattern: (pattern_product
-		(pattern_member (pattern_unary
+		(pattern_unary
 			(identifier)
-			(type_list (type_qualified typename: (identifier))))))
+			(type_list (type_qualified typename: (identifier)))))
 	iterated: (iterable (identifier))
 	body: (block)))
 
@@ -190,9 +172,9 @@ for <a, _, c> in foo do {}
 --------------------------------------------------------------------------------
 (program (statement_for
 	pattern: (pattern_product
-		(pattern_member (pattern_unary (identifier)))
-		(pattern_member (literal_placeholder))
-		(pattern_member (pattern_unary (identifier))))
+		(pattern_unary (identifier))
+		(literal_placeholder)
+		(pattern_unary (identifier)))
 	iterated: (iterable (identifier))
 	body: (block)))
 
@@ -204,52 +186,34 @@ for w <a, b, c> in foo do {}
 (program (statement_for
 	pattern: (pattern_product
 		whole: (pattern_unary (identifier))
-		(pattern_member (pattern_unary (identifier)))
-		(pattern_member (pattern_unary (identifier)))
-		(pattern_member (pattern_unary (identifier))))
-	iterated: (iterable (identifier))
-	body: (block)))
-
-================================================================================
-for field, field, field, in foo do block
-:skip
-================================================================================
-for a, b, c in foo do {}
---------------------------------------------------------------------------------
-(program (statement_for
-	pattern: (pattern_product
-		(pattern_member (pattern_unary (identifier)))
-		(pattern_member (pattern_unary (identifier)))
-		(pattern_member (pattern_unary (identifier))))
-	iterated: (iterable (identifier))
-	body: (block)))
-
-================================================================================
-for .field, .field, .field, in foo do block
-:skip
-================================================================================
-for .a, .b, .c in foo do {}
---------------------------------------------------------------------------------
-(program (statement_for
-	pattern: (pattern_product
-		(pattern_member (pattern_unary (identifier)))
-		(pattern_member (pattern_unary (identifier)))
-		(pattern_member (pattern_unary (identifier))))
+		(pattern_unary (identifier))
+		(pattern_unary (identifier))
+		(pattern_unary (identifier)))
 	iterated: (iterable (identifier))
 	body: (block)))
 
 ================================================================================
 for nested named fields in foo do block
 ================================================================================
-for <.a, .b <.b1, .b2>, .c> in foo do {}
+for <x:a, y:b <y1:b1, y2:b2>, z:c> in foo do {}
 --------------------------------------------------------------------------------
 (program (statement_for
 	pattern: (pattern_product
-		(pattern_member (pattern_unary (identifier)))
-		(pattern_member (pattern_product
-			whole: (pattern_unary (identifier))
-			(pattern_member (pattern_unary (identifier)))
-			(pattern_member (pattern_unary (identifier)))))
-		(pattern_member (pattern_unary (identifier))))
+		(pattern_member_named
+			name: (identifier)
+			pattern: (pattern_unary (identifier)))
+		(pattern_member_named
+			name: (identifier)
+			pattern: (pattern_product
+				whole: (pattern_unary (identifier))
+				(pattern_member_named
+					name: (identifier)
+					pattern: (pattern_unary (identifier)))
+				(pattern_member_named
+					name: (identifier)
+					pattern: (pattern_unary (identifier)))))
+		(pattern_member_named
+			name: (identifier)
+			pattern: (pattern_unary (identifier))))
 	iterated: (iterable (identifier))
 	body: (block)))
