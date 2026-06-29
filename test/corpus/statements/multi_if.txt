@@ -1,4 +1,34 @@
 ================================================================================
+multi if (subjectless)
+================================================================================
+if {
+	x do {}
+	x when y do {}
+	not x do {}
+	x and not y do {}
+} else {
+}
+--------------------------------------------------------------------------------
+(program (statement_multi_if
+	body: (subjectless_multi_if_body
+		(subjectless_multi_if_condition
+			condition: (identifier)
+			consequence: (block))
+		(subjectless_multi_if_condition
+			condition: (identifier)
+			guard: (identifier)
+			consequence: (block))
+		(subjectless_multi_if_condition
+			condition: (expression_prefixed (identifier))
+			consequence: (block))
+		(subjectless_multi_if_condition
+			condition: (expression_boolean
+				(identifier)
+				(expression_prefixed (identifier)))
+			consequence: (block)))
+	alternative: (block)))
+
+================================================================================
 multi if
 ================================================================================
 if x {

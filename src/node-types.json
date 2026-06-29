@@ -1998,12 +1998,16 @@
           {
             "type": "multi_if_body",
             "named": true
+          },
+          {
+            "type": "subjectless_multi_if_body",
+            "named": true
           }
         ]
       },
       "subject": {
         "multiple": false,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "expression",
@@ -2118,6 +2122,61 @@
           "named": true
         }
       ]
+    }
+  },
+  {
+    "type": "subjectless_multi_if_body",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "subjectless_multi_if_condition",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "subjectless_multi_if_condition",
+    "named": true,
+    "fields": {
+      "condition": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      },
+      "consequence": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "block",
+            "named": true
+          },
+          {
+            "type": "statement",
+            "named": true
+          }
+        ]
+      },
+      "guard": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
