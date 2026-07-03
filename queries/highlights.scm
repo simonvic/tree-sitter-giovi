@@ -224,6 +224,9 @@
     ">"
   ] @punctuation)
 
+(pattern_member_named
+  name: (_) @label)
+
 (record
   name: (_) @label)
 
