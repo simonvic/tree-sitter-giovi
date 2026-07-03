@@ -1,0 +1,58 @@
+================================================================================
+matching placeholder pattern
+================================================================================
+=> a is _
+--------------------------------------------------------------------------------
+(program
+	(statement_return
+		(expression_patternmatch
+			(identifier)
+			(literal_placeholder))))
+
+
+================================================================================
+matching unary pattern
+================================================================================
+=> a is i Int
+--------------------------------------------------------------------------------
+(program
+	(statement_return
+		(expression_patternmatch
+			(identifier)
+			(pattern_unary
+				(identifier)
+				(type_qualified typename: (identifier))))))
+
+
+================================================================================
+matching product pattern
+================================================================================
+=> a is <a, b>
+--------------------------------------------------------------------------------
+(program
+	(statement_return
+		(expression_patternmatch
+			(identifier)
+			(pattern_product
+				(pattern_unary (identifier))
+				(pattern_unary (identifier))))))
+
+
+================================================================================
+matching product pattern with types
+================================================================================
+=> a is <a Int, b Int>
+--------------------------------------------------------------------------------
+(program
+	(statement_return
+		(expression_patternmatch
+			(identifier)
+			(pattern_product
+				(pattern_unary
+					(identifier)
+					(type_qualified (identifier)))
+				(pattern_unary
+					(identifier)
+					(type_qualified (identifier)))))))
+
+

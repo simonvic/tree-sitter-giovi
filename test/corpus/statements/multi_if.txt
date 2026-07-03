@@ -49,8 +49,10 @@ if x {
 	not ~= list do {}
 	not in list do {}
 	is Type do {}
-	is x Type do {}
 	is not Type do {}
+	is <a, b> do {}
+	is x Type do {}
+	is not x Type do {}
 }
 --------------------------------------------------------------------------------
 (program (statement_multi_if
@@ -108,11 +110,24 @@ if x {
 			cases: (cases (case_match_typecheck (type_qualified typename: (identifier))))
 			consequence: (block))
 		(multi_if_condition
-			cases: (cases (case_match_typecheck (identifier) (type_qualified typename: (identifier))))
+			cases: (cases (case_match_typecheck (type_qualified typename: (identifier))))
 			consequence: (block))
 		(multi_if_condition
-			cases: (cases (case_match_typecheck (type_qualified typename: (identifier))))
-			consequence: (block)))))
+			cases: (cases (case_match_patternmatch (pattern_product
+				(pattern_unary (identifier))
+				(pattern_unary (identifier)))))
+			consequence: (block))
+		(multi_if_condition
+			cases: (cases (case_match_patternmatch (pattern_unary
+				(identifier)
+				(type_qualified typename: (identifier)))))
+			consequence: (block))
+		(multi_if_condition
+			cases: (cases (case_match_patternmatch (pattern_unary
+				(identifier)
+				(type_qualified typename: (identifier)))))
+			consequence: (block))
+		)))
 
 ================================================================================
 multi if with multi cases

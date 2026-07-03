@@ -49,6 +49,7 @@ const SEMICOLON = optional(';');
 const PREC = {
   CAST: 12,
   TYPECHECK: 11,
+  PATTERNMATCH: 11,
   INVOCATION: 11,
   DOTREF: 10,
   DOT: 10,
@@ -109,6 +110,8 @@ export default grammar({
     [$.expression_relational, $._redirection_rtl],
     [$.expression_relational, $.map_entry],
     [$.pattern_primary, $.literal],
+    [$.pattern_primary, $.pattern_product],
+    [$.pattern_unary, $.type_qualified],
     [$.pattern_unary, $.declaration_variable],
     [$.pattern_unary, $.primary],
   ],
@@ -375,13 +378,15 @@ export default grammar({
       $.case_match_boolean,
       $.case_match_containment,
       $.case_match_typecheck,
+      $.case_match_patternmatch,
     ),
 
     case_match_relational: $ => prec(PREC.RELATIONAL, seq(choice('<', '<=', '>=', '>'), $.expression)),
     case_match_equality: $ => prec(PREC.EQUALITY, seq(choice('=', '!='), $.expression)),
     case_match_boolean: $ => prec(PREC.BOOL, seq(choice('and', '&', 'or', '|'), $.expression)),
     case_match_containment: $ => prec(PREC.CONTAINMENT, seq(optional('not'), choice('in', '=~', '~='), $.expression)),
-    case_match_typecheck: $ => prec(PREC.TYPECHECK, seq('is', optional(choice('not', $.identifier)), $.type)),
+    case_match_typecheck: $ => prec(PREC.TYPECHECK, seq('is', optional('not'), $.type)),
+    case_match_patternmatch: $ => prec(PREC.PATTERNMATCH, seq('is', optional('not'), $.pattern)),
 
     statement_repeat: $ => seq(
       'repeat', optional(seq('if', field("condition", $.expression))),
@@ -529,6 +534,7 @@ export default grammar({
       $.expression_parenthesized,
       $.expression_cast,
       $.expression_typecheck,
+      $.expression_patternmatch,
       alias($.expression_creation_list, $.list),
       alias($.expression_creation_map, $.map),
       alias($.expression_creation_struct, $.struct),
@@ -550,8 +556,12 @@ export default grammar({
     expression_cast: $ => prec(PREC.CAST, seq($.expression, 'as', $.type)),
 
     expression_typecheck: $ => prec(PREC.TYPECHECK, seq(
-      $.expression, 'is', optional(choice('not', $.identifier)), $.type)
-    ),
+      $.expression, 'is', optional('not'), $.type
+    )),
+
+    expression_patternmatch: $ => prec(PREC.PATTERNMATCH, seq(
+      $.expression, 'is', optional('not'), $.pattern
+    )),
 
     expression_creation_list: $ => prec(PREC.CREATION_LIST, seq(
       '[', repeat(seq($.list_entry, optional(','))), ']'
