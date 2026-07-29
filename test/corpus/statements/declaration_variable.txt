@@ -18,3 +18,22 @@ i Int default 69
 	type: (type_qualified
 		typename: (identifier))
 	default: (default_definition (literal_integer))))
+
+================================================================================
+var declaration inferred type
+================================================================================
+var i <- 69
+--------------------------------------------------------------------------------
+(program (declaration_variable
+	name: (identifier)
+	value: (literal_integer)))
+
+================================================================================
+var declaration inferred type with default override
+================================================================================
+var i default 420 <- 69
+--------------------------------------------------------------------------------
+(program (declaration_variable
+	name: (identifier)
+	default: (default_definition (literal_integer))
+	value: (literal_integer)))

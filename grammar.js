@@ -91,12 +91,12 @@ export default grammar({
 
   conflicts: $ => [
     [$.statement_return],
-    [$.declaration_variable],
+    [$._declaration_variable],
     [$.formal_parameters, $.actual_parameters],
     [$.function_signature],
     [$.expression, $.statement],
     [$.primary, $.declaration_struct, $.pattern_unary],
-    [$.primary, $.declaration_variable, $.pattern_unary],
+    [$.primary, $._declaration_variable, $.pattern_unary],
     [$.primary, $.formal_parameter],
     [$.primary, $.type_qualified],
     [$.type_qualified],
@@ -106,13 +106,14 @@ export default grammar({
     [$.expression_relational, $._expression_creation_tuple],
     [$.expression_relational, $._expression_creation_record],
     [$.expression_relational, $.declaration_constant],
+    [$.expression_relational, $._declaration_variable_infer],
     [$.expression_relational, $.default_definition],
     [$.expression_relational, $._redirection_rtl],
     [$.expression_relational, $.map_entry],
     [$.pattern_primary, $.literal],
     [$.pattern_primary, $.pattern_product],
     [$.pattern_unary, $.type_qualified],
-    [$.pattern_unary, $.declaration_variable],
+    [$.pattern_unary, $._declaration_variable],
     [$.pattern_unary, $.primary],
   ],
 
@@ -499,12 +500,28 @@ export default grammar({
     ),
 
     _redirection_ltr: $ => prec(99, choice(
-      seq($.expression, '->', choice($.declaration_variable, $.pattern_product)),
+      seq(
+        $.expression,
+        '->',
+        choice(
+          alias($._declaration_variable, $.declaration_variable),
+          $.pattern_product
+        ),
+        SEMICOLON
+      ),
       seq($.expression, REDIR_OP_LTR, $.expression, SEMICOLON),
     )),
 
     _redirection_rtl: $ => choice(
-      seq(choice($.declaration_variable, $.pattern_product), '<-', $.expression, SEMICOLON),
+      seq(
+        choice(
+          alias($._declaration_variable, $.declaration_variable),
+          $.pattern_product
+        ),
+        '<-',
+        $.expression,
+        SEMICOLON
+      ),
       seq($.expression, REDIR_OP_RTL, $.expression, SEMICOLON),
     ),
 
@@ -517,10 +534,25 @@ export default grammar({
       SEMICOLON
     ),
 
-    declaration_variable: $ => seq(
+    declaration_variable: $ => choice(
+      $._declaration_variable,
+      $._declaration_variable_infer,
+    ),
+
+    _declaration_variable: $ => seq(
       field("name", $.identifier),
       field("type", $.type),
-      field("default", optional($.default_definition)),
+      optional(field("default", $.default_definition)),
+      SEMICOLON
+    ),
+
+    _declaration_variable_infer: $ => seq(
+      'var',
+      field("name", $.identifier),
+      optional(field("type", $.type)),
+      optional(field("default", $.default_definition)),
+      '<-',
+      field("value", $.expression),
       SEMICOLON
     ),
 

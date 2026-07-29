@@ -830,10 +830,20 @@
       },
       "type": {
         "multiple": false,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "type",
+            "named": true
+          }
+        ]
+      },
+      "value": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "expression",
             "named": true
           }
         ]
@@ -2713,6 +2723,10 @@
   },
   {
     "type": "type",
+    "named": false
+  },
+  {
+    "type": "var",
     "named": false
   },
   {

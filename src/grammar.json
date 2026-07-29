@@ -2063,12 +2063,29 @@
                 "type": "CHOICE",
                 "members": [
                   {
-                    "type": "SYMBOL",
-                    "name": "declaration_variable"
+                    "type": "ALIAS",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "_declaration_variable"
+                    },
+                    "named": true,
+                    "value": "declaration_variable"
                   },
                   {
                     "type": "SYMBOL",
                     "name": "pattern_product"
+                  }
+                ]
+              },
+              {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "STRING",
+                    "value": ";"
+                  },
+                  {
+                    "type": "BLANK"
                   }
                 ]
               }
@@ -2137,8 +2154,13 @@
               "type": "CHOICE",
               "members": [
                 {
-                  "type": "SYMBOL",
-                  "name": "declaration_variable"
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "_declaration_variable"
+                  },
+                  "named": true,
+                  "value": "declaration_variable"
                 },
                 {
                   "type": "SYMBOL",
@@ -2278,6 +2300,19 @@
       ]
     },
     "declaration_variable": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_declaration_variable"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_declaration_variable_infer"
+        }
+      ]
+    },
+    "_declaration_variable": {
       "type": "SEQ",
       "members": [
         {
@@ -2297,19 +2332,92 @@
           }
         },
         {
-          "type": "FIELD",
-          "name": "default",
-          "content": {
-            "type": "CHOICE",
-            "members": [
-              {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "FIELD",
+              "name": "default",
+              "content": {
                 "type": "SYMBOL",
                 "name": "default_definition"
-              },
-              {
-                "type": "BLANK"
               }
-            ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": ";"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "_declaration_variable_infer": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "var"
+        },
+        {
+          "type": "FIELD",
+          "name": "name",
+          "content": {
+            "type": "SYMBOL",
+            "name": "identifier"
+          }
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "FIELD",
+              "name": "type",
+              "content": {
+                "type": "SYMBOL",
+                "name": "type"
+              }
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "FIELD",
+              "name": "default",
+              "content": {
+                "type": "SYMBOL",
+                "name": "default_definition"
+              }
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": "<-"
+        },
+        {
+          "type": "FIELD",
+          "name": "value",
+          "content": {
+            "type": "SYMBOL",
+            "name": "expression"
           }
         },
         {
@@ -5696,7 +5804,7 @@
       "statement_return"
     ],
     [
-      "declaration_variable"
+      "_declaration_variable"
     ],
     [
       "formal_parameters",
@@ -5716,7 +5824,7 @@
     ],
     [
       "primary",
-      "declaration_variable",
+      "_declaration_variable",
       "pattern_unary"
     ],
     [
@@ -5756,6 +5864,10 @@
     ],
     [
       "expression_relational",
+      "_declaration_variable_infer"
+    ],
+    [
+      "expression_relational",
       "default_definition"
     ],
     [
@@ -5780,7 +5892,7 @@
     ],
     [
       "pattern_unary",
-      "declaration_variable"
+      "_declaration_variable"
     ],
     [
       "pattern_unary",

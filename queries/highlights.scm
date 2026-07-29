@@ -156,6 +156,7 @@
   "for"
   "return"
   "const"
+  "var"
   "default"
   "when"
   "alias"
@@ -237,7 +238,7 @@
 
 ; Reserved keywords
 ((identifier) @keyword @error
-  (#match? @error "^(inf|nan|INF|NAN|def|var|let|at|with|interface)$"))
+  (#match? @error "^(inf|nan|INF|NAN|def|let|at|with|interface)$"))
 
 ((identifier) @type.builtin
   (#match? @type.builtin "^(Type|Function|Tuple|Record|Struct|Module)$"))
