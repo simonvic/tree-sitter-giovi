@@ -140,7 +140,7 @@ export default grammar({
     $.referenceable,
     $.pattern,
     $.pattern_primary,
-    $.pattern_member,
+    $.pattern_field,
     $.pattern_map_key,
     $.iterator_pattern,
   ],
@@ -440,28 +440,28 @@ export default grammar({
       '>'
     )),
 
-    pattern_member: $ => choice(
+    pattern_field: $ => choice(
       $.pattern_product,
       $.pattern_primary
     ),
 
     _pattern_product_positional: $ => seq(
-      $.pattern_member,
-      repeat(seq(',', $.pattern_member)),
+      $.pattern_field,
+      repeat(seq(',', $.pattern_field)),
       optional(','),
     ),
 
     _pattern_product_named: $ => seq(
-      $.pattern_member_named,
-      repeat(seq(',', $.pattern_member_named)),
+      $.pattern_field_named,
+      repeat(seq(',', $.pattern_field_named)),
       optional(','),
     ),
 
-    pattern_member_named: $ => choice(
+    pattern_field_named: $ => choice(
       seq(
         field("name", $.identifier),
         ':',
-        field("pattern", $.pattern_member)
+        field("pattern", $.pattern_field)
       ),
       seq(
         ':',

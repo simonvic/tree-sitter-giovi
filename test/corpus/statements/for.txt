@@ -199,20 +199,20 @@ for <x:a, y:b <y1:b1, y2:b2>, z:c> in foo do {}
 --------------------------------------------------------------------------------
 (program (statement_for
 	pattern: (pattern_product
-		(pattern_member_named
+		(pattern_field_named
 			name: (identifier)
 			pattern: (pattern_unary (identifier)))
-		(pattern_member_named
+		(pattern_field_named
 			name: (identifier)
 			pattern: (pattern_product
 				whole: (pattern_unary (identifier))
-				(pattern_member_named
+				(pattern_field_named
 					name: (identifier)
 					pattern: (pattern_unary (identifier)))
-				(pattern_member_named
+				(pattern_field_named
 					name: (identifier)
 					pattern: (pattern_unary (identifier)))))
-		(pattern_member_named
+		(pattern_field_named
 			name: (identifier)
 			pattern: (pattern_unary (identifier))))
 	iterated: (iterable (identifier))

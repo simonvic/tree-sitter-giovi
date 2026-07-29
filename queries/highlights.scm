@@ -228,7 +228,7 @@
     ">"
   ] @punctuation)
 
-(pattern_member_named
+(pattern_field_named
   name: (_) @label)
 
 (record

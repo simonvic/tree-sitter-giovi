@@ -236,7 +236,7 @@
     ]
   },
   {
-    "type": "pattern_map_key",
+    "type": "pattern_field",
     "named": true,
     "subtypes": [
       {
@@ -250,7 +250,7 @@
     ]
   },
   {
-    "type": "pattern_member",
+    "type": "pattern_map_key",
     "named": true,
     "subtypes": [
       {
@@ -1667,6 +1667,36 @@
     }
   },
   {
+    "type": "pattern_field_named",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "pattern": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "pattern_field",
+            "named": true
+          },
+          {
+            "type": "pattern_unary",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "pattern_list",
     "named": true,
     "fields": {},
@@ -1708,36 +1738,6 @@
     }
   },
   {
-    "type": "pattern_member_named",
-    "named": true,
-    "fields": {
-      "name": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "identifier",
-            "named": true
-          }
-        ]
-      },
-      "pattern": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "pattern_member",
-            "named": true
-          },
-          {
-            "type": "pattern_unary",
-            "named": true
-          }
-        ]
-      }
-    }
-  },
-  {
     "type": "pattern_product",
     "named": true,
     "fields": {
@@ -1757,11 +1757,11 @@
       "required": true,
       "types": [
         {
-          "type": "pattern_member",
+          "type": "pattern_field",
           "named": true
         },
         {
-          "type": "pattern_member_named",
+          "type": "pattern_field_named",
           "named": true
         }
       ]

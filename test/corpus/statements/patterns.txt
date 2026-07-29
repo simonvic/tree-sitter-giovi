@@ -54,13 +54,13 @@ foo -> <x:a, y:b, z:c>
 	(redirection
 		(identifier)
 		(pattern_product
-			(pattern_member_named
+			(pattern_field_named
 				name: (identifier)
 				pattern: (pattern_unary (identifier)))
-			(pattern_member_named
+			(pattern_field_named
 				name: (identifier)
 				pattern: (pattern_unary (identifier)))
-			(pattern_member_named
+			(pattern_field_named
 				name: (identifier)
 				pattern: (pattern_unary (identifier))))))
 
@@ -73,9 +73,9 @@ foo -> <:a, :b, :c>
 	(redirection
 		(identifier)
 		(pattern_product
-			(pattern_member_named pattern: (pattern_unary (identifier)))
-			(pattern_member_named pattern: (pattern_unary (identifier)))
-			(pattern_member_named pattern: (pattern_unary (identifier))))))
+			(pattern_field_named pattern: (pattern_unary (identifier)))
+			(pattern_field_named pattern: (pattern_unary (identifier)))
+			(pattern_field_named pattern: (pattern_unary (identifier))))))
 
 ================================================================================
 product named with whole
@@ -87,13 +87,13 @@ foo -> foo <x:a, y:b, z:c>
 		(identifier)
 		(pattern_product
 			whole: (pattern_unary (identifier))
-			(pattern_member_named
+			(pattern_field_named
 				name: (identifier)
 				pattern: (pattern_unary (identifier)))
-			(pattern_member_named
+			(pattern_field_named
 				name: (identifier)
 				pattern: (pattern_unary (identifier)))
-			(pattern_member_named
+			(pattern_field_named
 				name: (identifier)
 				pattern: (pattern_unary (identifier))))))
 
@@ -107,9 +107,9 @@ foo -> foo <:a, :b, :c>
 		(identifier)
 		(pattern_product
 			whole: (pattern_unary (identifier))
-			(pattern_member_named pattern: (pattern_unary (identifier)))
-			(pattern_member_named pattern: (pattern_unary (identifier)))
-			(pattern_member_named pattern: (pattern_unary (identifier))))))
+			(pattern_field_named pattern: (pattern_unary (identifier)))
+			(pattern_field_named pattern: (pattern_unary (identifier)))
+			(pattern_field_named pattern: (pattern_unary (identifier))))))
 
 ================================================================================
 product positional with nested positional

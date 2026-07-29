@@ -1752,7 +1752,7 @@
         ]
       }
     },
-    "pattern_member": {
+    "pattern_field": {
       "type": "CHOICE",
       "members": [
         {
@@ -1770,7 +1770,7 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "pattern_member"
+          "name": "pattern_field"
         },
         {
           "type": "REPEAT",
@@ -1783,7 +1783,7 @@
               },
               {
                 "type": "SYMBOL",
-                "name": "pattern_member"
+                "name": "pattern_field"
               }
             ]
           }
@@ -1807,7 +1807,7 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "pattern_member_named"
+          "name": "pattern_field_named"
         },
         {
           "type": "REPEAT",
@@ -1820,7 +1820,7 @@
               },
               {
                 "type": "SYMBOL",
-                "name": "pattern_member_named"
+                "name": "pattern_field_named"
               }
             ]
           }
@@ -1839,7 +1839,7 @@
         }
       ]
     },
-    "pattern_member_named": {
+    "pattern_field_named": {
       "type": "CHOICE",
       "members": [
         {
@@ -1862,7 +1862,7 @@
               "name": "pattern",
               "content": {
                 "type": "SYMBOL",
-                "name": "pattern_member"
+                "name": "pattern_field"
               }
             }
           ]
@@ -5917,7 +5917,7 @@
     "referenceable",
     "pattern",
     "pattern_primary",
-    "pattern_member",
+    "pattern_field",
     "pattern_map_key",
     "iterator_pattern"
   ],
