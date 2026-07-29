@@ -500,15 +500,11 @@ export default grammar({
 
     _redirection_ltr: $ => prec(99, choice(
       seq($.expression, '->', choice($.declaration_variable, $.pattern_product)),
-      //seq($.expression, REDIR_OP_LTR, $.reserved_identifier, SEMICOLON),
-      // seq($.expression, REDIR_OP_LTR, $.identifier),
       seq($.expression, REDIR_OP_LTR, $.expression, SEMICOLON),
     )),
 
     _redirection_rtl: $ => choice(
       seq(choice($.declaration_variable, $.pattern_product), '<-', $.expression, SEMICOLON),
-      //seq($.reserved_identifier, REDIR_OP_RTL, $.expression, SEMICOLON),
-      // seq($.identifier, REDIR_OP_RTL, $.expression),
       seq($.expression, REDIR_OP_RTL, $.expression, SEMICOLON),
     ),
 
