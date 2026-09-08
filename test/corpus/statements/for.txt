@@ -63,9 +63,9 @@ for i [Type] in foo do {}
 	body: (block)))
 
 ================================================================================
-for placeholder : placeholder in foo do block
+for placeholder => placeholder in foo do block
 ================================================================================
-for _ : _ in foo do {}
+for _ => _ in foo do {}
 --------------------------------------------------------------------------------
 (program (statement_for
 	pattern: (pattern_map
@@ -75,9 +75,9 @@ for _ : _ in foo do {}
 	body: (block)))
 
 ================================================================================
-for key : placeholder in foo do block
+for key => placeholder in foo do block
 ================================================================================
-for k : _ in foo do {}
+for k => _ in foo do {}
 --------------------------------------------------------------------------------
 (program (statement_for
 	pattern: (pattern_map
@@ -87,9 +87,9 @@ for k : _ in foo do {}
 	body: (block)))
 
 ================================================================================
-for placeholder : value in foo do block
+for placeholder => value in foo do block
 ================================================================================
-for _ : v in foo do {}
+for _ => v in foo do {}
 --------------------------------------------------------------------------------
 (program (statement_for
 	pattern: (pattern_map
@@ -99,9 +99,9 @@ for _ : v in foo do {}
 	body: (block)))
 
 ================================================================================
-for key : value in foo do block
+for key => value in foo do block
 ================================================================================
-for k : v in foo do {}
+for k => v in foo do {}
 --------------------------------------------------------------------------------
 (program (statement_for
 	pattern: (pattern_map
@@ -111,9 +111,9 @@ for k : v in foo do {}
 	body: (block)))
 
 ================================================================================
-for [ key : value ] in foo do block
+for [ key => value ] in foo do block
 ================================================================================
-for [k : v] in foo do {}
+for [k => v] in foo do {}
 --------------------------------------------------------------------------------
 (program (statement_for
 	pattern: (pattern_map
@@ -123,9 +123,9 @@ for [k : v] in foo do {}
 	body: (block)))
 
 ================================================================================
-for k : [v : w] in foo do block
+for k => [v => w] in foo do block
 ================================================================================
-for k : [v : w] in foo do {}
+for k => [v => w] in foo do {}
 --------------------------------------------------------------------------------
 (program (statement_for
 	pattern: (pattern_map
@@ -137,9 +137,9 @@ for k : [v : w] in foo do {}
 	body: (block)))
 
 ================================================================================
-for key Type : value Type in foo do block
+for key Type => value Type in foo do block
 ================================================================================
-for k Type : v Type in foo do {}
+for k Type => v Type in foo do {}
 --------------------------------------------------------------------------------
 (program (statement_for
 	pattern: (pattern_map
