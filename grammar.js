@@ -426,7 +426,7 @@ export default grammar({
 
     _pattern_map: $ => prec.left(seq(
       field("key", $.pattern_map_key),
-      ':',
+      '=>',
       field("val", $.pattern)
     )),
 
@@ -591,14 +591,14 @@ export default grammar({
     expression_creation_map: $ => prec(PREC.CREATION_MAP, seq(
       '[',
       choice(
-        ':',
+        '=>',
         repeat1(seq($.map_entry, optional(','))),
       ),
       ']'
     )),
 
     map_entry: $ => seq(
-      field("key", $.expression), ':', field("val", $.expression)
+      field("key", $.expression), '=>', field("val", $.expression)
     ),
 
     expression_creation_struct: $ => seq(
@@ -737,7 +737,7 @@ export default grammar({
     ),
 
     type_map: $ => seq(
-      '[', field("key_type", $.type), ':', field("value_type", $.type), ']'
+      '[', field("key_type", $.type), '=>', field("value_type", $.type), ']'
     ),
 
     type_function_ref: $ => seq(choice('::', 'function'), $.function_signature),

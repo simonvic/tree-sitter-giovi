@@ -1644,7 +1644,7 @@
           },
           {
             "type": "STRING",
-            "value": ":"
+            "value": "=>"
           },
           {
             "type": "FIELD",
@@ -2473,7 +2473,7 @@
             "members": [
               {
                 "type": "STRING",
-                "value": ":"
+                "value": "=>"
               },
               {
                 "type": "REPEAT1",
@@ -2521,7 +2521,7 @@
         },
         {
           "type": "STRING",
-          "value": ":"
+          "value": "=>"
         },
         {
           "type": "FIELD",
@@ -3486,7 +3486,7 @@
         },
         {
           "type": "STRING",
-          "value": ":"
+          "value": "=>"
         },
         {
           "type": "FIELD",
