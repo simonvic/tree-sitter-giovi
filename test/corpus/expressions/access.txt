@@ -69,14 +69,12 @@ access with parenthesized range
 
 ================================================================================
 access with parenthesized invocation
-:skip
 ================================================================================
-someList@{someIndex()}
+=> someList@{someIndex()}
 --------------------------------------------------------------------------------
-(program
-	(expression_access
-		(identifier)
-		(invocation
-			(identifier)
-			(actual_parameters))))
+(program (statement_return (expression_access
+	accessed: (identifier)
+	accessor: (invocation
+		invoked: (identifier)
+		(actual_parameters)))))
 
