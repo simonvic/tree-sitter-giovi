@@ -99,8 +99,9 @@ foo.foo.foo()
 --------------------------------------------------------------------------------
 (program
 	(invocation
-		instance: (expression_dot
-			(identifier)
+		(expression_dot
+			(expression_dot
+				(identifier)
+				(identifier))
 			(identifier))
-		invoked: (identifier)
 		(actual_parameters)))

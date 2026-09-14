@@ -88,43 +88,46 @@ access dot and invocation precedence
 (program
 	(statement_return
 		(invocation
-			instance: (expression_access
-				accessed: (identifier)
-				accessor: (identifier))
-			invoked: (identifier)
-			(actual_parameters)))
-	(statement_return
-		(invocation
-			instance: (expression_parenthesized
+			(expression_dot
 				(expression_access
-				 	 accessed: (identifier)
-				 	 accessor: (identifier)))
-			invoked: (identifier)
+					(identifier)
+					(identifier))
+				(identifier))
 			(actual_parameters)))
 	(statement_return
 		(invocation
-			invoked: (expression_parenthesized
+			(expression_dot
+				(expression_parenthesized
+					(expression_access
+				 	 	 (identifier)
+				 	 	 (identifier)))
+				(identifier))
+			(actual_parameters)))
+	(statement_return
+		(invocation
+			(expression_parenthesized
 				(expression_dot
 					(expression_access
-						accessed: (identifier)
-						accessor: (identifier))
+						(identifier)
+						(identifier))
 					(identifier)))
 			(actual_parameters)))
 	(statement_return
 		(invocation
-			invoked: (expression_access
-				accessed: (identifier)
-				accessor: (expression_dot
+			(expression_access
+				(identifier)
+				(expression_dot
 					(identifier)
 					(identifier)))
 			(actual_parameters)))
 	(statement_return
 		(expression_access
-			accessed: (identifier)
-			accessor: (invocation
-					instance: (identifier)
-					invoked: (identifier)
-					(actual_parameters)))))
+			(identifier)
+			(invocation
+				(expression_dot
+					(identifier)
+					(identifier))
+				(actual_parameters)))))
 
 ================================================================================
 relational precedence

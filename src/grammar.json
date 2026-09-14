@@ -784,72 +784,25 @@
       ]
     },
     "invocation": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "PREC",
-          "value": 11,
-          "content": {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "CHOICE",
-                "members": [
-                  {
-                    "type": "SEQ",
-                    "members": [
-                      {
-                        "type": "FIELD",
-                        "name": "instance",
-                        "content": {
-                          "type": "SYMBOL",
-                          "name": "expression"
-                        }
-                      },
-                      {
-                        "type": "STRING",
-                        "value": "."
-                      }
-                    ]
-                  },
-                  {
-                    "type": "BLANK"
-                  }
-                ]
-              },
-              {
-                "type": "FIELD",
-                "name": "invoked",
-                "content": {
-                  "type": "SYMBOL",
-                  "name": "identifier"
-                }
-              },
-              {
-                "type": "SYMBOL",
-                "name": "actual_parameters"
-              }
-            ]
-          }
-        },
-        {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "FIELD",
-              "name": "invoked",
-              "content": {
-                "type": "SYMBOL",
-                "name": "expression"
-              }
-            },
-            {
+      "type": "PREC",
+      "value": 11,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "FIELD",
+            "name": "invoked",
+            "content": {
               "type": "SYMBOL",
-              "name": "actual_parameters"
+              "name": "expression"
             }
-          ]
-        }
-      ]
+          },
+          {
+            "type": "SYMBOL",
+            "name": "actual_parameters"
+          }
+        ]
+      }
     },
     "actual_parameters": {
       "type": "SEQ",
@@ -5811,10 +5764,6 @@
       "_declaration_variable"
     ],
     [
-      "formal_parameters",
-      "actual_parameters"
-    ],
-    [
       "function_signature"
     ],
     [
@@ -5833,7 +5782,7 @@
     ],
     [
       "primary",
-      "formal_parameter"
+      "declaration_function"
     ],
     [
       "primary",

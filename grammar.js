@@ -92,12 +92,11 @@ export default grammar({
   conflicts: $ => [
     [$.statement_return],
     [$._declaration_variable],
-    [$.formal_parameters, $.actual_parameters],
     [$.function_signature],
     [$.expression, $.statement],
     [$.primary, $.declaration_struct, $.pattern_unary],
     [$.primary, $._declaration_variable, $.pattern_unary],
-    [$.primary, $.formal_parameter],
+    [$.primary, $.declaration_function],
     [$.primary, $.type_qualified],
     [$.type_qualified],
     [$.case_match_boolean, $.expression_boolean],
@@ -288,13 +287,8 @@ export default grammar({
 
     statement_return: $ => seq(choice('return', '=>'), optional($.expression), SEMICOLON),
 
-    invocation: $ => choice(
-      prec(PREC.INVOCATION, seq(
-        optional(seq(field("instance", $.expression), '.')),
-        field("invoked", $.identifier),
-        $.actual_parameters
-      )),
-      seq(field("invoked", $.expression), $.actual_parameters),
+    invocation: $ => prec(PREC.INVOCATION,
+      seq(field("invoked", $.expression), $.actual_parameters)
     ),
 
     actual_parameters: $ => seq(
