@@ -198,6 +198,11 @@
 (invocation
   invoked: (_) @function.call)
 
+(invocation
+  invoked: (expression_dot
+    (_)
+    (identifier) @function.call))
+
 (actual_parameter
   label: (_) @label)
 
