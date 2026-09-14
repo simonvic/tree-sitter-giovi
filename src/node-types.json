@@ -34,10 +34,6 @@
     "named": true,
     "subtypes": [
       {
-        "type": "expression_access",
-        "named": true
-      },
-      {
         "type": "expression_binary",
         "named": true
       },
@@ -823,70 +819,6 @@
     }
   },
   {
-    "type": "expression_access",
-    "named": true,
-    "fields": {
-      "accessed": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "expression",
-            "named": true
-          }
-        ]
-      },
-      "accessor": {
-        "multiple": true,
-        "required": true,
-        "types": [
-          {
-            "type": "expression",
-            "named": true
-          },
-          {
-            "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "literal",
-            "named": true
-          },
-          {
-            "type": "range",
-            "named": true
-          },
-          {
-            "type": "reserved_identifier",
-            "named": true
-          },
-          {
-            "type": "special_key",
-            "named": true
-          },
-          {
-            "type": "{",
-            "named": false
-          },
-          {
-            "type": "}",
-            "named": false
-          }
-        ]
-      },
-      "bop": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "@",
-            "named": false
-          }
-        ]
-      }
-    }
-  },
-  {
     "type": "expression_additive",
     "named": true,
     "fields": {},
@@ -983,24 +915,55 @@
   {
     "type": "expression_dot",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "expression",
-          "named": true
-        },
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "literal_default",
-          "named": true
-        }
-      ]
+    "fields": {
+      "accessed": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          }
+        ]
+      },
+      "accessor": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "expression",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "literal",
+            "named": true
+          },
+          {
+            "type": "range",
+            "named": true
+          },
+          {
+            "type": "reserved_identifier",
+            "named": true
+          },
+          {
+            "type": "special_key",
+            "named": true
+          },
+          {
+            "type": "{",
+            "named": false
+          },
+          {
+            "type": "}",
+            "named": false
+          }
+        ]
+      }
     }
   },
   {
@@ -2539,10 +2502,6 @@
   },
   {
     "type": ">=",
-    "named": false
-  },
-  {
-    "type": "@",
     "named": false
   },
   {

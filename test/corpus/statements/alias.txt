@@ -11,8 +11,8 @@ alias foo as foo as foo
 		alias: (identifier))
 	(statement_alias
 		(expression_dot
-			(identifier)
-			(identifier))
+			accessed: (identifier)
+			accessor: (identifier))
 		alias: (identifier))
 	(statement_alias
 		(expression_cast

@@ -60,7 +60,6 @@ const PREC = {
 
   REF: 7,
   UNARY: 5,
-  ACCESS: 4,
   POWER: 3,
   MULTIPLICATIVE: 2,
   ADDITIVE: 1,
@@ -566,7 +565,6 @@ export default grammar({
       $.invocation,
       $.expression_dot,
       $.expression_dot_ref,
-      $.expression_access,
       $.expression_binary,
       $.expression_prefixed,
       $.primary,
@@ -664,8 +662,20 @@ export default grammar({
     ),
 
     expression_dot: $ => prec(PREC.DOT, seq(
-      $.expression, '.', choice($.identifier, $.literal_default)
+      field("accessed", $.expression),
+      '.',
+      field("accessor", $._access_key)
     )),
+
+    _access_key: $ => prec.left(PREC.ACCESS_KEY, choice(
+      seq('{', choice($._access_key, $.expression), '}'),
+      alias(choice('@', '%', '*'), $.special_key),
+      $.range,
+      $.literal,
+      $.identifier,
+      $.reserved_identifier,
+    )),
+
 
     expression_dot_ref: $ => prec.left(PREC.DOTREF, seq(
       field("accessed", $.expression),
@@ -680,21 +690,6 @@ export default grammar({
         '!!'
       )),
       $.expression,
-    )),
-
-    expression_access: $ => prec.left(PREC.ACCESS, seq(
-      field("accessed", $.expression),
-      field("bop", '@'),
-      field("accessor", $._access_key)
-    )),
-
-    _access_key: $ => prec.left(PREC.ACCESS_KEY, choice(
-      seq('{', choice($._access_key, $.expression), '}'),
-      alias(choice('@', '%', '*'), $.special_key),
-      $.range,
-      $.literal,
-      $.identifier,
-      $.reserved_identifier,
     )),
 
     expression_binary: $ => choice(

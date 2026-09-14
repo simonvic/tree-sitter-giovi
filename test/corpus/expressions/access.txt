@@ -1,63 +1,54 @@
 ================================================================================
 access with literal
 ================================================================================
-=> a@69
+=> a.69
 --------------------------------------------------------------------------------
-(program (statement_return (expression_access
+(program (statement_return (expression_dot
 	accessed: (identifier)
 	accessor: (literal_integer))))
 
 ================================================================================
 access with parenthesized literal
 ================================================================================
-=> a@{69}
+=> a.{69}
 --------------------------------------------------------------------------------
-(program (statement_return (expression_access
+(program (statement_return (expression_dot
 	accessed: (identifier)
 	accessor: (literal_integer))))
 
 ================================================================================
-access with identifier
-================================================================================
-=> a@i
---------------------------------------------------------------------------------
-(program (statement_return (expression_access
-	accessed: (identifier)
-	accessor: (identifier))))
-
-================================================================================
 access with parenthesized identifier
 ================================================================================
-=> a@{i}
+=> a.{i}
 --------------------------------------------------------------------------------
-(program (statement_return (expression_access
+(program (statement_return (expression_dot
 	accessed: (identifier)
 	accessor: (identifier))))
 
 ================================================================================
 access with reserved identifier
 ================================================================================
-=> a@_i
+=> a._i
 --------------------------------------------------------------------------------
-(program (statement_return (expression_access
+(program (statement_return (expression_dot
 	accessed: (identifier)
 	accessor: (reserved_identifier))))
 
 ================================================================================
 access with parenthesized reserved identifier
 ================================================================================
-=> a@{_i}
+=> a.{_i}
 --------------------------------------------------------------------------------
-(program (statement_return (expression_access
+(program (statement_return (expression_dot
 	accessed: (identifier)
 	accessor: (reserved_identifier))))
 
 ================================================================================
 access with expression
 ================================================================================
-=> a@{i + j}
+=> a.{i + j}
 --------------------------------------------------------------------------------
-(program (statement_return (expression_access
+(program (statement_return (expression_dot
 	accessed: (identifier)
 	accessor: (expression_additive
 		(identifier)
@@ -66,9 +57,9 @@ access with expression
 ================================================================================
 access with range
 ================================================================================
-=> a@s..e
+=> a.s..e
 --------------------------------------------------------------------------------
-(program (statement_return (expression_access
+(program (statement_return (expression_dot
 	accessed: (identifier)
 	accessor: (range
 		start: (identifier)
@@ -77,9 +68,9 @@ access with range
 ================================================================================
 access with parenthesized range
 ================================================================================
-=> a@{s..e}
+=> a.{s..e}
 --------------------------------------------------------------------------------
-(program (statement_return (expression_access
+(program (statement_return (expression_dot
 	accessed: (identifier)
 	accessor: (range
 		start: (identifier)
@@ -88,11 +79,11 @@ access with parenthesized range
 ================================================================================
 access with parenthesized invocation
 ================================================================================
-=> someList@{someIndex()}
+=> someList.{someIndex()}
 --------------------------------------------------------------------------------
-(program (statement_return (expression_access
-	accessed: (identifier)
-	accessor: (invocation
-		invoked: (identifier)
+(program (statement_return (expression_dot
+	(identifier)
+	(invocation
+		(identifier)
 		(actual_parameters)))))
 

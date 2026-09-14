@@ -33,18 +33,6 @@ negation precedence
 		(expression_prefixed (identifier)))))
 
 ================================================================================
-access precedence
-================================================================================
-=> a@b@c
---------------------------------------------------------------------------------
-(program (statement_return
-	(expression_access
-		accessed: (expression_access
-			accessed: (identifier)
-			accessor: (identifier))
-		accessor: (identifier))))
-
-================================================================================
 dot precedence
 ================================================================================
 => a.b.c
@@ -69,27 +57,27 @@ tuple creation and dot precedence
 ================================================================================
 tuple creation and access precedence
 ================================================================================
-=> <>@1
+=> <>.1
 --------------------------------------------------------------------------------
 (program (statement_return
-	(expression_access
+	(expression_dot
 		(tuple)
 		(literal_integer))))
 
 ================================================================================
 access dot and invocation precedence
 ================================================================================
-=> a@b.c()
-=> {a@b}.c()
-=> {a@b.c}()
-=> a@{b.c}()
-=> a@{b.c()}
+=> a.b.c()
+=> {a.b}.c()
+=> {a.b.c}()
+=> a.{b.c}()
+=> a.{b.c()}
 --------------------------------------------------------------------------------
 (program
 	(statement_return
 		(invocation
 			(expression_dot
-				(expression_access
+				(expression_dot
 					(identifier)
 					(identifier))
 				(identifier))
@@ -98,7 +86,7 @@ access dot and invocation precedence
 		(invocation
 			(expression_dot
 				(expression_parenthesized
-					(expression_access
+					(expression_dot
 				 	 	 (identifier)
 				 	 	 (identifier)))
 				(identifier))
@@ -107,21 +95,21 @@ access dot and invocation precedence
 		(invocation
 			(expression_parenthesized
 				(expression_dot
-					(expression_access
+					(expression_dot
 						(identifier)
 						(identifier))
 					(identifier)))
 			(actual_parameters)))
 	(statement_return
 		(invocation
-			(expression_access
+			(expression_dot
 				(identifier)
 				(expression_dot
 					(identifier)
 					(identifier)))
 			(actual_parameters)))
 	(statement_return
-		(expression_access
+		(expression_dot
 			(identifier)
 			(invocation
 				(expression_dot
