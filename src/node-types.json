@@ -1533,6 +1533,11 @@
     }
   },
   {
+    "type": "literal_placeholder",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "literal_text",
     "named": true,
     "fields": {},
@@ -2570,6 +2575,10 @@
     "named": false
   },
   {
+    "type": "_",
+    "named": false
+  },
+  {
     "type": "alias",
     "named": false
   },
@@ -2663,10 +2672,6 @@
   },
   {
     "type": "literal_natural",
-    "named": true
-  },
-  {
-    "type": "literal_placeholder",
     "named": true
   },
   {

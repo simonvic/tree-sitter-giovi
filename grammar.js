@@ -464,6 +464,7 @@ export default grammar({
         field("pattern", $.pattern_field)
       ),
       seq(
+        '_',
         ':',
         field("pattern", $.pattern_unary)
       ),
