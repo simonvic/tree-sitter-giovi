@@ -2284,10 +2284,6 @@
         },
         {
           "type": "SYMBOL",
-          "name": "expression_access"
-        },
-        {
-          "type": "SYMBOL",
           "name": "expression_binary"
         },
         {
@@ -2866,25 +2862,75 @@
         "type": "SEQ",
         "members": [
           {
-            "type": "SYMBOL",
-            "name": "expression"
+            "type": "FIELD",
+            "name": "accessed",
+            "content": {
+              "type": "SYMBOL",
+              "name": "expression"
+            }
           },
           {
             "type": "STRING",
             "value": "."
           },
           {
-            "type": "CHOICE",
+            "type": "FIELD",
+            "name": "accessor",
+            "content": {
+              "type": "SYMBOL",
+              "name": "_access_key"
+            }
+          }
+        ]
+      }
+    },
+    "_access_key": {
+      "type": "PREC_LEFT",
+      "value": 1,
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "SEQ",
             "members": [
               {
-                "type": "SYMBOL",
-                "name": "identifier"
+                "type": "STRING",
+                "value": "{"
               },
               {
-                "type": "SYMBOL",
-                "name": "literal_default"
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "_access_key"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "expression"
+                  }
+                ]
+              },
+              {
+                "type": "STRING",
+                "value": "}"
               }
             ]
+          },
+          {
+            "type": "SYMBOL",
+            "name": "range"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "literal"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "identifier"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "reserved_identifier"
           }
         ]
       }
@@ -2960,90 +3006,6 @@
           {
             "type": "SYMBOL",
             "name": "expression"
-          }
-        ]
-      }
-    },
-    "expression_access": {
-      "type": "PREC_LEFT",
-      "value": 4,
-      "content": {
-        "type": "SEQ",
-        "members": [
-          {
-            "type": "FIELD",
-            "name": "accessed",
-            "content": {
-              "type": "SYMBOL",
-              "name": "expression"
-            }
-          },
-          {
-            "type": "FIELD",
-            "name": "bop",
-            "content": {
-              "type": "STRING",
-              "value": "@"
-            }
-          },
-          {
-            "type": "FIELD",
-            "name": "accessor",
-            "content": {
-              "type": "SYMBOL",
-              "name": "_access_key"
-            }
-          }
-        ]
-      }
-    },
-    "_access_key": {
-      "type": "PREC_LEFT",
-      "value": 1,
-      "content": {
-        "type": "CHOICE",
-        "members": [
-          {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "STRING",
-                "value": "{"
-              },
-              {
-                "type": "CHOICE",
-                "members": [
-                  {
-                    "type": "SYMBOL",
-                    "name": "_access_key"
-                  },
-                  {
-                    "type": "SYMBOL",
-                    "name": "expression"
-                  }
-                ]
-              },
-              {
-                "type": "STRING",
-                "value": "}"
-              }
-            ]
-          },
-          {
-            "type": "SYMBOL",
-            "name": "range"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "literal"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "identifier"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "reserved_identifier"
           }
         ]
       }

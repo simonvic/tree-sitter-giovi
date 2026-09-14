@@ -11,35 +11,23 @@ f()
 ================================================================================
 invocation statement of expression (literal)
 ================================================================================
-someList@69()
+someList.69()
 --------------------------------------------------------------------------------
 (program
 	(invocation
-		(expression_access
+		(expression_dot
 			(identifier)
 			(literal_integer))
 		(actual_parameters)))
 
 ================================================================================
-invocation statement of expression (invocation)
-================================================================================
-someList@someIndex()
---------------------------------------------------------------------------------
-(program
-	(invocation
-		(expression_access
-			(identifier)
-			(identifier))
-		(actual_parameters)))
-
-================================================================================
 invocation statement of expression (parenthesized)
 ================================================================================
-someList@{someIndex}()
+someList.{someIndex}()
 --------------------------------------------------------------------------------
 (program
 	(invocation
-		(expression_access
+		(expression_dot
 			(identifier)
 			(identifier))
 		(actual_parameters)))

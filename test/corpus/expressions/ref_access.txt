@@ -13,9 +13,9 @@ qualified identifier ref access
 => foo.bar.baz::foobar
 --------------------------------------------------------------------------------
 (program (statement_return (expression_dot_ref
-	accessed: (expression_dot
+	(expression_dot
 		(expression_dot
 			(identifier)
 			(identifier))
 		(identifier))
-	accessor: (identifier))))
+	(identifier))))
