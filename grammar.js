@@ -288,8 +288,10 @@ export default grammar({
       ')'
     ),
 
+    _label: $ => seq(field("label", $.identifier), ':'),
+
     formal_parameter: $ => seq(
-      optional(seq(field("label", $.identifier), ':')),
+      optional($._label),
       $._typed_identifier,
       optional($._default_definition),
     ),
@@ -309,7 +311,8 @@ export default grammar({
     ),
 
     actual_parameter: $ => seq(
-      optional(field("label", seq($.identifier, ':'))), $.expression
+      optional($._label),
+      $.expression
     ),
 
     statement_if: $ => prec.right(seq(
