@@ -2,38 +2,62 @@
 var declaration
 ================================================================================
 i Int
+var i Int
 --------------------------------------------------------------------------------
-(program (declaration_variable
-	name: (identifier)
-	type: (type_qualified
-		typename: (identifier))))
+(program
+	(declaration_variable
+		name: (identifier)
+		type: (type_qualified typename: (identifier)))
+	(declaration_variable
+		name: (identifier)
+		type: (type_qualified typename: (identifier))))
 
 ================================================================================
 var declaration with default override
 ================================================================================
 i Int default 69
+var i Int default 69
 --------------------------------------------------------------------------------
-(program (declaration_variable
-	name: (identifier)
-	type: (type_qualified
-		typename: (identifier))
-	default: (literal_integer)))
+(program
+	(declaration_variable
+		name: (identifier)
+		type: (type_qualified typename: (identifier))
+		default: (literal_integer))
+	(declaration_variable
+		name: (identifier)
+		type: (type_qualified typename: (identifier))
+		default: (literal_integer)))
 
 ================================================================================
 var declaration inferred type
 ================================================================================
 var i <- 69
+69 -> var i
 --------------------------------------------------------------------------------
-(program (declaration_variable
-	name: (identifier)
-	value: (literal_integer)))
+(program
+	(redirection
+		(declaration_variable
+			name: (identifier))
+		(literal_integer))
+	(redirection
+		(literal_integer)
+		(declaration_variable
+			name: (identifier))))
 
 ================================================================================
 var declaration inferred type with default override
 ================================================================================
 var i default 420 <- 69
+69 -> var i default 420
 --------------------------------------------------------------------------------
-(program (declaration_variable
-	name: (identifier)
-	default: (literal_integer)
-	value: (literal_integer)))
+(program
+	(redirection
+		(declaration_variable
+			name: (identifier)
+			default: (literal_integer))
+		(literal_integer))
+	(redirection
+		(literal_integer)
+		(declaration_variable
+			name: (identifier)
+			default: (literal_integer))))

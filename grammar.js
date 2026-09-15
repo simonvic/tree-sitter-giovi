@@ -90,12 +90,14 @@ export default grammar({
 
   conflicts: $ => [
     [$.statement_return],
-    [$._declaration_variable],
+    [$.declaration_variable],
+    [$._declaration_variable_infer],
     [$.function_signature],
     [$.expression, $.statement],
     [$.primary, $.declaration_struct, $._optionally_typed_identifier],
     [$.primary, $._optionally_typed_identifier, $._typed_identifier],
     [$.primary, $._optionally_typed_identifier],
+    [$._optionally_typed_identifier],
     [$._optionally_typed_identifier, $._typed_identifier],
     [$._optionally_typed_identifier, $.type_qualified],
     [$.primary, $.declaration_function],
@@ -106,8 +108,6 @@ export default grammar({
     [$.expression_relational, $.statement_return],
     [$.expression_relational, $._expression_creation_tuple],
     [$.expression_relational, $._expression_creation_record],
-    [$.expression_relational, $.declaration_constant],
-    [$.expression_relational, $._declaration_variable_infer],
     [$.expression_relational, $._default_definition],
     [$.expression_relational, $._redirection_rtl],
     [$.expression_relational, $.map_entry],
@@ -193,7 +193,7 @@ export default grammar({
     _declaration: $ => choice(
       $.declaration_module,
       $.declaration_struct,
-      $.declaration_constant,
+      // $.declaration_constant,
       $.declaration_variable,
       $.declaration_function,
     ),
@@ -508,7 +508,9 @@ export default grammar({
         $.expression,
         '->',
         choice(
-          alias($._declaration_variable, $.declaration_variable),
+          alias($._declaration_variable_infer, $.declaration_variable),
+          $.declaration_variable,
+          $.declaration_constant,
           $.pattern_product
         ),
       ),
@@ -518,7 +520,9 @@ export default grammar({
     _redirection_rtl: $ => choice(
       seq(
         choice(
-          alias($._declaration_variable, $.declaration_variable),
+          alias($._declaration_variable_infer, $.declaration_variable),
+          $.declaration_variable,
+          $.declaration_constant,
           $.pattern_product
         ),
         '<-',
@@ -530,26 +534,18 @@ export default grammar({
     declaration_constant: $ => seq(
       'const',
       $._optionally_typed_identifier,
-      '<-',
-      field("value", $.expression)
     ),
 
-    declaration_variable: $ => choice(
-      $._declaration_variable,
-      $._declaration_variable_infer,
-    ),
-
-    _declaration_variable: $ => seq(
+    declaration_variable: $ => seq(
+      optional('var'),
       $._typed_identifier,
-      optional($._default_definition)
+      optional($._default_definition),
     ),
 
     _declaration_variable_infer: $ => seq(
       'var',
       $._optionally_typed_identifier,
       optional($._default_definition),
-      '<-',
-      field("value", $.expression)
     ),
 
     expression: $ => choice(

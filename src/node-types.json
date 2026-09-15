@@ -314,10 +314,6 @@
     "named": true,
     "subtypes": [
       {
-        "type": "declaration_constant",
-        "named": true
-      },
-      {
         "type": "declaration_function",
         "named": true
       },
@@ -647,16 +643,6 @@
             "named": true
           }
         ]
-      },
-      "value": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "expression",
-            "named": true
-          }
-        ]
       }
     }
   },
@@ -834,16 +820,6 @@
         "types": [
           {
             "type": "type",
-            "named": true
-          }
-        ]
-      },
-      "value": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "expression",
             "named": true
           }
         ]
@@ -1859,6 +1835,10 @@
       "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "declaration_constant",
+          "named": true
+        },
         {
           "type": "declaration_variable",
           "named": true
