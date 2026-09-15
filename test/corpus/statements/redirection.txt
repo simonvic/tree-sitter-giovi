@@ -27,7 +27,7 @@ t Text default "foo" <- "hello world"
 	(declaration_variable
 		(identifier)
 		(type_qualified (identifier))
-		(default_definition (literal_text)))
+		(literal_text))
 	(literal_text)))
 
 ================================================================================
@@ -60,7 +60,7 @@ LTR to var declaration with default
 	(declaration_variable
 		(identifier)
 		(type_qualified (identifier))
-		(default_definition (literal_text)))))
+		(literal_text))))
 
 ================================================================================
 Two LTR with prefixed expression

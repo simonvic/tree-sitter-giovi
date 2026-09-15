@@ -109,7 +109,7 @@ export default grammar({
     [$.expression_relational, $._expression_creation_record],
     [$.expression_relational, $.declaration_constant],
     [$.expression_relational, $._declaration_variable_infer],
-    [$.expression_relational, $.default_definition],
+    [$.expression_relational, $._default_definition],
     [$.expression_relational, $._redirection_rtl],
     [$.expression_relational, $.map_entry],
     [$.pattern_primary, $.literal],
@@ -212,6 +212,8 @@ export default grammar({
       optional(field("type", $.type)),
     ),
 
+    _default_definition: $ => seq('default', field("default", $.expression)),
+
     statement_import: $ => seq(
       'import', choice(
         $.import_entry,
@@ -269,7 +271,7 @@ export default grammar({
 
     declaration_field: $ => seq(
       $._typed_identifier,
-      field("default", optional($.default_definition))
+      optional($._default_definition),
     ),
 
     declaration_function: $ => seq(
@@ -290,7 +292,7 @@ export default grammar({
     formal_parameter: $ => seq(
       optional(seq(field("label", $.identifier), ':')),
       $._typed_identifier,
-      field("default", optional($.default_definition))
+      optional($._default_definition),
     ),
 
     statement_return: $ => seq(choice('return', '=>'), optional($.expression), SEMICOLON),
@@ -543,20 +545,18 @@ export default grammar({
 
     _declaration_variable: $ => seq(
       $._typed_identifier,
-      optional(field("default", $.default_definition)),
+      optional($._default_definition),
       SEMICOLON
     ),
 
     _declaration_variable_infer: $ => seq(
       'var',
       $._optionally_typed_identifier,
-      optional(field("default", $.default_definition)),
+      optional($._default_definition),
       '<-',
       field("value", $.expression),
       SEMICOLON
     ),
-
-    default_definition: $ => seq('default', $.expression),
 
     expression: $ => choice(
       $.expression_parenthesized,
@@ -772,7 +772,7 @@ export default grammar({
       '>',
     ),
 
-    _type_tuple_entry: $ => seq($.type, optional($.default_definition)),
+    _type_tuple_entry: $ => seq($.type, optional($._default_definition)),
 
     type_record: $ => seq(
       'record',

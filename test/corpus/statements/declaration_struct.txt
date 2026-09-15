@@ -55,7 +55,7 @@ Foo <i Int default 69>
 			name: (identifier)
 			type: (type_qualified
 				typename: (identifier))
-			default: (default_definition (literal_integer))))))
+			default: (literal_integer)))))
 
 ================================================================================
 struct declaration with multiple fields
@@ -92,9 +92,9 @@ Foo <
 			name: (identifier)
 			type: (type_qualified
 				typename: (identifier))
-			default: (default_definition (literal_integer)))
+			default: (literal_integer))
 		(declaration_field
 			name: (identifier)
 			type: (type_qualified
 				typename: (identifier))
-			default: (default_definition (literal_integer))))))
+			default: (literal_integer)))))
