@@ -1617,9 +1617,13 @@
         ]
       },
       "consequence": {
-        "multiple": false,
+        "multiple": true,
         "required": true,
         "types": [
+          {
+            "type": ";",
+            "named": false
+          },
           {
             "type": "block",
             "named": true
@@ -1897,18 +1901,17 @@
     }
   },
   {
-    "type": "statement_break",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "statement_for",
     "named": true,
     "fields": {
       "body": {
-        "multiple": false,
+        "multiple": true,
         "required": true,
         "types": [
+          {
+            "type": ";",
+            "named": false
+          },
           {
             "type": "block",
             "named": true
@@ -1946,9 +1949,13 @@
     "named": true,
     "fields": {
       "alternative": {
-        "multiple": false,
+        "multiple": true,
         "required": false,
         "types": [
+          {
+            "type": ";",
+            "named": false
+          },
           {
             "type": "block",
             "named": true
@@ -1970,9 +1977,13 @@
         ]
       },
       "consequence": {
-        "multiple": false,
+        "multiple": true,
         "required": true,
         "types": [
+          {
+            "type": ";",
+            "named": false
+          },
           {
             "type": "block",
             "named": true
@@ -2005,9 +2016,13 @@
     "named": true,
     "fields": {
       "alternative": {
-        "multiple": false,
+        "multiple": true,
         "required": false,
         "types": [
+          {
+            "type": ";",
+            "named": false
+          },
           {
             "type": "block",
             "named": true
@@ -2049,9 +2064,13 @@
     "named": true,
     "fields": {
       "body": {
-        "multiple": false,
+        "multiple": true,
         "required": true,
         "types": [
+          {
+            "type": ";",
+            "named": false
+          },
           {
             "type": "block",
             "named": true
@@ -2088,11 +2107,6 @@
         }
       ]
     }
-  },
-  {
-    "type": "statement_skip",
-    "named": true,
-    "fields": {}
   },
   {
     "type": "struct",
@@ -2181,9 +2195,13 @@
         ]
       },
       "consequence": {
-        "multiple": false,
+        "multiple": true,
         "required": true,
         "types": [
+          {
+            "type": ";",
+            "named": false
+          },
           {
             "type": "block",
             "named": true
@@ -2576,10 +2594,6 @@
     "named": false
   },
   {
-    "type": "break",
-    "named": false
-  },
-  {
     "type": "comment_block",
     "named": true,
     "extra": true
@@ -2696,11 +2710,15 @@
     "named": false
   },
   {
-    "type": "skip",
-    "named": false
+    "type": "special_key",
+    "named": true
   },
   {
-    "type": "special_key",
+    "type": "statement_break",
+    "named": true
+  },
+  {
+    "type": "statement_skip",
     "named": true
   },
   {

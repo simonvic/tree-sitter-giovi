@@ -44,7 +44,6 @@ const RESERVERD_IDENTIFIER = /_[a-zA-Z0-9_]+/;
 
 const REDIR_OP_LTR = choice('->', '->+', '->-', '->*', '->/');
 const REDIR_OP_RTL = choice('<-', '+<-', '-<-', '*<-', '/<-');
-const SEMICOLON = optional(';');
 
 const PREC = {
   CAST: 12,
@@ -145,8 +144,8 @@ export default grammar({
   ],
 
   rules: {
-    program: $ => repeat($.statement),
-    block: $ => seq('{', repeat($.statement), '}'),
+    program: $ => repeat($._statement),
+    block: $ => seq('{', repeat($._statement), '}'),
 
     doc: $ => choice(
       $.doc_line,
@@ -174,6 +173,8 @@ export default grammar({
       '#', /[^\n]*/
     ))),
 
+    _statement: $ => prec.left(seq($.statement, optional(';'))),
+
     statement: $ => choice(
       $.statement_import,
       $.statement_alias,
@@ -198,7 +199,7 @@ export default grammar({
     ),
 
     _statement_or_block: $ => choice(
-      $.statement,
+      $._statement,
       $.block
     ),
 
@@ -238,7 +239,6 @@ export default grammar({
       $.expression,
       'as',
       field("alias", $.identifier),
-      SEMICOLON
     ),
 
     declaration_module: $ => seq(
@@ -252,7 +252,6 @@ export default grammar({
       optional(seq(field("parent_type", $.type_qualified), ':')),
       field("typename", $.identifier),
       field("body", $.struct_body),
-      SEMICOLON
     ),
 
     struct_body: $ => seq(
@@ -295,7 +294,7 @@ export default grammar({
       optional($._default_definition),
     ),
 
-    statement_return: $ => seq(choice('return', '=>'), optional($.expression), SEMICOLON),
+    statement_return: $ => seq(choice('return', '=>'), optional($.expression)),
 
     invocation: $ => prec(PREC.INVOCATION,
       seq(field("invoked", $.expression), $.actual_parameters)
@@ -496,8 +495,8 @@ export default grammar({
       ))
     )),
 
-    statement_skip: _ => seq('skip', SEMICOLON),
-    statement_break: _ => seq('break', SEMICOLON),
+    statement_skip: _ => 'skip',
+    statement_break: _ => 'break',
 
     redirection: $ => choice(
       $._redirection_ltr,
@@ -512,9 +511,8 @@ export default grammar({
           alias($._declaration_variable, $.declaration_variable),
           $.pattern_product
         ),
-        SEMICOLON
       ),
-      seq($.expression, REDIR_OP_LTR, $.expression, SEMICOLON),
+      seq($.expression, REDIR_OP_LTR, $.expression),
     )),
 
     _redirection_rtl: $ => choice(
@@ -525,17 +523,15 @@ export default grammar({
         ),
         '<-',
         $.expression,
-        SEMICOLON
       ),
-      seq($.expression, REDIR_OP_RTL, $.expression, SEMICOLON),
+      seq($.expression, REDIR_OP_RTL, $.expression),
     ),
 
     declaration_constant: $ => seq(
       'const',
       $._optionally_typed_identifier,
       '<-',
-      field("value", $.expression),
-      SEMICOLON
+      field("value", $.expression)
     ),
 
     declaration_variable: $ => choice(
@@ -545,8 +541,7 @@ export default grammar({
 
     _declaration_variable: $ => seq(
       $._typed_identifier,
-      optional($._default_definition),
-      SEMICOLON
+      optional($._default_definition)
     ),
 
     _declaration_variable_infer: $ => seq(
@@ -554,8 +549,7 @@ export default grammar({
       $._optionally_typed_identifier,
       optional($._default_definition),
       '<-',
-      field("value", $.expression),
-      SEMICOLON
+      field("value", $.expression)
     ),
 
     expression: $ => choice(
