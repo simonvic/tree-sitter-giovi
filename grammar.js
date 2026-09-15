@@ -94,8 +94,11 @@ export default grammar({
     [$._declaration_variable],
     [$.function_signature],
     [$.expression, $.statement],
-    [$.primary, $.declaration_struct, $.pattern_unary],
-    [$.primary, $._declaration_variable, $.pattern_unary],
+    [$.primary, $.declaration_struct, $._optionally_typed_identifier],
+    [$.primary, $._optionally_typed_identifier, $._typed_identifier],
+    [$.primary, $._optionally_typed_identifier],
+    [$._optionally_typed_identifier, $._typed_identifier],
+    [$._optionally_typed_identifier, $.type_qualified],
     [$.primary, $.declaration_function],
     [$.primary, $.type_qualified],
     [$.type_qualified],
@@ -111,9 +114,6 @@ export default grammar({
     [$.expression_relational, $.map_entry],
     [$.pattern_primary, $.literal],
     [$.pattern_primary, $.pattern_product],
-    [$.pattern_unary, $.type_qualified],
-    [$.pattern_unary, $._declaration_variable],
-    [$.pattern_unary, $.primary],
   ],
 
   extras: $ => [
@@ -202,6 +202,16 @@ export default grammar({
       $.block
     ),
 
+    _typed_identifier: $ => seq(
+      field("name", $.identifier),
+      field("type", $.type),
+    ),
+
+    _optionally_typed_identifier: $ => seq(
+      field("name", $.identifier),
+      optional(field("type", $.type)),
+    ),
+
     statement_import: $ => seq(
       'import', choice(
         $.import_entry,
@@ -258,8 +268,7 @@ export default grammar({
     ),
 
     declaration_field: $ => seq(
-      field("name", $.identifier),
-      field("type", $.type),
+      $._typed_identifier,
       field("default", optional($.default_definition))
     ),
 
@@ -280,8 +289,7 @@ export default grammar({
 
     formal_parameter: $ => seq(
       optional(seq(field("label", $.identifier), ':')),
-      field("name", $.identifier),
-      field("type", $.type),
+      $._typed_identifier,
       field("default", optional($.default_definition))
     ),
 
@@ -469,7 +477,7 @@ export default grammar({
       $.literal_placeholder
     ),
 
-    pattern_unary: $ => seq($.identifier, optional($.type)),
+    pattern_unary: $ => $._optionally_typed_identifier,
 
     iterable: $ => choice(
       $.range,
@@ -522,8 +530,7 @@ export default grammar({
 
     declaration_constant: $ => seq(
       'const',
-      field("name", $.identifier),
-      optional(field("type", $.type)),
+      $._optionally_typed_identifier,
       '<-',
       field("value", $.expression),
       SEMICOLON
@@ -535,16 +542,14 @@ export default grammar({
     ),
 
     _declaration_variable: $ => seq(
-      field("name", $.identifier),
-      field("type", $.type),
+      $._typed_identifier,
       optional(field("default", $.default_definition)),
       SEMICOLON
     ),
 
     _declaration_variable_infer: $ => seq(
       'var',
-      field("name", $.identifier),
-      optional(field("type", $.type)),
+      $._optionally_typed_identifier,
       optional(field("default", $.default_definition)),
       '<-',
       field("value", $.expression),

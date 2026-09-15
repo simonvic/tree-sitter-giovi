@@ -14,7 +14,7 @@ for unary in foo do block
 for i in foo do {}
 --------------------------------------------------------------------------------
 (program (statement_for
-	pattern: (pattern_unary (identifier))
+	pattern: (pattern_unary name: (identifier))
 	iterated: (iterable (identifier))
 	body: (block)))
 
@@ -24,7 +24,7 @@ for unary in foo do block
 for [i] in foo do {}
 --------------------------------------------------------------------------------
 (program (statement_for
-	pattern: (pattern_list (pattern_unary (identifier)))
+	pattern: (pattern_list (pattern_unary name: (identifier)))
 	iterated: (iterable (identifier))
 	body: (block)))
 
@@ -34,7 +34,7 @@ for nested list in foo do block
 for [[i]] in foo do {}
 --------------------------------------------------------------------------------
 (program (statement_for
-	pattern: (pattern_list (pattern_list (pattern_unary (identifier))))
+	pattern: (pattern_list (pattern_list (pattern_unary name: (identifier))))
 	iterated: (iterable (identifier))
 	body: (block)))
 
@@ -45,8 +45,8 @@ for i Type in foo do {}
 --------------------------------------------------------------------------------
 (program (statement_for
 	pattern: (pattern_unary
-		(identifier)
-		(type_qualified typename: (identifier)))
+		name: (identifier)
+		type: (type_qualified typename: (identifier)))
 	iterated: (iterable (identifier))
 	body: (block)))
 
@@ -57,8 +57,8 @@ for i [Type] in foo do {}
 --------------------------------------------------------------------------------
 (program (statement_for
 	pattern: (pattern_unary
-		(identifier)
-		(type_list (type_qualified typename: (identifier))))
+		name: (identifier)
+		type: (type_list (type_qualified typename: (identifier))))
 	iterated: (iterable (identifier))
 	body: (block)))
 
@@ -81,7 +81,7 @@ for k : _ in foo do {}
 --------------------------------------------------------------------------------
 (program (statement_for
 	pattern: (pattern_map
-		key: (pattern_unary (identifier))
+		key: (pattern_unary name: (identifier))
 		val: (literal_placeholder))
 	iterated: (iterable (identifier))
 	body: (block)))
@@ -94,7 +94,7 @@ for _ : v in foo do {}
 (program (statement_for
 	pattern: (pattern_map
 		key: (literal_placeholder)
-		val: (pattern_unary (identifier)))
+		val: (pattern_unary name: (identifier)))
 	iterated: (iterable (identifier))
 	body: (block)))
 
@@ -105,8 +105,8 @@ for k : v in foo do {}
 --------------------------------------------------------------------------------
 (program (statement_for
 	pattern: (pattern_map
-		key: (pattern_unary (identifier))
-		val: (pattern_unary (identifier)))
+		key: (pattern_unary name: (identifier))
+		val: (pattern_unary name: (identifier)))
 	iterated: (iterable (identifier))
 	body: (block)))
 
@@ -117,8 +117,8 @@ for [k : v] in foo do {}
 --------------------------------------------------------------------------------
 (program (statement_for
 	pattern: (pattern_map
-		key: (pattern_unary (identifier))
-		val: (pattern_unary (identifier)))
+		key: (pattern_unary name: (identifier))
+		val: (pattern_unary name: (identifier)))
 	iterated: (iterable (identifier))
 	body: (block)))
 
@@ -129,10 +129,10 @@ for k : [v : w] in foo do {}
 --------------------------------------------------------------------------------
 (program (statement_for
 	pattern: (pattern_map
-		key: (pattern_unary (identifier))
+		key: (pattern_unary name: (identifier))
 		val: (pattern_map
-			key: (pattern_unary (identifier))
-			val: (pattern_unary (identifier))))
+			key: (pattern_unary name: (identifier))
+			val: (pattern_unary name: (identifier))))
 	iterated: (iterable (identifier))
 	body: (block)))
 
@@ -144,11 +144,11 @@ for k Type : v Type in foo do {}
 (program (statement_for
 	pattern: (pattern_map
 		key: (pattern_unary
-			(identifier)
-			(type_qualified typename: (identifier)))
+			name: (identifier)
+			type: (type_qualified typename: (identifier)))
 		val: (pattern_unary
-			(identifier)
-			(type_qualified typename: (identifier))))
+			name: (identifier)
+			type: (type_qualified typename: (identifier))))
 	iterated: (iterable (identifier))
 	body: (block)))
 
@@ -160,8 +160,8 @@ for <a [Int]> in foo do {}
 (program (statement_for
 	pattern: (pattern_product
 		(pattern_unary
-			(identifier)
-			(type_list (type_qualified typename: (identifier)))))
+			name: (identifier)
+			type: (type_list (type_qualified typename: (identifier)))))
 	iterated: (iterable (identifier))
 	body: (block)))
 
@@ -172,9 +172,9 @@ for <a, _, c> in foo do {}
 --------------------------------------------------------------------------------
 (program (statement_for
 	pattern: (pattern_product
-		(pattern_unary (identifier))
+		(pattern_unary name: (identifier))
 		(literal_placeholder)
-		(pattern_unary (identifier)))
+		(pattern_unary name: (identifier)))
 	iterated: (iterable (identifier))
 	body: (block)))
 
@@ -185,10 +185,10 @@ for w <a, b, c> in foo do {}
 --------------------------------------------------------------------------------
 (program (statement_for
 	pattern: (pattern_product
-		whole: (pattern_unary (identifier))
-		(pattern_unary (identifier))
-		(pattern_unary (identifier))
-		(pattern_unary (identifier)))
+		whole: (pattern_unary name: (identifier))
+		(pattern_unary name: (identifier))
+		(pattern_unary name: (identifier))
+		(pattern_unary name: (identifier)))
 	iterated: (iterable (identifier))
 	body: (block)))
 
@@ -201,19 +201,19 @@ for <x:a, y:b <y1:b1, y2:b2>, z:c> in foo do {}
 	pattern: (pattern_product
 		(pattern_field_named
 			name: (identifier)
-			pattern: (pattern_unary (identifier)))
+			pattern: (pattern_unary name: (identifier)))
 		(pattern_field_named
 			name: (identifier)
 			pattern: (pattern_product
-				whole: (pattern_unary (identifier))
+				whole: (pattern_unary name: (identifier))
 				(pattern_field_named
 					name: (identifier)
-					pattern: (pattern_unary (identifier)))
+					pattern: (pattern_unary name: (identifier)))
 				(pattern_field_named
 					name: (identifier)
-					pattern: (pattern_unary (identifier)))))
+					pattern: (pattern_unary name: (identifier)))))
 		(pattern_field_named
 			name: (identifier)
-			pattern: (pattern_unary (identifier))))
+			pattern: (pattern_unary name: (identifier))))
 	iterated: (iterable (identifier))
 	body: (block)))

@@ -40,10 +40,10 @@ foo -> foo <a, b, c>
 	(redirection
 		(identifier)
 		(pattern_product
-			whole: (pattern_unary (identifier))
-			(pattern_unary (identifier))
-			(pattern_unary (identifier))
-			(pattern_unary (identifier)))))
+			whole: (pattern_unary name: (identifier))
+			(pattern_unary name: (identifier))
+			(pattern_unary name: (identifier))
+			(pattern_unary name: (identifier)))))
 
 ================================================================================
 product named
@@ -55,14 +55,14 @@ foo -> <x:a, y:b, z:c>
 		(identifier)
 		(pattern_product
 			(pattern_field_named
-				name: (identifier)
-				pattern: (pattern_unary (identifier)))
+				(identifier)
+				(pattern_unary (identifier)))
 			(pattern_field_named
-				name: (identifier)
-				pattern: (pattern_unary (identifier)))
+				(identifier)
+				(pattern_unary (identifier)))
 			(pattern_field_named
-				name: (identifier)
-				pattern: (pattern_unary (identifier))))))
+				(identifier)
+				(pattern_unary (identifier))))))
 
 ================================================================================
 product named (equal names)
@@ -73,9 +73,9 @@ foo -> <_:a, _:b, _:c>
 	(redirection
 		(identifier)
 		(pattern_product
-			(pattern_field_named pattern: (pattern_unary (identifier)))
-			(pattern_field_named pattern: (pattern_unary (identifier)))
-			(pattern_field_named pattern: (pattern_unary (identifier))))))
+			(pattern_field_named (pattern_unary (identifier)))
+			(pattern_field_named (pattern_unary (identifier)))
+			(pattern_field_named (pattern_unary (identifier))))))
 
 ================================================================================
 product named with whole
@@ -86,16 +86,16 @@ foo -> foo <x:a, y:b, z:c>
 	(redirection
 		(identifier)
 		(pattern_product
-			whole: (pattern_unary (identifier))
+			whole: (pattern_unary name: (identifier))
 			(pattern_field_named
 				name: (identifier)
-				pattern: (pattern_unary (identifier)))
+				pattern: (pattern_unary name: (identifier)))
 			(pattern_field_named
 				name: (identifier)
-				pattern: (pattern_unary (identifier)))
+				pattern: (pattern_unary name: (identifier)))
 			(pattern_field_named
 				name: (identifier)
-				pattern: (pattern_unary (identifier))))))
+				pattern: (pattern_unary name: (identifier))))))
 
 ================================================================================
 product named (equal names) with whole
@@ -106,10 +106,10 @@ foo -> foo <_:a, _:b, _:c>
 	(redirection
 		(identifier)
 		(pattern_product
-			whole: (pattern_unary (identifier))
-			(pattern_field_named pattern: (pattern_unary (identifier)))
-			(pattern_field_named pattern: (pattern_unary (identifier)))
-			(pattern_field_named pattern: (pattern_unary (identifier))))))
+			whole: (pattern_unary name: (identifier))
+			(pattern_field_named pattern: (pattern_unary name: (identifier)))
+			(pattern_field_named pattern: (pattern_unary name: (identifier)))
+			(pattern_field_named pattern: (pattern_unary name: (identifier))))))
 
 ================================================================================
 product positional with nested positional
@@ -135,10 +135,10 @@ foo -> <a, b <b1, b2>, c>
 	(redirection
 		(identifier)
 		(pattern_product
-			(pattern_unary (identifier))
+			(pattern_unary name: (identifier))
 			(pattern_product
-				whole: (pattern_unary (identifier))
-				(pattern_unary (identifier))
-				(pattern_unary (identifier)))
-			(pattern_unary (identifier)))))
+				whole: (pattern_unary name: (identifier))
+				(pattern_unary name: (identifier))
+				(pattern_unary name: (identifier)))
+			(pattern_unary name: (identifier)))))
 

@@ -21,7 +21,7 @@ matching unary pattern
 			(identifier)
 			(pattern_unary
 				(identifier)
-				(type_qualified typename: (identifier))))))
+				(type_qualified (identifier))))))
 
 
 ================================================================================
