@@ -526,7 +526,7 @@
                 },
                 {
                   "type": "STRING",
-                  "value": ":"
+                  "value": "+"
                 }
               ]
             },
