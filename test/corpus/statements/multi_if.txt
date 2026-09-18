@@ -51,8 +51,8 @@ if x {
 	is Type do {}
 	is not Type do {}
 	is <a, b> do {}
-	is x Type do {}
-	is not x Type do {}
+	is x:Type do {}
+	is not x:Type do {}
 }
 --------------------------------------------------------------------------------
 (program (statement_multi_if

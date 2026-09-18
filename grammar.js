@@ -94,9 +94,7 @@ export default grammar({
     [$.function_signature],
     [$.expression, $.statement],
     [$.primary, $.declaration_struct, $._optionally_typed_identifier],
-    [$.primary, $._optionally_typed_identifier, $._typed_identifier],
     [$.primary, $._optionally_typed_identifier],
-    [$._optionally_typed_identifier],
     [$._optionally_typed_identifier, $._typed_identifier],
     [$._optionally_typed_identifier, $.type_qualified],
     [$.primary, $.declaration_function],
@@ -207,12 +205,13 @@ export default grammar({
 
     _typed_identifier: $ => seq(
       field("name", $.identifier),
+      ':',
       field("type", $.type),
     ),
 
     _optionally_typed_identifier: $ => seq(
       field("name", $.identifier),
-      optional(field("type", $.type)),
+      optional(seq(':', field("type", $.type))),
     ),
 
     _default_definition: $ => seq('default', field("default", $.expression)),

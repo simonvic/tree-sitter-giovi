@@ -33,7 +33,7 @@ bar.Bar + Foo <>
 ================================================================================
 struct declaration with one field
 ================================================================================
-Foo <i Int>
+Foo <i:Int>
 --------------------------------------------------------------------------------
 (program (declaration_struct
 	typename: (identifier)
@@ -46,7 +46,7 @@ Foo <i Int>
 ================================================================================
 struct declaration with one field with default override
 ================================================================================
-Foo <i Int default 69>
+Foo <i:Int default 69>
 --------------------------------------------------------------------------------
 (program (declaration_struct
 	typename: (identifier)
@@ -61,8 +61,8 @@ Foo <i Int default 69>
 struct declaration with multiple fields
 ================================================================================
 Foo <
-	i Int
-	j Int
+	i:Int
+	j:Int
 >
 --------------------------------------------------------------------------------
 (program (declaration_struct
@@ -81,8 +81,8 @@ Foo <
 struct declaration with multiple fields with default override
 ================================================================================
 Foo <
-	i Int default 69
-	j Int default 69
+	i:Int default 69
+	j:Int default 69
 >
 --------------------------------------------------------------------------------
 (program (declaration_struct

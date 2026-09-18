@@ -24,7 +24,7 @@ fun() => Int {}
 ================================================================================
 function declaration with one arg
 ================================================================================
-fun(a Int) {}
+fun(a:Int) {}
 --------------------------------------------------------------------------------
 (program (declaration_function
 	name: (identifier)
@@ -38,7 +38,7 @@ fun(a Int) {}
 ================================================================================
 function declaration with one arg default
 ================================================================================
-fun(a Int default 69) {}
+fun(a:Int default 69) {}
 --------------------------------------------------------------------------------
 (program (declaration_function
 	name: (identifier)
@@ -53,7 +53,7 @@ fun(a Int default 69) {}
 ================================================================================
 function declaration with multiple arg 
 ================================================================================
-fun(a Int, b Int) {}
+fun(a:Int, b:Int) {}
 --------------------------------------------------------------------------------
 (program (declaration_function
 	name: (identifier)
@@ -70,7 +70,7 @@ fun(a Int, b Int) {}
 ================================================================================
 function declaration with multiple arg default
 ================================================================================
-fun(a Int default 69, b Int default 420) {}
+fun(a:Int default 69, b:Int default 420) {}
 --------------------------------------------------------------------------------
 (program (declaration_function
 	name: (identifier)
@@ -89,7 +89,7 @@ fun(a Int default 69, b Int default 420) {}
 ================================================================================
 function declaration with multiple arg default and return
 ================================================================================
-fun(a Int default 69, b Int default 420) => Int {}
+fun(a:Int default 69, b:Int default 420) => Int {}
 --------------------------------------------------------------------------------
 (program (declaration_function
 	name: (identifier)

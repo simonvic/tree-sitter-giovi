@@ -25,7 +25,7 @@ ref with empty parameters
 ================================================================================
 ref with one parameter
 ================================================================================
-=> ::(a Int){}
+=> ::(a:Int){}
 --------------------------------------------------------------------------------
 (program (statement_return (expression_ref
 	referenced: (anon_function
@@ -39,7 +39,7 @@ ref with one parameter
 ================================================================================
 ref with multiple parameters
 ================================================================================
-=> ::(a Int, b Int){}
+=> ::(a:Int, b:Int){}
 --------------------------------------------------------------------------------
 (program (statement_return (expression_ref
 	referenced: (anon_function
@@ -68,7 +68,7 @@ ref with return type
 ================================================================================
 ref with one parameter and return type
 ================================================================================
-=> ::(a Int) => Int {}
+=> ::(a:Int) => Int {}
 --------------------------------------------------------------------------------
 (program (statement_return (expression_ref
 	referenced: (anon_function
@@ -83,7 +83,7 @@ ref with one parameter and return type
 ================================================================================
 ref with multiple parameters and return type
 ================================================================================
-=> ::(a Int, b Int) => Int {}
+=> ::(a:Int, b:Int) => Int {}
 --------------------------------------------------------------------------------
 (program (statement_return (expression_ref
 	referenced: (anon_function
