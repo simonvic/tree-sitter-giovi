@@ -694,6 +694,7 @@ export default grammar({
       $.range,
       $.literal,
       $.identifier,
+      $.reserved_identifier,
     )),
 
     expression_binary: $ => choice(

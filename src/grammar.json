@@ -3062,6 +3062,10 @@
           {
             "type": "SYMBOL",
             "name": "identifier"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "reserved_identifier"
           }
         ]
       }
