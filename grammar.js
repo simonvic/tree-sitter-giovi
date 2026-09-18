@@ -757,7 +757,7 @@ export default grammar({
     ),
 
     type_tuple: $ => seq(
-      'tuple',
+      optional('tuple'),
       '<',
       repeat(seq($._type_tuple_entry, optional(','))),
       '>',
@@ -765,11 +765,9 @@ export default grammar({
 
     _type_tuple_entry: $ => seq($.type, optional($._default_definition)),
 
-    type_record: $ => seq(
-      'record',
-      '<',
-      repeat(seq($.declaration_field, optional(','))),
-      '>',
+    type_record: $ => choice(
+      seq('record', '<', repeat(seq($.declaration_field, optional(','))), '>',),
+      seq(optional('record'), '<', repeat1(seq($.declaration_field, optional(','))), '>',),
     ),
 
     primary: $ => choice(
