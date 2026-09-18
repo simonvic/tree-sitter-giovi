@@ -49,7 +49,7 @@ struct with multiple comma separated fields
 ================================================================================
 struct with named field
 ================================================================================
-=> Foo.<a:a>
+=> Foo.<a=a>
 --------------------------------------------------------------------------------
 (program (statement_return (struct
 	type: (type_qualified typename: (identifier))
@@ -60,7 +60,7 @@ struct with named field
 ================================================================================
 struct with multiple named fields
 ================================================================================
-=> Foo.<a:a b:b c:c>
+=> Foo.<a=a b=b c=c>
 --------------------------------------------------------------------------------
 (program (statement_return (struct
 	type: (type_qualified typename: (identifier))
@@ -87,7 +87,7 @@ struct with relational expression as field
 ================================================================================
 struct with relational expression as named field
 ================================================================================
-=> Foo.<x:a y:b<c z:d>
+=> Foo.<x=a y=b<c z=d>
 --------------------------------------------------------------------------------
 (program (statement_return (struct
 	type: (type_qualified typename: (identifier))

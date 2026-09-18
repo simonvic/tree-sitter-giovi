@@ -112,6 +112,9 @@ export default grammar({
     [$.expression_relational, $.map_entry],
     [$.pattern_primary, $.literal],
     [$.pattern_primary, $.pattern_product],
+    [$.pattern_field_named, $.literal_placeholder],
+    [$.pattern_field_named, $._expression_creation_record, $.primary],
+    [$._expression_creation_record, $.primary],
   ],
 
   extras: $ => [
@@ -287,7 +290,7 @@ export default grammar({
       ')'
     ),
 
-    _label: $ => seq(field("label", $.identifier), ':'),
+    _label: $ => prec(1, seq(field("label", $.identifier), '=')),
 
     formal_parameter: $ => seq(
       optional($._label),
@@ -465,12 +468,12 @@ export default grammar({
     pattern_field_named: $ => choice(
       seq(
         field("name", $.identifier),
-        ':',
+        '=',
         field("pattern", $.pattern_field)
       ),
       seq(
         '_',
-        ':',
+        '=',
         field("pattern", $.pattern_unary)
       ),
     ),
@@ -619,10 +622,10 @@ export default grammar({
     _expression_creation_record: $ => seq(
       '<',
       choice(
-        ':',
+        '=',
         repeat1(seq(
           field("name", $.identifier),
-          ':',
+          '=',
           field("value", $.expression),
           optional(',')
         )),

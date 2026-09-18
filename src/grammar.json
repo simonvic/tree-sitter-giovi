@@ -728,21 +728,25 @@
       ]
     },
     "_label": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "FIELD",
-          "name": "label",
-          "content": {
-            "type": "SYMBOL",
-            "name": "identifier"
+      "type": "PREC",
+      "value": 1,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "FIELD",
+            "name": "label",
+            "content": {
+              "type": "SYMBOL",
+              "name": "identifier"
+            }
+          },
+          {
+            "type": "STRING",
+            "value": "="
           }
-        },
-        {
-          "type": "STRING",
-          "value": ":"
-        }
-      ]
+        ]
+      }
     },
     "formal_parameter": {
       "type": "SEQ",
@@ -1819,7 +1823,7 @@
             },
             {
               "type": "STRING",
-              "value": ":"
+              "value": "="
             },
             {
               "type": "FIELD",
@@ -1840,7 +1844,7 @@
             },
             {
               "type": "STRING",
-              "value": ":"
+              "value": "="
             },
             {
               "type": "FIELD",
@@ -2636,7 +2640,7 @@
           "members": [
             {
               "type": "STRING",
-              "value": ":"
+              "value": "="
             },
             {
               "type": "REPEAT1",
@@ -2653,7 +2657,7 @@
                   },
                   {
                     "type": "STRING",
-                    "value": ":"
+                    "value": "="
                   },
                   {
                     "type": "FIELD",
@@ -5608,6 +5612,19 @@
     [
       "pattern_primary",
       "pattern_product"
+    ],
+    [
+      "pattern_field_named",
+      "literal_placeholder"
+    ],
+    [
+      "pattern_field_named",
+      "_expression_creation_record",
+      "primary"
+    ],
+    [
+      "_expression_creation_record",
+      "primary"
     ]
   ],
   "precedences": [],
