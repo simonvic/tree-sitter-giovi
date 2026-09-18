@@ -93,7 +93,6 @@ export default grammar({
     [$._declaration_variable_infer],
     [$.function_signature],
     [$.expression, $.statement],
-    [$.primary, $.declaration_struct, $._optionally_typed_identifier],
     [$.primary, $._optionally_typed_identifier],
     [$._optionally_typed_identifier, $._typed_identifier],
     [$._optionally_typed_identifier, $.type_qualified],
@@ -249,8 +248,8 @@ export default grammar({
     ),
 
     declaration_struct: $ => seq(
-      optional('struct'),
       optional(seq(field("parent_type", $.type_qualified), '+')),
+      'struct',
       field("typename", $.identifier),
       field("body", $.struct_body),
     ),

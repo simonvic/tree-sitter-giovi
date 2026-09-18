@@ -515,18 +515,6 @@
           "type": "CHOICE",
           "members": [
             {
-              "type": "STRING",
-              "value": "struct"
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
               "type": "SEQ",
               "members": [
                 {
@@ -547,6 +535,10 @@
               "type": "BLANK"
             }
           ]
+        },
+        {
+          "type": "STRING",
+          "value": "struct"
         },
         {
           "type": "FIELD",
@@ -5611,11 +5603,6 @@
     [
       "expression",
       "statement"
-    ],
-    [
-      "primary",
-      "declaration_struct",
-      "_optionally_typed_identifier"
     ],
     [
       "primary",
