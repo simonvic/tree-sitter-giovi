@@ -25,22 +25,22 @@
 (escape_sequence) @string.escape
 
 (literal_text
-  "\"" @punctuation)
+  "\"" @string.special)
 
 (literal_text_block
   [
     "\"{"
     "}\""
-  ] @punctuation)
+  ] @string.special)
 
 (literal_exact_text
-  "'" @punctuation)
+  "'" @string.special)
 
 (literal_exact_text_block
   [
     "'{"
     "}'"
-  ] @punctuation)
+  ] @string.special)
 
 (text_interpolation
   [
