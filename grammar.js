@@ -247,8 +247,8 @@ export default grammar({
     ),
 
     declaration_struct: $ => seq(
-      optional('struct'),
       optional(seq(field("parent_type", $.type_qualified), '+')),
+      optional('struct'),
       field("typename", $.identifier),
       field("body", $.struct_body),
     ),
