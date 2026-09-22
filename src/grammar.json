@@ -3030,28 +3030,6 @@
             ]
           },
           {
-            "type": "ALIAS",
-            "content": {
-              "type": "CHOICE",
-              "members": [
-                {
-                  "type": "STRING",
-                  "value": "@"
-                },
-                {
-                  "type": "STRING",
-                  "value": "%"
-                },
-                {
-                  "type": "STRING",
-                  "value": "*"
-                }
-              ]
-            },
-            "named": true,
-            "value": "special_key"
-          },
-          {
             "type": "SYMBOL",
             "name": "range"
           },

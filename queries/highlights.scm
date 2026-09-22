@@ -146,8 +146,6 @@
 (type_function_ref
   "::" @punctuation)
 
-(special_key) @variable.builtin
-
 [
   "if"
   "do"

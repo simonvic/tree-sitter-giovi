@@ -690,7 +690,6 @@ export default grammar({
 
     _access_key: $ => prec.left(PREC.ACCESS_KEY, choice(
       seq('{', choice($._access_key, $.expression), '}'),
-      alias(choice('@', '%', '*'), $.special_key),
       $.range,
       $.literal,
       $.identifier,

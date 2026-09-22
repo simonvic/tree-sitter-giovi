@@ -861,10 +861,6 @@
             "named": true
           },
           {
-            "type": "special_key",
-            "named": true
-          },
-          {
             "type": "{",
             "named": false
           },
@@ -2688,10 +2684,6 @@
   {
     "type": "return",
     "named": false
-  },
-  {
-    "type": "special_key",
-    "named": true
   },
   {
     "type": "statement_break",
