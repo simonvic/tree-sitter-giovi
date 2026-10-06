@@ -192,6 +192,9 @@
 (expression_dot_ref
   accessor: (identifier) @function)
 
+(expression_ref
+  (identifier) @function)
+
 (invocation
   invoked: (_) @function.call)
 
