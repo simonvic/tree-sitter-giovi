@@ -8,29 +8,6 @@ Foo <>
 	body: (struct_body)))
 
 ================================================================================
-empty struct declaration with parent
-================================================================================
-Bar + Foo <>
---------------------------------------------------------------------------------
-(program (declaration_struct
-	parent_type: (type_qualified
-		typename: (identifier))
-	typename: (identifier)
-	body: (struct_body)))
-
-================================================================================
-empty struct declaration with qualified parent
-================================================================================
-bar.Bar + Foo <>
---------------------------------------------------------------------------------
-(program (declaration_struct
-	parent_type: (type_qualified
-		(identifier)
-		typename: (identifier))
-	typename: (identifier)
-	body: (struct_body)))
-
-================================================================================
 struct declaration with one field
 ================================================================================
 Foo <i Int>
@@ -98,3 +75,105 @@ Foo <
 			type: (type_qualified
 				typename: (identifier))
 			default: (literal_integer)))))
+
+================================================================================
+empty struct declaration with single pre aggregate
+================================================================================
+Bar + Foo <>
+--------------------------------------------------------------------------------
+(program (declaration_struct
+	pre_aggregate: (type_qualified
+		typename: (identifier))
+	typename: (identifier)
+	body: (struct_body)))
+
+================================================================================
+empty struct declaration with single pre qualified aggregate
+================================================================================
+bar.Bar + Foo <>
+--------------------------------------------------------------------------------
+(program (declaration_struct
+	pre_aggregate: (type_qualified
+		(identifier)
+		typename: (identifier))
+	typename: (identifier)
+	body: (struct_body)))
+
+================================================================================
+empty struct declaration with multiple pre aggregates
+================================================================================
+Baz, Bar + Foo <>
+--------------------------------------------------------------------------------
+(program (declaration_struct
+	pre_aggregate: (type_qualified
+		typename: (identifier))
+	pre_aggregate: (type_qualified
+		typename: (identifier))
+	typename: (identifier)
+	body: (struct_body)))
+
+================================================================================
+empty struct declaration with multiple pre qualified aggregates
+================================================================================
+baz.Baz, bar.Bar + Foo <>
+--------------------------------------------------------------------------------
+(program (declaration_struct
+	pre_aggregate: (type_qualified
+		(identifier)
+		typename: (identifier))
+	pre_aggregate: (type_qualified
+		(identifier)
+		typename: (identifier))
+	typename: (identifier)
+	body: (struct_body)))
+
+================================================================================
+empty struct declaration with single post aggregate
+================================================================================
+Foo <> + Bar
+--------------------------------------------------------------------------------
+(program (declaration_struct
+	typename: (identifier)
+	body: (struct_body)
+	post_aggregate: (type_qualified
+		typename: (identifier))))
+
+================================================================================
+empty struct declaration with single post qualified aggregate
+================================================================================
+Foo <> + bar.Bar
+--------------------------------------------------------------------------------
+(program (declaration_struct
+	typename: (identifier)
+	body: (struct_body)
+	post_aggregate: (type_qualified
+		(identifier)
+		typename: (identifier))))
+
+================================================================================
+empty struct declaration with multiple post aggregates
+================================================================================
+Foo <> + Baz, Bar
+--------------------------------------------------------------------------------
+(program (declaration_struct
+	typename: (identifier)
+	body: (struct_body)
+	post_aggregate: (type_qualified
+		typename: (identifier))
+	post_aggregate: (type_qualified
+		typename: (identifier))))
+
+================================================================================
+empty struct declaration with multiple post qualified aggregates
+================================================================================
+Foo <> + baz.Baz, bar.Bar
+--------------------------------------------------------------------------------
+(program (declaration_struct
+	typename: (identifier)
+	body: (struct_body)
+	post_aggregate: (type_qualified
+		(identifier)
+		typename: (identifier))
+	post_aggregate: (type_qualified
+		(identifier)
+		typename: (identifier))))

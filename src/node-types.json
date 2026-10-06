@@ -760,8 +760,18 @@
           }
         ]
       },
-      "parent_type": {
-        "multiple": false,
+      "post_aggregate": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "type_qualified",
+            "named": true
+          }
+        ]
+      },
+      "pre_aggregate": {
+        "multiple": true,
         "required": false,
         "types": [
           {

@@ -90,6 +90,7 @@ export default grammar({
   conflicts: $ => [
     [$.statement_return],
     [$.declaration_variable],
+    [$.declaration_struct],
     [$._declaration_variable_infer],
     [$.function_signature],
     [$.expression, $.statement],
@@ -247,11 +248,23 @@ export default grammar({
     ),
 
     declaration_struct: $ => seq(
-      optional(seq(field("parent_type", $.type_qualified), '+')),
+      optional(seq(
+        $._pre_aggregate,
+        repeat(seq(',', $._pre_aggregate)),
+        '+',
+      )),
       optional('struct'),
       field("typename", $.identifier),
       field("body", $.struct_body),
+      optional(seq(
+        '+',
+        $._post_aggregate,
+        repeat(seq(',', $._post_aggregate)),
+      )),
     ),
+
+    _pre_aggregate: $ => field("pre_aggregate", $.type_qualified),
+    _post_aggregate: $ => field("post_aggregate", $.type_qualified),
 
     struct_body: $ => seq(
       '<',
