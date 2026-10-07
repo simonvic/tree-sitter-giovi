@@ -82,6 +82,29 @@ const LEX_PREC = {
   DOC_LINE: -2,
 };
 
+/**
+ * Build a sequence rule of comma separated rules, with optional trailing comma
+ *
+ * @param {Rule} rule
+ *
+ * @returns {SeqRule}
+ */
+function csv(rule) {
+  return seq(rule, repeat(seq(',', rule)), optional(','));
+}
+
+/**
+ * Build a sequence rule of optionally comma separated rules, with optional
+ * trailing comma
+ *
+ * @param {Rule} rule
+ *
+ * @returns {Repeat1Rule}
+ */
+function ocsv(rule) {
+  return repeat1(seq(rule, optional(',')));
+}
+
 export default grammar({
   name: "giovi",
 
@@ -218,7 +241,7 @@ export default grammar({
     statement_import: $ => seq(
       'import', choice(
         $.import_entry,
-        seq('[', repeat1(seq($.import_entry, optional(','))), ']')
+        seq('[', ocsv($.import_entry), ']')
       )
     ),
 
@@ -249,8 +272,7 @@ export default grammar({
 
     declaration_struct: $ => seq(
       optional(seq(
-        $._pre_aggregate,
-        repeat(seq(',', $._pre_aggregate)),
+        csv(field("pre_aggregate", $.type_qualified)),
         '+',
       )),
       optional('struct'),
@@ -258,13 +280,9 @@ export default grammar({
       field("body", $.struct_body),
       optional(seq(
         '+',
-        $._post_aggregate,
-        repeat(seq(',', $._post_aggregate)),
+        csv(field("post_aggregate", $.type_qualified)),
       )),
     ),
-
-    _pre_aggregate: $ => field("pre_aggregate", $.type_qualified),
-    _post_aggregate: $ => field("post_aggregate", $.type_qualified),
 
     struct_body: $ => seq(
       '<',
@@ -294,9 +312,7 @@ export default grammar({
 
     formal_parameters: $ => seq(
       '(',
-      optional(seq(
-        $.formal_parameter, repeat(seq(',', $.formal_parameter)), optional(','),
-      )),
+      optional(csv($.formal_parameter)),
       ')'
     ),
 
@@ -316,9 +332,7 @@ export default grammar({
 
     actual_parameters: $ => seq(
       '(',
-      optional(seq(
-        $.actual_parameter, repeat(seq(',', $.actual_parameter)), optional(','),
-      )),
+      optional(csv($.actual_parameter)),
       ')'
     ),
 
@@ -463,17 +477,9 @@ export default grammar({
       $.pattern_primary
     ),
 
-    _pattern_product_positional: $ => seq(
-      $.pattern_field,
-      repeat(seq(',', $.pattern_field)),
-      optional(','),
-    ),
+    _pattern_product_positional: $ => csv($.pattern_field),
 
-    _pattern_product_named: $ => seq(
-      $.pattern_field_named,
-      repeat(seq(',', $.pattern_field_named)),
-      optional(','),
-    ),
+    _pattern_product_named: $ => csv($.pattern_field_named),
 
     pattern_field_named: $ => choice(
       seq(
@@ -605,7 +611,7 @@ export default grammar({
       '[',
       choice(
         '=>',
-        repeat1(seq($.map_entry, optional(','))),
+        ocsv($.map_entry),
       ),
       ']'
     )),
@@ -650,7 +656,7 @@ export default grammar({
 
     _expression_creation_tuple: $ => prec.dynamic(PREC.CREATION_TUPLE, seq(
       '<',
-      repeat(seq($.expression, optional(','))),
+      optional(ocsv($.expression)),
       '>',
     )),
 
@@ -768,7 +774,7 @@ export default grammar({
     type_tuple: $ => seq(
       'tuple',
       '<',
-      repeat(seq($._type_tuple_entry, optional(','))),
+      optional(ocsv($._type_tuple_entry)),
       '>',
     ),
 
@@ -777,7 +783,7 @@ export default grammar({
     type_record: $ => seq(
       'record',
       '<',
-      repeat(seq($.declaration_field, optional(','))),
+      optional(ocsv($.declaration_field)),
       '>',
     ),
 
